@@ -31,11 +31,11 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="relative text-sm font-medium text-text-dark transition-colors hover:text-brand-orange"
+              className="relative text-sm font-medium text-text-dark transition-colors hover:text-brand-yellow"
             >
               {item.label}
               {item.badge && (
-                <span className="ml-1 rounded-full bg-brand-orange px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                <span className="ml-1 rounded-full bg-brand-yellow px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black">
                   {item.badge}
                 </span>
               )}
@@ -45,7 +45,7 @@ export function Header() {
             href={siteConfig.portalLoginUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-text-dark transition-colors hover:text-brand-orange"
+            className="text-sm font-medium text-text-dark transition-colors hover:text-brand-yellow"
           >
             Login
           </Link>
