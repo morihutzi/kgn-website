@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Open_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -8,13 +8,6 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
   display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
 });
 
 export const metadata: Metadata = {
@@ -40,10 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="de"
-      className={`${openSans.variable} ${fraunces.variable} antialiased`}
-    >
+    <html lang="de" className={`${openSans.variable} antialiased`}>
       <body className="flex min-h-screen flex-col">
         <Header />
         <main className="flex-1">{children}</main>

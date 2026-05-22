@@ -32,6 +32,7 @@ export function Section({
 
 type SectionHeadingProps = {
   children: ReactNode;
+  id?: string;
   level?: 2 | 3;
   size?: "default" | "small";
   align?: "left" | "center" | "right";
@@ -44,6 +45,7 @@ type SectionHeadingProps = {
  */
 export function SectionHeading({
   children,
+  id,
   level = 2,
   size = "default",
   align = "left",
@@ -57,7 +59,10 @@ export function SectionHeading({
   const alignClasses =
     align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left";
   return (
-    <Tag className={`text-brand-yellow ${sizeClasses} ${alignClasses} ${className}`}>
+    <Tag
+      id={id}
+      className={`text-brand-yellow ${sizeClasses} ${alignClasses} ${className}`}
+    >
       {children}
     </Tag>
   );
