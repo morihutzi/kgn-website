@@ -20,7 +20,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`mx-auto w-full max-w-[930px] px-4 py-8 md:py-10 ${className}`}
+      className={`mx-auto w-full max-w-[930px] px-4 py-5 md:py-7 ${className}`}
       {...rest}
     >
       {children}
@@ -50,8 +50,8 @@ export function SectionHeading({
   const Tag = level === 2 ? "h2" : "h3";
   const sizeClasses =
     size === "small"
-      ? "text-xl font-black md:text-[20px] md:leading-tight"
-      : "text-2xl font-extrabold md:text-[33px] md:leading-[1.1]";
+      ? "text-lg font-black md:text-[18px] md:leading-tight"
+      : "text-xl font-extrabold md:text-[28px] md:leading-[1.15]";
   const alignClasses =
     align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left";
   return (

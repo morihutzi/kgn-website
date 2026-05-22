@@ -27,29 +27,29 @@ export function FeatureList() {
     <>
       {/* Yellow block — phone overhangs OUT THE TOP into the white divider above */}
       <Section>
-        <div className="relative rounded-[20px] bg-brand-yellow px-6 py-10 md:px-12 md:py-12">
+        <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
           {/* Phone slideshow positioned to overhang upward into white space above */}
           <PhoneSlideshow
             slides={hero.icons}
-            className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-12 lg:top-[-140px] lg:w-[200px]"
+            className="pointer-events-none absolute left-4 top-[-100px] z-10 hidden w-[140px] md:block lg:left-10 lg:top-[-110px] lg:w-[160px]"
           />
 
-          <div className="grid items-start gap-6 md:grid-cols-[200px_1fr]">
+          <div className="grid items-start gap-5 md:grid-cols-[160px_1fr]">
             {/* Reserved space for the phone */}
             <div className="hidden md:block" aria-hidden="true" />
 
             <div>
-              <p className="text-lg font-semibold text-white md:text-xl">
+              <p className="text-base font-semibold text-white md:text-lg">
                 {problemSolution.eyebrow}
               </p>
-              <h2 className="mt-1 text-2xl font-extrabold text-white md:text-[33px] md:leading-[1.1]">
+              <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">
                 {problemSolution.headline}
               </h2>
-              <ul className="mt-6 grid gap-2 md:grid-cols-2 md:gap-x-8 md:gap-y-3">
+              <ul className="mt-4 grid gap-1.5 md:grid-cols-2 md:gap-x-6 md:gap-y-2">
                 {problemSolution.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-3">
+                  <li key={bullet} className="flex items-start gap-2.5">
                     <CheckIcon />
-                    <span className="text-sm text-white md:text-base">
+                    <span className="text-xs text-white md:text-sm">
                       {bullet}
                     </span>
                   </li>
@@ -58,13 +58,13 @@ export function FeatureList() {
             </div>
           </div>
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-6 flex justify-center">
             <Image
               src="/brand/logo-weiss.png"
               alt="Kidgonet"
               width={200}
               height={27}
-              className="h-7 w-auto opacity-95 md:h-9"
+              className="h-6 w-auto opacity-95 md:h-7"
             />
           </div>
         </div>

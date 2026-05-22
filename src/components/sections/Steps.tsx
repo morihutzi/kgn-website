@@ -9,22 +9,22 @@ export function Steps() {
         {steps.headline}
       </SectionHeading>
 
-      <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-6">
+      <ol className="mt-7 grid gap-6 md:grid-cols-3 md:gap-4">
         {steps.items.map((item) => (
           <li
             key={item.text}
             className="flex flex-col items-center text-center"
           >
-            <div className="relative h-56 w-56 md:h-64 md:w-64">
+            <div className="relative h-40 w-40 md:h-48 md:w-48">
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                sizes="256px"
+                sizes="192px"
                 className="object-contain"
               />
             </div>
-            <p className="mt-4 max-w-[260px] text-sm text-text-dark md:text-base">
+            <p className="mt-3 max-w-[240px] text-xs text-text-dark md:text-sm">
               {item.text}
             </p>
           </li>

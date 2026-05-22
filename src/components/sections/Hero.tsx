@@ -6,7 +6,7 @@ import { siteConfig } from "@/content/site";
 
 export function Hero() {
   return (
-    <section className="bg-white py-8 md:py-12">
+    <section className="bg-white py-5 md:py-8">
       <Container>
         <div className="relative mx-auto aspect-[16/9] w-full max-w-[930px] overflow-hidden rounded-[20px] md:aspect-[930/496]">
           <Image
@@ -19,10 +19,10 @@ export function Hero() {
           />
 
           <div className="relative flex h-full flex-col items-end justify-center px-6 pr-8 text-right md:px-12 md:pr-16">
-            <h1 className="max-w-[604px] text-2xl font-extrabold leading-[1] text-text-dark md:text-4xl lg:text-[48px] lg:leading-[48px]">
+            <h1 className="max-w-[520px] text-xl font-extrabold leading-[1.05] text-text-dark md:text-3xl lg:text-[40px] lg:leading-[42px]">
               {hero.headline}
             </h1>
-            <p className="mt-4 max-w-[604px] text-base font-medium text-text-dark md:text-xl lg:text-[26px] lg:leading-[40px]">
+            <p className="mt-3 max-w-[520px] text-sm font-medium text-text-dark md:text-lg lg:text-[22px] lg:leading-[32px]">
               {hero.subheadline}
             </p>
             <div className="mt-6 flex flex-col items-end gap-3">
