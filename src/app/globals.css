@@ -19,7 +19,7 @@
 }
 
 body {
-  background: var(--color-surface);
+  background: var(--color-brand-yellow);
   color: var(--color-text-dark);
   font-family: var(--font-sans);
 }
