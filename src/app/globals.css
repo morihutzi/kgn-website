@@ -8,8 +8,17 @@
   --color-text-muted: #94a3b8;
   --color-surface: #ffffff;
   --color-surface-muted: #fafafa;
+  --color-surface-warm: #fdfaf2;
+  --color-surface-cream: #f7f1e3;
+  --color-surface-ink: #1a1a1a;
+
+  /* Aliase für 1:1-Komponenten aus HansDorfnerInitative/web. */
+  --color-primary: #f9b000;
+  --color-foreground: #4a4a49;
+  --color-border: #e5e1da;
 
   --font-sans: var(--font-open-sans), "Helvetica", system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), "Georgia", "Times New Roman", serif;
 
   --radius-card: 16px;
   --radius-button: 12px;
