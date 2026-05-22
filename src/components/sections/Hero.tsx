@@ -30,17 +30,18 @@ export function Hero() {
               className="object-cover"
             />
 
-            {/* Headline block — Figma position (231,102) / size (604x205) */}
+            {/* Headline block — Figma position (231,102) / size (604x205) on desktop; centered on mobile */}
             <div
-              className="absolute text-right"
+              className="absolute text-center md:text-right"
               style={{
-                left: "24.84%",
-                top: "20.56%",
-                width: "64.95%",
+                left: "5%",
+                right: "5%",
+                top: "10%",
+                width: "auto",
               }}
             >
               <h1
-                className="font-extrabold text-[#4a4a49]"
+                className="font-extrabold text-[#4a4a49] md:ml-auto md:max-w-[604px]"
                 style={{
                   fontSize: "min(48px, 5.16cqw)",
                   lineHeight: 1,
@@ -49,7 +50,7 @@ export function Hero() {
                 {hero.headline}
               </h1>
               <p
-                className="mt-1 font-semibold text-[#4a4a49]"
+                className="mt-1 font-semibold text-[#4a4a49] md:ml-auto md:max-w-[604px]"
                 style={{
                   fontSize: "min(26px, 2.80cqw)",
                   lineHeight: "1.54",
@@ -59,12 +60,11 @@ export function Hero() {
               </p>
             </div>
 
-            {/* CTA area — Yellow pill on top, App Store badges below stacked horizontally */}
+            {/* CTA area — Yellow pill on top, App Store badges below; centered mobile, right desktop */}
             <div
-              className="absolute flex flex-col items-end"
+              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center md:left-auto md:right-[8%] md:translate-x-0 md:items-end"
               style={{
-                right: "8%",
-                top: "55%",
+                bottom: "8%",
                 gap: "min(16px, 1.72cqw)",
               }}
             >

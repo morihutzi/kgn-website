@@ -35,11 +35,11 @@ export function FeatureList() {
       <section className="pt-2 pb-5 md:pt-3 md:pb-8">
         <Container>
           <div className="mx-auto w-full max-w-[720px]">
-            <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
+            <div className="relative rounded-[20px] bg-brand-yellow px-5 pt-[140px] pb-7 md:px-10 md:pt-9 md:pb-9">
               {/* Phone slideshow positioned to overhang upward into white space above */}
               <PhoneSlideshow
                 slides={hero.icons}
-                className="pointer-events-none absolute left-4 top-[-130px] z-10 hidden w-[150px] md:block lg:left-10 lg:top-[-160px] lg:w-[180px]"
+                className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-[-100px] z-10 w-[130px] md:left-4 md:top-[-130px] md:translate-x-0 md:w-[150px] lg:left-10 lg:top-[-160px] lg:w-[180px]"
               />
 
               <div className="grid items-start gap-6 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr]">
