@@ -1,42 +1,7 @@
 import Image from "next/image";
+import { Check, X } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
-
-function Check() {
-  return (
-    <svg
-      aria-label="Enthalten"
-      role="img"
-      viewBox="0 0 24 24"
-      className="mx-auto h-6 w-6 text-brand-green"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-    >
-      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function Cross() {
-  return (
-    <svg
-      aria-label="Nicht enthalten"
-      role="img"
-      viewBox="0 0 24 24"
-      className="mx-auto h-6 w-6 text-text-dark/35"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-    >
-      <path
-        d="M6 6l12 12M18 6L6 18"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export function Comparison() {
   return (
@@ -45,10 +10,16 @@ export function Comparison() {
         {comparison.headline}
       </h2>
 
-      <div className="mt-10 overflow-hidden rounded-[20px] border border-neutral-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+      <div
+        className="mt-10 overflow-hidden rounded-[20px] bg-white"
+        style={{
+          border: "1px solid #E5E5E5",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}
+      >
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr className="bg-[#FCEFD3]">
+            <tr style={{ backgroundColor: "#FCEFD3" }}>
               <th
                 scope="col"
                 className="px-5 py-5 text-left font-semibold text-text-dark md:px-7"
@@ -74,7 +45,10 @@ export function Comparison() {
           </thead>
           <tbody>
             {comparison.features.map((feature) => (
-              <tr key={feature} className="border-t border-neutral-100">
+              <tr
+                key={feature}
+                style={{ borderTop: "1px solid #F0F0F0" }}
+              >
                 <th
                   scope="row"
                   className="px-5 py-5 text-left font-normal text-text-dark md:px-7"
@@ -82,10 +56,18 @@ export function Comparison() {
                   {feature}
                 </th>
                 <td className="px-3 py-5 md:px-4">
-                  <Check />
+                  <Check
+                    className="mx-auto size-6 text-brand-green"
+                    strokeWidth={3}
+                    aria-label="Enthalten"
+                  />
                 </td>
                 <td className="px-3 py-5 md:px-4">
-                  <Cross />
+                  <X
+                    className="mx-auto size-6 text-text-dark/35"
+                    strokeWidth={2.5}
+                    aria-label="Nicht enthalten"
+                  />
                 </td>
               </tr>
             ))}
