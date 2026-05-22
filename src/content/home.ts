@@ -42,18 +42,21 @@ export const steps = {
   items: [
     {
       image: "/images/steps/google-play-store.png",
-      alt: "Google Play Store",
-      text: "Lade die Kidgonet-App über den Google Play Store auf allen Geräten (Smartphone, Tablet, etc.) deiner Kinder herunter.",
+      alt: "Kidgonet-App im Google Play Store",
+      title: "App laden",
+      text: "Aus dem Play Store aufs Kindergerät. Kindermodus fürs Kind, Steuerung für dich. Alles in einer App.",
     },
     {
       image: "/images/steps/portal-install.jpeg",
-      alt: "Elternportal installieren",
-      text: "Installiere das Kidgonet-Elternportal auf deinem Smartphone (Android / iOS) im Web.",
+      alt: "Elternportal im Browser",
+      title: "Oder im Browser",
+      text: "Lieber vom Laptop oder Handy aus? Einfach auf kidgonet.de einloggen, kein extra Download.",
     },
     {
       image: "/images/steps/internetsperre.png",
-      alt: "Internetsperre konfigurieren",
-      text: "Richte Bildschirmzeiten, Pausen und Webfilter für jedes deiner Kinder ein – mit wenigen Klicks, zentral im Elternportal.",
+      alt: "Regeln pro Kind festlegen",
+      title: "Du bestimmst die Regeln",
+      text: "Bildschirmzeiten, Pausen und Webfilter pro Kind. Jederzeit anpassbar, am Gerät oder im Browser.",
     },
   ],
 } as const;

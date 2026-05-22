@@ -13,7 +13,7 @@ export function Steps() {
       <ol className="mt-7 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:hidden">
         {steps.items.map((item, idx) => (
           <li
-            key={item.text}
+            key={item.title}
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
             <div className="relative h-44 w-44">
@@ -28,6 +28,9 @@ export function Steps() {
             <p className="mt-3 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
             </p>
+            <p className="mt-1 text-sm font-bold text-text-dark">
+              {item.title}
+            </p>
             <p className="mt-1 max-w-[260px] text-xs text-text-dark">
               {item.text}
             </p>
@@ -39,7 +42,7 @@ export function Steps() {
       <ol className="mt-7 hidden gap-4 md:grid md:grid-cols-3">
         {steps.items.map((item, idx) => (
           <li
-            key={item.text}
+            key={item.title}
             className="flex flex-col items-center text-center"
           >
             <div className="relative h-48 w-48">
@@ -53,6 +56,9 @@ export function Steps() {
             </div>
             <p className="mt-2 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
+            </p>
+            <p className="mt-1 text-base font-bold text-text-dark">
+              {item.title}
             </p>
             <p className="mt-1 max-w-[240px] text-sm text-text-dark">
               {item.text}
