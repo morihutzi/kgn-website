@@ -4,23 +4,25 @@ type SectionProps = {
   children: ReactNode;
   className?: string;
   id?: string;
+  maxWidth?: number;
   "aria-labelledby"?: string;
 };
 
 /**
- * Section wrapper: 930px max-width card, white bg, 20px radius, centered.
- * Matches Live-Spec for kidgonet.de homepage sections.
+ * Section wrapper: default 800px max-width, centered, with horizontal padding.
  */
 export function Section({
   children,
   className = "",
   id,
+  maxWidth = 800,
   ...rest
 }: SectionProps) {
   return (
     <section
       id={id}
-      className={`mx-auto w-full max-w-[930px] px-4 py-5 md:py-7 ${className}`}
+      className={`mx-auto w-full px-4 py-5 md:py-7 ${className}`}
+      style={{ maxWidth: `${maxWidth}px` }}
       {...rest}
     >
       {children}

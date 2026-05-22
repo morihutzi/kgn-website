@@ -26,7 +26,7 @@ export function FeatureList() {
   return (
     <>
       {/* Yellow block — phone overhangs OUT THE TOP into the white divider above */}
-      <Section className="max-w-[800px]">
+      <Section>
         <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
           {/* Phone slideshow positioned to overhang upward into white space above */}
           <PhoneSlideshow
