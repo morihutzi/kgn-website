@@ -1,103 +1,206 @@
-import { Smartphone, Tablet, Laptop } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
 
 const NATIVE_WIDTH = 220;
 const NATIVE_HEIGHT = 463;
 
 /**
- * Connect-Devices-Mockup: Ein einzelnes Phone, das den Elternportal-Geräte-
- * View zeigt. Klare Liste aller verbundenen Kindergeräte mit Device-Icon,
- * Kind-Name und Device-Typ.
+ * Connect-Devices-Mockup: Ein einzelnes Phone, das den ParentDashboard-View
+ * aus der iOS Kidgonet App 1:1 nachbaut. Listet alle verbundenen Kinder
+ * mit ihren Geräten und Restzeit-Status.
  *
- * Visuell konsistent zum [[ChildviewMockup]] in Schritt 3 (gleiche Phone-
- * Größe, gleicher PhoneFrame). Erzählt die Multi-Device-Story über den
- * Inhalt statt über ein Diagramm.
+ * Style basiert auf
+ * iOS Kidgonet App/App/app/app/Features/Core/AppShell/ParentDashboardView.swift
+ * (childCard + dashboardSummaryRow). Verwendet die KidgonetTheme-Farben
+ * (primary #F9B000, darkText #4A4A49, backgroundWarm #FCFAF7,
+ * checkmark #C6C500) und Radius 20pt sowie Shadow black/0.09 radius 16.
  *
- * Statisch, keine Animation. Wird per [[ConnectDevicesMockupScaled]] auf
- * eine Zielbreite skaliert.
+ * Visuell konsistent zum [[ChildviewMockup]] in Schritt 3 (gleicher
+ * PhoneFrame). Statisch, keine Animation.
  */
 export function ConnectDevicesMockup() {
   return (
     <PhoneFrame className="max-w-[220px]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[110px]"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(249,176,0,1) 0%, rgba(249,176,0,0) 100%)",
-        }}
-      />
+      <div aria-hidden="true" className="absolute inset-0 z-0 bg-[#FCFAF7]" />
 
-      <div className="relative z-10 flex h-full flex-col">
-        <div className="flex items-center justify-between px-4 pt-3 text-white">
-          <span className="text-[10px] font-semibold leading-none">14:07</span>
+      <div className="relative z-10 flex h-full flex-col px-3 pt-3">
+        <div className="flex items-center justify-between text-foreground/70">
+          <span className="text-[9px] font-semibold leading-none">14:07</span>
         </div>
 
-        <div className="mx-3 mt-2 flex items-center justify-between rounded-md bg-brand-yellow px-2.5 py-1.5">
-          <div className="text-[11px] font-extrabold leading-none">
-            <span className="text-white">Eltern</span>
-            <span className="ml-1 text-foreground">PORTAL</span>
+        <div className="mt-2 flex items-center gap-2">
+          <KidgonetSmiley className="size-5" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-[10px] font-extrabold text-foreground leading-none">
+              Guten Tag
+            </span>
+            <span className="mt-0.5 text-[6.5px] text-foreground/50">
+              Donnerstag, 22. Mai
+            </span>
           </div>
         </div>
 
-        <div className="mx-3 mt-3 rounded-xl bg-white px-3 py-3 text-center shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
-          <p className="text-[7px] font-bold uppercase tracking-[0.1em] text-foreground/55">
-            Verbunden
-          </p>
-          <p className="mt-1 text-[18px] font-extrabold leading-none text-foreground">
-            5 Geräte
-          </p>
-          <p className="mt-1 text-[9px] font-semibold text-brand-yellow">
+        <div className="mt-2.5 flex items-center gap-1.5">
+          <span className="text-[7px] font-semibold text-foreground/50">
             3 Kinder
-          </p>
+          </span>
+          <span className="text-[7px] font-bold text-foreground/25">·</span>
+          <span className="block size-[3px] rounded-full bg-[#C6C500]" />
+          <span className="text-[7px] font-medium text-foreground/50">
+            5 Geräte geschützt
+          </span>
         </div>
 
-        <div className="mx-3 mt-3 space-y-1.5">
-          <DeviceRow Icon={Smartphone} name="Anna" device="Smartphone" />
-          <DeviceRow Icon={Tablet} name="Franz" device="Tablet" />
-          <DeviceRow Icon={Laptop} name="Lena" device="Laptop" />
+        <div className="mt-2 flex flex-col gap-1.5">
+          <ChildCard
+            name="Anna"
+            devices={[
+              { name: "Annas iPhone", protected: true },
+              { name: "Annas iPad", protected: true },
+            ]}
+            timeRemainingText="1h 23m übrig"
+            progressFraction={0.45}
+          />
+          <ChildCard
+            name="Franz"
+            devices={[{ name: "Franz' iPhone", protected: true }]}
+            timeRemainingText="42m übrig"
+            progressFraction={0.7}
+            warning
+          />
+          <ChildCard
+            name="Lena"
+            devices={[
+              { name: "Lenas iPhone", protected: true },
+              { name: "Lenas Laptop", protected: true },
+            ]}
+            timeRemainingText="Unbegrenzt"
+            unlimited
+          />
         </div>
 
-        <div className="flex-1" />
-        <div className="h-4" />
+        <button
+          type="button"
+          className="mt-2 flex items-center gap-1 text-brand-yellow"
+          aria-hidden
+          tabIndex={-1}
+        >
+          <Plus className="size-2.5" strokeWidth={2.5} />
+          <span className="text-[8px] font-semibold">Kind hinzufügen</span>
+        </button>
       </div>
     </PhoneFrame>
   );
 }
 
-type DeviceIcon = typeof Smartphone;
+type Device = { name: string; protected: boolean };
 
-function DeviceRow({
-  Icon,
-  name,
-  device,
-}: {
-  Icon: DeviceIcon;
+type ChildCardProps = {
   name: string;
-  device: string;
-}) {
+  devices: Device[];
+  timeRemainingText: string;
+  progressFraction?: number;
+  warning?: boolean;
+  unlimited?: boolean;
+};
+
+function ChildCard({
+  name,
+  devices,
+  timeRemainingText,
+  progressFraction = 0,
+  warning = false,
+  unlimited = false,
+}: ChildCardProps) {
+  const timeColor = unlimited
+    ? "text-[#95C11E]"
+    : warning
+      ? "text-[#FC5802]"
+      : "text-brand-yellow";
+  const barColor = warning ? "bg-[#FC5802]" : "bg-brand-yellow";
+
   return (
-    <div className="flex items-center gap-2 rounded-md bg-white px-2.5 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
-      <div className="flex size-6 items-center justify-center rounded-md bg-brand-yellow/15">
-        <Icon
-          className="size-3.5 text-brand-yellow"
-          strokeWidth={2.25}
+    <div className="rounded-[10px] border-2 border-brand-yellow/85 bg-white/85 px-2 pb-1.5 pt-1.5 shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
+      <div className="flex items-start gap-1.5">
+        <PersonFillIcon className="mt-0.5 size-2.5 text-brand-yellow" />
+
+        <div className="flex min-w-0 flex-1 flex-col">
+          <span className="text-[9px] font-semibold leading-tight text-foreground">
+            {name}
+          </span>
+          <div className="mt-0.5 flex flex-col gap-px">
+            {devices.map((device) => (
+              <div key={device.name} className="flex items-center gap-1">
+                <span
+                  className={`block size-[3px] rounded-full ${
+                    device.protected ? "bg-[#C6C500]" : "bg-[#FC5802]"
+                  }`}
+                />
+                <span className="text-[6.5px] font-medium text-foreground">
+                  {device.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <span className={`shrink-0 text-[7.5px] font-medium tabular-nums ${timeColor}`}>
+          {timeRemainingText}
+        </span>
+
+        <ChevronRight
+          className="mt-0.5 size-2.5 text-foreground/30"
+          strokeWidth={2.5}
           aria-hidden
         />
       </div>
-      <div className="flex flex-1 flex-col leading-tight">
-        <span className="text-[9px] font-extrabold text-foreground">
-          {name}
-        </span>
-        <span className="text-[7px] text-foreground/60">{device}</span>
-      </div>
-      <div className="flex items-center gap-1 rounded-full bg-brand-green/15 px-1.5 py-0.5">
-        <span className="block size-1 rounded-full bg-brand-green" />
-        <span className="text-[6px] font-extrabold uppercase tracking-wider text-brand-green">
-          aktiv
-        </span>
-      </div>
+
+      {!unlimited && (
+        <div className="mt-1.5 h-[3px] w-full overflow-hidden rounded-full bg-foreground/10">
+          <div
+            className={`h-full rounded-full ${barColor}`}
+            style={{ width: `${Math.max(progressFraction * 100, 4)}%` }}
+          />
+        </div>
+      )}
     </div>
+  );
+}
+
+function PersonFillIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      className={className}
+      fill="currentColor"
+      aria-hidden
+    >
+      <circle cx="8" cy="5.5" r="3" />
+      <path d="M 2 14 Q 2 9 8 9 Q 14 9 14 14 Z" />
+    </svg>
+  );
+}
+
+function KidgonetSmiley({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="11" fill="#F9B000" />
+      <path
+        d="M 6 11 Q 7.5 9 9 11"
+        stroke="white"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <circle cx="15" cy="10.5" r="1" fill="white" />
+      <path
+        d="M 6.5 15 Q 12 19 17.5 15"
+        stroke="white"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        fill="none"
+      />
+    </svg>
   );
 }
 
