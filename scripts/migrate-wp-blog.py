@@ -114,9 +114,40 @@ def strip_html(s: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", s)).strip()
 
 
+# Dateinamen-Muster fuer dekorative Brand-/Loader-Assets, die kein
+# redaktionelles Bild sind.
+SKIP_IMAGE_PATTERNS = (
+    "kidgonet-jugendschutz-app",
+    "kidgonet-logo",
+    "kidgonet_logo",
+    "logo-weiss",
+    "spinner.gif",
+    "spinner-",
+    "data:image",
+)
+
+
+def is_skip_image(url: str) -> bool:
+    lowered = url.lower()
+    return any(p in lowered for p in SKIP_IMAGE_PATTERNS)
+
+
 def extract_image_urls(html_str: str) -> list[str]:
     urls = re.findall(r"<img[^>]+src=\"([^\"]+)\"", html_str)
-    return [u for u in urls if u.startswith("http")]
+    return [u for u in urls if u.startswith("http") and not is_skip_image(u)]
+
+
+def strip_skip_images_from_html(html_str: str) -> str:
+    # Entfernt <img>-Tags mit dekorativen Brand-Bildern komplett aus dem
+    # Quelltext, damit sie weder geladen noch im MDX referenziert werden.
+    def replace(match: re.Match[str]) -> str:
+        tag = match.group(0)
+        src_match = re.search(r"src=\"([^\"]+)\"", tag)
+        if not src_match:
+            return tag
+        return "" if is_skip_image(src_match.group(1)) else tag
+
+    return re.sub(r"<img[^>]+>", replace, html_str)
 
 
 def safe_url(url: str) -> str:
@@ -239,6 +270,7 @@ def html_to_mdx_body(html_str: str, img_map: dict[str, str], title: str) -> str:
     cleaned = re.sub(r"<!--.*?-->", "", html_str, flags=re.DOTALL)
     cleaned = re.sub(r"<script[\s\S]*?</script>", "", cleaned)
     cleaned = re.sub(r"<style[\s\S]*?</style>", "", cleaned)
+    cleaned = strip_skip_images_from_html(cleaned)
     for src, local in img_map.items():
         cleaned = cleaned.replace(src, local)
         cleaned = cleaned.replace(src.replace("&", "&amp;"), local)
