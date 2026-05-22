@@ -74,7 +74,7 @@ export function ElternportalMockup() {
           </div>
 
           <p className="mt-1.5 text-[6px] font-bold text-[#4A4A49]">
-            Heutige Internetsperren:
+            Auszeiten festlegen:
           </p>
           <ul className="mt-0.5 space-y-[1.5px]">
             <ScheduleRow
