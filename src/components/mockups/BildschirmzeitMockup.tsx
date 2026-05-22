@@ -1,9 +1,6 @@
+import Image from "next/image";
 import { PhoneFrame } from "./PhoneFrame";
-import {
-  HourglassIcon,
-  KidgoBrandMark,
-  MockupStatusBar,
-} from "./_shared";
+import { HourglassIcon, MockupStatusBar } from "./_shared";
 
 /**
  * Bildschirmzeit-Screen aus der Kidgonet Jugendschutz App (Kindgerät).
@@ -23,10 +20,22 @@ export function BildschirmzeitMockup() {
       <div className="relative z-10 flex h-full min-h-0 flex-col">
         <MockupStatusBar time="11:51" variant="light" />
 
-        {/* Brand mark + 3-dots */}
-        <div className="flex items-start justify-between px-3 pt-1">
-          <KidgoBrandMark variant="white" className="h-3.5" />
-          <div className="mt-0.5 flex flex-col items-center gap-[2px]">
+        {/* Brand mark (GO + Smiley) + 3-dots */}
+        <div className="flex items-center justify-between px-3 pt-0.5">
+          <div className="flex items-center gap-0.5 text-white">
+            <span className="text-[12px] font-extrabold leading-none tracking-tighter">
+              GO
+            </span>
+            <Image
+              src="/brand/smiley-weiss.png"
+              alt="Kidgonet"
+              width={1048}
+              height={1048}
+              sizes="14px"
+              className="size-3.5"
+            />
+          </div>
+          <div className="flex flex-col items-center gap-[2px]">
             <span className="block size-[3px] rounded-full bg-white" />
             <span className="block size-[3px] rounded-full bg-white" />
             <span className="block size-[3px] rounded-full bg-white" />

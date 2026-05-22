@@ -1,6 +1,7 @@
+import Image from "next/image";
 import { Home, MoreVertical, Plus } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
-import { KidgoSmileyLarge, MockupStatusBar } from "./_shared";
+import { MockupStatusBar } from "./_shared";
 
 /**
  * Internetfilter-Blockierseite. Wenn ein Kind eine gesperrte URL aufruft,
@@ -32,9 +33,16 @@ export function InternetfilterMockup() {
           />
         </div>
 
-        {/* Large smiley */}
+        {/* Large brand smiley */}
         <div className="mt-3 flex justify-center">
-          <KidgoSmileyLarge className="size-12" />
+          <Image
+            src="/brand/smiley.png"
+            alt="Kidgonet Smiley"
+            width={1059}
+            height={945}
+            sizes="56px"
+            className="h-12 w-auto"
+          />
         </div>
 
         {/* KIDGONET title */}
