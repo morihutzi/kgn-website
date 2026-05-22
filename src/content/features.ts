@@ -68,21 +68,30 @@ export const featuresPage = {
         title: "Sekundengenaue Zeiterfassung",
         body: "Online und Offline Aktivitäten werden sekundengenau erfasst. Du siehst auf einen Blick, wie viel Bildschirmzeit dein Kind heute hatte.",
         icon: "timer",
-        image: { src: "/images/hero/sanduhr.webp", alt: "Sanduhr Zeitanzeige" },
+        image: {
+          src: "/images/screens/bildschirmzeit.png",
+          alt: "Bildschirmzeit-Anzeige in der Kidgonet App auf dem Kindgerät",
+        },
       },
       {
         id: "grid-devices",
         title: "Geräteübergreifend",
         body: "Online Zeiten von Handy und Tablet werden addiert. Bis zu fünf Geräte pro Abo, kein Tageslimit wird durch Gerätewechsel umgangen.",
         icon: "devices",
-        image: { src: "/images/hero/portal.webp", alt: "Elternportal" },
+        image: {
+          src: "/images/screens/elternportal.png",
+          alt: "Elternportal mit Übersicht über die Geräte eines Kindes",
+        },
       },
       {
         id: "grid-apps",
         title: "Apps während der Pause freigeben",
         body: "Notfall und Lernapps können während der Bildschirmzeit Pause gezielt freigegeben werden. Du entscheidest, was wichtig bleibt.",
         icon: "apps",
-        image: { src: "/images/hero/block.webp", alt: "App freigegeben" },
+        image: {
+          src: "/images/screens/apps-freigeben.png",
+          alt: "App-Übersicht im Elternportal mit Freigabe-Checkboxen",
+        },
       },
       {
         id: "grid-filter",
@@ -90,8 +99,8 @@ export const featuresPage = {
         body: "Der Filter wirkt systemweit, unabhängig vom Browser. Unerwünschte Inhalte werden auf allen Geräten und in allen Apps zuverlässig gefiltert.",
         icon: "filter",
         image: {
-          src: "/images/hero/internetsperre.webp",
-          alt: "Internetsperre",
+          src: "/images/screens/internetfilter.png",
+          alt: "Kidgonet-Blockierungsseite auf dem Kindgerät",
         },
       },
     ] satisfies readonly FeatureCard[],

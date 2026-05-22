@@ -6,11 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
-import { TimeTrackingMockup } from "@/components/mockups/TimeTrackingMockup";
-import { CrossDeviceMockup } from "@/components/mockups/CrossDeviceMockup";
-import { AppPauseMockup } from "@/components/mockups/AppPauseMockup";
-import { WebFilterMockup } from "@/components/mockups/WebFilterMockup";
-import type { FeatureGridIcon } from "@/content/features";
 import { featuresPage } from "@/content/features";
 import { siteConfig } from "@/content/site";
 
@@ -39,19 +34,6 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
       {children}
     </p>
   );
-}
-
-function FeatureMockup({ type }: { type: FeatureGridIcon }) {
-  switch (type) {
-    case "timer":
-      return <TimeTrackingMockup />;
-    case "devices":
-      return <CrossDeviceMockup />;
-    case "apps":
-      return <AppPauseMockup />;
-    case "filter":
-      return <WebFilterMockup />;
-  }
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────
@@ -228,8 +210,15 @@ function FeatureGridSection() {
           {featureGrid.cards.map((card) => (
             <li key={card.id}>
               <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-200 bg-white sm:flex-row">
-                <div className="flex shrink-0 items-center justify-center bg-surface-warm py-6 sm:w-[200px] sm:py-8">
-                  <FeatureMockup type={card.icon} />
+                <div className="flex shrink-0 items-center justify-center bg-surface-warm p-6 sm:w-[220px]">
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    width={300}
+                    height={600}
+                    sizes="(min-width: 640px) 200px, 280px"
+                    className="h-auto max-h-[260px] w-auto object-contain"
+                  />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <h3 className="text-lg font-extrabold leading-tight text-text-dark">
