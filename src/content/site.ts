@@ -18,7 +18,7 @@ export type NavLink = {
 };
 
 export const primaryNav: NavLink[] = [
-  { label: "Was kann die App", href: "/was-kann-die-app", badge: "NEU" },
+  { label: "Was kann die App", href: "/was-kann-die-app" },
   { label: "Preise", href: "/preise" },
   { label: "Hilfe", href: "/hilfe" },
   { label: "Elternratgeber", href: "/elternratgeber" },
