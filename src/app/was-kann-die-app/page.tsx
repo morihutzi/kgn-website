@@ -595,20 +595,48 @@ function CallToActionBlock({
   button: string;
 }) {
   return (
-    <div className="mt-10 overflow-hidden rounded-[16px] bg-brand-yellow px-6 py-7 text-center md:py-8">
-      <p className="text-lg font-extrabold leading-snug text-white md:text-xl">
-        {label}
-      </p>
-      <p className="mt-1 text-sm text-white/90">{sub}</p>
-      <Button
-        href={siteConfig.portalWelcomeUrl}
-        external
-        variant="primary"
-        size="md"
-        className="mt-4 !bg-white !text-text-dark hover:!bg-surface-muted"
-      >
-        {button}
-      </Button>
+    <div className="relative mt-10 overflow-hidden rounded-[20px] bg-brand-yellow px-6 py-8 text-center md:py-10">
+      {/* Decorative smiley accents — corners */}
+      <Image
+        src="/brand/smiley-weiss.png"
+        alt=""
+        aria-hidden="true"
+        width={1048}
+        height={1048}
+        sizes="120px"
+        className="pointer-events-none absolute -left-6 -top-6 h-24 w-24 rotate-[-15deg] opacity-15"
+      />
+      <Image
+        src="/brand/smiley-weiss.png"
+        alt=""
+        aria-hidden="true"
+        width={1048}
+        height={1048}
+        sizes="140px"
+        className="pointer-events-none absolute -right-8 -bottom-10 h-32 w-32 rotate-[20deg] opacity-15"
+      />
+
+      <div className="relative z-10">
+        <p className="text-xl font-extrabold leading-snug text-white md:text-2xl">
+          {label}
+        </p>
+        <p className="mt-2 text-sm text-white/90 md:text-base">{sub}</p>
+        <Button
+          href={siteConfig.portalWelcomeUrl}
+          external
+          variant="primary"
+          size="md"
+          className="mt-5 !bg-white !text-text-dark shadow-sm hover:!bg-surface-muted"
+        >
+          {button}
+        </Button>
+
+        {/* Store badges — mobile only */}
+        <StoreBadges
+          size="sm"
+          className="mt-5 justify-center md:hidden"
+        />
+      </div>
     </div>
   );
 }
