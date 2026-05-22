@@ -5,30 +5,26 @@ import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
 import { hero, problemSolution } from "@/content/home";
 
 function CheckIcon() {
-  // Green check shape with outside white stroke — per Figma component (#c6c500 + 3px white stroke)
+  // White-bordered rounded checkbox with green check inside
   return (
-    <svg
+    <span
       aria-hidden="true"
-      viewBox="0 0 32 32"
-      className="mt-1 h-6 w-6 flex-shrink-0"
+      className="mt-0.5 inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-[4px] border-2 border-white"
     >
-      <path
-        d="M27.5 8 L13 22.5 L4.5 14"
+      <svg
+        viewBox="0 0 24 24"
+        className="h-3 w-3 text-brand-green"
         fill="none"
-        stroke="#ffffff"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M27.5 8 L13 22.5 L4.5 14"
-        fill="none"
-        stroke="#c6c500"
+        stroke="currentColor"
         strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+      >
+        <path
+          d="M5 13l4 4L19 7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -57,11 +53,11 @@ export function FeatureList() {
                   <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">
                     {problemSolution.headline}
                   </h2>
-                  <ul className="mt-4 grid gap-2">
+                  <ul className="mt-4 grid gap-1.5">
                     {problemSolution.bullets.map((bullet) => (
                       <li key={bullet.strong} className="flex items-start gap-2.5">
                         <CheckIcon />
-                        <span className="text-sm text-white md:text-base">
+                        <span className="text-xs text-white md:text-[13px] md:leading-snug">
                           <span className="font-extrabold">{bullet.strong}</span>
                           {bullet.rest}
                         </span>
