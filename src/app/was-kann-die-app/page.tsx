@@ -119,12 +119,78 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
-            <ChildviewMockupScaled width={260} />
-          </div>
+          <HeroMockupCluster />
         </div>
       </Container>
     </section>
+  );
+}
+
+function HeroMockupCluster() {
+  return (
+    <div className="relative mx-auto flex w-full max-w-[480px] items-center justify-center py-10 md:py-16">
+      {/* Background smiley — large, faded, behind phone */}
+      <Image
+        src="/images/icons/smiley-orange.png"
+        alt=""
+        aria-hidden="true"
+        width={70}
+        height={64}
+        className="pointer-events-none absolute right-[-12%] top-1/2 -z-0 hidden h-[420px] w-auto -translate-y-1/2 opacity-20 blur-sm md:block"
+      />
+
+      {/* Phone mockup */}
+      <div className="relative z-10">
+        <ChildviewMockupScaled width={260} />
+      </div>
+
+      {/* Top-right badge: blocked content */}
+      <div className="absolute right-[-4%] top-6 z-20 hidden items-center gap-3 rounded-[14px] border border-neutral-100 bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-6 w-6 flex-shrink-0 text-text-dark"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M3 3l18 18" />
+          <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+          <path d="M16.681 16.673A8.717 8.717 0 0 1 12 18c-4 0-7.333-2-10-6 1.265-1.898 2.624-3.336 4.077-4.314m3.225-1.55A10.405 10.405 0 0 1 12 6c4 0 7.333 2 10 6a15.518 15.518 0 0 1-2.236 2.952" />
+        </svg>
+        <div>
+          <p className="text-sm font-extrabold leading-tight text-text-dark">
+            Erwachseneninhalte blockiert
+          </p>
+          <p className="mt-0.5 text-xs text-text-muted">In Echtzeit</p>
+        </div>
+      </div>
+
+      {/* Bottom-left badge: online time */}
+      <div className="absolute bottom-6 left-[-4%] z-20 hidden items-center gap-3 rounded-[14px] border border-neutral-100 bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+        <div>
+          <p className="text-sm font-extrabold leading-tight text-text-dark">
+            2:30 Online Zeit
+          </p>
+          <p className="mt-0.5 text-xs text-text-muted">Geräteübergreifend</p>
+        </div>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-6 w-6 flex-shrink-0 text-brand-yellow"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3.5 2" />
+        </svg>
+      </div>
+    </div>
   );
 }
 
