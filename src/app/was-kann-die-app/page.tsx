@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
-import { BildschirmzeitMockup } from "@/components/mockups/BildschirmzeitMockup";
 import { ElternportalMockup } from "@/components/mockups/ElternportalMockup";
 import { AppsFreigebenMockup } from "@/components/mockups/AppsFreigebenMockup";
 import { InternetfilterMockup } from "@/components/mockups/InternetfilterMockup";
@@ -44,7 +43,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 function FeatureMockup({ type }: { type: FeatureGridIcon }) {
   switch (type) {
     case "timer":
-      return <BildschirmzeitMockup />;
+      return <ChildviewMockupScaled width={150} />;
     case "devices":
       return <ElternportalMockup />;
     case "apps":
@@ -224,18 +223,18 @@ function FeatureGridSection() {
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featureGrid.cards.map((card) => (
             <li key={card.id}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-200 bg-white sm:flex-row">
-                <div className="flex shrink-0 items-center justify-center bg-surface-warm p-6 sm:w-[220px]">
+              <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
+                <div className="flex items-center justify-center bg-surface-warm px-4 py-6">
                   <FeatureMockup type={card.icon} />
                 </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-extrabold leading-tight text-text-dark">
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="text-base font-extrabold leading-tight text-text-dark">
                     {card.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-text-dark">
+                  <p className="mt-2 text-sm leading-relaxed text-text-dark">
                     {card.body}
                   </p>
                 </div>
