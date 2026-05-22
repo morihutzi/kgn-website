@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
+import { KindermodusMockup } from "@/components/mockups/KindermodusMockup";
 import { steps } from "@/content/home";
 
 export function Steps() {
@@ -16,14 +17,20 @@ export function Steps() {
             key={item.title}
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
-            <div className="relative h-44 w-44">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                sizes="176px"
-                className="object-contain"
-              />
+            <div className="flex h-56 items-center justify-center">
+              {idx === 0 ? (
+                <KindermodusMockup className="max-w-[110px]" />
+              ) : (
+                <div className="relative h-44 w-44">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="176px"
+                    className="object-contain"
+                  />
+                </div>
+              )}
             </div>
             <p className="mt-3 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
@@ -45,14 +52,20 @@ export function Steps() {
             key={item.title}
             className="flex flex-col items-center text-center"
           >
-            <div className="relative h-48 w-48">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                sizes="192px"
-                className="object-contain"
-              />
+            <div className="flex h-60 items-center justify-center">
+              {idx === 0 ? (
+                <KindermodusMockup className="max-w-[120px]" />
+              ) : (
+                <div className="relative h-48 w-48">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="192px"
+                    className="object-contain"
+                  />
+                </div>
+              )}
             </div>
             <p className="mt-2 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
