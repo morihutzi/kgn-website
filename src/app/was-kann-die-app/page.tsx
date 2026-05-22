@@ -7,7 +7,7 @@ import { StoreBadges } from "@/components/ui/StoreBadges";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
-import { ElternportalMockupScaled } from "@/components/mockups/ElternportalMockupScaled";
+import { LaptopElternportalMockup } from "@/components/mockups/LaptopElternportalMockup";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
 import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
 import type { FeatureGridIcon } from "@/content/features";
@@ -87,7 +87,8 @@ function HeroSection() {
                 <li key={bullet.id} className="flex items-start gap-3">
                   <CheckBadge />
                   <span className="text-sm leading-snug text-text-dark">
-                    {bullet.text}
+                    <strong className="font-extrabold">{bullet.strong}</strong>
+                    {bullet.rest}
                   </span>
                 </li>
               ))}
@@ -442,9 +443,9 @@ function PortalSection() {
           und Android oder im Browser auf jedem Gerät.
         </p>
 
-        <div className="mt-10 grid items-end gap-10 md:grid-cols-2 md:gap-6">
+        <div className="mt-10 grid items-end gap-10 md:grid-cols-[auto_1fr] md:gap-10">
           <div className="flex flex-col items-center text-center">
-            <ConnectDevicesMockupScaled width={160} />
+            <ConnectDevicesMockupScaled width={150} />
             <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
               Als App
             </p>
@@ -454,7 +455,7 @@ function PortalSection() {
           </div>
 
           <div className="flex flex-col items-center text-center">
-            <ElternportalMockupScaled width={160} />
+            <LaptopElternportalMockup />
             <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
               Im Browser
             </p>

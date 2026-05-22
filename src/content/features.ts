@@ -28,23 +28,28 @@ export const featuresPage = {
     bullets: [
       {
         id: "hero-bildschirmzeit",
-        text: "Bildschirmzeiten ganz einfach festlegen, für alle Geräte",
+        strong: "Bildschirmzeiten",
+        rest: " ganz einfach festlegen, für alle Geräte",
       },
       {
         id: "hero-webfilter",
-        text: "Browserunabhängiger Internetfilter zum Schutz vor unangemessenen Seiten und Inhalten",
+        strong: "Browserunabhängiger Internetfilter",
+        rest: " zum Schutz vor unangemessenen Seiten und Inhalten",
       },
       {
         id: "hero-ortung",
-        text: "Geräteortung: immer wissen, wo deine Kinder sind",
+        strong: "Geräteortung:",
+        rest: " immer wissen, wo deine Kinder sind",
       },
       {
         id: "hero-pause",
-        text: "Musik und Lernapps während der Pause freigeben",
+        strong: "Musik und Lernapps",
+        rest: " während der Pause freigeben",
       },
       {
         id: "hero-privacy",
-        text: "Privatsphäre deiner Kinder bleibt geschützt",
+        strong: "Privatsphäre",
+        rest: " deiner Kinder bleibt geschützt",
       },
     ],
     ctaLabel: "Jetzt 7 Tage gratis testen",
