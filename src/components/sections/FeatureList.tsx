@@ -117,9 +117,12 @@ export function FeatureList() {
 
       {/* Trust logos strip — endless horizontal marquee */}
       <Section>
+        <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-5">
+          Bekannt aus
+        </p>
         <div
           className="marquee-mask relative overflow-hidden"
-          aria-label="Presse uber Kidgonet"
+          aria-label="Bekannt aus"
           role="region"
         >
           <ul className="marquee-track flex w-max items-center gap-x-12 md:gap-x-16">
