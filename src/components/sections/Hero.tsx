@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section className="bg-white py-5 md:py-8">
       <Container>
-        <div className="@container/banner mx-auto w-full max-w-[930px]">
+        <div className="@container/banner mx-auto w-full max-w-[800px]">
           <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">
             <Image
               src="/images/hero/vater-sohn.jpeg"
