@@ -1,27 +1,27 @@
 import Image from "next/image";
-import { Section } from "@/components/layout/Section";
+import { Section, SectionHeading } from "@/components/layout/Section";
 import { faq } from "@/content/home";
 
 export function FAQ() {
   return (
-    <Section background="muted">
+    <Section>
       <div className="flex flex-col items-center text-center">
         <Image
           src="/images/icons/smiley-orange.png"
           alt=""
-          width={64}
-          height={64}
-          className="h-16 w-16"
+          width={56}
+          height={56}
+          className="h-14 w-14"
         />
-        <h2 className="mt-4 text-3xl font-bold text-text-dark md:text-4xl">
+        <SectionHeading align="center" className="mt-3">
           {faq.headline}
-        </h2>
+        </SectionHeading>
       </div>
 
-      <ul className="mx-auto mt-12 max-w-3xl space-y-3">
+      <ul className="mt-8 space-y-3">
         {faq.items.map((item) => (
           <li key={item.question}>
-            <details className="group rounded-card border border-black/10 bg-white p-5 shadow-sm open:shadow-md">
+            <details className="group rounded-[20px] border border-black/10 bg-white p-5 open:shadow-md">
               <summary className="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-text-dark marker:content-none [&::-webkit-details-marker]:hidden">
                 <span>{item.question}</span>
                 <span

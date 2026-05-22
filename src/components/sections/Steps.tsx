@@ -1,30 +1,30 @@
 import Image from "next/image";
-import { Section } from "@/components/layout/Section";
+import { Section, SectionHeading } from "@/components/layout/Section";
 import { steps } from "@/content/home";
 
 export function Steps() {
   return (
-    <Section background="white">
-      <h2 className="text-center text-4xl font-extrabold text-text-dark md:text-5xl">
+    <Section>
+      <SectionHeading size="small" align="center">
         {steps.headline}
-      </h2>
+      </SectionHeading>
 
-      <ol className="mx-auto mt-16 grid max-w-6xl gap-12 md:grid-cols-3">
+      <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-6">
         {steps.items.map((item) => (
           <li
             key={item.text}
             className="flex flex-col items-center text-center"
           >
-            <div className="relative h-64 w-64 md:h-72 md:w-72">
+            <div className="relative h-56 w-56 md:h-64 md:w-64">
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                sizes="288px"
+                sizes="256px"
                 className="object-contain"
               />
             </div>
-            <p className="mt-6 max-w-xs text-base text-text-dark md:text-lg">
+            <p className="mt-4 max-w-[260px] text-sm text-text-dark md:text-base">
               {item.text}
             </p>
           </li>

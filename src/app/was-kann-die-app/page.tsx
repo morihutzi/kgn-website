@@ -65,7 +65,7 @@ export default function WasKannDieAppPage() {
         </Container>
       </section>
 
-      <Section background="white">
+      <Section>
         <h2 className="text-center text-3xl font-bold text-brand-green md:text-4xl">
           {featuresPage.overview.headline}
         </h2>
@@ -92,7 +92,7 @@ export default function WasKannDieAppPage() {
         </ul>
       </Section>
 
-      <Section background="muted">
+      <Section>
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
           {featuresPage.featureBlocks.map((f) => (
             <article
@@ -106,7 +106,7 @@ export default function WasKannDieAppPage() {
         </div>
       </Section>
 
-      <Section background="white">
+      <Section>
         <h2 className="text-center text-3xl font-bold text-text-dark md:text-4xl">
           {featuresPage.privacy.headline}
         </h2>
@@ -123,7 +123,7 @@ export default function WasKannDieAppPage() {
         </ul>
       </Section>
 
-      <Section background="muted">
+      <Section>
         <h2 className="text-center text-3xl font-bold text-text-dark md:text-4xl">
           {featuresPage.filterTable.headline}
         </h2>
@@ -192,7 +192,7 @@ export default function WasKannDieAppPage() {
         </div>
       </Section>
 
-      <Section background="white">
+      <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold text-text-dark md:text-4xl">
             {featuresPage.screenTime.headline}
@@ -217,7 +217,7 @@ export default function WasKannDieAppPage() {
         </ul>
       </Section>
 
-      <Section background="muted">
+      <Section>
         <ul className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           {featuresPage.controls.map((c) => (
             <li
@@ -231,7 +231,7 @@ export default function WasKannDieAppPage() {
         </ul>
       </Section>
 
-      <Section background="white">
+      <Section>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold text-text-dark md:text-4xl">
             {featuresPage.portal.headline}
@@ -261,7 +261,7 @@ export default function WasKannDieAppPage() {
         </ul>
       </Section>
 
-      <Section background="muted" width="narrow">
+      <Section>
         <div className="rounded-card border border-brand-yellow/40 bg-white p-8 text-center">
           <h2 className="text-2xl font-bold text-brand-green md:text-3xl">
             {featuresPage.nummerGegenKummer.headline}

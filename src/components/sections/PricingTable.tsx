@@ -5,7 +5,7 @@ import { siteConfig } from "@/content/site";
 
 export function PricingTable() {
   return (
-    <Section background="white">
+    <Section>
       <h2 className="text-center text-3xl font-bold text-text-dark md:text-4xl">
         {pricing.headline}
       </h2>

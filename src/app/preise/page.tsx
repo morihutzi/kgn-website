@@ -46,7 +46,7 @@ export default function PreisePage() {
 
       <PricingTable />
 
-      <Section background="muted">
+      <Section>
         <h2 className="sr-only">Vorteile auf einen Blick</h2>
         <ul className="mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
           {pricingPage.highlights.map((h) => (
@@ -61,7 +61,7 @@ export default function PreisePage() {
         </ul>
       </Section>
 
-      <Section background="white" width="narrow">
+      <Section>
         <h2 className="text-center text-3xl font-bold text-text-dark md:text-4xl">
           {pricingPage.includedFeatures.headline}
         </h2>

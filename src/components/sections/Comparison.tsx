@@ -1,4 +1,4 @@
-import { Section } from "@/components/layout/Section";
+import { Section, SectionHeading } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
 
 function Check() {
@@ -12,11 +12,7 @@ function Check() {
       stroke="currentColor"
       strokeWidth="3"
     >
-      <path
-        d="M5 13l4 4L19 7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -39,21 +35,19 @@ function Cross() {
 
 export function Comparison() {
   return (
-    <Section background="white">
-      <h2 className="text-balance text-center text-3xl font-bold text-text-dark md:text-4xl">
-        {comparison.headline}
-      </h2>
+    <Section>
+      <SectionHeading align="center">{comparison.headline}</SectionHeading>
 
-      <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-card border border-black/10">
+      <div className="mt-8 overflow-hidden rounded-[20px] border border-black/10">
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr className="bg-brand-yellow/20">
+            <tr className="bg-brand-yellow/15">
               <th scope="col" className="px-4 py-4 text-left font-semibold">
                 Funktion
               </th>
               <th
                 scope="col"
-                className="px-4 py-4 text-center font-bold text-brand-green"
+                className="px-4 py-4 text-center font-bold text-brand-yellow"
               >
                 {comparison.columns.ours}
               </th>

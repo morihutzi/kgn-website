@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Section } from "@/components/layout/Section";
-import { Container } from "@/components/layout/Container";
 import { problemSolution } from "@/content/home";
 
 function CheckIcon() {
@@ -8,7 +7,7 @@ function CheckIcon() {
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className="mt-1 h-6 w-6 flex-shrink-0 text-brand-green"
+      className="mt-1 h-5 w-5 flex-shrink-0 text-brand-green"
       fill="none"
       stroke="currentColor"
       strokeWidth="3"
@@ -25,33 +24,29 @@ function CheckIcon() {
 export function FeatureList() {
   return (
     <>
-      <section className="bg-brand-yellow py-16 md:py-24">
-        <Container>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white drop-shadow md:text-3xl">
-              {problemSolution.eyebrow}
-            </p>
-            <h2 className="mt-3 text-4xl font-extrabold text-white drop-shadow md:text-6xl">
-              {problemSolution.headline}
-            </h2>
-          </div>
-
-          <ul className="mx-auto mt-10 grid max-w-4xl gap-3 rounded-card bg-white p-6 shadow-lg md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:p-10">
+      {/* Yellow inverted card: "Hier ist die Lösung" */}
+      <Section>
+        <div className="rounded-[20px] bg-brand-yellow px-8 py-10 md:px-12 md:py-14">
+          <p className="text-lg font-semibold text-white md:text-xl">
+            {problemSolution.eyebrow}
+          </p>
+          <h2 className="mt-1 text-2xl font-extrabold text-white md:text-[33px] md:leading-[1.1]">
+            {problemSolution.headline}
+          </h2>
+          <ul className="mt-6 grid gap-2 md:grid-cols-2 md:gap-x-8 md:gap-y-3">
             {problemSolution.bullets.map((bullet) => (
               <li key={bullet} className="flex items-start gap-3">
                 <CheckIcon />
-                <span className="text-base text-text-dark md:text-lg">
-                  {bullet}
-                </span>
+                <span className="text-sm text-white md:text-base">{bullet}</span>
               </li>
             ))}
           </ul>
-        </Container>
-      </section>
+        </div>
+      </Section>
 
-      <Section background="white">
-        <h3 className="sr-only">Bekannt aus</h3>
-        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">
+      {/* Trust logos strip on white */}
+      <Section>
+        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {problemSolution.trustLogos.map((logo) => (
             <Image
               key={logo.src}
