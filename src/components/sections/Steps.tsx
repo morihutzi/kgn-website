@@ -4,33 +4,27 @@ import { steps } from "@/content/home";
 
 export function Steps() {
   return (
-    <Section background="muted">
-      <h2 className="text-center text-3xl font-bold text-text-dark md:text-4xl">
+    <Section background="white">
+      <h2 className="text-center text-4xl font-extrabold text-text-dark md:text-5xl">
         {steps.headline}
       </h2>
 
-      <ol className="mx-auto mt-12 grid max-w-5xl gap-8 md:grid-cols-3">
-        {steps.items.map((item, idx) => (
+      <ol className="mx-auto mt-16 grid max-w-6xl gap-12 md:grid-cols-3">
+        {steps.items.map((item) => (
           <li
             key={item.text}
-            className="relative flex flex-col items-center rounded-card bg-white p-6 text-center shadow-sm"
+            className="flex flex-col items-center text-center"
           >
-            <span
-              aria-hidden="true"
-              className="absolute -top-5 flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-lg font-bold text-black"
-            >
-              {idx + 1}
-            </span>
-            <div className="relative mt-2 h-32 w-32">
+            <div className="relative h-64 w-64 md:h-72 md:w-72">
               <Image
                 src={item.image}
                 alt={item.alt}
                 fill
-                sizes="128px"
+                sizes="288px"
                 className="object-contain"
               />
             </div>
-            <p className="mt-4 text-sm text-text-dark md:text-base">
+            <p className="mt-6 max-w-xs text-base text-text-dark md:text-lg">
               {item.text}
             </p>
           </li>

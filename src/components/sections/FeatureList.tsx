@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Section } from "@/components/layout/Section";
+import { Container } from "@/components/layout/Container";
 import { problemSolution } from "@/content/home";
 
 function CheckIcon() {
@@ -23,39 +24,46 @@ function CheckIcon() {
 
 export function FeatureList() {
   return (
-    <Section background="white">
-      <div className="text-center">
-        <p className="text-lg font-semibold text-text-dark md:text-xl">
-          {problemSolution.eyebrow}
-        </p>
-        <h2 className="mt-2 text-3xl font-bold text-brand-green md:text-4xl">
-          {problemSolution.headline}
-        </h2>
-      </div>
+    <>
+      <section className="bg-brand-yellow py-16 md:py-24">
+        <Container>
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white drop-shadow md:text-3xl">
+              {problemSolution.eyebrow}
+            </p>
+            <h2 className="mt-3 text-4xl font-extrabold text-white drop-shadow md:text-6xl">
+              {problemSolution.headline}
+            </h2>
+          </div>
 
-      <ul className="mx-auto mt-12 grid max-w-4xl gap-x-8 gap-y-5 md:grid-cols-2">
-        {problemSolution.bullets.map((bullet) => (
-          <li key={bullet} className="flex items-start gap-3">
-            <CheckIcon />
-            <span className="text-base text-text-dark md:text-lg">
-              {bullet}
-            </span>
-          </li>
-        ))}
-      </ul>
+          <ul className="mx-auto mt-10 grid max-w-4xl gap-3 rounded-card bg-white p-6 shadow-lg md:grid-cols-2 md:gap-x-8 md:gap-y-4 md:p-10">
+            {problemSolution.bullets.map((bullet) => (
+              <li key={bullet} className="flex items-start gap-3">
+                <CheckIcon />
+                <span className="text-base text-text-dark md:text-lg">
+                  {bullet}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
 
-      <div className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">
-        {problemSolution.trustLogos.map((logo) => (
-          <Image
-            key={logo.src}
-            src={logo.src}
-            alt={logo.alt}
-            width={150}
-            height={50}
-            className="h-10 w-auto object-contain md:h-12"
-          />
-        ))}
-      </div>
-    </Section>
+      <Section background="white">
+        <h3 className="sr-only">Bekannt aus</h3>
+        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-80">
+          {problemSolution.trustLogos.map((logo) => (
+            <Image
+              key={logo.src}
+              src={logo.src}
+              alt={logo.alt}
+              width={150}
+              height={50}
+              className="h-10 w-auto object-contain md:h-12"
+            />
+          ))}
+        </div>
+      </Section>
+    </>
   );
 }

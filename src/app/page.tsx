@@ -5,7 +5,6 @@ import { ManuelNeuer } from "@/components/sections/ManuelNeuer";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Comparison } from "@/components/sections/Comparison";
 import { FAQ } from "@/components/sections/FAQ";
-import { PricingTable } from "@/components/sections/PricingTable";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomePage() {
@@ -18,7 +17,6 @@ export default function HomePage() {
       <Testimonials />
       <Comparison />
       <FAQ />
-      <PricingTable />
       <FinalCTA />
     </>
   );
