@@ -27,7 +27,7 @@ export function KategorieHero({ kategorie, count }: Props) {
             {kategorie.beschreibung}
           </p>
           <p
-            className={`mt-4 inline-flex rounded-full border-2 bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${c.border} ${c.text}`}
+            className={`mt-4 inline-flex rounded-full border bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide ${c.border} ${c.text}`}
           >
             {count} {count === 1 ? "Beitrag" : "Beiträge"}
           </p>

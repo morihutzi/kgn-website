@@ -21,10 +21,10 @@ export function KategorieGrid() {
           <Link
             key={k.slug}
             href={`/elternratgeber/${k.slug}`}
-            className={`group flex flex-col gap-3 rounded-[20px] border-2 ${c.border} bg-white p-7 transition-transform hover:-translate-y-0.5`}
+            className={`group flex flex-col gap-3 rounded-[20px] border ${c.border} bg-white p-7 transition-transform hover:-translate-y-0.5`}
           >
             <span
-              className={`inline-flex w-fit rounded-full border-2 bg-white px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide ${c.border} ${c.text}`}
+              className={`inline-flex w-fit rounded-full border bg-white px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide ${c.border} ${c.text}`}
             >
               {count} {count === 1 ? "Beitrag" : "Beiträge"}
             </span>
