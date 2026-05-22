@@ -113,11 +113,11 @@ function ChildCard({
     timeVariant === "unlimited"
       ? "text-brand-green"
       : timeVariant === "warning"
-        ? "text-[#FC5802]"
+        ? "text-brand-orange"
         : "text-brand-yellow";
 
   const barColor =
-    timeVariant === "warning" ? "bg-[#FC5802]" : "bg-brand-yellow";
+    timeVariant === "warning" ? "bg-brand-orange" : "bg-brand-yellow";
 
   return (
     <div className="rounded-[12px] border-[1.5px] border-brand-yellow/85 bg-white px-2.5 py-2 shadow-[0_1.5px_3px_rgba(0,0,0,0.05)]">
