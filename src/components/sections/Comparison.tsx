@@ -6,7 +6,7 @@ const BRAND_GREEN = "#C6C500";
 const BADGE_GRAY = "#C9C9C9";
 const BORDER_COLOR = "#E5E5E5";
 const ROW_BORDER = "#F0F0F0";
-const HEADER_BG = "#FCEFD3";
+const HEADER_SEPARATOR = "#F9B000";
 
 function CheckBadge() {
   return (
@@ -70,7 +70,7 @@ export function Comparison() {
       >
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr style={{ backgroundColor: HEADER_BG }}>
+            <tr style={{ borderBottom: `3px solid ${HEADER_SEPARATOR}` }}>
               <th
                 scope="col"
                 className="px-5 py-5 text-left font-semibold text-text-dark md:px-7"
