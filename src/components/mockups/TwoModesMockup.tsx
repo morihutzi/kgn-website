@@ -1,11 +1,12 @@
+import Image from "next/image";
 import { ChildviewMockup } from "./ChildviewMockup";
 import { ConnectDevicesMockup } from "./ConnectDevicesMockup";
 
 const NATIVE_WIDTH = 220;
 const PHONE_FULL_HEIGHT = Math.round(220 * (20 / 9.5)); // 463
-const CAPTION_HEIGHT = 16;
-const GAP_BETWEEN = 31;
-const PHONE_VISIBLE_HEIGHT = 200;
+const CAPTION_HEIGHT = 32;
+const GAP_BETWEEN = 33;
+const PHONE_VISIBLE_HEIGHT = 183;
 const NATIVE_HEIGHT =
   CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 463
 
@@ -21,11 +22,9 @@ const NATIVE_HEIGHT =
  *   Countdown). Obere Hälfte abgeschnitten → man sieht den großen
  *   Countdown-Kreis am Boden des Phones.
  *
- * Beide bei NATIVE_WIDTH 220 px gerendert und cropped via
- * overflow:hidden mit absolutem Inner-Offset. Gradient-Fades kaschieren
- * die jeweilige Crop-Kante.
- *
- * Wird per [[TwoModesMockupScaled]] auf eine Zielbreite skaliert.
+ * NATIVE_HEIGHT = PHONE_FULL_HEIGHT (463 px), sodass der gesamte Stack bei
+ * gleichem Scale dieselbe visuelle Höhe hat wie ein einzelner
+ * ChildviewMockup in Schritt 3 oder ein ConnectDevicesMockup in Schritt 2.
  */
 export function TwoModesMockup() {
   const dividerCenter =
@@ -40,13 +39,21 @@ export function TwoModesMockup() {
       </DeviceBlock>
 
       <div
-        className="absolute inset-x-0 flex items-center gap-1.5 px-3"
-        style={{ top: dividerCenter - 5, height: 10 }}
+        className="absolute inset-x-0 flex items-center gap-2 px-2"
+        style={{ top: dividerCenter - 10, height: 20 }}
         aria-hidden
       >
-        <div className="h-px flex-1 bg-foreground/20" />
-        <div className="size-1 rounded-full bg-foreground/35" />
-        <div className="h-px flex-1 bg-foreground/20" />
+        <div className="h-[2px] flex-1 rounded-full bg-foreground/25" />
+        <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
+          <Image
+            src="/brand/smiley-square.png"
+            alt=""
+            width={24}
+            height={24}
+            className="size-4"
+          />
+        </div>
+        <div className="h-[2px] flex-1 rounded-full bg-foreground/25" />
       </div>
 
       <DeviceBlock
@@ -76,7 +83,7 @@ function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
       className="absolute left-0 right-0 flex flex-col items-center"
       style={{ top }}
     >
-      <span className="mb-1 text-[7px] font-extrabold uppercase tracking-[0.14em] text-foreground/55">
+      <span className="mb-2 text-[15px] font-extrabold uppercase leading-none tracking-[0.12em] text-foreground/80">
         {label}
       </span>
       <div
@@ -100,9 +107,7 @@ function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
         <div
           className="pointer-events-none absolute inset-x-0 h-12"
           style={{
-            ...(half === "top"
-              ? { bottom: 0 }
-              : { top: 0 }),
+            ...(half === "top" ? { bottom: 0 } : { top: 0 }),
             background:
               half === "top"
                 ? "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)"

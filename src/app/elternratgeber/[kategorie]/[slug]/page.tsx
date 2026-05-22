@@ -131,11 +131,11 @@ export default async function ArtikelPage({
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
-      <nav className="mx-auto w-full max-w-[760px] px-5 pt-8 text-sm text-text-dark/60 sm:px-8">
+      <nav className="mx-auto w-full max-w-[760px] px-5 pt-8 text-xs font-extrabold uppercase tracking-wide text-text-dark sm:px-8">
         <Link href="/elternratgeber" className="hover:text-brand-yellow">
           Elternratgeber
         </Link>{" "}
-        <span aria-hidden>›</span>{" "}
+        <span aria-hidden className="text-brand-yellow">›</span>{" "}
         <Link
           href={`/elternratgeber/${k.slug}`}
           className="hover:text-brand-yellow"
@@ -146,9 +146,7 @@ export default async function ArtikelPage({
       <ArticleHero article={article} />
       <ArticleBody body={article.body} />
       <ShareBar url={url} title={article.title} />
-      <section className="mx-auto w-full max-w-[760px] px-5 pb-8 sm:px-8">
-        <NewsletterCta variant="card" />
-      </section>
+      <NewsletterCta />
       <RelatedArticles articles={related} />
       <ScrollTracker slug={article.slug} kategorie={article.kategorie} />
     </>

@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { elternratgeberKategorien } from "@/content/elternratgeber/kategorien";
+import {
+  brandFarbeClasses,
+  elternratgeberKategorien,
+} from "@/content/elternratgeber/kategorien";
 import { getAllArticles } from "@/lib/elternratgeber/articles";
 
 export function KategorieGrid() {
@@ -13,35 +16,27 @@ export function KategorieGrid() {
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {elternratgeberKategorien.map((k) => {
         const count = counts.get(k.slug) ?? 0;
+        const c = brandFarbeClasses[k.brandFarbe];
         return (
           <Link
             key={k.slug}
             href={`/elternratgeber/${k.slug}`}
-            className="group relative flex flex-col gap-3 overflow-hidden rounded-card border border-[var(--color-border)] bg-white p-6 transition-shadow hover:shadow-md"
+            className={`group relative flex flex-col gap-4 overflow-hidden rounded-[20px] ${c.bg} p-7 text-white transition-transform hover:-translate-y-0.5`}
           >
-            <div
-              className="absolute inset-x-0 top-0 h-1.5"
-              style={{ backgroundColor: k.farbe }}
-            />
-            <div className="flex items-baseline justify-between gap-3 pt-2">
-              <h3 className="text-xl font-extrabold text-text-dark group-hover:text-brand-yellow transition-colors">
-                {k.name}
-              </h3>
-              <span
-                className="rounded-full px-2.5 py-0.5 text-xs font-bold"
-                style={{
-                  backgroundColor: `${k.farbe}15`,
-                  color: k.farbe,
-                }}
-              >
-                {count}
+            <div className="flex items-center justify-between gap-3">
+              <span className="rounded-full bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-text-dark">
+                {count} {count === 1 ? "Beitrag" : "Beiträge"}
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-text-dark/75">
+            <h3 className="text-2xl font-extrabold leading-tight text-white">
+              {k.name}
+            </h3>
+            <p className="text-sm leading-relaxed text-white/95">
               {k.beschreibung}
             </p>
-            <span className="mt-2 text-sm font-bold text-brand-yellow">
-              Beiträge ansehen →
+            <span className="mt-2 inline-flex items-center gap-1 text-sm font-extrabold text-white">
+              Beiträge ansehen
+              <span aria-hidden>→</span>
             </span>
           </Link>
         );

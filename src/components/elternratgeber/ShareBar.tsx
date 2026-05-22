@@ -22,14 +22,19 @@ export function ShareBar({ url, title }: Props) {
     }
   };
 
+  const linkClass =
+    "rounded-full bg-brand-yellow px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-[#e09e00]";
+
   return (
     <div className="mx-auto flex w-full max-w-[760px] flex-wrap items-center gap-3 px-5 pb-8 sm:px-8">
-      <span className="text-sm font-semibold text-text-dark/70">Teilen:</span>
+      <span className="text-sm font-extrabold uppercase tracking-wide text-text-dark">
+        Teilen:
+      </span>
       <a
         href={`https://wa.me/?text=${encodedTitle}%20${encoded}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full border border-[var(--color-border)] px-4 py-1.5 text-sm font-semibold text-text-dark hover:border-brand-yellow hover:text-brand-yellow transition-colors"
+        className={linkClass}
       >
         WhatsApp
       </a>
@@ -37,21 +42,17 @@ export function ShareBar({ url, title }: Props) {
         href={`https://www.facebook.com/sharer/sharer.php?u=${encoded}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full border border-[var(--color-border)] px-4 py-1.5 text-sm font-semibold text-text-dark hover:border-brand-yellow hover:text-brand-yellow transition-colors"
+        className={linkClass}
       >
         Facebook
       </a>
       <a
         href={`mailto:?subject=${encodedTitle}&body=${encoded}`}
-        className="rounded-full border border-[var(--color-border)] px-4 py-1.5 text-sm font-semibold text-text-dark hover:border-brand-yellow hover:text-brand-yellow transition-colors"
+        className={linkClass}
       >
         Mail
       </a>
-      <button
-        type="button"
-        onClick={copy}
-        className="rounded-full border border-[var(--color-border)] px-4 py-1.5 text-sm font-semibold text-text-dark hover:border-brand-yellow hover:text-brand-yellow transition-colors"
-      >
+      <button type="button" onClick={copy} className={linkClass}>
         {copied ? "Link kopiert" : "Link kopieren"}
       </button>
     </div>

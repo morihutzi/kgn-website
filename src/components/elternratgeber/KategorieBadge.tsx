@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  brandFarbeClasses,
   getKategorieBySlug,
   type ElternratgeberKategorieSlug,
 } from "@/content/elternratgeber/kategorien";
@@ -19,31 +20,22 @@ export function KategorieBadge({
 }: Props) {
   const kategorie = getKategorieBySlug(slug);
   if (!kategorie) return null;
+  const c = brandFarbeClasses[kategorie.brandFarbe];
 
   const sizeClasses =
     size === "md"
-      ? "px-3 py-1.5 text-sm"
-      : "px-2.5 py-1 text-[11px] tracking-wide";
+      ? "px-3.5 py-1.5 text-xs"
+      : "px-2.5 py-1 text-[11px]";
 
-  const baseClasses = `inline-flex items-center gap-1.5 rounded-full font-bold uppercase ${sizeClasses} ${className}`;
+  const baseClasses = `inline-flex items-center gap-1.5 rounded-full font-extrabold uppercase tracking-wide text-white ${c.bg} ${sizeClasses} ${className}`;
 
-  const content = (
-    <span
-      className={baseClasses}
-      style={{
-        backgroundColor: `${kategorie.farbe}15`,
-        color: kategorie.farbe,
-      }}
-    >
-      {kategorie.name}
-    </span>
-  );
+  const content = <span className={baseClasses}>{kategorie.name}</span>;
 
   if (asLink) {
     return (
       <Link
         href={`/elternratgeber/${kategorie.slug}`}
-        className="inline-block hover:opacity-80 transition-opacity"
+        className="inline-block transition-opacity hover:opacity-90"
       >
         {content}
       </Link>

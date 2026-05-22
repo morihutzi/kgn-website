@@ -2,10 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 
-type Variant = "inline" | "card";
-
 type Props = {
-  variant?: Variant;
   headline?: string;
   text?: string;
 };
@@ -17,7 +14,6 @@ declare global {
 }
 
 export function NewsletterCta({
-  variant = "card",
   headline = "Bleib auf dem Laufenden",
   text = "Einmal im Monat die wichtigsten Ratgeber-Beiträge und Tipps für sichere Mediennutzung in der Familie. Jederzeit kündbar.",
 }: Props) {
@@ -72,21 +68,18 @@ export function NewsletterCta({
     }
   };
 
-  const containerClasses =
-    variant === "card"
-      ? "rounded-card border border-[var(--color-border)] bg-surface-warm p-6 md:p-8"
-      : "border-t border-[var(--color-border)] py-8";
-
   return (
-    <div className={containerClasses}>
-      <div className="mx-auto w-full max-w-[600px]">
-        <h3 className="text-xl font-extrabold text-text-dark md:text-2xl">
+    <section className="bg-brand-yellow">
+      <div className="mx-auto w-full max-w-[760px] px-5 py-12 sm:px-8 md:py-16">
+        <h2 className="text-2xl font-extrabold leading-tight text-white md:text-[33px] md:leading-[1.15]">
           {headline}
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-text-dark/75">{text}</p>
+        </h2>
+        <p className="mt-3 text-base font-medium leading-relaxed text-white md:text-lg">
+          {text}
+        </p>
         <form
           onSubmit={onSubmit}
-          className="mt-5 flex flex-col gap-3 sm:flex-row"
+          className="mt-6 flex flex-col gap-3 sm:flex-row"
         >
           <label className="sr-only" htmlFor="newsletter-vorname">
             Vorname
@@ -98,7 +91,7 @@ export function NewsletterCta({
             onChange={(e) => setVorname(e.target.value)}
             placeholder="Vorname (optional)"
             autoComplete="given-name"
-            className="w-full rounded-button border border-[var(--color-border)] bg-white px-4 py-2.5 text-sm outline-none focus:border-brand-yellow sm:w-1/3"
+            className="w-full rounded-[12px] bg-white px-4 py-3 text-sm text-text-dark outline-none placeholder:text-text-dark/60 focus:ring-2 focus:ring-white sm:w-1/3"
           />
           <label className="sr-only" htmlFor="newsletter-email">
             E-Mail-Adresse
@@ -111,32 +104,36 @@ export function NewsletterCta({
             onChange={(e) => setEmail(e.target.value)}
             placeholder="E-Mail-Adresse"
             autoComplete="email"
-            className="w-full flex-1 rounded-button border border-[var(--color-border)] bg-white px-4 py-2.5 text-sm outline-none focus:border-brand-yellow"
+            className="w-full flex-1 rounded-[12px] bg-white px-4 py-3 text-sm text-text-dark outline-none placeholder:text-text-dark/60 focus:ring-2 focus:ring-white"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-button bg-brand-yellow px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#e09e00] disabled:opacity-60"
+            className="rounded-[12px] bg-brand-orange px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-[#e04a00] disabled:opacity-60"
           >
             {status === "loading" ? "Sende..." : "Abonnieren"}
           </button>
         </form>
         {message && (
           <p
-            className={`mt-3 text-sm ${status === "error" ? "text-red-600" : "text-green-700"}`}
+            className={`mt-4 rounded-[8px] px-3 py-2 text-sm font-semibold ${
+              status === "error"
+                ? "bg-white text-brand-orange"
+                : "bg-white text-text-dark"
+            }`}
             role="status"
           >
             {message}
           </p>
         )}
-        <p className="mt-3 text-xs text-text-dark/55">
+        <p className="mt-4 text-xs font-medium text-white/85">
           Mit dem Klick auf „Abonnieren" stimmst du unserer{" "}
-          <a href="/datenschutz" className="underline hover:text-brand-yellow">
+          <a href="/datenschutz" className="underline hover:text-text-dark">
             Datenschutzerklärung
           </a>{" "}
           zu. Du kannst dich jederzeit abmelden.
         </p>
       </div>
-    </div>
+    </section>
   );
 }

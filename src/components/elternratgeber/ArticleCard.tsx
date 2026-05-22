@@ -6,7 +6,7 @@ import type { ArticleSummary } from "@/lib/elternratgeber/types";
 
 type Props = {
   article: ArticleSummary;
-  variant?: "default" | "compact" | "featured";
+  variant?: "default" | "featured";
 };
 
 export function ArticleCard({ article, variant = "default" }: Props) {
@@ -15,16 +15,16 @@ export function ArticleCard({ article, variant = "default" }: Props) {
 
   return (
     <article
-      className={`group flex flex-col overflow-hidden rounded-card border border-[var(--color-border)] bg-white shadow-sm transition-shadow hover:shadow-md ${
+      className={`group flex flex-col overflow-hidden rounded-[20px] bg-white shadow-[0_4px_18px_rgba(74,74,73,0.08)] transition-shadow hover:shadow-[0_8px_28px_rgba(74,74,73,0.12)] ${
         isFeatured ? "md:flex-row" : ""
       }`}
     >
       {article.cover && (
         <Link
           href={href}
-          className={`relative block ${
-            isFeatured ? "md:w-1/2 md:shrink-0" : ""
-          } aspect-[16/10] overflow-hidden bg-gray-100`}
+          className={`relative block overflow-hidden bg-text-dark ${
+            isFeatured ? "md:w-1/2 md:shrink-0 aspect-[4/3]" : "aspect-[16/10]"
+          }`}
         >
           <Image
             src={article.cover}
@@ -39,26 +39,30 @@ export function ArticleCard({ article, variant = "default" }: Props) {
           />
         </Link>
       )}
-      <div className="flex flex-1 flex-col gap-3 p-5 md:p-6">
+      <div className="flex flex-1 flex-col gap-3 p-6">
         <KategorieBadge slug={article.kategorie} />
         <h3
           className={`font-extrabold leading-tight text-text-dark ${
-            isFeatured ? "text-xl md:text-2xl" : "text-lg"
+            isFeatured ? "text-2xl md:text-3xl" : "text-lg"
           }`}
         >
           <Link
             href={href}
-            className="hover:text-brand-yellow transition-colors"
+            className="transition-colors hover:text-brand-yellow"
           >
             {article.title}
           </Link>
         </h3>
         {article.teaser && (
-          <p className="line-clamp-3 text-sm leading-relaxed text-text-dark/75">
+          <p
+            className={`text-sm leading-relaxed text-text-dark ${
+              isFeatured ? "line-clamp-4 md:text-base" : "line-clamp-3"
+            }`}
+          >
             {article.teaser}
           </p>
         )}
-        <div className="mt-auto flex items-center gap-3 pt-2 text-xs text-text-dark/60">
+        <div className="mt-auto flex items-center gap-3 pt-2 text-xs font-semibold text-text-dark">
           <time dateTime={article.veroeffentlicht}>
             {formatDate(article.veroeffentlicht)}
           </time>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
+import { StoreBadges } from "@/components/ui/StoreBadges";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";

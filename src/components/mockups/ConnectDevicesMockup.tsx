@@ -32,7 +32,7 @@ export function ConnectDevicesMockup() {
 
         <div className="mt-2.5 flex items-center gap-2">
           <Image
-            src="/brand/smiley.png"
+            src="/brand/smiley-square.png"
             alt=""
             width={48}
             height={48}
@@ -54,7 +54,7 @@ export function ConnectDevicesMockup() {
             3 Kinder
           </span>
           <span className="text-[7px] font-bold text-foreground/25">·</span>
-          <span className="block size-[3px] rounded-full bg-[#C6C500]" />
+          <span className="block size-[3px] rounded-full bg-brand-green" />
           <span className="text-[7px] font-medium text-foreground/55">
             5 Geräte geschützt
           </span>
@@ -111,7 +111,7 @@ function ChildCard({
 }: ChildCardProps) {
   const timeColor =
     timeVariant === "unlimited"
-      ? "text-[#95C11E]"
+      ? "text-brand-green"
       : timeVariant === "warning"
         ? "text-[#FC5802]"
         : "text-brand-yellow";
@@ -131,7 +131,7 @@ function ChildCard({
           <div className="mt-1 flex flex-col gap-px">
             {devices.map((device) => (
               <div key={device} className="flex items-center gap-1">
-                <span className="block size-[3px] rounded-full bg-[#C6C500]" />
+                <span className="block size-[3px] rounded-full bg-brand-green" />
                 <span className="text-[6.5px] font-medium leading-tight text-foreground/85">
                   {device}
                 </span>
