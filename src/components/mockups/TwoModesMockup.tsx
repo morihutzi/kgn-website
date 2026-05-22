@@ -11,25 +11,33 @@ import {
 import { PhoneFrame } from "./PhoneFrame";
 
 const NATIVE_WIDTH = 220;
-const PHONE_FULL_HEIGHT = Math.round(220 * (20 / 9.5)); // 463
-const CAPTION_HEIGHT = 18;
-const GAP_BETWEEN = 32;
+// Math gewählt, sodass NATIVE_HEIGHT == PhoneFrame-Native-Höhe ist
+// (220 × 20/9.5 = 463). Dadurch hat der gesamte Mockup bei gleichem
+// Scale-Faktor exakt dieselbe Visual-Größe wie ein einzelner ChildviewMockup
+// in Schritt 3. Zwei Phones werden zur Hälfte abgeschnitten.
+const CAPTION_HEIGHT = 16;
+const GAP_BETWEEN = 31;
+const PHONE_VISIBLE_HEIGHT = 200;
 const NATIVE_HEIGHT =
-  (CAPTION_HEIGHT + PHONE_FULL_HEIGHT) * 2 + GAP_BETWEEN;
+  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 463
 
 /**
  * Two-Modes-Mockup: Zwei Phones vertikal übereinander gestapelt, jeweils
- * in voller Höhe. Über jedem Phone eine kleine Caption, die das Gerät
- * benennt. In der Mitte ein Divider, der zeigt, dass es zwei verschiedene
- * Geräte sind. Visualisiert "Eine App, zwei Modi" — Elterngerät (Steuerung)
- * und Kindgerät (Kindermodus).
+ * in der Mitte abgeschnitten (Top-Hälfte sichtbar). Über jedem Phone eine
+ * kleine Caption, die das Gerät benennt. In der Mitte ein Divider, der
+ * zeigt, dass es zwei verschiedene Geräte sind. Visualisiert "Eine App,
+ * zwei Modi" — Elterngerät (Steuerung) und Kindgerät (Kindermodus).
+ *
+ * Gesamt-Visual-Größe identisch zum Schritt-3-Phone (ChildviewMockup) bei
+ * gleichem Scale-Faktor — so wirken Schritt 1 und Schritt 3 im Layout
+ * gleich groß.
  *
  * Statisch, keine Animation. Wird per [[TwoModesMockupScaled]] auf eine
  * Zielbreite skaliert.
  */
 export function TwoModesMockup() {
   const dividerCenter =
-    CAPTION_HEIGHT + PHONE_FULL_HEIGHT + GAP_BETWEEN / 2;
+    CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN / 2;
   return (
     <div
       className="relative"
@@ -51,7 +59,7 @@ export function TwoModesMockup() {
 
       <DeviceBlock
         label="Kindgerät"
-        top={CAPTION_HEIGHT + PHONE_FULL_HEIGHT + GAP_BETWEEN}
+        top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
       >
         <KidPhone />
       </DeviceBlock>
@@ -78,9 +86,21 @@ function DeviceBlock({
       </span>
       <div
         className="relative"
-        style={{ width: NATIVE_WIDTH, height: PHONE_FULL_HEIGHT }}
+        style={{
+          width: NATIVE_WIDTH,
+          height: PHONE_VISIBLE_HEIGHT,
+          overflow: "hidden",
+        }}
       >
         {children}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-12"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
+          }}
+          aria-hidden
+        />
       </div>
     </div>
   );
