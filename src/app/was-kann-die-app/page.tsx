@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
-import { ElternportalMockup } from "@/components/mockups/ElternportalMockup";
 import { ElternportalMockupScaled } from "@/components/mockups/ElternportalMockupScaled";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
 import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
@@ -122,25 +121,28 @@ function HeroSection() {
 
 function HeroMockupCluster() {
   return (
-    <div className="relative mx-auto flex w-full max-w-[440px] items-center justify-center py-8 md:py-12">
-      {/* Background smiley */}
-      <Image
-        src="/brand/smiley.png"
-        alt=""
+    <div className="relative mx-auto flex w-full items-center justify-center py-6">
+      {/* Background smiley — square container, object-contain to avoid distortion */}
+      <div
         aria-hidden="true"
-        width={1059}
-        height={945}
-        sizes="380px"
-        className="pointer-events-none absolute right-[-14%] top-1/2 -z-0 h-[380px] w-auto -translate-y-1/2 opacity-25 blur-sm md:block"
-      />
+        className="pointer-events-none absolute right-1/2 top-1/2 z-0 hidden h-[320px] w-[320px] -translate-y-1/2 translate-x-[58%] md:block"
+      >
+        <Image
+          src="/brand/smiley.png"
+          alt=""
+          fill
+          sizes="320px"
+          className="object-contain opacity-25 blur-sm"
+        />
+      </div>
 
-      {/* Phone mockup */}
+      {/* Phone mockup (scaled, explicit width avoids w-full collapse in flex) */}
       <div className="relative z-10">
-        <ElternportalMockup />
+        <ElternportalMockupScaled width={200} />
       </div>
 
       {/* Top-right badge: Erwachseneninhalte blockiert */}
-      <div className="absolute right-[-6%] top-4 z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+      <div className="absolute right-[-4%] top-2 z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
@@ -164,7 +166,7 @@ function HeroMockupCluster() {
       </div>
 
       {/* Bottom-left badge: Standort */}
-      <div className="absolute bottom-6 left-[-6%] z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+      <div className="absolute bottom-4 left-[-4%] z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
         <div>
           <p className="text-xs font-extrabold leading-tight text-text-dark">
             Standort in Echtzeit
