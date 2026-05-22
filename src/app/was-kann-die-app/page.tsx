@@ -3,8 +3,8 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
+import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
-import type { FeatureGridIcon } from "@/content/features";
 import { featuresPage } from "@/content/features";
 import { siteConfig } from "@/content/site";
 
@@ -29,116 +29,21 @@ const {
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-brand-orange">
+    <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-brand-green">
       {children}
     </p>
   );
 }
 
-function GreenCheck() {
+function NumberBadge({ n }: { n: number }) {
   return (
     <span
       aria-hidden="true"
-      className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[5px] bg-brand-green"
+      className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-xl font-extrabold text-white"
     >
-      <svg
-        viewBox="0 0 24 24"
-        className="h-3 w-3 text-white"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3.5"
-      >
-        <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
+      {n}
     </span>
   );
-}
-
-function CrossMark() {
-  return (
-    <svg
-      aria-label="Nicht gefiltert"
-      role="img"
-      viewBox="0 0 24 24"
-      className="mx-auto h-4 w-4 text-neutral-300"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-    >
-      <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function CheckMark() {
-  return (
-    <svg
-      aria-label="Gefiltert"
-      role="img"
-      viewBox="0 0 24 24"
-      className="mx-auto h-4 w-4 text-brand-green"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-    >
-      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function FeatureIcon({ type }: { type: FeatureGridIcon }) {
-  const stroke = {
-    fill: "none" as const,
-    stroke: "currentColor",
-    strokeWidth: 1.8,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
-  switch (type) {
-    case "timer":
-      return (
-        <svg viewBox="0 0 36 36" className="h-7 w-7" aria-hidden="true">
-          <circle cx="18" cy="20" r="11" {...stroke} />
-          <path d="M18 13v7l4 3" {...stroke} />
-          <path d="M14 5h8M18 5v3" {...stroke} />
-        </svg>
-      );
-    case "devices":
-      return (
-        <svg viewBox="0 0 36 36" className="h-7 w-7" aria-hidden="true">
-          <rect x="4" y="10" width="18" height="12" rx="2" {...stroke} />
-          <rect
-            x="14"
-            y="15"
-            width="18"
-            height="14"
-            rx="2"
-            stroke="currentColor"
-            strokeWidth={1.8}
-            strokeLinejoin="round"
-            fill="#fff"
-          />
-        </svg>
-      );
-    case "apps":
-      return (
-        <svg viewBox="0 0 36 36" className="h-7 w-7" aria-hidden="true">
-          <rect x="5" y="5" width="10" height="10" rx="2.5" {...stroke} />
-          <rect x="21" y="5" width="10" height="10" rx="2.5" {...stroke} />
-          <rect x="5" y="21" width="10" height="10" rx="2.5" {...stroke} />
-          <circle cx="26" cy="26" r="5" {...stroke} />
-          <path d="M26 23.5v5M23.5 26h5" {...stroke} />
-        </svg>
-      );
-    case "filter":
-      return (
-        <svg viewBox="0 0 36 36" className="h-7 w-7" aria-hidden="true">
-          <circle cx="18" cy="18" r="12" {...stroke} />
-          <path d="M9 14h18M11 22h14M14 27h8" {...stroke} />
-          <circle cx="18" cy="18" r="2.2" fill="currentColor" />
-        </svg>
-      );
-  }
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────
@@ -166,7 +71,7 @@ function HeroSection() {
     <section
       id={hero.sectionId}
       aria-label="Einleitung"
-      className="bg-surface-warm py-12 md:py-16"
+      className="bg-white py-12 md:py-16"
     >
       <Container className="!max-w-[1100px]">
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_1fr] md:gap-14">
@@ -188,7 +93,7 @@ function HeroSection() {
             <ul className="mt-6 grid gap-2.5">
               {hero.bullets.map((bullet) => (
                 <li key={bullet.id} className="flex items-start gap-3">
-                  <GreenCheck />
+                  <CheckBadge />
                   <span className="text-[15px] leading-snug text-text-dark">
                     {bullet.text}
                   </span>
@@ -199,95 +104,35 @@ function HeroSection() {
               <Button
                 href={siteConfig.portalWelcomeUrl}
                 external
-                variant="secondary"
+                variant="primary"
                 size="lg"
               >
                 {hero.ctaLabel}
               </Button>
               <a
                 href={`#${featureGrid.sectionId}`}
-                className="text-sm font-semibold text-text-dark underline decoration-brand-yellow decoration-2 underline-offset-[6px] hover:decoration-brand-orange"
+                className="text-sm font-semibold text-text-dark underline decoration-brand-yellow decoration-2 underline-offset-[6px] hover:decoration-brand-green"
               >
                 {hero.ctaSecondaryLabel}
               </a>
             </div>
           </div>
 
-          <PortalMockup />
+          <div className="relative mx-auto w-full max-w-[420px] md:max-w-none">
+            <div className="overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
+              <Image
+                src={hero.image.src}
+                alt={hero.image.alt}
+                width={800}
+                height={600}
+                sizes="(min-width: 768px) 480px, 100vw"
+                className="h-auto w-full object-contain"
+              />
+            </div>
+          </div>
         </div>
       </Container>
     </section>
-  );
-}
-
-function PortalMockup() {
-  return (
-    <div className="relative mx-auto w-full max-w-[420px] md:max-w-none">
-      <div className="rounded-[24px] border border-neutral-200 bg-white p-5 shadow-[0_24px_60px_-30px_rgba(249,176,0,0.45)] md:p-6">
-        <div className="flex items-center justify-between border-b border-neutral-100 pb-4">
-          <Image
-            src="/brand/logo.png"
-            alt="Kidgonet"
-            width={120}
-            height={16}
-            className="h-5 w-auto"
-          />
-          <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-text-muted">
-            Elternportal
-          </span>
-        </div>
-
-        <div className="mt-5">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-text-muted">
-            Bildschirmzeit heute
-          </p>
-          <div className="mt-1 flex items-baseline gap-2">
-            <span className="text-[42px] font-extrabold leading-none text-text-dark">
-              1:47
-            </span>
-            <span className="text-sm text-text-muted">von 2:30 Std.</span>
-          </div>
-
-          <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-neutral-100">
-            <div
-              className="h-full rounded-full bg-brand-yellow"
-              style={{ width: "70%" }}
-            />
-          </div>
-
-          <div className="mt-5 grid grid-cols-2 gap-3">
-            <div className="rounded-[14px] bg-surface-warm p-4">
-              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-text-muted">
-                Webfilter
-              </p>
-              <p className="mt-1 text-lg font-extrabold text-brand-green">
-                Aktiv
-              </p>
-            </div>
-            <div className="rounded-[14px] bg-surface-warm p-4">
-              <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-text-muted">
-                Pausenmodus
-              </p>
-              <p className="mt-1 text-lg font-extrabold text-text-dark">Aus</p>
-            </div>
-          </div>
-
-          <div className="mt-3 rounded-[14px] border border-brand-yellow bg-surface-warm p-4">
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-text-dark">
-                SOS Internet sperren
-              </span>
-              <span
-                aria-hidden="true"
-                className="flex h-6 w-11 items-center rounded-full bg-neutral-200 p-0.5"
-              >
-                <span className="block h-5 w-5 rounded-full bg-white" />
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -299,7 +144,7 @@ function FeatureGridSection() {
     <section
       id={featureGrid.sectionId}
       aria-labelledby={headlineId}
-      className="bg-white py-12 md:py-16"
+      className="bg-surface-muted py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="max-w-2xl text-center md:mx-auto">
@@ -312,13 +157,11 @@ function FeatureGridSection() {
           </p>
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featureGrid.cards.map((card) => (
+        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {featureGrid.cards.map((card, idx) => (
             <li key={card.id}>
-              <article className="flex h-full flex-col rounded-[16px] border border-neutral-200 bg-white p-6 transition-shadow hover:shadow-[0_12px_32px_-16px_rgba(74,74,73,0.18)]">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-[12px] bg-surface-warm text-brand-orange">
-                  <FeatureIcon type={card.icon} />
-                </span>
+              <article className="flex h-full flex-col items-start rounded-[16px] border border-neutral-200 bg-white p-6">
+                <NumberBadge n={idx + 1} />
                 <h3 className="mt-5 text-lg font-extrabold leading-tight text-text-dark">
                   {card.title}
                 </h3>
@@ -348,7 +191,7 @@ function PrivacySection() {
     <section
       id={privacy.sectionId}
       aria-labelledby={headlineId}
-      className="bg-surface-muted py-12 md:py-16"
+      className="bg-white py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="grid gap-10 md:grid-cols-[1fr_1.2fr] md:gap-14">
@@ -358,19 +201,6 @@ function PrivacySection() {
               {privacy.headline}
             </SectionHeading>
             <p className="mt-4 max-w-md text-text-dark">{privacy.intro}</p>
-
-            <div className="mt-7 grid grid-cols-2 gap-3">
-              <ComparisonCard
-                state="open"
-                label={privacy.comparison.other.label}
-                sub={privacy.comparison.other.sub}
-              />
-              <ComparisonCard
-                state="closed"
-                label={privacy.comparison.kidgonet.label}
-                sub={privacy.comparison.kidgonet.sub}
-              />
-            </div>
           </div>
 
           <ul className="grid gap-3">
@@ -379,7 +209,7 @@ function PrivacySection() {
                 key={item.id}
                 className="flex items-start gap-4 rounded-[16px] border border-neutral-200 bg-white p-5"
               >
-                <GreenCheck />
+                <CheckBadge />
                 <div>
                   <p className="text-base font-extrabold text-text-dark">
                     {item.title}
@@ -397,56 +227,6 @@ function PrivacySection() {
   );
 }
 
-function ComparisonCard({
-  state,
-  label,
-  sub,
-}: {
-  state: "open" | "closed";
-  label: string;
-  sub: string;
-}) {
-  const isOpen = state === "open";
-  return (
-    <div
-      className={`flex flex-col items-start rounded-[16px] border p-5 ${
-        isOpen
-          ? "border-neutral-200 bg-white"
-          : "border-brand-yellow bg-surface-warm"
-      }`}
-    >
-      <svg
-        viewBox="0 0 32 32"
-        className={`h-9 w-9 ${isOpen ? "text-neutral-300" : "text-brand-green"}`}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        aria-hidden="true"
-      >
-        {isOpen ? (
-          <>
-            <rect x="8" y="14" width="16" height="12" rx="2" />
-            <path d="M11 14V9a5 5 0 0 1 10 0" strokeLinecap="round" />
-          </>
-        ) : (
-          <>
-            <rect x="8" y="14" width="16" height="12" rx="2" />
-            <path d="M11 14V9a5 5 0 0 1 10 0v5" strokeLinecap="round" />
-          </>
-        )}
-      </svg>
-      <p
-        className={`mt-3 text-sm font-extrabold ${
-          isOpen ? "text-text-dark/60" : "text-text-dark"
-        }`}
-      >
-        {label}
-      </p>
-      <p className="mt-1 text-xs leading-snug text-text-dark/70">{sub}</p>
-    </div>
-  );
-}
-
 // ── 4. WEBFILTER ─────────────────────────────────────────────────────────
 
 function WebfilterSection() {
@@ -455,7 +235,7 @@ function WebfilterSection() {
     <section
       id={webfilter.sectionId}
       aria-labelledby={headlineId}
-      className="bg-white py-12 md:py-16"
+      className="bg-surface-muted py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="max-w-2xl text-center md:mx-auto">
@@ -463,45 +243,24 @@ function WebfilterSection() {
           <SectionHeading id={headlineId} align="center" className="mt-3">
             {webfilter.headline}
           </SectionHeading>
-          <p className="mx-auto mt-4 max-w-xl text-text-dark">{webfilter.intro}</p>
-        </div>
-
-        <ul className="mt-10 grid gap-5 sm:grid-cols-3">
-          {webfilter.typeCards.map((card) => (
-            <li
-              key={card.id}
-              className="rounded-[16px] border border-neutral-200 bg-white p-5"
-            >
-              <h3 className="text-base font-extrabold text-brand-yellow">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-text-dark">
-                {card.body}
-              </p>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-12 text-center">
-          <Eyebrow>Drei Altersstufen</Eyebrow>
-          <p className="mx-auto mt-3 max-w-xl text-xl font-extrabold leading-snug text-text-dark md:text-2xl">
-            Das Alter des Kindes bestimmt die Intensität.
+          <p className="mx-auto mt-4 max-w-xl text-text-dark md:text-lg">
+            {webfilter.intro}
           </p>
         </div>
 
-        <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+        <ul className="mt-12 grid gap-5 sm:grid-cols-3">
           {webfilter.ageGroups.map((group, idx) => {
             const intensity =
               idx === 0 ? "Streng" : idx === 1 ? "Moderat" : "Grundlegend";
             return (
               <li
                 key={group.id}
-                className="rounded-[16px] border-2 border-brand-yellow bg-white p-5"
+                className="rounded-[16px] border-2 border-brand-yellow bg-white p-6"
               >
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-brand-orange">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-brand-green">
                   {group.short}
                 </p>
-                <p className="mt-2 text-xl font-extrabold text-text-dark">
+                <p className="mt-2 text-2xl font-extrabold text-text-dark">
                   {group.label}
                 </p>
                 <p className="mt-2 text-sm text-text-dark">{group.description}</p>
@@ -525,66 +284,6 @@ function WebfilterSection() {
             );
           })}
         </ul>
-
-        <div className="mt-12 max-w-2xl text-center md:mx-auto">
-          <Eyebrow>Filterkategorien</Eyebrow>
-          <p className="mt-3 text-xl font-extrabold leading-snug text-text-dark md:text-2xl">
-            {webfilter.tableHeadline}
-          </p>
-          <p className="mt-2 text-sm text-text-dark">{webfilter.tableNote}</p>
-        </div>
-
-        <div className="mt-7 overflow-x-auto rounded-[16px] border border-neutral-200 bg-white">
-          <table className="w-full min-w-[640px] text-sm">
-            <caption className="sr-only">{webfilter.tableHeadline}</caption>
-            <thead>
-              <tr className="border-b border-neutral-200 bg-surface-warm">
-                <th
-                  scope="col"
-                  className="px-5 py-4 text-left text-[11px] font-extrabold uppercase tracking-[0.14em] text-text-dark"
-                >
-                  Kategorie
-                </th>
-                {webfilter.ageGroups.map((g) => (
-                  <th
-                    key={g.id}
-                    scope="col"
-                    className="px-3 py-4 text-center text-[11px] font-extrabold uppercase tracking-[0.14em] text-text-dark"
-                  >
-                    {g.short}
-                    <span className="ml-1 font-normal text-text-muted normal-case tracking-normal">
-                      ({g.id})
-                    </span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {webfilter.categories.map((cat, idx) => (
-                <tr
-                  key={cat.id}
-                  className={idx % 2 === 0 ? "bg-white" : "bg-surface-warm/50"}
-                >
-                  <th
-                    scope="row"
-                    className="px-5 py-3 text-left text-sm font-semibold text-text-dark"
-                  >
-                    {cat.name}
-                  </th>
-                  <td className="px-3 py-3 text-center">
-                    {cat["0-8"] ? <CheckMark /> : <CrossMark />}
-                  </td>
-                  <td className="px-3 py-3 text-center">
-                    {cat["9-12"] ? <CheckMark /> : <CrossMark />}
-                  </td>
-                  <td className="px-3 py-3 text-center">
-                    {cat["13-15"] ? <CheckMark /> : <CrossMark />}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </Container>
     </section>
   );
@@ -598,10 +297,10 @@ function ScreenTimeSection() {
     <section
       id={screenTime.sectionId}
       aria-labelledby={headlineId}
-      className="bg-surface-warm py-12 md:py-16"
+      className="bg-white py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
-        <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:gap-14">
+        <div className="grid gap-10 md:grid-cols-[1fr_1.05fr] md:gap-14">
           <div>
             <Eyebrow>{screenTime.eyebrow}</Eyebrow>
             <SectionHeading id={headlineId} className="mt-3">
@@ -611,17 +310,28 @@ function ScreenTimeSection() {
             <ul className="mt-6 grid gap-2.5">
               {screenTime.bullets.map((bullet) => (
                 <li key={bullet.id} className="flex items-start gap-3">
-                  <GreenCheck />
+                  <CheckBadge />
                   <span className="text-text-dark">{bullet.text}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <PhoneMockGrid />
+          <div className="relative mx-auto w-full max-w-[420px] md:max-w-none">
+            <div className="overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
+              <Image
+                src={screenTime.image.src}
+                alt={screenTime.image.alt}
+                width={800}
+                height={600}
+                sizes="(min-width: 768px) 520px, 100vw"
+                className="h-auto w-full object-contain"
+              />
+            </div>
+          </div>
         </div>
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-3">
+        <ul className="mt-14 grid gap-5 sm:grid-cols-3">
           {screenTime.subFeatures.map((feature) => (
             <li
               key={feature.id}
@@ -647,51 +357,6 @@ function ScreenTimeSection() {
   );
 }
 
-function PhoneMockGrid() {
-  return (
-    <div className="grid grid-cols-2 gap-3 md:gap-4">
-      {screenTime.mockups.map((mock, idx) => (
-        <div
-          key={mock.id}
-          className={`relative aspect-[9/16] overflow-hidden rounded-[20px] border border-neutral-200 bg-white p-4 ${
-            idx % 2 === 1 ? "md:mt-6" : ""
-          }`}
-        >
-          <div
-            aria-hidden="true"
-            className={`absolute inset-0 bg-gradient-to-br ${mock.accent}`}
-          />
-          <div className="relative z-10 mx-auto mb-3 h-1 w-10 rounded-full bg-text-dark/15" />
-          <div className="relative z-10 space-y-3">
-            <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-brand-orange">
-              Kidgonet
-            </p>
-            <p className="text-sm font-extrabold leading-tight text-text-dark">
-              {mock.title}
-            </p>
-            <div className="rounded-[10px] bg-white/85 p-3 backdrop-blur-sm">
-              <p className="text-[10px] text-text-dark">{mock.time}</p>
-            </div>
-            <div className="rounded-[10px] border border-brand-yellow bg-white p-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-text-dark">
-                  Aktiv
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="inline-flex h-4 w-7 items-center rounded-full bg-brand-yellow p-0.5"
-                >
-                  <span className="ml-auto block h-3 w-3 rounded-full bg-white" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 // ── 6. PORTAL ────────────────────────────────────────────────────────────
 
 function PortalSection() {
@@ -700,7 +365,7 @@ function PortalSection() {
     <section
       id={portal.sectionId}
       aria-labelledby={headlineId}
-      className="bg-white py-12 md:py-16"
+      className="bg-surface-muted py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="max-w-2xl text-center md:mx-auto">
@@ -712,26 +377,26 @@ function PortalSection() {
         </div>
 
         <div className="mt-10 grid gap-8 md:grid-cols-[1fr_1.3fr] md:gap-12">
-          <div className="self-start rounded-[16px] border border-brand-yellow bg-surface-warm p-6">
+          <div className="self-start rounded-[16px] border-2 border-brand-yellow bg-white p-6">
             <Eyebrow>{portal.licenseExample.headline}</Eyebrow>
             <p className="mt-4 text-sm leading-relaxed text-text-dark">
               {portal.licenseExample.description}
             </p>
             <div className="mt-5 grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-[12px] bg-white p-3">
+              <div className="rounded-[12px] bg-surface-muted p-3">
                 <p className="text-2xl font-extrabold text-brand-yellow">5</p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-text-muted">
                   Lizenzen
                 </p>
               </div>
-              <div className="rounded-[12px] bg-white p-3">
+              <div className="rounded-[12px] bg-surface-muted p-3">
                 <p className="text-2xl font-extrabold text-brand-yellow">∞</p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-text-muted">
                   Kinder
                 </p>
               </div>
-              <div className="rounded-[12px] bg-white p-3">
-                <p className="text-2xl font-extrabold text-brand-yellow">14</p>
+              <div className="rounded-[12px] bg-surface-muted p-3">
+                <p className="text-2xl font-extrabold text-brand-yellow">7</p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-text-muted">
                   Tage gratis
                 </p>
@@ -745,9 +410,9 @@ function PortalSection() {
               {portal.settingsBullets.map((bullet) => (
                 <li
                   key={bullet.id}
-                  className="flex items-start gap-3 rounded-[12px] bg-surface-muted px-3 py-2.5"
+                  className="flex items-start gap-3 rounded-[12px] bg-white px-4 py-3"
                 >
-                  <GreenCheck />
+                  <CheckBadge />
                   <span className="text-sm text-text-dark">{bullet.text}</span>
                 </li>
               ))}
@@ -767,7 +432,7 @@ function NgkSection() {
     <section
       id={nummerGegenKummer.sectionId}
       aria-labelledby={headlineId}
-      className="bg-surface-muted py-12 md:py-16"
+      className="bg-white py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-14">
@@ -781,7 +446,7 @@ function NgkSection() {
               href={nummerGegenKummer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-text-dark underline decoration-brand-yellow decoration-[3px] underline-offset-[6px] hover:decoration-brand-orange"
+              className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-text-dark underline decoration-brand-yellow decoration-[3px] underline-offset-[6px] hover:decoration-brand-green"
             >
               {nummerGegenKummer.urlLabel}
               <span aria-hidden="true">↗</span>
@@ -813,7 +478,7 @@ function MoreInfoSection() {
     <section
       id={moreInfo.sectionId}
       aria-labelledby={headlineId}
-      className="bg-white py-12 md:py-16"
+      className="bg-surface-muted py-14 md:py-20"
     >
       <Container className="!max-w-[1100px]">
         <div className="max-w-2xl text-center md:mx-auto">
@@ -823,10 +488,10 @@ function MoreInfoSection() {
           </SectionHeading>
         </div>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {moreInfo.cards.map((card) => (
             <li key={card.id}>
-              <article className="h-full rounded-[16px] border border-neutral-200 bg-white p-6 transition-shadow hover:shadow-[0_12px_32px_-16px_rgba(74,74,73,0.18)]">
+              <article className="h-full rounded-[16px] border border-neutral-200 bg-white p-6">
                 <h3 className="text-base font-extrabold text-brand-yellow">
                   {card.title}
                 </h3>
@@ -854,7 +519,7 @@ function CallToActionBlock({
   button: string;
 }) {
   return (
-    <div className="mt-12 overflow-hidden rounded-[20px] bg-brand-yellow px-7 py-8 text-center md:py-10">
+    <div className="mt-14 overflow-hidden rounded-[20px] bg-brand-yellow px-7 py-8 text-center md:py-10">
       <p className="text-xl font-extrabold leading-snug text-white md:text-2xl">
         {label}
       </p>
@@ -862,9 +527,9 @@ function CallToActionBlock({
       <Button
         href={siteConfig.portalWelcomeUrl}
         external
-        variant="secondary"
+        variant="primary"
         size="lg"
-        className="mt-5"
+        className="mt-5 !bg-white !text-text-dark hover:!bg-surface-muted"
       >
         {button}
       </Button>

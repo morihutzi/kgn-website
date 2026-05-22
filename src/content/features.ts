@@ -9,14 +9,6 @@ export type FeatureCard = {
 
 export type PrivacyBullet = { id: string; title: string; body: string };
 
-export type FilterCategory = {
-  id: string;
-  name: string;
-  "0-8": boolean;
-  "9-12": boolean;
-  "13-15": boolean;
-};
-
 export type AgeGroup = {
   id: "0-8" | "9-12" | "13-15";
   label: string;
@@ -53,8 +45,12 @@ export const featuresPage = {
         text: "Privatsphäre deiner Kinder bleibt geschützt",
       },
     ],
-    ctaLabel: "Jetzt 14 Tage gratis testen",
+    ctaLabel: "Jetzt 7 Tage gratis testen",
     ctaSecondaryLabel: "Funktionen ansehen",
+    image: {
+      src: "/images/hero/portal.webp",
+      alt: "Kidgonet Elternportal auf dem Smartphone",
+    },
   },
 
   featureGrid: {
@@ -63,7 +59,7 @@ export const featuresPage = {
     headline: "Das kann die Kidgonet Kinderschutz App",
     sub: "Vier Kernfunktionen, die im Familienalltag den Unterschied machen.",
     ctaLabel: "Damit deine Kinder sicher surfen.",
-    ctaSub: "Jetzt App 14 Tage kostenlos testen.",
+    ctaSub: "Jetzt App 7 Tage kostenlos testen.",
     ctaButton: "Jetzt downloaden",
     cards: [
       {
@@ -97,7 +93,6 @@ export const featuresPage = {
     sectionId: "datenschutz",
     eyebrow: "Datenschutz",
     headline: "Kidgonet spioniert dein Kind nicht aus.",
-    statement: "Vier klare Versprechen.",
     intro:
       "Die Privatsphäre der Kinder ist uns wichtig und liegt uns sehr am Herzen, denn auch Kinder haben ein Recht auf Privatsphäre.",
     bullets: [
@@ -122,41 +117,14 @@ export const featuresPage = {
         body: "DSGVO konform, Hosting in deutschen Rechenzentren, keine Tracking Pixel, kein Profiling.",
       },
     ] satisfies readonly PrivacyBullet[],
-    comparison: {
-      other: {
-        label: "Andere Apps",
-        sub: "Speichern und verkaufen Kinderdaten",
-      },
-      kidgonet: {
-        label: "Kidgonet",
-        sub: "Privatsphäre bleibt geschützt",
-      },
-    },
   },
 
   webfilter: {
     sectionId: "webfilter",
     eyebrow: "Webfilter",
-    headline: "Altersgerechter Webfilter",
+    headline: "Ein Internetfilter, der mit dem Alter mitwächst.",
     intro:
-      "Mit der Kidgonet App schützt du dein Kind vor Seiten mit Pornografie, Gewalt oder anderen gefährlichen Inhalten. Der Filter wächst mit dem Alter.",
-    typeCards: [
-      {
-        id: "type-browserunabhaengig",
-        title: "Browserunabhängig",
-        body: "Der Filter wirkt systemweit, mit jedem Browser und jeder App. Datenschutz und Privatsphäre bleiben gewahrt.",
-      },
-      {
-        id: "type-intelligent",
-        title: "Intelligente Filterung",
-        body: "Die App sieht nur die angeforderte Webadresse. Unsere Jugendschutzliste prüft und gibt frei oder sperrt.",
-      },
-      {
-        id: "type-age",
-        title: "Altersabhängige Intensität",
-        body: "Je nach Altersgruppe werden mehr oder weniger Kategorien gesperrt, angepasst an den Entwicklungsstand deines Kindes.",
-      },
-    ],
+      "Mit der Kidgonet App schützt du dein Kind vor Seiten mit Pornografie, Gewalt oder anderen gefährlichen Inhalten. Der Filter passt sich automatisch dem Alter deines Kindes an, damit nichts blockiert wird, was altersgerecht ist.",
     ageGroups: [
       {
         id: "0-8",
@@ -177,38 +145,6 @@ export const featuresPage = {
         description: "Grundlegende Filterung, mehr Eigenverantwortung",
       },
     ] satisfies readonly AgeGroup[],
-    tableHeadline: "Filterkategorien im Überblick",
-    tableNote:
-      "Ein X bedeutet, dass die Kategorie für diese Altersgruppe blockiert wird.",
-    categories: [
-      { id: "cat-ads", name: "Werbung und Tracking", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-banking", name: "Bank und Finanzdienste", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-blasphemie", name: "Blasphemie", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-chanology", name: "Chanology", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-schleichhandel", name: "Schleichhandel (Alkohol, Tabak, Drogen)", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-cp", name: "Mutmaßlich illegale Inhalte", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-crypto", name: "Cryptojacking", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-dating", name: "Dating", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-dyn", name: "Dynamisches DNS", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-facebook", name: "Facebook", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-datei", name: "Anonymes Upload und Sharing", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-freeweb", name: "Kostenlose Hosting Dienste", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-gluecksspiel", name: "Glücksspiel, Poker, Casinos", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-gaming", name: "Gaming", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-gov", name: "Gov TLDs", "0-8": true, "9-12": true, "13-15": false },
-      { id: "cat-bild", name: "Bildhosting", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-boesartig", name: "Bösartige Websites", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-pharma", name: "Pharmazeutika und Medikamente", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-piraterie", name: "Piraterie", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-porn", name: "Pornografie", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-proxy", name: "Proxies und Filter Umgehung", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-rassismus", name: "Rassismus und bigotte Inhalte", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-socialmedia", name: "Social Media", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-terror", name: "Terrorismus", "0-8": true, "9-12": true, "13-15": true },
-      { id: "cat-urlkuerz", name: "URL Kürzung", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-video", name: "Video Websites", "0-8": true, "9-12": false, "13-15": false },
-      { id: "cat-waffen", name: "Waffen, Gewalt, Feuerwaffen", "0-8": true, "9-12": true, "13-15": true },
-    ] satisfies readonly FilterCategory[],
   },
 
   screenTime: {
@@ -222,54 +158,29 @@ export const featuresPage = {
       { id: "st-portal", text: "Eltern Portal für Android und iOS" },
       { id: "st-limit", text: "Gesamtonlinezeit pro Tag wird nicht überschritten" },
     ],
-    mockups: [
-      {
-        id: "mock-pause",
-        title: "Pause einstellen",
-        time: "von 22:00 bis 06:00 Uhr",
-        accent: "from-brand-yellow/15 to-brand-yellow/5",
-      },
-      {
-        id: "mock-locked",
-        title: "Handy gesperrt",
-        time: "Anrufe und SMS bleiben möglich",
-        accent: "from-brand-orange/12 to-brand-orange/4",
-      },
-      {
-        id: "mock-unlimited",
-        title: "Unbegrenzte Zeit",
-        time: "Ferien aktiviert",
-        accent: "from-brand-green/15 to-brand-green/4",
-      },
-      {
-        id: "mock-running",
-        title: "Heute genutzt",
-        time: "1 Std. 47 von 2 Std. 30",
-        accent: "from-brand-yellow/15 to-brand-yellow/5",
-      },
-    ],
+    image: {
+      src: "/images/hero/internetsperre.webp",
+      alt: "Internetsperre in der Kidgonet App",
+    },
     subFeatures: [
       {
         id: "sub-sos",
         title: "SOS Button",
         body: "Ein Klick im Elternportal blockiert sofort den Internet Zugang auf allen Geräten des Kindes.",
-        keyhint: "01",
       },
       {
         id: "sub-unlimited",
         title: "Unbegrenzter Zugriff",
         body: "Für Ferien oder lange Autofahrten kannst du die Zeitbegrenzung temporär aufheben.",
-        keyhint: "02",
       },
       {
         id: "sub-pause",
         title: "Pausen planen",
         body: "Plane wiederkehrende Pausen für Hausaufgaben, Mahlzeiten oder Schlafenszeit.",
-        keyhint: "03",
       },
     ],
     ctaLabel: "Damit deine Kinder sicher surfen.",
-    ctaSub: "Jetzt App 14 Tage kostenlos testen.",
+    ctaSub: "Jetzt App 7 Tage kostenlos testen.",
     ctaButton: "Jetzt downloaden",
   },
 
