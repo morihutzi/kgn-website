@@ -20,10 +20,11 @@ export type AgeGroup = {
 export const featuresPage = {
   hero: {
     sectionId: "intro",
-    eyebrow: "Sicher online unterwegs",
-    headlineLead: "Go online.",
-    headlineEmphasis: "Aber sicher.",
-    subheadline: "Deshalb wirst du Kidgonet lieben.",
+    eyebrow: "Funktionen",
+    headlineLead: "Eine App.",
+    headlineEmphasis: "Alles im Blick.",
+    subheadline:
+      "Bildschirmzeit, Webfilter, Standort und mehr. Du steuerst alles aus dem Elternportal.",
     bullets: [
       {
         id: "hero-bildschirmzeit",

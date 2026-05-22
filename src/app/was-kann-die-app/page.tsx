@@ -71,11 +71,7 @@ function HeroSection() {
       <Section>
         <div className="grid items-center gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-brand-yellow bg-white px-3 py-1 text-sm text-text-dark">
-              <span
-                aria-hidden="true"
-                className="h-1.5 w-1.5 rounded-full bg-brand-yellow"
-              />
+            <span className="inline-flex items-center rounded-full border border-brand-yellow bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
               {hero.eyebrow}
             </span>
             <h1 className="mt-4 text-3xl font-extrabold leading-[1.05] text-text-dark md:text-[40px]">
