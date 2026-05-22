@@ -132,20 +132,41 @@ def is_skip_image(url: str) -> bool:
     return any(p in lowered for p in SKIP_IMAGE_PATTERNS)
 
 
+def image_basename_key(url: str) -> str:
+    """Erzeugt einen normalisierten Schluessel zum Vergleich von
+    WordPress-Bildvarianten (z.B. ``Foo-1024x683.jpg`` und ``Foo-scaled.jpg``
+    haben denselben Schluessel ``foo``)."""
+    name = os.path.basename(urllib.parse.urlparse(url).path)
+    name = name.rsplit(".", 1)[0]
+    name = re.sub(r"-\d+x\d+$", "", name)
+    name = re.sub(r"-scaled$", "", name)
+    name = re.sub(r"-e\d+$", "", name)
+    return name.lower()
+
+
 def extract_image_urls(html_str: str) -> list[str]:
     urls = re.findall(r"<img[^>]+src=\"([^\"]+)\"", html_str)
     return [u for u in urls if u.startswith("http") and not is_skip_image(u)]
 
 
-def strip_skip_images_from_html(html_str: str) -> str:
-    # Entfernt <img>-Tags mit dekorativen Brand-Bildern komplett aus dem
-    # Quelltext, damit sie weder geladen noch im MDX referenziert werden.
+def strip_skip_images_from_html(
+    html_str: str, cover_key: str | None = None
+) -> str:
+    """Entfernt dekorative Brand-Bilder UND Varianten des Cover-Bilds.
+    Cover wird bereits im Hero ausgespielt; Varianten (1024x683 etc.)
+    duerfen im Body nicht ein zweites Mal auftauchen."""
+
     def replace(match: re.Match[str]) -> str:
         tag = match.group(0)
         src_match = re.search(r"src=\"([^\"]+)\"", tag)
         if not src_match:
             return tag
-        return "" if is_skip_image(src_match.group(1)) else tag
+        src = src_match.group(1)
+        if is_skip_image(src):
+            return ""
+        if cover_key and image_basename_key(src) == cover_key:
+            return ""
+        return tag
 
     return re.sub(r"<img[^>]+>", replace, html_str)
 
@@ -232,10 +253,39 @@ def clean_md_body(md_text: str, title: str) -> str:
     if lines and re.match(r"^#\s+\S", lines[0]):
         lines = lines[1:]
         lines = drop_leading_empty(lines)
+
+    # WP nutzt manchmal mehrere H2 als Titel-Fragmente am Anfang ("Bayerischer
+    # Digitalpreis" / "B.DiGiTAL 2025" / "..."). Wenn 2+ aufeinanderfolgende
+    # H2 am Anfang stehen UND ihr Inhalt im Titel vorkommt, werden sie
+    # gestrippt.
+    def _title_norm(s: str) -> str:
+        return re.sub(r"[^\w]+", "", s, flags=re.UNICODE).lower()
+
+    leading_h2: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip()
+        if not line:
+            i += 1
+            continue
+        m = re.match(r"^##\s+(.+)$", line)
+        if m:
+            leading_h2.append(m.group(1).strip())
+            i += 1
+            continue
+        break
+
+    if len(leading_h2) >= 2:
+        title_n = _title_norm(title)
+        combined_n = _title_norm(" ".join(leading_h2))
+        match = combined_n and (combined_n in title_n or title_n[:30] in combined_n)
+        if match:
+            lines = lines[i:]
+            lines = drop_leading_empty(lines)
+
     md_text = "\n".join(lines)
     # Restliche H1 im Body zu H2 demoten (nur eine H1 pro Seite zulassen).
     md_text = re.sub(r"^# (?=\S)", "## ", md_text, flags=re.MULTILINE)
-    _ = title  # signatur kompatibel halten
     # Headings: remove inline bold/italic markers inside headings (## **Foo** -> ## Foo)
     md_text = re.sub(
         r"^(#{1,6}\s+)\*\*(.+?)\*\*\s*$",
@@ -266,11 +316,16 @@ def clean_md_body(md_text: str, title: str) -> str:
     return md_text.strip()
 
 
-def html_to_mdx_body(html_str: str, img_map: dict[str, str], title: str) -> str:
+def html_to_mdx_body(
+    html_str: str,
+    img_map: dict[str, str],
+    title: str,
+    cover_key: str | None = None,
+) -> str:
     cleaned = re.sub(r"<!--.*?-->", "", html_str, flags=re.DOTALL)
     cleaned = re.sub(r"<script[\s\S]*?</script>", "", cleaned)
     cleaned = re.sub(r"<style[\s\S]*?</style>", "", cleaned)
-    cleaned = strip_skip_images_from_html(cleaned)
+    cleaned = strip_skip_images_from_html(cleaned, cover_key=cover_key)
     for src, local in img_map.items():
         cleaned = cleaned.replace(src, local)
         cleaned = cleaned.replace(src.replace("&", "&amp;"), local)
@@ -334,6 +389,7 @@ def main() -> None:
         # Featured media
         cover_local: str | None = None
         cover_alt: str | None = None
+        cover_key: str | None = None
         embedded = post.get("_embedded", {})
         media_list = embedded.get("wp:featuredmedia", []) or []
         media = media_list[0] if media_list else None
@@ -346,6 +402,7 @@ def main() -> None:
                 .get("source_url")
             )
             if cover_url:
+                cover_key = image_basename_key(cover_url)
                 ext = file_ext_from_url(cover_url)
                 local_rel = f"/images/elternratgeber/{slug}/cover{ext}"
                 dest = ROOT / "public" / local_rel.lstrip("/")
@@ -359,6 +416,7 @@ def main() -> None:
         # Fallback Cover aus erstem Inline-Bild, falls Featured fehlt
         if not cover_local and img_urls:
             fallback_url = normalize_wp_url(img_urls[0])
+            cover_key = image_basename_key(fallback_url)
             ext = file_ext_from_url(fallback_url)
             local_rel = f"/images/elternratgeber/{slug}/cover{ext}"
             dest = ROOT / "public" / local_rel.lstrip("/")
@@ -367,6 +425,9 @@ def main() -> None:
                 cover_alt = title
         img_map: dict[str, str] = {}
         for i, raw_url in enumerate(img_urls, start=1):
+            # Cover-Varianten ueberspringen (werden bereits im Hero gezeigt)
+            if cover_key and image_basename_key(raw_url) == cover_key:
+                continue
             url = normalize_wp_url(raw_url)
             name = safe_image_name(url, i)
             local_rel = f"/images/elternratgeber/{slug}/{name}"
@@ -374,7 +435,7 @@ def main() -> None:
             if download(url, dest):
                 img_map[raw_url] = local_rel
 
-        body_md = html_to_mdx_body(content_html, img_map, title)
+        body_md = html_to_mdx_body(content_html, img_map, title, cover_key)
         lesezeit = read_time_minutes(body_md)
         # Teaser saeubern: redundante Titel-Wiederholung am Anfang entfernen
         if teaser and teaser.lower().startswith(title.lower()):
