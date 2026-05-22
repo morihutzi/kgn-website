@@ -26,13 +26,13 @@ export function Hero() {
           style={{ objectPosition: "30% center" }}
         />
 
-        {/* Award badge — Bayerischer Digitalpreis 2025, top-left */}
+        {/* Award badge — Bayerischer Digitalpreis 2025, bottom-left (right side reserved for CTA stack) */}
         <Image
           src="/images/award/digitalpreis-bayern-2025-gold.png"
           alt="Sieger Bayerischer Digitalpreis 2025"
           width={2381}
           height={928}
-          className="absolute left-3 top-3 z-20 h-auto w-[110px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.25)]"
+          className="absolute bottom-3 left-3 z-20 h-auto w-[100px] drop-shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
         />
 
         <div className="relative z-10 flex flex-col items-end gap-[35px] py-[26px] pr-[35px]">
@@ -108,13 +108,13 @@ export function Hero() {
                 className="object-cover"
               />
 
-              {/* Award badge — Bayerischer Digitalpreis 2025, top-left */}
+              {/* Award badge — Bayerischer Digitalpreis 2025, bottom-right corner */}
               <Image
                 src="/images/award/digitalpreis-bayern-2025-gold.png"
                 alt="Sieger Bayerischer Digitalpreis 2025"
                 width={2381}
                 height={928}
-                className="absolute left-[4%] top-[5%] z-20 h-auto w-[18%] max-w-[150px] drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                className="absolute bottom-[4%] right-[3%] z-20 h-auto w-[16%] max-w-[140px] drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
               />
 
               {/* Headline block — Figma position (231,102) / size (604x205) */}
