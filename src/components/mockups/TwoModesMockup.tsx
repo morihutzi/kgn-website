@@ -10,49 +10,88 @@ import {
 } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
 
-const NATIVE_WIDTH = 400;
-const NATIVE_HEIGHT = 510;
+const NATIVE_WIDTH = 220;
+const PHONE_VISIBLE_HEIGHT = 250;
+const CAPTION_HEIGHT = 18;
+const GAP_BETWEEN = 32;
+const NATIVE_HEIGHT =
+  (CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT) * 2 + GAP_BETWEEN;
 
 /**
- * Two-Modes-Mockup: Zwei Phones nebeneinander, leicht versetzt und
- * in entgegengesetzte Richtungen gekippt. Visualisiert die Aussage
- * "Eine App, zwei Modi" — beide Phones stehen für die gleiche
- * Kidgonet-App auf dem Kindergerät:
- *  - links: Kindermodus (was das Kind sieht)
- *  - rechts: Eltern-Steuerung (was du auf dem gleichen Gerät siehst)
+ * Two-Modes-Mockup: Zwei Phones vertikal übereinander gestapelt, jeweils
+ * unten zur Hälfte abgeschnitten. Über jedem Phone eine kleine Caption,
+ * die das Gerät benennt. Visualisiert "Eine App, zwei Modi" als zwei
+ * verschiedene Geräte: Elterngerät (Steuerung) und Kindgerät (Kindermodus).
  *
- * Statisch, keine Animation. Wird per [[TwoModesMockupScaled]] auf
- * eine Zielbreite skaliert.
+ * Statisch, keine Animation. Wird per [[TwoModesMockupScaled]] auf eine
+ * Zielbreite skaliert.
  */
 export function TwoModesMockup() {
+  const dividerCenter =
+    CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN / 2;
   return (
     <div
       className="relative"
       style={{ width: NATIVE_WIDTH, height: NATIVE_HEIGHT }}
     >
+      <DeviceBlock label="Elterngerät" top={0}>
+        <ElternPhone />
+      </DeviceBlock>
+
       <div
-        className="absolute"
-        style={{
-          left: 165,
-          top: 30,
-          width: 220,
-          transform: "rotate(5deg)",
-          zIndex: 1,
-        }}
+        className="absolute inset-x-0 flex items-center gap-2 px-4"
+        style={{ top: dividerCenter - 6, height: 12 }}
+        aria-hidden
       >
-        <ParentPhone />
+        <div className="h-px flex-1 bg-foreground/20" />
+        <div className="size-1.5 rounded-full bg-foreground/35" />
+        <div className="h-px flex-1 bg-foreground/20" />
       </div>
-      <div
-        className="absolute"
-        style={{
-          left: 0,
-          top: 10,
-          width: 220,
-          transform: "rotate(-5deg)",
-          zIndex: 2,
-        }}
+
+      <DeviceBlock
+        label="Kindgerät"
+        top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
       >
         <KidPhone />
+      </DeviceBlock>
+    </div>
+  );
+}
+
+function DeviceBlock({
+  label,
+  top,
+  children,
+}: {
+  label: string;
+  top: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className="absolute left-0 right-0 flex flex-col items-center"
+      style={{ top }}
+    >
+      <span className="mb-1 text-[8px] font-extrabold uppercase tracking-[0.14em] text-foreground/55">
+        {label}
+      </span>
+      <div
+        className="relative"
+        style={{
+          width: NATIVE_WIDTH,
+          height: PHONE_VISIBLE_HEIGHT,
+          overflow: "hidden",
+        }}
+      >
+        {children}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-14"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
+          }}
+          aria-hidden
+        />
       </div>
     </div>
   );
@@ -108,8 +147,8 @@ function KidPhone() {
           </div>
         </div>
 
-        <div className="flex flex-1 items-center justify-center px-4">
-          <div className="relative aspect-square w-full max-w-[150px]">
+        <div className="mt-3 flex items-center justify-center">
+          <div className="relative aspect-square w-[110px]">
             <svg
               viewBox="0 0 100 100"
               className="absolute inset-0 h-full w-full"
@@ -147,22 +186,20 @@ function KidPhone() {
             </svg>
           </div>
         </div>
-
-        <div className="h-4" />
       </div>
     </PhoneFrame>
   );
 }
 
-function ParentPhone() {
+function ElternPhone() {
   return (
     <PhoneFrame className="max-w-[220px]">
       <YellowGradient />
       <div className="relative z-10 flex h-full flex-col">
         <StatusBar />
 
-        <div className="mx-3 mt-3 rounded-xl bg-white px-3 pb-2.5 pt-2.5 shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
-          <div className="text-[7px] font-extrabold uppercase tracking-[0.08em] text-foreground/45">
+        <div className="mx-3 mt-3 rounded-xl bg-white px-3 py-2 shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
+          <div className="text-[7px] font-extrabold uppercase tracking-[0.1em] text-foreground/45">
             Eltern-Steuerung
           </div>
           <div className="mt-0.5 text-[11px] font-extrabold text-foreground">
@@ -191,9 +228,6 @@ function ParentPhone() {
             value="Mo–Fr"
           />
         </div>
-
-        <div className="flex-1" />
-        <div className="h-4" />
       </div>
     </PhoneFrame>
   );
