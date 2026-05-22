@@ -10,23 +10,30 @@ export const hero = {
   ],
 } as const;
 
-export const problemSolution = {
+export type Bullet = { strong: string; rest: string };
+
+export const problemSolution: {
+  eyebrow: string;
+  headline: string;
+  bullets: Bullet[];
+  trustLogos: { src: string; alt: string }[];
+} = {
   eyebrow: "Ständig Streit ums Handy?",
   headline: "Hier ist die Lösung:",
   bullets: [
-    "Bildschirmzeiten ganz einfach festlegen, für alle Geräte",
-    "Browserunabhängiger Internetfilter zum Schutz vor unangemessenen Seiten & Inhalten",
-    "Geräteortung – immer wissen wo Deine Kinder sind",
-    "Bildschirmpausen werden endlich eingehalten",
-    "Musik- & Lernapps während der Pause freigeben",
-    "Privatsphäre Deiner Kinder bleibt geschützt",
+    { strong: "Bildschirmzeiten", rest: " ganz einfach festlegen, für alle Geräte" },
+    { strong: "Webfilter", rest: " zum Schutz vor unangemessenen Seiten & Inhalten" },
+    { strong: "Geräteortung", rest: " – immer wissen, wo deine Kinder sind" },
+    { strong: "Bildschirmpausen", rest: " werden endlich eingehalten" },
+    { strong: "Medienkompetenztraining", rest: " – damit deine Kinder Gefahren im Netz erkennen" },
+    { strong: "Privatsphäre", rest: " deiner Kinder bleibt geschützt" },
   ],
   trustLogos: [
     { src: "/images/trust/eltern.png", alt: "Eltern.de" },
     { src: "/images/trust/elternguideonline.png", alt: "ElternGuideOnline" },
     { src: "/images/trust/merkur.png", alt: "Merkur.de" },
   ],
-} as const;
+};
 
 export const steps = {
   headline: "So einfach geht's",

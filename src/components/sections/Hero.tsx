@@ -59,15 +59,33 @@ export function Hero() {
               </p>
             </div>
 
-            {/* CTA row — Figma position (512,297) — Google Play + yellow pill */}
+            {/* CTA row — Google Play + App Store badges + yellow pill */}
             <div
               className="absolute flex items-center"
               style={{
-                left: "55.05%",
+                left: "42%",
                 top: "59.88%",
                 gap: "min(10px, 1.08cqw)",
               }}
             >
+              <a
+                href={siteConfig.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Im App Store laden"
+                className="block"
+              >
+                <Image
+                  src="/badges/app-store-de.svg"
+                  alt="Im App Store laden"
+                  width={125}
+                  height={37}
+                  style={{
+                    width: "min(125px, 13.44cqw)",
+                    height: "auto",
+                  }}
+                />
+              </a>
               <a
                 href={siteConfig.playStoreUrl}
                 target="_blank"
