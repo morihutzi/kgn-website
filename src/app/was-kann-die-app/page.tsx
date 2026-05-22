@@ -7,6 +7,7 @@ import { StoreBadges } from "@/components/ui/StoreBadges";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
+import { ElternportalMockupScaled } from "@/components/mockups/ElternportalMockupScaled";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
 import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
 import type { FeatureGridIcon } from "@/content/features";
@@ -436,55 +437,30 @@ function PortalSection() {
         <SectionHeading id={headlineId} align="center">
           {portal.headline}
         </SectionHeading>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-text-dark">
-          {portal.intro}
+        <p className="mx-auto mt-3 max-w-xl text-center text-text-dark">
+          Steuere alles über das Elternportal. Verfügbar als App für iOS
+          und Android oder im Browser auf jedem Gerät.
         </p>
 
-        <div className="mt-7 grid gap-6 md:grid-cols-[1fr_1.3fr] md:gap-8">
-          <div className="self-start rounded-[16px] border-2 border-brand-yellow bg-white p-5">
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-text-muted">
-              {portal.licenseExample.headline}
+        <div className="mt-10 grid items-end gap-10 md:grid-cols-2 md:gap-6">
+          <div className="flex flex-col items-center text-center">
+            <ConnectDevicesMockupScaled width={160} />
+            <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
+              Als App
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-text-dark">
-              {portal.licenseExample.description}
+            <p className="mt-1 text-sm font-bold text-text-dark">
+              iOS und Android
             </p>
-            <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-              <div className="rounded-[10px] bg-surface-muted p-2">
-                <p className="text-xl font-extrabold text-brand-yellow">5</p>
-                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-text-muted">
-                  Lizenzen
-                </p>
-              </div>
-              <div className="rounded-[10px] bg-surface-muted p-2">
-                <p className="text-xl font-extrabold text-brand-yellow">∞</p>
-                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-text-muted">
-                  Kinder
-                </p>
-              </div>
-              <div className="rounded-[10px] bg-surface-muted p-2">
-                <p className="text-xl font-extrabold text-brand-yellow">7</p>
-                <p className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-text-muted">
-                  Tage gratis
-                </p>
-              </div>
-            </div>
           </div>
 
-          <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-text-muted">
-              {portal.settingsHeadline}
+          <div className="flex flex-col items-center text-center">
+            <ElternportalMockupScaled width={160} />
+            <p className="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
+              Im Browser
             </p>
-            <ul className="mt-3 grid gap-1.5 sm:grid-cols-2">
-              {portal.settingsBullets.map((bullet) => (
-                <li
-                  key={bullet.id}
-                  className="flex items-start gap-2 rounded-[10px] bg-surface-muted px-3 py-2"
-                >
-                  <CheckBadge />
-                  <span className="text-xs text-text-dark">{bullet.text}</span>
-                </li>
-              ))}
-            </ul>
+            <p className="mt-1 text-sm font-bold text-text-dark">
+              Laptop, Tablet, Handy
+            </p>
           </div>
         </div>
       </Section>

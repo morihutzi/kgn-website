@@ -184,7 +184,7 @@ export const featuresPage = {
       {
         id: "sub-sos",
         title: "SOS Button",
-        body: "Ein Klick im Elternportal blockiert sofort den Internet Zugang auf allen Geräten des Kindes.",
+        body: "Ein Klick im Elternportal sperrt sofort alle Geräte deines Kindes.",
       },
       {
         id: "sub-unlimited",
