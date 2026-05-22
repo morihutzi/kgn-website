@@ -96,11 +96,11 @@ export function Hero() {
                   <Image
                     src="/badges/app-store-de.svg"
                     alt="Im App Store laden"
-                    width={125}
-                    height={37}
+                    width={120}
+                    height={40}
                     style={{
-                      width: "min(110px, 11.83cqw)",
-                      height: "auto",
+                      height: "min(34px, 3.66cqw)",
+                      width: "auto",
                     }}
                   />
                 </a>
@@ -114,11 +114,11 @@ export function Hero() {
                   <Image
                     src="/badges/google-play-de.png"
                     alt="Bei Google Play laden"
-                    width={125}
-                    height={37}
+                    width={270}
+                    height={80}
                     style={{
-                      width: "min(110px, 11.83cqw)",
-                      height: "auto",
+                      height: "min(34px, 3.66cqw)",
+                      width: "auto",
                     }}
                   />
                 </a>
