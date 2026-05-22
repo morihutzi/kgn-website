@@ -30,20 +30,9 @@ const {
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-brand-green">
+    <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-text-muted">
       {children}
     </p>
-  );
-}
-
-function NumberBadge({ n }: { n: number }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand-green text-xl font-extrabold text-white"
-    >
-      {n}
-    </span>
   );
 }
 
@@ -218,16 +207,27 @@ function FeatureGridSection() {
         </div>
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featureGrid.cards.map((card, idx) => (
+          {featureGrid.cards.map((card) => (
             <li key={card.id}>
-              <article className="flex h-full flex-col items-start rounded-[16px] border border-neutral-200 bg-white p-6">
-                <NumberBadge n={idx + 1} />
-                <h3 className="mt-5 text-lg font-extrabold leading-tight text-text-dark">
-                  {card.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-dark">
-                  {card.body}
-                </p>
+              <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
+                <div className="flex h-44 items-center justify-center bg-brand-yellow/10">
+                  <Image
+                    src={card.image.src}
+                    alt={card.image.alt}
+                    width={160}
+                    height={160}
+                    sizes="(min-width: 1024px) 240px, (min-width: 640px) 320px, 100vw"
+                    className="h-32 w-auto object-contain"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-lg font-extrabold leading-tight text-text-dark">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-text-dark">
+                    {card.body}
+                  </p>
+                </div>
               </article>
             </li>
           ))}

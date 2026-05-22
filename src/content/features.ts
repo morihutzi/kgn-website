@@ -5,6 +5,7 @@ export type FeatureCard = {
   title: string;
   body: string;
   icon: FeatureGridIcon;
+  image: { src: string; alt: string };
 };
 
 export type PrivacyBullet = { id: string; title: string; body: string };
@@ -67,24 +68,31 @@ export const featuresPage = {
         title: "Sekundengenaue Zeiterfassung",
         body: "Online und Offline Aktivitäten werden sekundengenau erfasst. Du siehst auf einen Blick, wie viel Bildschirmzeit dein Kind heute hatte.",
         icon: "timer",
+        image: { src: "/images/hero/sanduhr.webp", alt: "Sanduhr Zeitanzeige" },
       },
       {
         id: "grid-devices",
         title: "Geräteübergreifend",
         body: "Online Zeiten von Handy und Tablet werden addiert. Bis zu fünf Geräte pro Abo, kein Tageslimit wird durch Gerätewechsel umgangen.",
         icon: "devices",
+        image: { src: "/images/hero/portal.webp", alt: "Elternportal" },
       },
       {
         id: "grid-apps",
         title: "Apps während der Pause freigeben",
         body: "Notfall und Lernapps können während der Bildschirmzeit Pause gezielt freigegeben werden. Du entscheidest, was wichtig bleibt.",
         icon: "apps",
+        image: { src: "/images/hero/block.webp", alt: "App freigegeben" },
       },
       {
         id: "grid-filter",
         title: "Browserunabhängiger Internetfilter",
         body: "Der Filter wirkt systemweit, unabhängig vom Browser. Unerwünschte Inhalte werden auf allen Geräten und in allen Apps zuverlässig gefiltert.",
         icon: "filter",
+        image: {
+          src: "/images/hero/internetsperre.webp",
+          alt: "Internetsperre",
+        },
       },
     ] satisfies readonly FeatureCard[],
   },
