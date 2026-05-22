@@ -66,7 +66,7 @@ export function FeatureList() {
       </section>
 
       {/* DESKTOP Yellow Block — phone overhangs upward, bullets right */}
-      <section className="hidden pt-2 pb-2 md:block md:pt-3 md:pb-3">
+      <section className="hidden pt-2 pb-0 md:block md:pt-3 md:pb-0">
         <Container>
           <div className="mx-auto w-full max-w-[720px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
