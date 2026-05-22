@@ -52,9 +52,9 @@ export const steps = {
     },
     {
       image: "/images/steps/portal-install.jpeg",
-      alt: "Elternportal im Browser",
-      title: "Steuer auch vom Browser",
-      text: "Auf portal.kidgonet.de einloggen, ohne zweite App. Vom Laptop, Tablet oder Handy aus.",
+      alt: "Geräte der Kinder mit Eltern-Account verbinden",
+      title: "Alle Kindergeräte verbinden",
+      text: "Smartphone, Tablet und Laptop deiner Kinder. Alle Geräte mit deinem Kidgonet-Account verbinden, alle Regeln pro Kind.",
     },
     {
       image: "/images/steps/internetsperre.png",

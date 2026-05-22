@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
+import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { TwoModesMockupScaled } from "@/components/mockups/TwoModesMockupScaled";
 import { steps } from "@/content/home";
 
@@ -21,18 +21,10 @@ export function Steps() {
             <div className="flex h-[260px] items-center justify-center">
               {idx === 0 ? (
                 <TwoModesMockupScaled width={110} />
-              ) : idx === 2 ? (
-                <ChildviewMockupScaled width={110} />
+              ) : idx === 1 ? (
+                <ConnectDevicesMockupScaled width={110} />
               ) : (
-                <div className="relative h-44 w-44">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="176px"
-                    className="object-contain"
-                  />
-                </div>
+                <ChildviewMockupScaled width={110} />
               )}
             </div>
             <p className="mt-3 text-xs font-semibold text-brand-yellow">
@@ -58,18 +50,10 @@ export function Steps() {
             <div className="flex h-[290px] items-center justify-center">
               {idx === 0 ? (
                 <TwoModesMockupScaled width={125} />
-              ) : idx === 2 ? (
-                <ChildviewMockupScaled width={125} />
+              ) : idx === 1 ? (
+                <ConnectDevicesMockupScaled width={125} />
               ) : (
-                <div className="relative h-48 w-48">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="192px"
-                    className="object-contain"
-                  />
-                </div>
+                <ChildviewMockupScaled width={125} />
               )}
             </div>
             <p className="mt-2 text-xs font-semibold text-brand-yellow">
