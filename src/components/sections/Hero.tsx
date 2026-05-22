@@ -65,7 +65,7 @@ export function Hero() {
               style={{
                 right: "8%",
                 top: "55%",
-                gap: "min(8px, 0.86cqw)",
+                gap: "min(16px, 1.72cqw)",
               }}
             >
               <a
