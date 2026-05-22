@@ -68,7 +68,7 @@ export function FeatureList() {
               </div>
 
               {/* Logo directly under the phone mockup on the left, small gap */}
-              <div className="mt-8 flex justify-center md:absolute md:left-4 md:top-[200px] md:mt-0 md:w-[150px] md:justify-center lg:left-10 lg:top-[235px] lg:w-[180px]">
+              <div className="mt-8 flex justify-center md:absolute md:left-4 md:top-[220px] md:mt-0 md:w-[150px] md:justify-center lg:left-10 lg:top-[255px] lg:w-[180px]">
                 <Image
                   src="/brand/logo-weiss.png"
                   alt="Kidgonet"
