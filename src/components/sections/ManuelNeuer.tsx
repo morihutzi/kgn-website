@@ -6,21 +6,16 @@ import { siteConfig } from "@/content/site";
 
 export function ManuelNeuer() {
   return (
-    <div className="relative overflow-hidden bg-surface-warm">
-      <div
+    <div className="relative overflow-hidden bg-[#F8F2E7]">
+      <Image
+        src="/images/banners/cta-teens.jpeg"
+        alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 hidden opacity-25 md:block"
-      >
-        <Image
-          src={manuelNeuer.image}
-          alt=""
-          width={770}
-          height={1024}
-          sizes="40vw"
-          className="h-full w-auto object-cover object-right"
-          priority={false}
-        />
-      </div>
+        fill
+        sizes="(min-width: 1280px) 1200px, 100vw"
+        priority={false}
+        className="object-cover object-right"
+      />
 
       <Section maxWidth={1200} className="relative">
         <div className="grid items-center gap-8 md:grid-cols-[320px_1fr] md:gap-16">
