@@ -6,20 +6,24 @@ import { hero, problemSolution } from "@/content/home";
 
 function CheckIcon() {
   return (
-    <svg
+    <span
       aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="mt-1 h-5 w-5 flex-shrink-0 text-white"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
+      className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-[4px] bg-brand-green"
     >
-      <path
-        d="M5 13l4 4L19 7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+      <svg
+        viewBox="0 0 24 24"
+        className="h-3.5 w-3.5 text-white"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3.5"
+      >
+        <path
+          d="M5 13l4 4L19 7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -34,10 +38,10 @@ export function FeatureList() {
               {/* Phone slideshow positioned to overhang upward into white space above */}
               <PhoneSlideshow
                 slides={hero.icons}
-                className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-140px] lg:w-[200px]"
+                className="pointer-events-none absolute left-4 top-[-160px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-190px] lg:w-[200px]"
               />
 
-              <div className="grid items-start gap-5 md:grid-cols-[160px_1fr]">
+              <div className="grid items-start gap-6 md:grid-cols-[210px_1fr] lg:grid-cols-[240px_1fr]">
                 {/* Reserved space for the phone */}
                 <div className="hidden md:block" aria-hidden="true" />
 
