@@ -20,7 +20,7 @@ export function InternetfilterMockup() {
             className="size-[8px] text-[#4A4A49]"
             strokeWidth={2.5}
           />
-          <span className="flex-1 truncate rounded-full bg-[#FFD9DC] px-2 py-[1px] text-[6px] font-semibold text-[#C24450]">
+          <span className="flex-1 truncate rounded-full bg-white px-2 py-[1px] text-[6px] font-semibold text-[#4A4A49]">
             blocked-page.de
           </span>
           <Plus className="size-[8px] text-[#4A4A49]" strokeWidth={2.5} />
