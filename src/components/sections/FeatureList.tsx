@@ -31,7 +31,7 @@ export function FeatureList() {
           {/* Phone slideshow positioned to overhang upward into white space above */}
           <PhoneSlideshow
             slides={hero.icons}
-            className="pointer-events-none absolute left-4 top-[-100px] z-10 hidden w-[140px] md:block lg:left-10 lg:top-[-110px] lg:w-[160px]"
+            className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-140px] lg:w-[200px]"
           />
 
           <div className="grid items-start gap-5 md:grid-cols-[160px_1fr]">
@@ -59,13 +59,13 @@ export function FeatureList() {
           </div>
 
           {/* Logo under the phone mockup on the left, same x and width as phone */}
-          <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[140px] md:justify-center lg:left-10 lg:w-[160px]">
+          <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[170px] md:justify-center lg:left-10 lg:w-[200px]">
             <Image
               src="/brand/logo-weiss.png"
               alt="Kidgonet"
               width={203}
               height={28}
-              className="h-auto w-full max-w-[160px] opacity-95"
+              className="h-auto w-full max-w-[200px] opacity-95"
             />
           </div>
         </div>

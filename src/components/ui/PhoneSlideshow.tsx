@@ -23,7 +23,7 @@ export function PhoneSlideshow({ slides, className = "", intervalMs = 3000 }: Pr
 
   return (
     <div className={className}>
-      <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[28px] border-[5px] border-[#fafafa] bg-white shadow-2xl">
+      <div className="relative aspect-[9/19] w-full overflow-hidden rounded-[18px] border-[5px] border-[#fafafa] bg-white shadow-2xl">
         {slides.map((slide, i) => (
           <div
             key={slide.src}
