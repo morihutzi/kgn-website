@@ -11,42 +11,32 @@ import { siteConfig } from "@/content/site";
 export function Hero() {
   return (
     <>
-      {/* MOBILE Hero — yellow band */}
-      <section className="bg-brand-yellow px-4 py-6 md:hidden">
-        <div className="mx-auto max-w-[400px]">
-          <div className="grid grid-cols-[1fr_115px] items-center gap-3">
-            <div className="text-white">
-              <h1 className="text-[22px] font-extrabold leading-[1.1] text-white">
-                {hero.headline}
-              </h1>
-              <p className="mt-2 text-sm font-semibold text-white">
-                {hero.subheadline}
-              </p>
-            </div>
-            <div className="relative aspect-square w-full overflow-hidden rounded-[12px]">
-              <Image
-                src="/images/hero/vater-sohn.jpeg"
-                alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
-                fill
-                sizes="120px"
-                priority
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          <div className="mt-5 flex justify-center">
-            <a
-              href={siteConfig.portalWelcomeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-[10px] bg-white px-6 py-2.5 text-[14px] font-extrabold text-text-dark shadow-sm"
+      {/* MOBILE Hero — photo banner with right-aligned overlay */}
+      <section
+        className="relative w-full bg-cover bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: "url(/images/hero/banner.jpeg)",
+          backgroundPosition: "30% center",
+          aspectRatio: "390 / 427",
+        }}
+      >
+        <div className="flex h-full flex-col items-end gap-[35px] py-[26px] pr-[35px]">
+          <div className="flex w-full flex-col gap-5">
+            <h1
+              className="text-right font-extrabold text-[#4a4a49]"
+              style={{ fontSize: "35px", lineHeight: "37px" }}
             >
-              {hero.primaryCtaLabel}
-            </a>
+              Deine Kinder<br /> surfen sicher –<br /> mit Kidgonet
+            </h1>
+            <h2
+              className="text-right font-medium text-[#202020]"
+              style={{ fontSize: "24px", lineHeight: "30px" }}
+            >
+              Nur 3 Klicks für mehr<br /> Sicherheit im Netz.
+            </h2>
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-2.5">
+          <div className="flex w-[173px] flex-col items-end gap-[15px]">
             <a
               href={siteConfig.appStoreUrl}
               target="_blank"
@@ -59,7 +49,7 @@ export function Hero() {
                 alt="Im App Store laden"
                 width={120}
                 height={40}
-                style={{ height: "32px", width: "auto" }}
+                style={{ height: "38px", width: "auto" }}
               />
             </a>
             <a
@@ -74,8 +64,16 @@ export function Hero() {
                 alt="Bei Google Play laden"
                 width={270}
                 height={80}
-                style={{ height: "32px", width: "auto" }}
+                style={{ height: "38px", width: "auto" }}
               />
+            </a>
+            <a
+              href={siteConfig.portalWelcomeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-[5px] bg-brand-yellow px-[10px] py-[10px] text-[15px] font-extrabold leading-[20px] text-white"
+            >
+              Jetzt gratis testen
             </a>
           </div>
         </div>
