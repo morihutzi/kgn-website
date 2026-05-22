@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { faq, pricing, type PricingPlan } from "@/content/home";
 import { siteConfig } from "@/content/site";
+import { FAQItem } from "./FAQItem";
 
 const PRICING_QUESTION = "Welche Abomodelle gibt es?";
 
@@ -26,35 +26,12 @@ export function FAQ() {
         </div>
 
         <ul className="mt-8">
-          {faq.items.map((item) => {
-            const isPricingItem = item.question === PRICING_QUESTION;
-            return (
-              <li
-                key={item.question}
-                className="border-b border-brand-yellow/70 last:border-b-0"
-              >
-                <details className="group">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5 text-left text-sm font-bold text-text-dark marker:content-none md:text-[15px] [&::-webkit-details-marker]:hidden">
-                    <span className="flex-1">{item.question}</span>
-                    <span
-                      aria-hidden="true"
-                      className="flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-brand-yellow text-brand-yellow transition-transform duration-200 group-open:rotate-180"
-                    >
-                      <ChevronDown
-                        className="size-3.5"
-                        strokeWidth={2.5}
-                        aria-hidden
-                      />
-                    </span>
-                  </summary>
-                  <div className="pb-5 pr-10 text-sm leading-relaxed text-text-dark/75">
-                    <p>{item.answer}</p>
-                    {isPricingItem && <PricingCards />}
-                  </div>
-                </details>
-              </li>
-            );
-          })}
+          {faq.items.map((item) => (
+            <FAQItem key={item.question} question={item.question}>
+              <p>{item.answer}</p>
+              {item.question === PRICING_QUESTION && <PricingCards />}
+            </FAQItem>
+          ))}
         </ul>
       </Section>
     </div>
