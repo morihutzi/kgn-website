@@ -27,14 +27,6 @@ const KIDS: Kid[] = [
     progress: 28,
     color: "orange",
   },
-  {
-    id: "lena",
-    name: "Lena",
-    devices: ["Lenas iPhone", "Lenas Laptop"],
-    status: "Unbegrenzt",
-    progress: 100,
-    color: "green",
-  },
 ];
 
 const COLOR: Record<Kid["color"], string> = {
@@ -51,7 +43,7 @@ const COLOR: Record<Kid["color"], string> = {
  */
 export function LaptopElternportalMockup() {
   return (
-    <div className="relative mx-auto w-full max-w-[420px]">
+    <div className="relative mx-auto w-full max-w-[320px]">
       {/* Screen with bezel */}
       <div className="rounded-t-[10px] bg-[#1a1a19] p-1.5 shadow-[0_24px_50px_-20px_rgba(74,74,73,0.25)]">
         <div className="overflow-hidden rounded-[6px] bg-white">
@@ -101,14 +93,14 @@ export function LaptopElternportalMockup() {
               Kind hinzufügen
             </span>
             <span className="text-[7px] text-foreground/65">
-              <span className="font-extrabold text-foreground">3 Kinder</span>{" "}
-              · <span className="font-extrabold text-foreground">5 Geräte</span>{" "}
+              <span className="font-extrabold text-foreground">2 Kinder</span>{" "}
+              · <span className="font-extrabold text-foreground">3 Geräte</span>{" "}
               geschützt
             </span>
           </div>
 
-          {/* Kid cards in horizontal grid */}
-          <div className="grid grid-cols-3 gap-1.5 p-2">
+          {/* Kid cards stacked vertically (full-width rows) */}
+          <div className="flex flex-col gap-1.5 p-2">
             {KIDS.map((kid) => (
               <KidCard key={kid.id} kid={kid} />
             ))}
@@ -131,42 +123,49 @@ function KidCard({ kid }: { kid: Kid }) {
   const color = COLOR[kid.color];
   return (
     <div
-      className="flex flex-col rounded-[5px] border bg-white p-1.5"
+      className="rounded-[6px] border bg-white px-2 py-1.5"
       style={{ borderColor: color }}
     >
+      {/* Top row: name + chevron */}
       <div className="flex items-center justify-between">
-        <span className="text-[8px] font-extrabold text-foreground">
+        <span className="text-[9px] font-extrabold text-foreground">
           {kid.name}
         </span>
         <ChevronRight
-          className="size-2 text-foreground/40"
+          className="size-2.5 text-foreground/40"
           strokeWidth={2.5}
         />
       </div>
-      <ul className="mt-0.5 space-y-[1px]">
-        {kid.devices.map((d) => (
-          <li
-            key={d}
-            className="flex items-center gap-0.5 text-[5.5px] text-foreground/65 leading-tight"
-          >
-            <span
-              aria-hidden="true"
-              className="block size-[3px] flex-shrink-0 rounded-full"
-              style={{ background: color }}
-            />
-            {d}
-          </li>
-        ))}
-      </ul>
-      <p
-        className="mt-1 text-[6px] font-extrabold tabular-nums"
-        style={{ color }}
-      >
-        {kid.status}
-      </p>
+
+      {/* Devices + status row */}
+      <div className="mt-1 flex items-center justify-between gap-2">
+        <ul className="flex flex-col gap-[1px]">
+          {kid.devices.map((d) => (
+            <li
+              key={d}
+              className="flex items-center gap-1 text-[6px] text-foreground/65 leading-tight"
+            >
+              <span
+                aria-hidden="true"
+                className="block size-[3px] flex-shrink-0 rounded-full"
+                style={{ background: color }}
+              />
+              {d}
+            </li>
+          ))}
+        </ul>
+        <p
+          className="text-[7px] font-extrabold tabular-nums"
+          style={{ color }}
+        >
+          {kid.status}
+        </p>
+      </div>
+
+      {/* Progress bar */}
       <div
         aria-hidden="true"
-        className="mt-0.5 h-[2px] w-full overflow-hidden rounded-full bg-neutral-200"
+        className="mt-1 h-[3px] w-full overflow-hidden rounded-full bg-neutral-200"
       >
         <div
           className="h-full rounded-full"
