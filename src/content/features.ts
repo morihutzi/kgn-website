@@ -177,8 +177,8 @@ export const featuresPage = {
       { id: "st-limit", text: "Gesamtonlinezeit pro Tag wird nicht überschritten" },
     ],
     image: {
-      src: "/images/hero/internetsperre.webp",
-      alt: "Internetsperre in der Kidgonet App",
+      src: "/images/screens/bildschirmzeit.png",
+      alt: "Bildschirmzeit-Anzeige in der Kidgonet Kinder-App",
     },
     subFeatures: [
       {
