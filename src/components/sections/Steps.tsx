@@ -19,7 +19,9 @@ export function Steps() {
           >
             <div className="flex h-56 items-center justify-center">
               {idx === 0 ? (
-                <KindermodusMockup className="max-w-[110px]" />
+                <div className="w-[110px]">
+                  <KindermodusMockup />
+                </div>
               ) : (
                 <div className="relative h-44 w-44">
                   <Image
@@ -54,7 +56,9 @@ export function Steps() {
           >
             <div className="flex h-60 items-center justify-center">
               {idx === 0 ? (
-                <KindermodusMockup className="max-w-[120px]" />
+                <div className="w-[120px]">
+                  <KindermodusMockup />
+                </div>
               ) : (
                 <div className="relative h-48 w-48">
                   <Image
