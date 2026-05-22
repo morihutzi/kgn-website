@@ -9,14 +9,16 @@ export function ManuelNeuer() {
     <div className="relative overflow-hidden bg-surface-warm">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 w-[55%] opacity-[0.18]"
+        className="pointer-events-none absolute inset-y-0 right-0 hidden opacity-25 md:block"
       >
         <Image
           src={manuelNeuer.image}
           alt=""
-          fill
-          sizes="55vw"
-          className="object-cover object-right"
+          width={770}
+          height={1024}
+          sizes="40vw"
+          className="h-full w-auto object-cover object-right"
+          priority={false}
         />
       </div>
 
