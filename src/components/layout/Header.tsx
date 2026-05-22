@@ -7,7 +7,7 @@ import { primaryNav, siteConfig } from "@/content/site";
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between gap-4 md:h-20">
+      <Container className="flex h-20 items-center justify-between gap-4 md:h-20">
         <Link
           href="/"
           aria-label={`${siteConfig.name} – Startseite`}
@@ -19,7 +19,7 @@ export function Header() {
             width={200}
             height={27}
             priority
-            className="h-[14px] w-auto md:h-9"
+            className="h-[18px] w-auto sm:h-6 md:h-9"
           />
         </Link>
 

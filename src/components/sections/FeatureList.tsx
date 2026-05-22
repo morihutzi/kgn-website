@@ -2,9 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
-import { Button } from "@/components/ui/Button";
 import { hero, problemSolution } from "@/content/home";
-import { siteConfig } from "@/content/site";
 
 function CheckIcon() {
   // Green-filled checkbox with white border and white check inside
@@ -33,61 +31,39 @@ function CheckIcon() {
 export function FeatureList() {
   return (
     <>
-      {/* MOBILE Yellow Block — phone prominent at top, text + bullets below */}
-      <section className="px-4 pb-5 pt-2 md:hidden">
-        <div className="mx-auto max-w-[400px]">
-          <div className="rounded-[20px] bg-brand-yellow px-5 py-6">
-            {/* Phone centered at top */}
-            <div className="flex justify-center">
-              <PhoneSlideshow
-                slides={hero.icons}
-                className="w-[150px]"
-              />
-            </div>
+      {/* MOBILE Yellow Block — phone overhangs upward into hero, titles right, bullets below */}
+      <section className="relative bg-brand-yellow md:hidden">
+        <div className="relative grid grid-cols-[40vw_1fr] items-end gap-3 px-3 pt-3 pb-2">
+          {/* Phone — extends upward into the hero above */}
+          <div className="-mt-[28vw] flex justify-center">
+            <PhoneSlideshow
+              slides={hero.icons}
+              className="w-[28vw] max-w-[180px]"
+            />
+          </div>
 
-            <div className="mt-5 text-center">
-              <p className="text-base font-semibold text-white">
-                {problemSolution.eyebrow}
-              </p>
-              <h2 className="mt-1 text-xl font-extrabold text-white">
-                {problemSolution.headline}
-              </h2>
-            </div>
-
-            <ul className="mt-5 grid gap-2">
-              {problemSolution.bullets.map((bullet) => (
-                <li key={bullet.strong} className="flex items-start gap-2.5">
-                  <CheckIcon />
-                  <span className="text-[13px] leading-snug text-white">
-                    <span className="font-extrabold">{bullet.strong}</span>
-                    {bullet.rest}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6 flex justify-center">
-              <Button
-                href={siteConfig.portalRegisterUrl}
-                external
-                size="md"
-                className="bg-white text-text-dark hover:bg-text-dark hover:text-white"
-              >
-                Jetzt downloaden!
-              </Button>
-            </div>
-
-            <div className="mt-5 flex justify-center">
-              <Image
-                src="/brand/logo-weiss.png"
-                alt="Kidgonet"
-                width={200}
-                height={27}
-                className="h-6 w-auto opacity-95"
-              />
-            </div>
+          {/* Titles next to phone */}
+          <div className="pb-2">
+            <p className="text-[22px] font-medium leading-[28px] text-white">
+              {problemSolution.eyebrow}
+            </p>
+            <h2 className="text-[22px] font-extrabold leading-[28px] text-white">
+              {problemSolution.headline}
+            </h2>
           </div>
         </div>
+
+        <ul className="grid gap-3 px-5 pb-7 pt-3">
+          {problemSolution.bullets.map((bullet) => (
+            <li key={bullet.strong} className="flex items-start gap-3">
+              <CheckIcon />
+              <span className="text-[15px] leading-snug text-white">
+                <span className="font-extrabold">{bullet.strong}</span>
+                {bullet.rest}
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* DESKTOP Yellow Block — phone overhangs upward, bullets right */}
