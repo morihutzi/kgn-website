@@ -17,31 +17,31 @@ export function ManuelNeuer() {
         className="object-cover object-right"
       />
 
-      <Section maxWidth={1200} className="relative">
-        <div className="grid items-center gap-8 md:grid-cols-[320px_1fr] md:gap-16">
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[320px] overflow-hidden rounded-3xl">
+      <Section maxWidth={1100} className="relative">
+        <div className="grid items-center gap-6 md:grid-cols-[240px_1fr] md:gap-12">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-3xl">
             <Image
               src={manuelNeuer.image}
               alt={manuelNeuer.alt}
               fill
-              sizes="(min-width: 768px) 320px, 280px"
+              sizes="(min-width: 768px) 240px, 220px"
               className="object-cover"
               priority={false}
             />
           </div>
 
           <figure>
-            <blockquote className="text-balance text-2xl font-extrabold leading-[1.15] text-text-dark md:text-3xl lg:text-[40px]">
+            <blockquote className="text-balance text-xl font-extrabold leading-[1.2] text-text-dark md:text-2xl lg:text-[28px]">
               &bdquo;{manuelNeuer.quote}&ldquo;
             </blockquote>
-            <figcaption className="mt-5 text-base text-text-dark/80 md:text-lg">
+            <figcaption className="mt-3 text-sm text-text-dark/75 md:text-base">
               {manuelNeuer.author}, {manuelNeuer.role}
             </figcaption>
             <Button
               href={siteConfig.portalRegisterUrl}
               external
               size="md"
-              className="mt-7"
+              className="mt-5"
             >
               Jetzt downloaden!
             </Button>
