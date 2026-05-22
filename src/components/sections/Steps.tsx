@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
-import { KindermodusMockup } from "@/components/mockups/KindermodusMockup";
+import { ChildviewMockup } from "@/components/mockups/ChildviewMockup";
 import { steps } from "@/content/home";
 
 export function Steps() {
@@ -20,7 +20,7 @@ export function Steps() {
             <div className="flex h-56 items-center justify-center">
               {idx === 0 ? (
                 <div className="w-[110px]">
-                  <KindermodusMockup />
+                  <ChildviewMockup />
                 </div>
               ) : (
                 <div className="relative h-44 w-44">
@@ -57,7 +57,7 @@ export function Steps() {
             <div className="flex h-60 items-center justify-center">
               {idx === 0 ? (
                 <div className="w-[120px]">
-                  <KindermodusMockup />
+                  <ChildviewMockup />
                 </div>
               ) : (
                 <div className="relative h-48 w-48">
