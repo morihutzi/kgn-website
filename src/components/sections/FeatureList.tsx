@@ -116,8 +116,8 @@ export function FeatureList() {
       </section>
 
       {/* Trust logos strip — endless horizontal marquee */}
-      <Section>
-        <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-5">
+      <Section className="!pt-1 md:!pt-2">
+        <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-4">
           Bekannt aus
         </p>
         <div
