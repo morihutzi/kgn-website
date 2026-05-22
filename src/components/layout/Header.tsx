@@ -19,7 +19,7 @@ export function Header() {
             width={200}
             height={27}
             priority
-            className="h-7 w-auto md:h-9"
+            className="h-[14px] w-auto md:h-9"
           />
         </Link>
 
@@ -60,7 +60,7 @@ export function Header() {
         <button
           type="button"
           aria-label="Menü öffnen"
-          className="flex h-11 w-11 items-center justify-center rounded-[6px] border-2 border-brand-yellow text-brand-yellow md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-[6px] border-2 border-brand-yellow text-brand-yellow md:hidden"
         >
           <svg
             width="22"

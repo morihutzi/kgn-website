@@ -12,7 +12,10 @@ export function Hero() {
   return (
     <>
       {/* MOBILE Hero — photo banner with right-aligned overlay */}
-      <section className="relative w-full overflow-hidden md:hidden">
+      <section
+        className="relative w-full overflow-hidden md:hidden"
+        style={{ aspectRatio: "390 / 427", minHeight: "430px" }}
+      >
         <Image
           src="/images/hero/banner.jpeg"
           alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
