@@ -6,8 +6,9 @@ import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ElternportalMockup } from "@/components/mockups/ElternportalMockup";
-import { AppsFreigebenMockup } from "@/components/mockups/AppsFreigebenMockup";
-import { InternetfilterMockup } from "@/components/mockups/InternetfilterMockup";
+import { ElternportalMockupScaled } from "@/components/mockups/ElternportalMockupScaled";
+import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
+import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
 import type { FeatureGridIcon } from "@/content/features";
 import { featuresPage } from "@/content/features";
 import { siteConfig } from "@/content/site";
@@ -34,11 +35,11 @@ function FeatureMockup({ type }: { type: FeatureGridIcon }) {
     case "timer":
       return <ChildviewMockupScaled width={125} />;
     case "devices":
-      return <ElternportalMockup />;
+      return <ElternportalMockupScaled width={125} />;
     case "apps":
-      return <AppsFreigebenMockup />;
+      return <AppsFreigebenMockupScaled width={125} />;
     case "filter":
-      return <InternetfilterMockup />;
+      return <InternetfilterMockupScaled width={125} />;
   }
 }
 
@@ -112,12 +113,81 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="flex justify-center">
-            <ChildviewMockupScaled width={170} />
-          </div>
+          <HeroMockupCluster />
         </div>
       </Section>
     </section>
+  );
+}
+
+function HeroMockupCluster() {
+  return (
+    <div className="relative mx-auto flex w-full max-w-[440px] items-center justify-center py-8 md:py-12">
+      {/* Background smiley */}
+      <Image
+        src="/brand/smiley.png"
+        alt=""
+        aria-hidden="true"
+        width={1059}
+        height={945}
+        sizes="380px"
+        className="pointer-events-none absolute right-[-14%] top-1/2 -z-0 h-[380px] w-auto -translate-y-1/2 opacity-25 blur-sm md:block"
+      />
+
+      {/* Phone mockup */}
+      <div className="relative z-10">
+        <ElternportalMockup />
+      </div>
+
+      {/* Top-right badge: Erwachseneninhalte blockiert */}
+      <div className="absolute right-[-6%] top-4 z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-5 w-5 flex-shrink-0 text-text-dark"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M3 3l18 18" />
+          <path d="M10.585 10.587a2 2 0 0 0 2.829 2.828" />
+          <path d="M16.681 16.673A8.717 8.717 0 0 1 12 18c-4 0-7.333-2-10-6 1.265-1.898 2.624-3.336 4.077-4.314m3.225-1.55A10.405 10.405 0 0 1 12 6c4 0 7.333 2 10 6a15.518 15.518 0 0 1-2.236 2.952" />
+        </svg>
+        <div>
+          <p className="text-xs font-extrabold leading-tight text-text-dark">
+            Erwachseneninhalte blockiert
+          </p>
+          <p className="mt-0.5 text-[10px] text-text-muted">In Echtzeit</p>
+        </div>
+      </div>
+
+      {/* Bottom-left badge: Standort */}
+      <div className="absolute bottom-6 left-[-6%] z-20 hidden items-center gap-2.5 rounded-[14px] border border-neutral-100 bg-white px-3 py-2.5 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
+        <div>
+          <p className="text-xs font-extrabold leading-tight text-text-dark">
+            Standort in Echtzeit
+          </p>
+          <p className="mt-0.5 text-[10px] text-text-muted">
+            Immer wissen, wo dein Kind ist
+          </p>
+        </div>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-5 w-5 flex-shrink-0 text-brand-yellow"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
+          <circle cx="12" cy="9" r="2.5" />
+        </svg>
+      </div>
+    </div>
   );
 }
 
