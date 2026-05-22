@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
-import { ElternportalMockupScaled } from "@/components/mockups/ElternportalMockupScaled";
+import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
 import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
 import type { FeatureGridIcon } from "@/content/features";
@@ -34,7 +34,7 @@ function FeatureMockup({ type }: { type: FeatureGridIcon }) {
     case "timer":
       return <ChildviewMockupScaled width={125} />;
     case "devices":
-      return <ElternportalMockupScaled width={125} />;
+      return <ConnectDevicesMockupScaled width={125} />;
     case "apps":
       return <AppsFreigebenMockupScaled width={125} />;
     case "filter":
