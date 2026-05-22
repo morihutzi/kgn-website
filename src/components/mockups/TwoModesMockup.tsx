@@ -1,27 +1,31 @@
-import { BildschirmzeitMockup } from "./BildschirmzeitMockup";
-import { ElternportalMockup } from "./ElternportalMockup";
+import { ChildviewMockup } from "./ChildviewMockup";
+import { ConnectDevicesMockup } from "./ConnectDevicesMockup";
 
-const NATIVE_WIDTH = 180;
-// Native-Höhe matched die Höhe eines einzelnen PhoneFrame bei 180 wide
-// (180 × 20/9.5 = 379). Dadurch entspricht der gesamte 2-Phones-Stack
-// visuell der Höhe eines einzelnen PhoneFrame in Schritt 3.
-const CAPTION_HEIGHT = 14;
-const GAP_BETWEEN = 25;
-const PHONE_VISIBLE_HEIGHT = 163;
+const NATIVE_WIDTH = 220;
+const PHONE_FULL_HEIGHT = Math.round(220 * (20 / 9.5)); // 463
+const CAPTION_HEIGHT = 16;
+const GAP_BETWEEN = 31;
+const PHONE_VISIBLE_HEIGHT = 200;
 const NATIVE_HEIGHT =
-  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 379
+  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 463
 
 /**
- * Two-Modes-Mockup: Zwei Kidgonet-App-Komponenten vertikal übereinander
- * gestapelt, jeweils zur Hälfte abgeschnitten. Über jedem Phone eine
- * Caption, in der Mitte ein Divider als Geräte-Trenner.
+ * Two-Modes-Mockup: Zwei Phones vertikal übereinander gestapelt, jeweils
+ * zur Hälfte abgeschnitten und so zusammengesetzt, dass sie wie zwei
+ * komplementäre Hälften eines Geräts wirken.
  *
- * Nutzt die wiederverwendbaren Mockup-Components:
- *  - [[ElternportalMockup]] für Elterngerät (Portal-UI mit Kind-Profil)
- *  - [[BildschirmzeitMockup]] für Kindgerät (Hallo Franziska + Wave-Fill)
+ * - Oben: [[ConnectDevicesMockup]] (Elterngerät, Eltern-Dashboard).
+ *   Untere Hälfte abgeschnitten → man sieht den Header, Summary-Row und
+ *   die ersten ChildCards.
+ * - Unten: [[ChildviewMockup]] (Kindgerät, Kindermodus mit Wave-Fill-
+ *   Countdown). Obere Hälfte abgeschnitten → man sieht den großen
+ *   Countdown-Kreis am Boden des Phones.
  *
- * Gesamt-Visual-Größe identisch zum Schritt-3-Phone (ChildviewMockup)
- * bei gleichem Scale-Faktor. Wird per [[TwoModesMockupScaled]] skaliert.
+ * Beide bei NATIVE_WIDTH 220 px gerendert und cropped via
+ * overflow:hidden mit absolutem Inner-Offset. Gradient-Fades kaschieren
+ * die jeweilige Crop-Kante.
+ *
+ * Wird per [[TwoModesMockupScaled]] auf eine Zielbreite skaliert.
  */
 export function TwoModesMockup() {
   const dividerCenter =
@@ -31,8 +35,8 @@ export function TwoModesMockup() {
       className="relative"
       style={{ width: NATIVE_WIDTH, height: NATIVE_HEIGHT }}
     >
-      <DeviceBlock label="Elterngerät" top={0}>
-        <ElternportalMockup />
+      <DeviceBlock label="Elterngerät" top={0} half="top">
+        <ConnectDevicesMockup />
       </DeviceBlock>
 
       <div
@@ -48,22 +52,25 @@ export function TwoModesMockup() {
       <DeviceBlock
         label="Kindgerät"
         top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
+        half="bottom"
       >
-        <BildschirmzeitMockup />
+        <ChildviewMockup />
       </DeviceBlock>
     </div>
   );
 }
 
-function DeviceBlock({
-  label,
-  top,
-  children,
-}: {
+type DeviceBlockProps = {
   label: string;
   top: number;
+  half: "top" | "bottom";
   children: React.ReactNode;
-}) {
+};
+
+function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
+  const innerOffsetY =
+    half === "bottom" ? -(PHONE_FULL_HEIGHT - PHONE_VISIBLE_HEIGHT) : 0;
+
   return (
     <div
       className="absolute left-0 right-0 flex flex-col items-center"
@@ -80,12 +87,26 @@ function DeviceBlock({
           overflow: "hidden",
         }}
       >
-        {children}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-12"
           style={{
+            position: "absolute",
+            top: innerOffsetY,
+            left: 0,
+            width: NATIVE_WIDTH,
+          }}
+        >
+          {children}
+        </div>
+        <div
+          className="pointer-events-none absolute inset-x-0 h-12"
+          style={{
+            ...(half === "top"
+              ? { bottom: 0 }
+              : { top: 0 }),
             background:
-              "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
+              half === "top"
+                ? "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)"
+                : "linear-gradient(to bottom, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
           }}
           aria-hidden
         />
