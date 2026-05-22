@@ -242,46 +242,57 @@ def clean_md_body(md_text: str, title: str) -> str:
             ls = ls[1:]
         return ls
 
-    # Strip fuehrenden Bild-Block (WP dupliziert das Featured-Image meist als
-    # erstes Bild im Body – Cover wird bereits im Hero ausgespielt).
-    lines = drop_leading_empty(lines)
-    if lines and re.match(r"^!\[[^\]]*\]\([^\)]+\)\s*$", lines[0].strip()):
-        lines = lines[1:]
-        lines = drop_leading_empty(lines)
-
-    # Strip leading H1 (Titel steckt schon im Hero / der Frontmatter).
-    if lines and re.match(r"^#\s+\S", lines[0]):
-        lines = lines[1:]
-        lines = drop_leading_empty(lines)
-
-    # WP nutzt manchmal mehrere H2 als Titel-Fragmente am Anfang ("Bayerischer
-    # Digitalpreis" / "B.DiGiTAL 2025" / "..."). Wenn 2+ aufeinanderfolgende
-    # H2 am Anfang stehen UND ihr Inhalt im Titel vorkommt, werden sie
-    # gestrippt.
     def _title_norm(s: str) -> str:
         return re.sub(r"[^\w]+", "", s, flags=re.UNICODE).lower()
 
-    leading_h2: list[str] = []
-    i = 0
-    while i < len(lines):
-        line = lines[i].strip()
-        if not line:
-            i += 1
-            continue
-        m = re.match(r"^##\s+(.+)$", line)
-        if m:
-            leading_h2.append(m.group(1).strip())
-            i += 1
-            continue
-        break
+    def try_strip_h1(ls: list[str]) -> tuple[list[str], bool]:
+        if ls and re.match(r"^#\s+\S", ls[0]):
+            return drop_leading_empty(ls[1:]), True
+        return ls, False
 
-    if len(leading_h2) >= 2:
-        title_n = _title_norm(title)
-        combined_n = _title_norm(" ".join(leading_h2))
-        match = combined_n and (combined_n in title_n or title_n[:30] in combined_n)
-        if match:
-            lines = lines[i:]
-            lines = drop_leading_empty(lines)
+    def try_strip_image(ls: list[str]) -> tuple[list[str], bool]:
+        if ls and re.match(r"^!\[[^\]]*\]\([^\)]+\)\s*$", ls[0].strip()):
+            return drop_leading_empty(ls[1:]), True
+        return ls, False
+
+    def try_strip_title_h2_block(ls: list[str]) -> tuple[list[str], bool]:
+        # Erfasst Folge aufeinanderfolgender H2 (mit nur Leerzeilen
+        # dazwischen) am Anfang. Strippt sie, wenn ihre Vereinigung im
+        # Titel vorkommt.
+        leading: list[str] = []
+        i = 0
+        while i < len(ls):
+            line = ls[i].strip()
+            if not line:
+                i += 1
+                continue
+            m = re.match(r"^##\s+(.+)$", line)
+            if m:
+                leading.append(m.group(1).strip())
+                i += 1
+                continue
+            break
+        if len(leading) >= 2:
+            title_n = _title_norm(title)
+            combined_n = _title_norm(" ".join(leading))
+            if combined_n and (
+                combined_n in title_n or title_n[:30] in combined_n
+            ):
+                return drop_leading_empty(ls[i:]), True
+        return ls, False
+
+    # Loop, bis kein fuehrender Titel-/Bild-/H2-Block mehr existiert.
+    lines = drop_leading_empty(lines)
+    for _round in range(5):
+        changed = False
+        lines, c = try_strip_h1(lines)
+        changed = changed or c
+        lines, c = try_strip_title_h2_block(lines)
+        changed = changed or c
+        lines, c = try_strip_image(lines)
+        changed = changed or c
+        if not changed:
+            break
 
     md_text = "\n".join(lines)
     # Restliche H1 im Body zu H2 demoten (nur eine H1 pro Seite zulassen).
@@ -301,6 +312,14 @@ def clean_md_body(md_text: str, title: str) -> str:
     )
     # Doppelte Bold-Marker (****Text****) auf normal Bold reduzieren
     md_text = re.sub(r"\*{4}([^*]+?)\*{4}", r"**\1**", md_text)
+    # Fixt WP-Pattern `**Text „**Wort` (trailing Whitespace + Anfuehrungszeichen
+    # innerhalb von Bold) zu `**Text** „Wort`, sonst kann MDX den Bold-Block
+    # nicht parsen.
+    md_text = re.sub(
+        '\\*\\*([^*\n]+?)(\\s*[„“”‚‘’]+)\\*\\*',
+        r"**\1**\2",
+        md_text,
+    )
     # CommonMark-Autolinks <https://...> -> [url](url) (MDX behandelt < strikt)
     md_text = re.sub(
         r"<(https?://[^>\s]+)>",
