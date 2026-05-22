@@ -17,9 +17,9 @@ export function Steps() {
             key={item.title}
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
-            <div className="flex h-56 items-center justify-center">
+            <div className="flex h-[340px] items-center justify-center">
               {idx === 0 ? (
-                <div className="w-[110px]">
+                <div style={{ width: 160 }}>
                   <ChildviewMockup />
                 </div>
               ) : (
@@ -54,9 +54,9 @@ export function Steps() {
             key={item.title}
             className="flex flex-col items-center text-center"
           >
-            <div className="flex h-60 items-center justify-center">
+            <div className="flex h-[400px] items-center justify-center">
               {idx === 0 ? (
-                <div className="w-[120px]">
+                <div style={{ width: 180 }}>
                   <ChildviewMockup />
                 </div>
               ) : (
