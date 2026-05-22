@@ -9,53 +9,55 @@ const PRICING_QUESTION = "Welche Abomodelle gibt es?";
 
 export function FAQ() {
   return (
-    <Section maxWidth={900}>
-      <div className="flex items-center justify-center gap-2.5">
-        <h2 className="text-2xl font-extrabold text-brand-yellow md:text-[32px]">
-          {faq.headline}
-        </h2>
-        <Image
-          src="/brand/smiley-square.png"
-          alt=""
-          width={48}
-          height={48}
-          className="size-9 md:size-10"
-          aria-hidden
-        />
-      </div>
+    <div className="bg-[#F4ECDF]">
+      <Section maxWidth={900} className="py-10 md:py-14">
+        <div className="flex items-center justify-center gap-2.5">
+          <h2 className="text-xl font-extrabold text-brand-yellow md:text-[28px]">
+            {faq.headline}
+          </h2>
+          <Image
+            src="/brand/smiley-square.png"
+            alt=""
+            width={40}
+            height={40}
+            className="size-7 md:size-8"
+            aria-hidden
+          />
+        </div>
 
-      <ul className="mt-10">
-        {faq.items.map((item) => {
-          const isPricingItem = item.question === PRICING_QUESTION;
-          return (
-            <li
-              key={item.question}
-              className="border-b border-text-dark/10 last:border-b-0"
-            >
-              <details className="group">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-left font-bold text-text-dark marker:content-none [&::-webkit-details-marker]:hidden">
-                  <span className="flex-1">{item.question}</span>
-                  <span
-                    aria-hidden="true"
-                    className="flex size-7 shrink-0 items-center justify-center rounded-full border-2 border-brand-yellow text-brand-yellow transition-transform duration-200 group-open:rotate-180"
-                  >
-                    <ChevronDown
-                      className="size-4"
-                      strokeWidth={2.5}
-                      aria-hidden
-                    />
-                  </span>
-                </summary>
-                <div className="pb-6 pr-10 leading-relaxed text-text-dark/75">
-                  <p>{item.answer}</p>
-                  {isPricingItem && <PricingCards />}
-                </div>
-              </details>
-            </li>
-          );
-        })}
-      </ul>
-    </Section>
+        <ul className="mt-8">
+          {faq.items.map((item) => {
+            const isPricingItem = item.question === PRICING_QUESTION;
+            return (
+              <li
+                key={item.question}
+                className="border-b border-brand-yellow/70 last:border-b-0"
+              >
+                <details className="group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3.5 text-left text-sm font-bold text-text-dark marker:content-none md:text-[15px] [&::-webkit-details-marker]:hidden">
+                    <span className="flex-1">{item.question}</span>
+                    <span
+                      aria-hidden="true"
+                      className="flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-brand-yellow text-brand-yellow transition-transform duration-200 group-open:rotate-180"
+                    >
+                      <ChevronDown
+                        className="size-3.5"
+                        strokeWidth={2.5}
+                        aria-hidden
+                      />
+                    </span>
+                  </summary>
+                  <div className="pb-5 pr-10 text-sm leading-relaxed text-text-dark/75">
+                    <p>{item.answer}</p>
+                    {isPricingItem && <PricingCards />}
+                  </div>
+                </details>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
+    </div>
   );
 }
 
