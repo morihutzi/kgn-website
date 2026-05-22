@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
-import { Section } from "@/components/layout/Section";
 import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
 import { hero, problemSolution } from "@/content/home";
 
@@ -67,7 +66,7 @@ export function FeatureList() {
       </section>
 
       {/* DESKTOP Yellow Block — phone overhangs upward, bullets right */}
-      <section className="hidden pt-2 pb-5 md:block md:pt-3 md:pb-8">
+      <section className="hidden pt-2 pb-2 md:block md:pt-3 md:pb-3">
         <Container>
           <div className="mx-auto w-full max-w-[720px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
@@ -115,19 +114,22 @@ export function FeatureList() {
         </Container>
       </section>
 
-      {/* Trust logos strip — endless horizontal marquee */}
-      <Section className="!pt-1 md:!pt-2">
-        <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-4">
-          Bekannt aus
-        </p>
-        <div
-          className="marquee-mask relative overflow-hidden"
-          aria-label="Bekannt aus"
-          role="region"
-        >
-          <ul className="marquee-track flex w-max items-center gap-x-12 md:gap-x-16">
-            {[...problemSolution.trustLogos, ...problemSolution.trustLogos].map(
-              (logo, idx) => (
+      {/* Trust logos strip — endless horizontal marquee on a soft band */}
+      <section className="bg-surface-muted py-6 md:py-8">
+        <div className="mx-auto w-full max-w-[720px] px-4">
+          <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-4">
+            Bekannt aus
+          </p>
+          <div
+            className="marquee-mask relative overflow-hidden"
+            aria-label="Bekannt aus"
+            role="region"
+          >
+            <ul className="marquee-track flex w-max items-center gap-x-12 md:gap-x-16">
+              {[
+                ...problemSolution.trustLogos,
+                ...problemSolution.trustLogos,
+              ].map((logo, idx) => (
                 <li
                   key={`${logo.src}-${idx}`}
                   className="shrink-0"
@@ -143,11 +145,11 @@ export function FeatureList() {
                     className="h-4 w-auto object-contain opacity-50 grayscale md:h-6"
                   />
                 </li>
-              ),
-            )}
-          </ul>
+              ))}
+            </ul>
+          </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }
