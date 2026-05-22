@@ -18,7 +18,7 @@ export function Steps() {
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
             <div className="flex h-[240px] items-center justify-center">
-              {idx === 0 ? (
+              {idx === 2 ? (
                 <ChildviewMockupScaled width={110} />
               ) : (
                 <div className="relative h-44 w-44">
@@ -53,7 +53,7 @@ export function Steps() {
             className="flex flex-col items-center text-center"
           >
             <div className="flex h-[280px] items-center justify-center">
-              {idx === 0 ? (
+              {idx === 2 ? (
                 <ChildviewMockupScaled width={125} />
               ) : (
                 <div className="relative h-48 w-48">
