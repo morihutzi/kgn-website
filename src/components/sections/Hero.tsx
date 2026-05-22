@@ -17,7 +17,7 @@ import { siteConfig } from "@/content/site";
  */
 export function Hero() {
   return (
-    <section className="bg-white py-5 md:py-8">
+    <section className="bg-white pt-5 pb-2 md:pt-8 md:pb-3">
       <Container>
         <div className="@container/banner mx-auto w-full max-w-[720px]">
           <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">

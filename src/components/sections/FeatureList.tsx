@@ -32,7 +32,7 @@ export function FeatureList() {
   return (
     <>
       {/* Yellow block — same wrapper structure as Hero so widths align */}
-      <section className="py-5 md:py-8">
+      <section className="pt-2 pb-5 md:pt-3 md:pb-8">
         <Container>
           <div className="mx-auto w-full max-w-[720px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
