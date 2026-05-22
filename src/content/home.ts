@@ -47,7 +47,7 @@ export const steps = {
     {
       image: "/images/steps/google-play-store.png",
       alt: "Kidgonet-App im Play Store und App Store",
-      title: "Eine App, für Kind und Eltern",
+      title: "Eine App, zwei Modi",
       text: "Aus dem Play Store oder App Store aufs Kindergerät. Dein Kind hat seinen Kindermodus, du die volle Steuerung. Direkt am Gerät.",
     },
     {

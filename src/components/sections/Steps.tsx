@@ -28,7 +28,7 @@ export function Steps() {
             <p className="mt-3 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
             </p>
-            <p className="mt-1 text-sm font-bold text-text-dark">
+            <p className="mt-1 text-balance text-sm font-bold text-text-dark">
               {item.title}
             </p>
             <p className="mt-1 max-w-[260px] text-xs text-text-dark">
@@ -57,7 +57,7 @@ export function Steps() {
             <p className="mt-2 text-xs font-semibold text-brand-yellow">
               Schritt {idx + 1}
             </p>
-            <p className="mt-1 text-base font-bold text-text-dark">
+            <p className="mt-1 text-balance text-base font-bold text-text-dark">
               {item.title}
             </p>
             <p className="mt-1 max-w-[240px] text-sm text-text-dark">
