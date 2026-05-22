@@ -59,64 +59,70 @@ export function Hero() {
               </p>
             </div>
 
-            {/* CTA row — Google Play + App Store badges + yellow pill */}
+            {/* CTA area — Yellow pill on top, App Store badges below stacked horizontally */}
             <div
-              className="absolute flex items-center"
+              className="absolute flex flex-col items-end"
               style={{
-                left: "42%",
-                top: "59.88%",
-                gap: "min(10px, 1.08cqw)",
+                right: "8%",
+                top: "55%",
+                gap: "min(8px, 0.86cqw)",
               }}
             >
-              <a
-                href={siteConfig.appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Im App Store laden"
-                className="block"
-              >
-                <Image
-                  src="/badges/app-store-de.svg"
-                  alt="Im App Store laden"
-                  width={125}
-                  height={37}
-                  style={{
-                    width: "min(125px, 13.44cqw)",
-                    height: "auto",
-                  }}
-                />
-              </a>
-              <a
-                href={siteConfig.playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Bei Google Play laden"
-                className="block"
-              >
-                <Image
-                  src="/badges/google-play-de.png"
-                  alt="Bei Google Play laden"
-                  width={125}
-                  height={37}
-                  style={{
-                    width: "min(125px, 13.44cqw)",
-                    height: "auto",
-                  }}
-                />
-              </a>
               <a
                 href={siteConfig.portalWelcomeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-[10px] bg-brand-yellow font-extrabold text-white shadow-sm hover:bg-[#e09e00]"
                 style={{
-                  fontSize: "min(13px, 1.40cqw)",
-                  padding: "min(9px, 0.97cqw) min(20px, 2.15cqw)",
+                  fontSize: "min(14px, 1.5cqw)",
+                  padding: "min(10px, 1.08cqw) min(28px, 3cqw)",
                   borderRadius: "min(10px, 1.08cqw)",
                 }}
               >
                 {hero.primaryCtaLabel}
               </a>
+
+              <div
+                className="flex items-center"
+                style={{ gap: "min(8px, 0.86cqw)" }}
+              >
+                <a
+                  href={siteConfig.appStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Im App Store laden"
+                  className="block"
+                >
+                  <Image
+                    src="/badges/app-store-de.svg"
+                    alt="Im App Store laden"
+                    width={125}
+                    height={37}
+                    style={{
+                      width: "min(110px, 11.83cqw)",
+                      height: "auto",
+                    }}
+                  />
+                </a>
+                <a
+                  href={siteConfig.playStoreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Bei Google Play laden"
+                  className="block"
+                >
+                  <Image
+                    src="/badges/google-play-de.png"
+                    alt="Bei Google Play laden"
+                    width={125}
+                    height={37}
+                    style={{
+                      width: "min(110px, 11.83cqw)",
+                      height: "auto",
+                    }}
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>
