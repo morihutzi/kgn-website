@@ -168,13 +168,15 @@ function HeroMockupCluster() {
         </div>
       </div>
 
-      {/* Bottom-left badge: online time */}
+      {/* Bottom-left badge: location */}
       <div className="absolute bottom-6 left-[-4%] z-20 hidden items-center gap-3 rounded-[14px] border border-neutral-100 bg-white px-4 py-3 shadow-[0_12px_30px_-12px_rgba(74,74,73,0.25)] md:flex">
         <div>
           <p className="text-sm font-extrabold leading-tight text-text-dark">
-            2:30 Online Zeit
+            Standort im Blick
           </p>
-          <p className="mt-0.5 text-xs text-text-muted">Geräteübergreifend</p>
+          <p className="mt-0.5 text-xs text-text-muted">
+            Sieh wo dein Kind gerade ist
+          </p>
         </div>
         <svg
           aria-hidden="true"
@@ -186,8 +188,8 @@ function HeroMockupCluster() {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <circle cx="12" cy="12" r="9" />
-          <path d="M12 7v5l3.5 2" />
+          <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z" />
+          <circle cx="12" cy="9" r="2.5" />
         </svg>
       </div>
     </div>
