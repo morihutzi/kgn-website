@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
+import { DualModeMockupScaled } from "@/components/mockups/DualModeMockupScaled";
 import { steps } from "@/content/home";
 
 export function Steps() {
@@ -18,7 +19,9 @@ export function Steps() {
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
             <div className="flex h-[240px] items-center justify-center">
-              {idx === 2 ? (
+              {idx === 0 ? (
+                <DualModeMockupScaled width={110} />
+              ) : idx === 2 ? (
                 <ChildviewMockupScaled width={110} />
               ) : (
                 <div className="relative h-44 w-44">
@@ -53,7 +56,9 @@ export function Steps() {
             className="flex flex-col items-center text-center"
           >
             <div className="flex h-[280px] items-center justify-center">
-              {idx === 2 ? (
+              {idx === 0 ? (
+                <DualModeMockupScaled width={125} />
+              ) : idx === 2 ? (
                 <ChildviewMockupScaled width={125} />
               ) : (
                 <div className="relative h-48 w-48">
