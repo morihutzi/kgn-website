@@ -6,11 +6,11 @@ type Size = "md" | "lg";
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-brand-yellow text-black hover:bg-[#e09e00] focus-visible:outline-brand-yellow",
+    "bg-brand-yellow text-white hover:bg-[#e09e00] focus-visible:outline-brand-yellow",
   secondary:
     "bg-brand-orange text-white hover:bg-[#e04a00] focus-visible:outline-brand-orange",
   outline:
-    "border-2 border-brand-yellow text-text-dark hover:bg-brand-yellow focus-visible:outline-brand-yellow",
+    "border-2 border-brand-yellow text-text-dark hover:bg-brand-yellow hover:text-white focus-visible:outline-brand-yellow",
 };
 
 const sizeClasses: Record<Size, string> = {

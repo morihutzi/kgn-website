@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
 import { hero, problemSolution } from "@/content/home";
@@ -25,51 +26,55 @@ function CheckIcon() {
 export function FeatureList() {
   return (
     <>
-      {/* Yellow block — phone overhangs OUT THE TOP into the white divider above */}
-      <Section>
-        <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
-          {/* Phone slideshow positioned to overhang upward into white space above */}
-          <PhoneSlideshow
-            slides={hero.icons}
-            className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-140px] lg:w-[200px]"
-          />
+      {/* Yellow block — same wrapper structure as Hero so widths align */}
+      <section className="py-5 md:py-8">
+        <Container>
+          <div className="mx-auto w-full max-w-[800px]">
+            <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
+              {/* Phone slideshow positioned to overhang upward into white space above */}
+              <PhoneSlideshow
+                slides={hero.icons}
+                className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-140px] lg:w-[200px]"
+              />
 
-          <div className="grid items-start gap-5 md:grid-cols-[160px_1fr]">
-            {/* Reserved space for the phone */}
-            <div className="hidden md:block" aria-hidden="true" />
+              <div className="grid items-start gap-5 md:grid-cols-[160px_1fr]">
+                {/* Reserved space for the phone */}
+                <div className="hidden md:block" aria-hidden="true" />
 
-            <div>
-              <p className="text-base font-semibold text-white md:text-lg">
-                {problemSolution.eyebrow}
-              </p>
-              <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">
-                {problemSolution.headline}
-              </h2>
-              <ul className="mt-4 grid gap-1.5 md:grid-cols-2 md:gap-x-6 md:gap-y-2">
-                {problemSolution.bullets.map((bullet) => (
-                  <li key={bullet} className="flex items-start gap-2.5">
-                    <CheckIcon />
-                    <span className="text-xs text-white md:text-sm">
-                      {bullet}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+                <div>
+                  <p className="text-base font-semibold text-white md:text-lg">
+                    {problemSolution.eyebrow}
+                  </p>
+                  <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">
+                    {problemSolution.headline}
+                  </h2>
+                  <ul className="mt-4 grid gap-1.5 md:grid-cols-2 md:gap-x-6 md:gap-y-2">
+                    {problemSolution.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2.5">
+                        <CheckIcon />
+                        <span className="text-xs text-white md:text-sm">
+                          {bullet}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Logo under the phone mockup on the left, same x and width as phone */}
+              <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[170px] md:justify-center lg:left-10 lg:w-[200px]">
+                <Image
+                  src="/brand/logo-weiss.png"
+                  alt="Kidgonet"
+                  width={203}
+                  height={28}
+                  className="h-auto w-full max-w-[200px] opacity-95"
+                />
+              </div>
             </div>
           </div>
-
-          {/* Logo under the phone mockup on the left, same x and width as phone */}
-          <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[170px] md:justify-center lg:left-10 lg:w-[200px]">
-            <Image
-              src="/brand/logo-weiss.png"
-              alt="Kidgonet"
-              width={203}
-              height={28}
-              className="h-auto w-full max-w-[200px] opacity-95"
-            />
-          </div>
-        </div>
-      </Section>
+        </Container>
+      </section>
 
       {/* Trust logos strip on white */}
       <Section>
