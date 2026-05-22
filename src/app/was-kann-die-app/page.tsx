@@ -43,7 +43,7 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 function FeatureMockup({ type }: { type: FeatureGridIcon }) {
   switch (type) {
     case "timer":
-      return <ChildviewMockupScaled width={150} />;
+      return <ChildviewMockupScaled width={160} />;
     case "devices":
       return <ElternportalMockup />;
     case "apps":
@@ -51,6 +51,55 @@ function FeatureMockup({ type }: { type: FeatureGridIcon }) {
     case "filter":
       return <InternetfilterMockup />;
   }
+}
+
+/**
+ * Phone-Stage mit Stagger, leichter Rotation und gelbem Soft-Glow im
+ * Hintergrund — gibt den vier Mockups Bewegung und Tiefe statt
+ * uniformer Card-Boxen.
+ */
+function FeaturePhoneStage({
+  idx,
+  children,
+}: {
+  idx: number;
+  children: React.ReactNode;
+}) {
+  // Stagger: vertical offset per column index
+  const verticalOffset = ["lg:translate-y-0", "lg:translate-y-8", "lg:translate-y-2", "lg:translate-y-10"][idx % 4];
+
+  // Slight rotation alternating direction
+  const rotations = ["-rotate-[2deg]", "rotate-[1.5deg]", "-rotate-[1deg]", "rotate-[2deg]"];
+  const rotation = rotations[idx % 4];
+
+  // Decorative glow color per column
+  const glows = [
+    "bg-brand-yellow/40",
+    "bg-brand-green/30",
+    "bg-brand-yellow/40",
+    "bg-brand-orange/25",
+  ];
+  const glow = glows[idx % 4];
+
+  return (
+    <div className={`relative flex justify-center ${verticalOffset}`}>
+      {/* Soft yellow glow behind phone */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute left-1/2 top-[12%] -z-10 h-[70%] w-[78%] -translate-x-1/2 rounded-full ${glow} blur-2xl`}
+      />
+      {/* Subtle ground shadow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-[-12px] left-1/2 -z-10 h-3 w-[55%] -translate-x-1/2 rounded-full bg-text-dark/15 blur-md"
+      />
+      <div
+        className={`${rotation} transition-transform duration-300 hover:rotate-0`}
+      >
+        {children}
+      </div>
+    </div>
+  );
 }
 
 // ── Page ─────────────────────────────────────────────────────────────────
@@ -223,22 +272,21 @@ function FeatureGridSection() {
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featureGrid.cards.map((card) => (
-            <li key={card.id}>
-              <article className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
-                <div className="flex items-center justify-center bg-surface-warm px-4 py-6">
-                  <FeatureMockup type={card.icon} />
-                </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="text-base font-extrabold leading-tight text-text-dark">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-text-dark">
-                    {card.body}
-                  </p>
-                </div>
-              </article>
+        <ul className="mt-16 grid gap-x-4 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-6">
+          {featureGrid.cards.map((card, idx) => (
+            <li key={card.id} className="relative">
+              <FeaturePhoneStage idx={idx}>
+                <FeatureMockup type={card.icon} />
+              </FeaturePhoneStage>
+
+              <div className="mt-6 px-2">
+                <h3 className="text-lg font-extrabold leading-tight text-text-dark">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-text-dark/85">
+                  {card.body}
+                </p>
+              </div>
             </li>
           ))}
         </ul>
