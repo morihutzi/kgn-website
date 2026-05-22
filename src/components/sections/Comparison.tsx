@@ -1,7 +1,54 @@
 import Image from "next/image";
-import { Check, X } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
+
+const BRAND_GREEN = "#C6C500";
+const ICON_GRAY = "rgba(74, 74, 73, 0.35)";
+const BORDER_COLOR = "#E5E5E5";
+const ROW_BORDER = "#F0F0F0";
+const HEADER_BG = "#FCEFD3";
+
+function CheckIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={BRAND_GREEN}
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-label="Enthalten"
+      role="img"
+      style={{ display: "block", margin: "0 auto" }}
+    >
+      <path d="M5 12.5l4.5 4.5L19 7" />
+    </svg>
+  );
+}
+
+function CrossIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={ICON_GRAY}
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-label="Nicht enthalten"
+      role="img"
+      style={{ display: "block", margin: "0 auto" }}
+    >
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
 
 export function Comparison() {
   return (
@@ -13,13 +60,13 @@ export function Comparison() {
       <div
         className="mt-10 overflow-hidden rounded-[20px] bg-white"
         style={{
-          border: "1px solid #E5E5E5",
+          border: `1px solid ${BORDER_COLOR}`,
           boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
         }}
       >
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr style={{ backgroundColor: "#FCEFD3" }}>
+            <tr style={{ backgroundColor: HEADER_BG }}>
               <th
                 scope="col"
                 className="px-5 py-5 text-left font-semibold text-text-dark md:px-7"
@@ -47,7 +94,7 @@ export function Comparison() {
             {comparison.features.map((feature) => (
               <tr
                 key={feature}
-                style={{ borderTop: "1px solid #F0F0F0" }}
+                style={{ borderTop: `1px solid ${ROW_BORDER}` }}
               >
                 <th
                   scope="row"
@@ -56,18 +103,10 @@ export function Comparison() {
                   {feature}
                 </th>
                 <td className="px-3 py-5 md:px-4">
-                  <Check
-                    className="mx-auto size-6 text-brand-green"
-                    strokeWidth={3}
-                    aria-label="Enthalten"
-                  />
+                  <CheckIcon />
                 </td>
                 <td className="px-3 py-5 md:px-4">
-                  <X
-                    className="mx-auto size-6 text-text-dark/35"
-                    strokeWidth={2.5}
-                    aria-label="Nicht enthalten"
-                  />
+                  <CrossIcon />
                 </td>
               </tr>
             ))}
