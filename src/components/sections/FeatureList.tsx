@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Section } from "@/components/layout/Section";
-import { problemSolution } from "@/content/home";
+import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
+import { hero, problemSolution } from "@/content/home";
 
 function CheckIcon() {
   return (
@@ -24,11 +25,17 @@ function CheckIcon() {
 export function FeatureList() {
   return (
     <>
-      {/* Yellow block — phone from Steps section below will overhang into here */}
+      {/* Yellow block — phone overhangs OUT THE TOP into the white divider above */}
       <Section>
         <div className="relative rounded-[20px] bg-brand-yellow px-6 py-10 md:px-12 md:py-12">
+          {/* Phone slideshow positioned to overhang upward into white space above */}
+          <PhoneSlideshow
+            slides={hero.icons}
+            className="pointer-events-none absolute left-4 top-[-120px] z-10 hidden w-[170px] md:block lg:left-12 lg:top-[-140px] lg:w-[200px]"
+          />
+
           <div className="grid items-start gap-6 md:grid-cols-[200px_1fr]">
-            {/* Reserved space for the phone that overhangs from the section below */}
+            {/* Reserved space for the phone */}
             <div className="hidden md:block" aria-hidden="true" />
 
             <div>

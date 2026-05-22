@@ -1,17 +1,10 @@
 import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
-import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
-import { hero, steps } from "@/content/home";
+import { steps } from "@/content/home";
 
 export function Steps() {
   return (
-    <Section className="relative">
-      {/* Phone slideshow overhanging UP into the yellow block (section 1) above */}
-      <PhoneSlideshow
-        slides={hero.icons}
-        className="pointer-events-none absolute left-6 top-[-260px] z-10 hidden w-[170px] md:block lg:left-12 lg:top-[-300px] lg:w-[200px]"
-      />
-
+    <Section>
       <SectionHeading size="small" align="center">
         {steps.headline}
       </SectionHeading>
