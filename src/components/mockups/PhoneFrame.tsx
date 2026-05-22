@@ -15,14 +15,14 @@ export function PhoneFrame({ children, className }: PhoneFrameProps) {
   return (
     <div
       className={cn(
-        'relative mx-auto aspect-[9.5/20] w-full max-w-[230px] rounded-[2.4rem] bg-[#1a1a19] shadow-[0_24px_60px_rgba(74,74,73,0.18)]',
+        'relative mx-auto aspect-[9.5/20] w-full max-w-[230px] rounded-[1.4rem] bg-[#1a1a19] shadow-[0_24px_60px_rgba(74,74,73,0.18)]',
         className
       )}
     >
       {/* Inner screen — absolute inset statt h-full, damit iOS Safari den
        * Inner-Screen nicht über das aspect-ratio'd Outer hinauswachsen lässt
        * (h-full kann auf iOS Safari von Inhalt überschrieben werden). */}
-      <div className="absolute inset-[6px] overflow-hidden rounded-[2rem] bg-[#fcfaf7]">
+      <div className="absolute inset-[6px] overflow-hidden rounded-[1.1rem] bg-[#fcfaf7]">
         {children}
 
         {/* Notch */}

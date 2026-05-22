@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { Wifi, BatteryMedium, Hourglass, Clock } from 'lucide-react'
 import { PhoneFrame } from './PhoneFrame'
 
@@ -66,6 +66,10 @@ function readReduceMotion(): boolean {
 }
 
 export function ChildviewMockup() {
+  const rawUid = useId()
+  const uid = rawUid.replace(/[:_]/g, '')
+  const circleClipId = `wave-circle-clip-${uid}`
+  const fillClipId = `wave-fill-clip-${uid}`
   const [elapsed, setElapsed] = useState(0)
   const [waveOffset, setWaveOffset] = useState(0)
   const [reduceMotion, setReduceMotion] = useState(readReduceMotion)
@@ -167,12 +171,12 @@ export function ChildviewMockup() {
               aria-hidden
             >
               <defs>
-                <clipPath id="wave-circle-clip">
+                <clipPath id={circleClipId}>
                   <circle cx="50" cy="50" r="48" />
                 </clipPath>
                 {/* Wave-Clip für die weiße Schrift, die nur über dem
                  * gefüllten (farbigen) Bereich sichtbar sein soll. */}
-                <clipPath id="wave-fill-clip">
+                <clipPath id={fillClipId}>
                   <path d={wavePath} />
                 </clipPath>
               </defs>
@@ -183,7 +187,7 @@ export function ChildviewMockup() {
               {!isBlocked ? (
                 <>
                   {/* Wave-Füllung (Tiefen-Welle hinter Primary) */}
-                  <g clipPath="url(#wave-circle-clip)">
+                  <g clipPath={`url(#${circleClipId})`}>
                     <path d={wavePathBg} fill={fillColor} fillOpacity="0.4" />
                     <path d={wavePath} fill={fillColor} />
                   </g>
@@ -212,7 +216,7 @@ export function ChildviewMockup() {
                     y="58"
                     textAnchor="middle"
                     fill="white"
-                    clipPath="url(#wave-fill-clip)"
+                    clipPath={`url(#${fillClipId})`}
                     className="font-sans"
                   >
                     <tspan fontSize="28" fontWeight={800}>
