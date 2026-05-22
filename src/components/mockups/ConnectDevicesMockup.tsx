@@ -5,122 +5,61 @@ const NATIVE_WIDTH = 220;
 const NATIVE_HEIGHT = 463;
 
 /**
- * Connect-Devices-Mockup: Visualisiert die "1 Elterngerät zu N Kindergeräten"-
- * Beziehung als clean Diagramm. Oben ein Eltern-Phone mit fokussiertem
- * "3 Kinder verbunden"-Stat, darunter drei verschiedene Device-Icons
- * (Smartphone / Tablet / Laptop) als Kindergeräte, verbunden durch
- * gestrichelte Linien.
+ * Connect-Devices-Mockup: Ein einzelnes Phone, das den Elternportal-Geräte-
+ * View zeigt. Klare Liste aller verbundenen Kindergeräte mit Device-Icon,
+ * Kind-Name und Device-Typ.
+ *
+ * Visuell konsistent zum [[ChildviewMockup]] in Schritt 3 (gleiche Phone-
+ * Größe, gleicher PhoneFrame). Erzählt die Multi-Device-Story über den
+ * Inhalt statt über ein Diagramm.
  *
  * Statisch, keine Animation. Wird per [[ConnectDevicesMockupScaled]] auf
  * eine Zielbreite skaliert.
  */
 export function ConnectDevicesMockup() {
   return (
-    <div
-      className="relative"
-      style={{ width: NATIVE_WIDTH, height: NATIVE_HEIGHT }}
-    >
-      <div className="absolute inset-x-0 top-0 text-center">
-        <span className="text-[7px] font-extrabold uppercase tracking-[0.14em] text-foreground/55">
-          Elterngerät
-        </span>
-      </div>
-
-      <div
-        className="absolute"
-        style={{ width: 110, left: NATIVE_WIDTH / 2 - 55, top: 16 }}
-      >
-        <ParentPhone />
-      </div>
-
-      <svg
-        viewBox={`0 0 ${NATIVE_WIDTH} ${NATIVE_HEIGHT}`}
-        className="absolute inset-0 h-full w-full"
-        aria-hidden
-      >
-        <line
-          x1="92"
-          y1="252"
-          x2="42"
-          y2="320"
-          stroke="#F9B000"
-          strokeWidth="1.5"
-          strokeDasharray="3 3"
-          strokeLinecap="round"
-        />
-        <line
-          x1="110"
-          y1="252"
-          x2="110"
-          y2="320"
-          stroke="#F9B000"
-          strokeWidth="1.5"
-          strokeDasharray="3 3"
-          strokeLinecap="round"
-        />
-        <line
-          x1="128"
-          y1="252"
-          x2="178"
-          y2="320"
-          stroke="#F9B000"
-          strokeWidth="1.5"
-          strokeDasharray="3 3"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      <div className="absolute inset-x-0 text-center" style={{ top: 292 }}>
-        <span className="text-[7px] font-extrabold uppercase tracking-[0.14em] text-foreground/55">
-          Kindergeräte
-        </span>
-      </div>
-
-      <div
-        className="absolute flex items-start justify-between"
-        style={{ left: 14, right: 14, top: 320 }}
-      >
-        <DeviceCard Icon={Smartphone} name="Anna" />
-        <DeviceCard Icon={Tablet} name="Franz" />
-        <DeviceCard Icon={Laptop} name="Lena" />
-      </div>
-    </div>
-  );
-}
-
-function ParentPhone() {
-  return (
-    <PhoneFrame className="max-w-[110px]">
+    <PhoneFrame className="max-w-[220px]">
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-0 z-0 h-[40px] bg-brand-yellow"
+        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[110px]"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(249,176,0,1) 0%, rgba(249,176,0,0) 100%)",
+        }}
       />
 
       <div className="relative z-10 flex h-full flex-col">
-        <div className="flex items-center justify-between px-2 pt-1.5 text-white">
-          <span className="text-[6px] font-semibold leading-none">14:07</span>
+        <div className="flex items-center justify-between px-4 pt-3 text-white">
+          <span className="text-[10px] font-semibold leading-none">14:07</span>
         </div>
 
-        <div className="px-2 pt-1 text-center">
-          <p className="text-[9px] font-extrabold leading-none">
-            <span className="text-white">Eltern</span>{" "}
-            <span className="text-foreground">PORTAL</span>
-          </p>
+        <div className="mx-3 mt-2 flex items-center justify-between rounded-md bg-brand-yellow px-2.5 py-1.5">
+          <div className="text-[11px] font-extrabold leading-none">
+            <span className="text-white">Eltern</span>
+            <span className="ml-1 text-foreground">PORTAL</span>
+          </div>
         </div>
 
-        <div className="mx-2 mt-4 rounded-lg bg-white px-2 py-3 text-center shadow-[0_2px_4px_rgba(0,0,0,0.08)]">
-          <p className="text-[6px] font-bold uppercase tracking-[0.1em] text-foreground/55">
+        <div className="mx-3 mt-3 rounded-xl bg-white px-3 py-3 text-center shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
+          <p className="text-[7px] font-bold uppercase tracking-[0.1em] text-foreground/55">
             Verbunden
           </p>
-          <p className="mt-1 text-[15px] font-extrabold leading-tight text-foreground">
-            3 Kinder
-          </p>
-          <p className="mt-0.5 text-[7px] font-semibold text-brand-yellow">
+          <p className="mt-1 text-[18px] font-extrabold leading-none text-foreground">
             5 Geräte
           </p>
+          <p className="mt-1 text-[9px] font-semibold text-brand-yellow">
+            3 Kinder
+          </p>
+        </div>
+
+        <div className="mx-3 mt-3 space-y-1.5">
+          <DeviceRow Icon={Smartphone} name="Anna" device="Smartphone" />
+          <DeviceRow Icon={Tablet} name="Franz" device="Tablet" />
+          <DeviceRow Icon={Laptop} name="Lena" device="Laptop" />
         </div>
 
         <div className="flex-1" />
+        <div className="h-4" />
       </div>
     </PhoneFrame>
   );
@@ -128,17 +67,36 @@ function ParentPhone() {
 
 type DeviceIcon = typeof Smartphone;
 
-function DeviceCard({ Icon, name }: { Icon: DeviceIcon; name: string }) {
+function DeviceRow({
+  Icon,
+  name,
+  device,
+}: {
+  Icon: DeviceIcon;
+  name: string;
+  device: string;
+}) {
   return (
-    <div className="flex flex-col items-center gap-2" style={{ width: 56 }}>
-      <div className="flex size-12 items-center justify-center rounded-2xl bg-white shadow-[0_2px_6px_rgba(0,0,0,0.08)]">
+    <div className="flex items-center gap-2 rounded-md bg-white px-2.5 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+      <div className="flex size-6 items-center justify-center rounded-md bg-brand-yellow/15">
         <Icon
-          className="size-7 text-brand-yellow"
-          strokeWidth={1.75}
+          className="size-3.5 text-brand-yellow"
+          strokeWidth={2.25}
           aria-hidden
         />
       </div>
-      <span className="text-[8px] font-extrabold text-foreground">{name}</span>
+      <div className="flex flex-1 flex-col leading-tight">
+        <span className="text-[9px] font-extrabold text-foreground">
+          {name}
+        </span>
+        <span className="text-[7px] text-foreground/60">{device}</span>
+      </div>
+      <div className="flex items-center gap-1 rounded-full bg-brand-green/15 px-1.5 py-0.5">
+        <span className="block size-1 rounded-full bg-brand-green" />
+        <span className="text-[6px] font-extrabold uppercase tracking-wider text-brand-green">
+          aktiv
+        </span>
+      </div>
     </div>
   );
 }
