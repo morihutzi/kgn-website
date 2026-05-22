@@ -1,34 +1,24 @@
-import Image from "next/image";
+import { BildschirmzeitMockup } from "./BildschirmzeitMockup";
+import { ElternportalMockup } from "./ElternportalMockup";
 
-const NATIVE_WIDTH = 160;
-// Native-Höhe matched die Höhe eines einzelnen Screen-PNGs (Aspect 739:1587
-// ≈ 1:2.15, also bei 160 wide ~344 tall). Dadurch entspricht der gesamte
-// 2-Phones-Stack visuell der Höhe eines einzelnen PhoneFrame in Schritt 3.
+const NATIVE_WIDTH = 180;
+// Native-Höhe matched die Höhe eines einzelnen PhoneFrame bei 180 wide
+// (180 × 20/9.5 = 379). Dadurch entspricht der gesamte 2-Phones-Stack
+// visuell der Höhe eines einzelnen PhoneFrame in Schritt 3.
 const CAPTION_HEIGHT = 14;
-const GAP_BETWEEN = 24;
-const PHONE_VISIBLE_HEIGHT = 142;
+const GAP_BETWEEN = 25;
+const PHONE_VISIBLE_HEIGHT = 163;
 const NATIVE_HEIGHT =
-  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 336
-
-const SCREENS = {
-  parent: {
-    src: "/images/screens/elternportal.png",
-    alt: "Kidgonet Elternportal mit Annas Regeln und Internetsperren",
-  },
-  kid: {
-    src: "/images/screens/bildschirmzeit.png",
-    alt: "Kidgonet Kindermodus mit Hallo Anna und verbleibender Bildschirmzeit",
-  },
-} as const;
+  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 379
 
 /**
- * Two-Modes-Mockup: Zwei echte Kidgonet-App-Screens vertikal übereinander
- * gestapelt, jeweils zur Hälfte abgeschnitten. Über jedem Screen eine
- * Caption, in der Mitte ein Divider.
+ * Two-Modes-Mockup: Zwei Kidgonet-App-Komponenten vertikal übereinander
+ * gestapelt, jeweils zur Hälfte abgeschnitten. Über jedem Phone eine
+ * Caption, in der Mitte ein Divider als Geräte-Trenner.
  *
- * Nutzt die offiziellen Screens aus `public/images/screens/`:
- *  - `elternportal.png` für Elterngerät
- *  - `bildschirmzeit.png` für Kindgerät
+ * Nutzt die wiederverwendbaren Mockup-Components:
+ *  - [[ElternportalMockup]] für Elterngerät (Portal-UI mit Kind-Profil)
+ *  - [[BildschirmzeitMockup]] für Kindgerät (Hallo Franziska + Wave-Fill)
  *
  * Gesamt-Visual-Größe identisch zum Schritt-3-Phone (ChildviewMockup)
  * bei gleichem Scale-Faktor. Wird per [[TwoModesMockupScaled]] skaliert.
@@ -41,7 +31,9 @@ export function TwoModesMockup() {
       className="relative"
       style={{ width: NATIVE_WIDTH, height: NATIVE_HEIGHT }}
     >
-      <DeviceBlock label="Elterngerät" top={0} screen={SCREENS.parent} />
+      <DeviceBlock label="Elterngerät" top={0}>
+        <ElternportalMockup />
+      </DeviceBlock>
 
       <div
         className="absolute inset-x-0 flex items-center gap-1.5 px-3"
@@ -56,22 +48,21 @@ export function TwoModesMockup() {
       <DeviceBlock
         label="Kindgerät"
         top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
-        screen={SCREENS.kid}
-      />
+      >
+        <BildschirmzeitMockup />
+      </DeviceBlock>
     </div>
   );
 }
 
-type Screen = { src: string; alt: string };
-
 function DeviceBlock({
   label,
   top,
-  screen,
+  children,
 }: {
   label: string;
   top: number;
-  screen: Screen;
+  children: React.ReactNode;
 }) {
   return (
     <div
@@ -89,17 +80,9 @@ function DeviceBlock({
           overflow: "hidden",
         }}
       >
-        <Image
-          src={screen.src}
-          alt={screen.alt}
-          width={739}
-          height={1587}
-          sizes="160px"
-          className="h-auto w-full"
-          priority={false}
-        />
+        {children}
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-10"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-12"
           style={{
             background:
               "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
