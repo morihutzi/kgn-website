@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { featuresPage } from "@/content/features";
 import { siteConfig } from "@/content/site";
 
@@ -118,17 +119,8 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[420px] md:max-w-none">
-            <div className="overflow-hidden rounded-[20px] border border-neutral-200 bg-white">
-              <Image
-                src={hero.image.src}
-                alt={hero.image.alt}
-                width={800}
-                height={600}
-                sizes="(min-width: 768px) 480px, 100vw"
-                className="h-auto w-full object-contain"
-              />
-            </div>
+          <div className="flex items-center justify-center">
+            <ChildviewMockupScaled width={260} />
           </div>
         </div>
       </Container>
