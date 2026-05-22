@@ -54,7 +54,7 @@ export const steps = {
       image: "/images/steps/portal-install.jpeg",
       alt: "Elternportal im Browser",
       title: "Steuer auch vom Browser",
-      text: "Auf kidgonet.de einloggen, ohne zweite App. Vom Laptop, Tablet oder Handy aus.",
+      text: "Auf portal.kidgonet.de einloggen, ohne zweite App. Vom Laptop, Tablet oder Handy aus.",
     },
     {
       image: "/images/steps/internetsperre.png",
