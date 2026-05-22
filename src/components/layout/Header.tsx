@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
+import { MegaMenu } from "@/components/layout/MegaMenu";
 import { primaryNav, siteConfig } from "@/content/site";
+import { wasKannDieAppMega } from "@/content/megaMenu";
 
 export function Header() {
   return (
@@ -27,20 +29,34 @@ export function Header() {
           aria-label="Hauptnavigation"
           className="hidden items-center gap-6 lg:flex"
         >
-          {primaryNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="relative text-sm font-medium text-text-dark transition-colors hover:text-brand-yellow"
-            >
-              {item.label}
-              {item.badge && (
-                <span className="ml-1 rounded-full bg-brand-yellow px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black">
-                  {item.badge}
-                </span>
-              )}
-            </Link>
-          ))}
+          {primaryNav.map((item) => {
+            if (item.href === "/was-kann-die-app") {
+              return (
+                <MegaMenu
+                  key={item.href}
+                  triggerLabel={item.label}
+                  triggerHref={item.href}
+                  triggerBadge={item.badge}
+                  features={wasKannDieAppMega.features}
+                  abos={wasKannDieAppMega.abos}
+                />
+              );
+            }
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="relative text-sm font-medium text-text-dark transition-colors hover:text-brand-yellow"
+              >
+                {item.label}
+                {item.badge && (
+                  <span className="ml-1 rounded-full bg-brand-yellow px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black">
+                    {item.badge}
+                  </span>
+                )}
+              </Link>
+            );
+          })}
           <Link
             href={siteConfig.portalLoginUrl}
             target="_blank"

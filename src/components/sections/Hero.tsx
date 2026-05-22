@@ -28,7 +28,7 @@ export function Hero() {
 
         {/* Award badge — Bayerischer Digitalpreis 2025, bottom-left (right side reserved for CTA stack) */}
         <Image
-          src="/images/award/digitalpreis-bayern-2025-gold.png"
+          src="/images/award/digitalpreis-bayern-2025-schwarz.png"
           alt="Sieger Bayerischer Digitalpreis 2025"
           width={2381}
           height={928}
@@ -110,7 +110,7 @@ export function Hero() {
 
               {/* Award badge — Bayerischer Digitalpreis 2025, bottom-right corner */}
               <Image
-                src="/images/award/digitalpreis-bayern-2025-gold.png"
+                src="/images/award/digitalpreis-bayern-2025-schwarz.png"
                 alt="Sieger Bayerischer Digitalpreis 2025"
                 width={2381}
                 height={928}
