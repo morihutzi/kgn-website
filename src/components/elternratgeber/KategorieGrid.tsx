@@ -13,7 +13,7 @@ export function KategorieGrid() {
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {elternratgeberKategorien.map((k) => {
         const count = counts.get(k.slug) ?? 0;
         const c = brandFarbeClasses[k.brandFarbe];
@@ -21,20 +21,22 @@ export function KategorieGrid() {
           <Link
             key={k.slug}
             href={`/elternratgeber/${k.slug}`}
-            className={`group relative flex flex-col gap-4 overflow-hidden rounded-[20px] ${c.bg} p-7 text-white transition-transform hover:-translate-y-0.5`}
+            className={`group flex flex-col gap-3 rounded-[20px] border-2 ${c.border} bg-white p-7 transition-transform hover:-translate-y-0.5`}
           >
-            <div className="flex items-center justify-between gap-3">
-              <span className="rounded-full bg-white/95 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-text-dark">
-                {count} {count === 1 ? "Beitrag" : "Beiträge"}
-              </span>
-            </div>
-            <h3 className="text-2xl font-extrabold leading-tight text-white">
+            <span
+              className={`inline-flex w-fit rounded-full border-2 bg-white px-2.5 py-1 text-[11px] font-extrabold uppercase tracking-wide ${c.border} ${c.text}`}
+            >
+              {count} {count === 1 ? "Beitrag" : "Beiträge"}
+            </span>
+            <h3 className="text-2xl font-extrabold leading-tight text-text-dark">
               {k.name}
             </h3>
-            <p className="text-sm leading-relaxed text-white/95">
+            <p className="text-sm leading-relaxed text-text-dark">
               {k.beschreibung}
             </p>
-            <span className="mt-2 inline-flex items-center gap-1 text-sm font-extrabold text-white">
+            <span
+              className={`mt-3 inline-flex items-center gap-1 text-sm font-extrabold ${c.text}`}
+            >
               Beiträge ansehen
               <span aria-hidden>→</span>
             </span>

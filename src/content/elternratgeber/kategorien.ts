@@ -3,7 +3,7 @@ export type ElternratgeberKategorieSlug =
   | "medientipps"
   | "smartphones-tablets";
 
-export type BrandFarbeKey = "yellow" | "orange" | "green";
+export type BrandFarbeKey = "yellow" | "green" | "dark";
 
 export type ElternratgeberKategorie = {
   slug: ElternratgeberKategorieSlug;
@@ -13,10 +13,11 @@ export type ElternratgeberKategorie = {
 };
 
 /**
- * Kategorien-Farben kommen ausschließlich aus der Kidgonet-Brand-Palette.
- * - yellow = brand-yellow (#f9b000)
- * - orange = brand-orange (#fc5802)
- * - green  = brand-green  (#c6c500)
+ * Kategorien-Akzentfarben aus der Brand-Palette ohne brand-orange
+ * (wirkt zu rot).
+ *  - yellow = brand-yellow (#f9b000)
+ *  - green  = brand-green  (#c6c500)
+ *  - dark   = text-dark    (#4a4a49)
  */
 export const elternratgeberKategorien: ElternratgeberKategorie[] = [
   {
@@ -24,7 +25,7 @@ export const elternratgeberKategorien: ElternratgeberKategorie[] = [
     name: "Expert Talk",
     beschreibung:
       "Interviews und Gespräche mit Fachleuten zu Medienerziehung, digitalem Familienalltag und Kinderschutz.",
-    brandFarbe: "orange",
+    brandFarbe: "dark",
   },
   {
     slug: "medientipps",
@@ -51,24 +52,24 @@ export function getKategorieBySlug(
 export const brandFarbeClasses: Record<
   BrandFarbeKey,
   {
-    bg: string;
     text: string;
     border: string;
+    bg: string;
   }
 > = {
   yellow: {
-    bg: "bg-brand-yellow",
     text: "text-brand-yellow",
     border: "border-brand-yellow",
-  },
-  orange: {
-    bg: "bg-brand-orange",
-    text: "text-brand-orange",
-    border: "border-brand-orange",
+    bg: "bg-brand-yellow",
   },
   green: {
-    bg: "bg-brand-green",
     text: "text-brand-green",
     border: "border-brand-green",
+    bg: "bg-brand-green",
+  },
+  dark: {
+    text: "text-text-dark",
+    border: "border-text-dark",
+    bg: "bg-text-dark",
   },
 };

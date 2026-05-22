@@ -109,7 +109,7 @@ export function NewsletterCta({
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-[12px] bg-brand-orange px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-[#e04a00] disabled:opacity-60"
+            className="rounded-[12px] bg-text-dark px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition-colors hover:bg-black disabled:opacity-60"
           >
             {status === "loading" ? "Sende..." : "Abonnieren"}
           </button>

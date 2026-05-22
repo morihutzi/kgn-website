@@ -183,19 +183,28 @@ def escape_mdx_unsafe(md_text: str) -> str:
 
 def clean_md_body(md_text: str, title: str) -> str:
     md_text = re.sub(r"\n{3,}", "\n\n", md_text).strip()
-    # Strip leading H1 if it mirrors the title
     lines = md_text.split("\n")
-    if lines:
-        first = lines[0].strip()
-        first_clean = re.sub(r"[#*_`\s]", "", first).lower()
-        title_clean = re.sub(r"[\s\W]", "", title).lower()
-        if first.startswith("#") and (
-            title_clean[:30] in first_clean or first_clean[:30] in title_clean
-        ):
-            lines = lines[1:]
-            while lines and not lines[0].strip():
-                lines = lines[1:]
+
+    def drop_leading_empty(ls: list[str]) -> list[str]:
+        while ls and not ls[0].strip():
+            ls = ls[1:]
+        return ls
+
+    # Strip fuehrenden Bild-Block (WP dupliziert das Featured-Image meist als
+    # erstes Bild im Body – Cover wird bereits im Hero ausgespielt).
+    lines = drop_leading_empty(lines)
+    if lines and re.match(r"^!\[[^\]]*\]\([^\)]+\)\s*$", lines[0].strip()):
+        lines = lines[1:]
+        lines = drop_leading_empty(lines)
+
+    # Strip leading H1 (Titel steckt schon im Hero / der Frontmatter).
+    if lines and re.match(r"^#\s+\S", lines[0]):
+        lines = lines[1:]
+        lines = drop_leading_empty(lines)
     md_text = "\n".join(lines)
+    # Restliche H1 im Body zu H2 demoten (nur eine H1 pro Seite zulassen).
+    md_text = re.sub(r"^# (?=\S)", "## ", md_text, flags=re.MULTILINE)
+    _ = title  # signatur kompatibel halten
     # Headings: remove inline bold/italic markers inside headings (## **Foo** -> ## Foo)
     md_text = re.sub(
         r"^(#{1,6}\s+)\*\*(.+?)\*\*\s*$",

@@ -2,7 +2,10 @@ import { Section, SectionHeading } from "@/components/layout/Section";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { TwoModesMockupScaled } from "@/components/mockups/TwoModesMockupScaled";
+import { StepsMobileNav } from "@/components/sections/StepsMobileNav";
 import { steps } from "@/content/home";
+
+const MOBILE_LIST_ID = "steps-mobile-list";
 
 export function Steps() {
   return (
@@ -12,7 +15,10 @@ export function Steps() {
       </SectionHeading>
 
       {/* Mobile: horizontal scroll-snap (one step visible at a time) */}
-      <ol className="mt-7 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:hidden">
+      <ol
+        id={MOBILE_LIST_ID}
+        className="mt-7 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:hidden"
+      >
         {steps.items.map((item, idx) => (
           <li
             key={item.title}
@@ -39,6 +45,11 @@ export function Steps() {
           </li>
         ))}
       </ol>
+
+      <StepsMobileNav
+        containerSelector={`#${MOBILE_LIST_ID}`}
+        count={steps.items.length}
+      />
 
       {/* Desktop: 3-column grid */}
       <ol className="mt-7 hidden gap-4 md:grid md:grid-cols-3">

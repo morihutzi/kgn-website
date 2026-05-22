@@ -23,11 +23,9 @@ export function KategorieBadge({
   const c = brandFarbeClasses[kategorie.brandFarbe];
 
   const sizeClasses =
-    size === "md"
-      ? "px-3.5 py-1.5 text-xs"
-      : "px-2.5 py-1 text-[11px]";
+    size === "md" ? "px-3.5 py-1.5 text-xs" : "px-2.5 py-1 text-[11px]";
 
-  const baseClasses = `inline-flex items-center gap-1.5 rounded-full font-extrabold uppercase tracking-wide text-white ${c.bg} ${sizeClasses} ${className}`;
+  const baseClasses = `inline-flex items-center gap-1.5 rounded-full border-2 bg-white font-extrabold uppercase tracking-wide ${c.border} ${c.text} ${sizeClasses} ${className}`;
 
   const content = <span className={baseClasses}>{kategorie.name}</span>;
 
@@ -35,7 +33,7 @@ export function KategorieBadge({
     return (
       <Link
         href={`/elternratgeber/${kategorie.slug}`}
-        className="inline-block transition-opacity hover:opacity-90"
+        className="inline-block transition-opacity hover:opacity-80"
       >
         {content}
       </Link>
