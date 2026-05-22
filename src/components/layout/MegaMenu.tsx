@@ -118,23 +118,17 @@ export function MegaMenu({
       </Link>
 
       {open && (
-        <>
-          <div
-            aria-hidden="true"
-            className="fixed inset-x-0 top-20 z-40 hidden h-px lg:block"
-          />
-          <div
-            id={panelId}
-            role="region"
-            aria-label={triggerLabel}
-            className="absolute left-1/2 top-full z-50 mt-3 hidden w-[min(1100px,calc(100vw-3rem))] -translate-x-1/2 rounded-[20px] border border-neutral-200 bg-white p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.18)] lg:block"
-          >
-            <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
-              <MegaMenuFeatures column={features} />
-              <MegaMenuAbos column={abos} />
-            </div>
+        <div
+          id={panelId}
+          role="region"
+          aria-label={triggerLabel}
+          className="fixed left-1/2 top-[calc(5rem+0.5rem)] z-50 hidden w-[min(1100px,calc(100vw-3rem))] -translate-x-1/2 rounded-[20px] border border-white/40 bg-white/75 p-8 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.18)] backdrop-blur-2xl backdrop-saturate-150 lg:block"
+        >
+          <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+            <MegaMenuFeatures column={features} />
+            <MegaMenuAbos column={abos} />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
