@@ -58,13 +58,14 @@ export function FeatureList() {
             </div>
           </div>
 
-          <div className="mt-6 flex justify-center">
+          {/* Logo under the phone mockup on the left, same x and width as phone */}
+          <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[140px] md:justify-center lg:left-10 lg:w-[160px]">
             <Image
               src="/brand/logo-weiss.png"
               alt="Kidgonet"
-              width={200}
-              height={27}
-              className="h-6 w-auto opacity-95 md:h-7"
+              width={203}
+              height={28}
+              className="h-auto w-full max-w-[160px] opacity-95"
             />
           </div>
         </div>
