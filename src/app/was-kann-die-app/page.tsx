@@ -392,17 +392,13 @@ function ScreenTimeSection() {
             </ul>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[400px] md:max-w-none">
-            <div className="overflow-hidden rounded-[16px] border border-neutral-200 bg-white">
-              <Image
-                src={screenTime.image.src}
-                alt={screenTime.image.alt}
-                width={800}
-                height={600}
-                sizes="(min-width: 768px) 420px, 100vw"
-                className="h-auto w-full object-contain"
-              />
-            </div>
+          <div className="relative mx-auto flex w-full justify-center md:justify-end">
+            {/* Soft yellow glow behind phone */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-1/2 -z-0 size-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-yellow/25 blur-3xl"
+            />
+            <ChildviewMockupScaled width={200} />
           </div>
         </div>
 
