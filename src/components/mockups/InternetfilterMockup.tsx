@@ -1,4 +1,6 @@
+import { Home, MoreVertical, Plus } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
+import { KidgoSmileyLarge, MockupStatusBar } from "./_shared";
 
 /**
  * Internetfilter-Blockierseite. Wenn ein Kind eine gesperrte URL aufruft,
@@ -9,56 +11,76 @@ export function InternetfilterMockup() {
   return (
     <PhoneFrame className="max-w-[180px]">
       <div className="relative z-10 flex h-full min-h-0 flex-col bg-white">
-        {/* Status bar (subtle) */}
-        <div className="flex items-center justify-between px-3 pt-1.5 text-[#4A4A49]">
-          <span className="text-[7px] font-semibold">08:57</span>
-          <span className="text-[7px]">📶 🔋</span>
-        </div>
+        <MockupStatusBar time="08:57" variant="dark" />
 
         {/* Browser URL bar */}
-        <div className="mx-2 mt-1 flex items-center gap-1 rounded-full bg-[#F4EFE3] px-1.5 py-0.5">
-          <span className="text-[6px] text-[#4A4A49]">⌂</span>
-          <span className="flex-1 truncate rounded-full bg-[#FFD9DC] px-1.5 py-0.5 text-[6px] font-semibold text-[#C24450]">
-            porn.com
+        <div className="mx-1.5 mt-1 flex items-center gap-1 rounded-full bg-[#F4EFE3] px-1.5 py-0.5">
+          <Home
+            className="size-[8px] text-[#4A4A49]"
+            strokeWidth={2.5}
+          />
+          <span className="flex-1 truncate rounded-full bg-[#FFD9DC] px-2 py-[1px] text-[6px] font-semibold text-[#C24450]">
+            blocked-page.de
           </span>
-          <span className="text-[6px] text-[#4A4A49]">+</span>
-          <span className="text-[6px] text-[#4A4A49]">2</span>
-          <span className="text-[6px] text-[#4A4A49]">⋮</span>
+          <Plus className="size-[8px] text-[#4A4A49]" strokeWidth={2.5} />
+          <span className="inline-flex size-3 items-center justify-center rounded border border-[#4A4A49] text-[6px] font-bold text-[#4A4A49]">
+            2
+          </span>
+          <MoreVertical
+            className="size-[8px] text-[#4A4A49]"
+            strokeWidth={2.5}
+          />
         </div>
 
         {/* Large smiley */}
         <div className="mt-3 flex justify-center">
-          <KidgoSmiley className="size-12" />
+          <KidgoSmileyLarge className="size-12" />
         </div>
 
         {/* KIDGONET title */}
-        <p className="mt-1.5 text-center text-[10px] font-extrabold tracking-tight text-[#4A4A49]">
+        <p className="mt-2 text-center text-[11px] font-extrabold tracking-tight text-[#4A4A49]">
           KID<span className="text-[#F9B000]">GO</span>NET
         </p>
 
         {/* Beige status strip */}
-        <div className="mt-1.5 bg-[#EAE3D9] py-0.5 text-center">
-          <p className="text-[7px] font-bold text-[#4A4A49]">
+        <div className="mt-2 bg-[#EAE3D9] py-1 text-center">
+          <p className="text-[7px] font-extrabold text-[#4A4A49]">
             Diese Seite ist geblockt
           </p>
         </div>
 
         {/* Content */}
         <div className="flex-1 overflow-hidden px-2.5 pt-2 pb-2 text-[#4A4A49]">
-          <p className="text-[6px]">
+          <p className="text-[6.5px] leading-tight">
             <span className="font-extrabold">Hallo</span>, diese Seite ist im
             Moment gesperrt.
           </p>
-          <p className="mt-1.5 text-[6px]">Gründe dafür können sein:</p>
-          <ul className="mt-0.5 list-inside list-disc space-y-0 pl-1 text-[5.5px] leading-tight">
-            <li>Die Seite ist für Dein Alter nicht geeignet</li>
-            <li>Deine Onlinezeit ist abgelaufen</li>
-            <li>Eine Auszeit ist aktiv</li>
-            <li>Deine Eltern haben die Notbremse gezogen</li>
+          <p className="mt-1.5 text-[6.5px] leading-tight">
+            Gründe dafür können sein:
+          </p>
+          <ul className="mt-0.5 space-y-[1px] pl-2 text-[5.5px] leading-tight">
+            <li className="flex items-start gap-1">
+              <span className="mt-[2px] block size-[3px] flex-shrink-0 rounded-full bg-[#4A4A49]" />
+              <span>Die Seite ist für Dein Alter nicht geeignet</span>
+            </li>
+            <li className="flex items-start gap-1">
+              <span className="mt-[2px] block size-[3px] flex-shrink-0 rounded-full bg-[#4A4A49]" />
+              <span>Deine Onlinezeit ist abgelaufen</span>
+            </li>
+            <li className="flex items-start gap-1">
+              <span className="mt-[2px] block size-[3px] flex-shrink-0 rounded-full bg-[#4A4A49]" />
+              <span>Eine Auszeit ist aktiv</span>
+            </li>
+            <li className="flex items-start gap-1">
+              <span className="mt-[2px] block size-[3px] flex-shrink-0 rounded-full bg-[#4A4A49]" />
+              <span>Deine Eltern haben die Notbremse gezogen</span>
+            </li>
           </ul>
 
-          <p className="mt-1.5 text-[6px] font-extrabold">Dein Kidgonet-Team</p>
-          <p className="text-[6px]">
+          <p className="mt-1.5 text-[6.5px] font-extrabold">
+            Dein Kidgonet-Team
+          </p>
+          <p className="text-[6.5px]">
             Gerne online?{" "}
             <span className="font-extrabold italic text-[#F9B000]">
               Aber sicher!
@@ -67,36 +89,5 @@ export function InternetfilterMockup() {
         </div>
       </div>
     </PhoneFrame>
-  );
-}
-
-function KidgoSmiley({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 64 64"
-      className={className}
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="32" cy="32" r="30" fill="#F9B000" />
-      {/* Left eye - wink */}
-      <path
-        d="M 16 28 Q 22 22 28 28"
-        stroke="white"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-      {/* Right eye - dot */}
-      <circle cx="42" cy="27" r="3" fill="white" />
-      {/* Smile */}
-      <path
-        d="M 18 40 Q 32 52 46 40"
-        stroke="white"
-        strokeWidth="3.5"
-        strokeLinecap="round"
-        fill="none"
-      />
-    </svg>
   );
 }
