@@ -115,19 +115,34 @@ export function FeatureList() {
         </Container>
       </section>
 
-      {/* Trust logos strip — both mobile and desktop */}
+      {/* Trust logos strip — endless horizontal marquee */}
       <Section>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12 md:gap-y-6">
-          {problemSolution.trustLogos.map((logo) => (
-            <Image
-              key={logo.src}
-              src={logo.src}
-              alt={logo.alt}
-              width={150}
-              height={50}
-              className="h-7 w-auto object-contain md:h-12"
-            />
-          ))}
+        <div
+          className="marquee-mask relative overflow-hidden"
+          aria-label="Presse uber Kidgonet"
+          role="region"
+        >
+          <ul className="marquee-track flex w-max items-center gap-x-12 md:gap-x-16">
+            {[...problemSolution.trustLogos, ...problemSolution.trustLogos].map(
+              (logo, idx) => (
+                <li
+                  key={`${logo.src}-${idx}`}
+                  className="shrink-0"
+                  aria-hidden={idx >= problemSolution.trustLogos.length}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={
+                      idx >= problemSolution.trustLogos.length ? "" : logo.alt
+                    }
+                    width={180}
+                    height={50}
+                    className="h-7 w-auto object-contain md:h-10"
+                  />
+                </li>
+              ),
+            )}
+          </ul>
         </div>
       </Section>
     </>

@@ -40,7 +40,7 @@ Dispatche `kidgonet-developer` mit:
 - **Daten**: gehoert Inhalt nach `src/content/*.ts`? Welche Datei?
 - **Constraints**: aus `GOAL.md` (DSGVO-konform, Tailwind 4, App Router Server Components als Default)
 
-Der Agent darf die Live-Site fetchen (`WebFetch`), Screenshots/DOM mit Playwright ziehen, Figma-Frames lesen, Bilder aus `/public/images/` referenzieren und CR-Konventionen aus `MEMORY.md` befolgen (solide Hintergruende, weisser Text auf Primary-Buttons, Open Sans, Brand-Yellow `#F9B000`).
+Der Agent zieht **immer** Live-Site (`WebFetch`) **und** Figma-Frame (MCP) parallel — keine Aufgabe ohne beide Quellen. Wenn Figma nicht verbunden ist, fragt er einmal nach der Channel-Info. Bei Abweichungen zwischen Live und Figma: Vorrang Live (laut `GOAL.md`), ausser User sagt explizit Figma. CR-Konventionen aus `MEMORY.md` (solide Hintergruende, weisser Text auf Primary-Buttons, Open Sans, Brand-Yellow `#F9B000`) gelten zusaetzlich.
 
 ### Phase 2: Visual Parity (Reviewer)
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
 
@@ -38,22 +39,25 @@ export function Comparison() {
     <Section>
       <SectionHeading align="center">{comparison.headline}</SectionHeading>
 
-      <div className="mt-8 overflow-hidden rounded-[20px] border border-black/10">
+      <div className="mt-8 overflow-hidden rounded-[20px] border border-neutral-200">
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr className="bg-brand-yellow/15">
-              <th scope="col" className="px-4 py-4 text-left font-semibold">
+            <tr className="bg-[#fff9ec]">
+              <th scope="col" className="px-4 py-4 text-left font-semibold text-text-dark">
                 Funktion
               </th>
-              <th
-                scope="col"
-                className="px-4 py-4 text-center font-bold text-brand-yellow"
-              >
-                {comparison.columns.ours}
+              <th scope="col" className="px-4 py-4 text-center">
+                <Image
+                  src="/brand/logo.png"
+                  alt="Kidgonet"
+                  width={120}
+                  height={16}
+                  className="mx-auto h-5 w-auto"
+                />
               </th>
               <th
                 scope="col"
-                className="px-4 py-4 text-center font-semibold text-text-dark/70"
+                className="px-4 py-4 text-center font-semibold text-text-muted"
               >
                 {comparison.columns.others}
               </th>

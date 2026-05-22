@@ -32,6 +32,8 @@ export const problemSolution: {
     { src: "/images/trust/eltern.png", alt: "Eltern.de" },
     { src: "/images/trust/elternguideonline.png", alt: "ElternGuideOnline" },
     { src: "/images/trust/merkur.png", alt: "Merkur.de" },
+    { src: "/images/trust/mittelbayerische.jpg", alt: "Mittelbayerische Zeitung" },
+    { src: "/images/trust/augsburger-allgemeine.png", alt: "Augsburger Allgemeine" },
   ],
 };
 

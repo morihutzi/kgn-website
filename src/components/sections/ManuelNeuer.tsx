@@ -23,7 +23,7 @@ export function ManuelNeuer() {
           </blockquote>
           <figcaption className="mt-4">
             <span className="block font-bold text-text-dark">{manuelNeuer.author}</span>
-            <span className="block text-sm text-text-dark/70">{manuelNeuer.role}</span>
+            <span className="block text-sm text-text-muted">{manuelNeuer.role}</span>
           </figcaption>
           <Button
             href={siteConfig.portalRegisterUrl}

@@ -21,7 +21,7 @@ export function FAQ() {
       <ul className="mt-8 space-y-3">
         {faq.items.map((item) => (
           <li key={item.question}>
-            <details className="group rounded-[20px] border border-black/10 bg-white p-5 open:shadow-md">
+            <details className="group rounded-[20px] border border-neutral-200 bg-white p-5 open:shadow-md">
               <summary className="flex cursor-pointer items-start justify-between gap-4 text-left font-semibold text-text-dark marker:content-none [&::-webkit-details-marker]:hidden">
                 <span>{item.question}</span>
                 <span
@@ -39,7 +39,7 @@ export function FAQ() {
                   </svg>
                 </span>
               </summary>
-              <p className="mt-3 text-text-dark/85">{item.answer}</p>
+              <p className="mt-3 text-text-dark">{item.answer}</p>
             </details>
           </li>
         ))}

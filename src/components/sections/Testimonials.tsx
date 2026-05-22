@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { testimonials } from "@/content/home";
 
@@ -21,22 +22,31 @@ function StarRow() {
 
 export function Testimonials() {
   return (
-    <Section>
+    <Section maxWidth={1100}>
       <SectionHeading align="center">{testimonials.headline}</SectionHeading>
 
-      <ul className="mt-10 grid gap-6 md:grid-cols-2">
+      <ul className="mt-10 grid gap-6 md:grid-cols-3">
         {testimonials.items.map((t) => (
           <li
             key={t.name}
-            className="flex flex-col items-center rounded-[20px] border border-black/5 bg-white p-8 text-center shadow-sm"
+            className="flex flex-col items-center rounded-[20px] border border-neutral-200 bg-white p-8 text-center shadow-sm"
           >
-            <StarRow />
-            <blockquote className="mt-4 flex-1 text-text-dark/90">
-              {t.quote}
-            </blockquote>
-            <cite className="mt-4 block text-sm font-semibold not-italic text-text-dark">
+            <div className="relative h-16 w-16 overflow-hidden rounded-full">
+              <Image
+                src={t.avatar}
+                alt={t.name}
+                fill
+                sizes="64px"
+                className="object-cover"
+              />
+            </div>
+            <cite className="mt-3 block text-sm font-semibold not-italic text-text-dark">
               {t.name}
             </cite>
+            <StarRow />
+            <blockquote className="mt-4 flex-1 text-sm text-text-dark">
+              {t.quote}
+            </blockquote>
           </li>
         ))}
       </ul>
