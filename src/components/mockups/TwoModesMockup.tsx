@@ -11,24 +11,25 @@ import {
 import { PhoneFrame } from "./PhoneFrame";
 
 const NATIVE_WIDTH = 220;
-const PHONE_VISIBLE_HEIGHT = 250;
+const PHONE_FULL_HEIGHT = Math.round(220 * (20 / 9.5)); // 463
 const CAPTION_HEIGHT = 18;
 const GAP_BETWEEN = 32;
 const NATIVE_HEIGHT =
-  (CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT) * 2 + GAP_BETWEEN;
+  (CAPTION_HEIGHT + PHONE_FULL_HEIGHT) * 2 + GAP_BETWEEN;
 
 /**
  * Two-Modes-Mockup: Zwei Phones vertikal übereinander gestapelt, jeweils
- * unten zur Hälfte abgeschnitten. Über jedem Phone eine kleine Caption,
- * die das Gerät benennt. Visualisiert "Eine App, zwei Modi" als zwei
- * verschiedene Geräte: Elterngerät (Steuerung) und Kindgerät (Kindermodus).
+ * in voller Höhe. Über jedem Phone eine kleine Caption, die das Gerät
+ * benennt. In der Mitte ein Divider, der zeigt, dass es zwei verschiedene
+ * Geräte sind. Visualisiert "Eine App, zwei Modi" — Elterngerät (Steuerung)
+ * und Kindgerät (Kindermodus).
  *
  * Statisch, keine Animation. Wird per [[TwoModesMockupScaled]] auf eine
  * Zielbreite skaliert.
  */
 export function TwoModesMockup() {
   const dividerCenter =
-    CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN / 2;
+    CAPTION_HEIGHT + PHONE_FULL_HEIGHT + GAP_BETWEEN / 2;
   return (
     <div
       className="relative"
@@ -50,7 +51,7 @@ export function TwoModesMockup() {
 
       <DeviceBlock
         label="Kindgerät"
-        top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
+        top={CAPTION_HEIGHT + PHONE_FULL_HEIGHT + GAP_BETWEEN}
       >
         <KidPhone />
       </DeviceBlock>
@@ -77,21 +78,9 @@ function DeviceBlock({
       </span>
       <div
         className="relative"
-        style={{
-          width: NATIVE_WIDTH,
-          height: PHONE_VISIBLE_HEIGHT,
-          overflow: "hidden",
-        }}
+        style={{ width: NATIVE_WIDTH, height: PHONE_FULL_HEIGHT }}
       >
         {children}
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-14"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(252,250,247,1) 0%, rgba(252,250,247,0) 100%)",
-          }}
-          aria-hidden
-        />
       </div>
     </div>
   );
