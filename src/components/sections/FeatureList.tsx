@@ -5,15 +5,15 @@ import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
 import { hero, problemSolution } from "@/content/home";
 
 function CheckIcon() {
-  // White-bordered rounded checkbox with green check inside
+  // Green-filled checkbox with white border and white check inside
   return (
     <span
       aria-hidden="true"
-      className="mt-0.5 inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-[4px] border-2 border-white"
+      className="mt-0.5 inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-brand-green"
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-3 w-3 text-brand-green"
+        className="h-3 w-3 text-white"
         fill="none"
         stroke="currentColor"
         strokeWidth="4"
