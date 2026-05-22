@@ -12,15 +12,18 @@ export function Hero() {
   return (
     <>
       {/* MOBILE Hero — photo banner with right-aligned overlay */}
-      <section
-        className="relative w-full bg-cover bg-no-repeat md:hidden"
-        style={{
-          backgroundImage: "url(/images/hero/banner.jpeg)",
-          backgroundPosition: "30% center",
-          aspectRatio: "390 / 427",
-        }}
-      >
-        <div className="flex h-full flex-col items-end gap-[35px] py-[26px] pr-[35px]">
+      <section className="relative w-full overflow-hidden md:hidden">
+        <Image
+          src="/images/hero/banner.jpeg"
+          alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
+          fill
+          sizes="100vw"
+          priority
+          className="object-cover"
+          style={{ objectPosition: "30% center" }}
+        />
+
+        <div className="relative z-10 flex flex-col items-end gap-[35px] py-[26px] pr-[35px]">
           <div className="flex w-full flex-col gap-5">
             <h1
               className="text-right font-extrabold text-[#4a4a49]"
@@ -36,20 +39,20 @@ export function Hero() {
             </h2>
           </div>
 
-          <div className="flex w-[173px] flex-col items-end gap-[15px]">
+          <div className="flex w-[160px] flex-col items-stretch gap-[15px]">
             <a
               href={siteConfig.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Im App Store laden"
-              className="block"
+              className="block h-[42px] w-full"
             >
               <Image
                 src="/badges/app-store-de.svg"
                 alt="Im App Store laden"
-                width={120}
-                height={40}
-                style={{ height: "38px", width: "auto" }}
+                width={160}
+                height={42}
+                className="h-full w-full object-contain"
               />
             </a>
             <a
@@ -57,21 +60,21 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Bei Google Play laden"
-              className="block"
+              className="block h-[42px] w-full"
             >
               <Image
                 src="/badges/google-play-de.png"
                 alt="Bei Google Play laden"
-                width={270}
-                height={80}
-                style={{ height: "38px", width: "auto" }}
+                width={160}
+                height={42}
+                className="h-full w-full object-contain"
               />
             </a>
             <a
               href={siteConfig.portalWelcomeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-[5px] bg-brand-yellow px-[10px] py-[10px] text-[15px] font-extrabold leading-[20px] text-white"
+              className="inline-flex h-[42px] w-full items-center justify-center rounded-[5px] bg-brand-yellow text-[15px] font-extrabold leading-[20px] text-white"
             >
               Jetzt gratis testen
             </a>
