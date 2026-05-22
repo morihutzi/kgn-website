@@ -136,9 +136,9 @@ function HeroMockupCluster() {
         />
       </div>
 
-      {/* Phone mockup (scaled, explicit width avoids w-full collapse in flex) */}
+      {/* Phone mockup: ChildviewMockup (Countdown-Timer aus der Kinder-App) */}
       <div className="relative z-10">
-        <ElternportalMockupScaled width={200} />
+        <ChildviewMockupScaled width={200} />
       </div>
 
       {/* Top-right badge: Erwachseneninhalte blockiert */}

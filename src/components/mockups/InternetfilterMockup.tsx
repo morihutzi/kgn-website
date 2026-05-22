@@ -15,12 +15,12 @@ export function InternetfilterMockup() {
         <MockupStatusBar time="08:57" variant="dark" />
 
         {/* Browser URL bar */}
-        <div className="mx-1.5 mt-1 flex items-center gap-1 rounded-full bg-[#F4EFE3] px-1.5 py-0.5">
+        <div className="mx-1.5 mt-1 flex items-center gap-1.5 px-1.5 py-0.5">
           <Home
             className="size-[8px] text-[#4A4A49]"
             strokeWidth={2.5}
           />
-          <span className="flex-1 truncate rounded-full bg-white px-2 py-[1px] text-[6px] font-semibold text-[#4A4A49]">
+          <span className="flex-1 truncate text-[6px] font-semibold text-[#4A4A49]">
             blocked-page.de
           </span>
           <Plus className="size-[8px] text-[#4A4A49]" strokeWidth={2.5} />
@@ -34,24 +34,19 @@ export function InternetfilterMockup() {
         </div>
 
         {/* Large brand smiley */}
-        <div className="mt-3 flex justify-center">
+        <div className="mt-5 flex justify-center">
           <Image
             src="/brand/smiley.png"
             alt="Kidgonet Smiley"
             width={1059}
             height={945}
             sizes="56px"
-            className="h-12 w-auto"
+            className="h-14 w-auto"
           />
         </div>
 
-        {/* KIDGONET title */}
-        <p className="mt-2 text-center text-[11px] font-extrabold tracking-tight text-[#4A4A49]">
-          KID<span className="text-[#F9B000]">GO</span>NET
-        </p>
-
         {/* Beige status strip */}
-        <div className="mt-2 bg-[#EAE3D9] py-1 text-center">
+        <div className="mt-4 bg-[#EAE3D9] py-1 text-center">
           <p className="text-[7px] font-extrabold text-[#4A4A49]">
             Diese Seite ist geblockt
           </p>
