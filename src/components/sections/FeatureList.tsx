@@ -137,7 +137,7 @@ export function FeatureList() {
                     }
                     width={180}
                     height={50}
-                    className="h-7 w-auto object-contain md:h-10"
+                    className="h-5 w-auto object-contain opacity-80 grayscale md:h-7"
                   />
                 </li>
               ),
