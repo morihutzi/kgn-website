@@ -3,49 +3,54 @@ import { Section } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
 
 const BRAND_GREEN = "#C6C500";
-const ICON_GRAY = "rgba(74, 74, 73, 0.35)";
+const BADGE_GRAY = "#C9C9C9";
 const BORDER_COLOR = "#E5E5E5";
 const ROW_BORDER = "#F0F0F0";
 const HEADER_BG = "#FCEFD3";
 
-function CheckIcon() {
+function CheckBadge() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke={BRAND_GREEN}
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-label="Enthalten"
       role="img"
+      aria-label="Enthalten"
       style={{ display: "block", margin: "0 auto" }}
     >
-      <path d="M5 12.5l4.5 4.5L19 7" />
+      <rect x="1" y="1" width="22" height="22" rx="5" fill={BRAND_GREEN} />
+      <path
+        d="M6.5 12.5 L10 16 L17.5 8"
+        fill="none"
+        stroke="white"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function CrossIcon() {
+function CrossBadge() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke={ICON_GRAY}
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-label="Nicht enthalten"
       role="img"
+      aria-label="Nicht enthalten"
       style={{ display: "block", margin: "0 auto" }}
     >
-      <path d="M6 6l12 12M18 6L6 18" />
+      <rect x="1" y="1" width="22" height="22" rx="5" fill={BADGE_GRAY} />
+      <path
+        d="M7.5 7.5 L16.5 16.5 M16.5 7.5 L7.5 16.5"
+        fill="none"
+        stroke="white"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -60,8 +65,7 @@ export function Comparison() {
       <div
         className="mt-10 overflow-hidden rounded-[20px] bg-white"
         style={{
-          border: `1px solid ${BORDER_COLOR}`,
-          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          boxShadow: `0 0 0 1px ${BORDER_COLOR}, 0 2px 8px rgba(0,0,0,0.04)`,
         }}
       >
         <table className="w-full text-sm md:text-base">
@@ -103,10 +107,10 @@ export function Comparison() {
                   {feature}
                 </th>
                 <td className="px-3 py-5 md:px-4">
-                  <CheckIcon />
+                  <CheckBadge />
                 </td>
                 <td className="px-3 py-5 md:px-4">
-                  <CrossIcon />
+                  <CrossBadge />
                 </td>
               </tr>
             ))}
