@@ -33,15 +33,15 @@ export function FeatureList() {
       {/* Yellow block — same wrapper structure as Hero so widths align */}
       <section className="py-5 md:py-8">
         <Container>
-          <div className="mx-auto w-full max-w-[800px]">
+          <div className="mx-auto w-full max-w-[720px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
               {/* Phone slideshow positioned to overhang upward into white space above */}
               <PhoneSlideshow
                 slides={hero.icons}
-                className="pointer-events-none absolute left-4 top-[-160px] z-10 hidden w-[170px] md:block lg:left-10 lg:top-[-190px] lg:w-[200px]"
+                className="pointer-events-none absolute left-4 top-[-130px] z-10 hidden w-[150px] md:block lg:left-10 lg:top-[-160px] lg:w-[180px]"
               />
 
-              <div className="grid items-start gap-6 md:grid-cols-[210px_1fr] lg:grid-cols-[240px_1fr]">
+              <div className="grid items-start gap-6 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr]">
                 {/* Reserved space for the phone */}
                 <div className="hidden md:block" aria-hidden="true" />
 
@@ -66,7 +66,7 @@ export function FeatureList() {
               </div>
 
               {/* Logo under the phone mockup on the left, same x and width as phone */}
-              <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[170px] md:justify-center lg:left-10 lg:w-[200px]">
+              <div className="mt-8 flex justify-center md:absolute md:bottom-6 md:left-4 md:mt-0 md:w-[150px] md:justify-center lg:left-10 lg:w-[180px]">
                 <Image
                   src="/brand/logo-weiss.png"
                   alt="Kidgonet"

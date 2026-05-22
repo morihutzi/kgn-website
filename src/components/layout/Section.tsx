@@ -15,7 +15,7 @@ export function Section({
   children,
   className = "",
   id,
-  maxWidth = 800,
+  maxWidth = 720,
   ...rest
 }: SectionProps) {
   return (
