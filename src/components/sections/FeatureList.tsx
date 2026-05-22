@@ -24,23 +24,15 @@ function CheckIcon() {
 export function FeatureList() {
   return (
     <>
-      {/* Yellow inverted card with smiley icon left and KIDGONET logo bottom */}
-      <Section>
-        <div className="relative overflow-hidden rounded-[20px] bg-brand-yellow px-6 py-10 md:px-12 md:py-12">
-          <div className="grid items-start gap-6 md:grid-cols-[140px_1fr]">
-            <div className="flex justify-center md:justify-start">
-              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-sm md:h-32 md:w-32">
-                <Image
-                  src="/images/icons/smiley-orange.png"
-                  alt=""
-                  width={80}
-                  height={80}
-                  className="h-16 w-16 md:h-20 md:w-20"
-                />
-              </div>
+      {/* Yellow inverted card with phone-mockup ragging into next section below */}
+      <Section className="relative pb-0">
+        <div className="relative rounded-[20px] bg-brand-yellow px-6 pt-10 md:px-12 md:pt-12">
+          <div className="grid items-start gap-6 md:grid-cols-[200px_1fr]">
+            <div className="hidden md:block" aria-hidden="true">
+              {/* Spacer so text starts after the phone column */}
             </div>
 
-            <div>
+            <div className="md:pb-12">
               <p className="text-lg font-semibold text-white md:text-xl">
                 {problemSolution.eyebrow}
               </p>
@@ -60,20 +52,33 @@ export function FeatureList() {
             </div>
           </div>
 
-          <div className="mt-10 flex justify-center">
+          <div className="mt-8 flex justify-center pb-8">
             <Image
               src="/brand/logo-weiss.png"
               alt="Kidgonet"
               width={200}
               height={27}
-              className="h-8 w-auto opacity-95 md:h-10"
+              className="h-7 w-auto opacity-95 md:h-9"
             />
+          </div>
+
+          {/* Phone mockup that overhangs into next section */}
+          <div className="pointer-events-none absolute -bottom-16 left-4 hidden w-[180px] -rotate-3 md:block lg:left-8 lg:w-[200px]">
+            <div className="relative aspect-[9/19] overflow-hidden rounded-[28px] border-[5px] border-text-dark bg-white shadow-2xl">
+              <Image
+                src="/images/hero/block.webp"
+                alt="Kidgonet App Vorschau"
+                fill
+                sizes="200px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </Section>
 
-      {/* Trust logos strip on white */}
-      <Section>
+      {/* Trust logos strip on white — add extra top padding to make room for phone overhang */}
+      <Section className="pt-24 md:pt-28">
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
           {problemSolution.trustLogos.map((logo) => (
             <Image
