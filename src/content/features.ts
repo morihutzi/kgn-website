@@ -131,8 +131,8 @@ export const featuresPage = {
       },
       {
         id: "privacy-spying",
-        title: "Keine Ausspionierung",
-        body: "Wir reduzieren unsere Features auf die wichtigsten Einstellungsmöglichkeiten. Keine Chatverläufe, keine Browser Historie.",
+        title: "Wir schützen die Privatsphäre Deiner Kinder",
+        body: "Kidgonet ist bewusst keine Überwachungs-App. Du als Elternteil bekommst die Werkzeuge zum Schutz – nicht zum Ausspionieren.",
       },
       {
         id: "privacy-absolute",

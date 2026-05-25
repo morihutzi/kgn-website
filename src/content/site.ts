@@ -7,7 +7,7 @@ export const siteConfig = {
   portalWelcomeUrl: "https://portal.kidgonet.de/welcome",
   appStoreUrl: "https://apps.apple.com/us/app/kidgonet/id6759919131",
   playStoreUrl:
-    "https://play.google.com/store/apps/details?id=de.kidgonet.app",
+    "https://play.google.com/store/apps/details?id=de.kidgonet.kidprotection.v2",
 };
 
 export type NavLink = {

@@ -127,7 +127,7 @@ export function NewsletterCta({
           </p>
         )}
         <p className="mt-4 text-xs font-medium text-white/85">
-          Mit dem Klick auf „Abonnieren" stimmst du unserer{" "}
+          Mit dem Klick auf „Abonnieren“ stimmst du unserer{" "}
           <a href="/datenschutz" className="underline hover:text-text-dark">
             Datenschutzerklärung
           </a>{" "}

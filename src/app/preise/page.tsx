@@ -6,9 +6,16 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { pricingPage } from "@/content/pricing";
 
 export const metadata: Metadata = {
-  title: "Preise",
+  title: "Preise – Kinderschutz-App ab €2,99 / Monat",
   description:
-    "Wähle Dein Kidgonet-Abo: Monatsabo €4,99 oder Jahresabo €2,99 pro Monat. 7 Tage kostenlos testen, 30 Tage Geld-zurück-Garantie.",
+    "Kidgonet Preise: Monatsabo €4,99 oder Jahresabo €2,99 pro Monat. 7 Tage kostenlos testen, 30 Tage Geld-zurück-Garantie.",
+  alternates: { canonical: "/preise" },
+  openGraph: {
+    title: "Preise – Kidgonet Kinderschutz-App ab €2,99 / Monat",
+    description:
+      "Monatsabo €4,99 oder Jahresabo €2,99/Monat. 7 Tage kostenlos testen, 30 Tage Geld-zurück-Garantie.",
+    url: "https://www.kidgonet.de/preise",
+  },
 };
 
 function CheckIcon() {

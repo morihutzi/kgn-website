@@ -11,10 +11,16 @@ import {
 } from "@/lib/elternratgeber/articles";
 
 export const metadata: Metadata = {
-  title: "Elternratgeber",
+  title: "Elternratgeber – Tipps zu Bildschirmzeit & Mediensicherheit",
   description:
-    "Ratgeber, Interviews und Tipps rund um Bildschirmzeit, Mediensicherheit, Smartphones, Apps und digitale Erziehung in der Familie.",
+    "Ratgeber, Interviews und Tipps für Eltern: Bildschirmzeit, Mediensicherheit, Smartphones, Apps und digitale Erziehung in der Familie.",
   alternates: { canonical: "/elternratgeber" },
+  openGraph: {
+    title: "Elternratgeber – Tipps zu Bildschirmzeit & Mediensicherheit",
+    description:
+      "Praktische Ratgeber und Hintergründe zu Bildschirmzeit, Internetfilter und digitalem Familienalltag.",
+    url: "https://www.kidgonet.de/elternratgeber",
+  },
 };
 
 export default function ElternratgeberHome() {

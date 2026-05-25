@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { type ComponentProps, type ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "outline";
+type Variant = "primary" | "secondary" | "outline" | "white";
 type Size = "md" | "lg";
 
 const variantClasses: Record<Variant, string> = {
@@ -11,6 +11,8 @@ const variantClasses: Record<Variant, string> = {
     "bg-brand-orange text-white hover:bg-[#e04a00] focus-visible:outline-brand-orange",
   outline:
     "border-2 border-brand-yellow text-text-dark hover:bg-brand-yellow hover:text-white focus-visible:outline-brand-yellow",
+  white:
+    "bg-white text-text-dark hover:bg-white/90 focus-visible:outline-white",
 };
 
 const sizeClasses: Record<Size, string> = {

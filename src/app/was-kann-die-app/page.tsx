@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
@@ -15,9 +16,16 @@ import { featuresPage } from "@/content/features";
 import { siteConfig } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Was kann die App?",
+  title: "Was kann die App? Alle Funktionen im Überblick",
   description:
-    "Bildschirmzeit, altersgerechter Webfilter, Geräteortung und SOS Button. Alle Funktionen von Kidgonet im Überblick.",
+    "Bildschirmzeit begrenzen, Webfilter einrichten, Apps sperren, Standort verfolgen: Alle Funktionen der Kidgonet Kinderschutz-App im Überblick.",
+  alternates: { canonical: "/was-kann-die-app" },
+  openGraph: {
+    title: "Was kann Kidgonet? Alle Funktionen der Kinderschutz-App",
+    description:
+      "Bildschirmzeit, altersgerechter Webfilter, App-Blocker, Standortverfolgung und SOS-Funktion. Alle Kidgonet-Funktionen im Überblick.",
+    url: "https://www.kidgonet.de/was-kann-die-app",
+  },
 };
 
 const {
@@ -55,6 +63,7 @@ export default function WasKannDieAppPage() {
       <PortalSection />
       <NgkSection />
       <MoreInfoSection />
+      <FeaturePagesSection />
       <FinalCTA />
     </>
   );
@@ -492,10 +501,10 @@ function NgkSection() {
               href={nummerGegenKummer.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-extrabold text-text-dark underline decoration-brand-yellow decoration-[3px] underline-offset-[6px] hover:decoration-brand-green"
+              className="group mt-5 inline-flex items-center gap-2 text-sm font-extrabold text-text-dark transition hover:text-brand-yellow"
             >
               {nummerGegenKummer.urlLabel}
-              <span aria-hidden="true">↗</span>
+              <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
             </a>
           </div>
 
@@ -544,6 +553,49 @@ function MoreInfoSection() {
                   {card.body}
                 </p>
               </article>
+            </li>
+          ))}
+        </ul>
+      </Section>
+    </section>
+  );
+}
+
+// ── 9. FEATURE PAGES ─────────────────────────────────────────────────────
+
+const featurePages = [
+  { href: "/bildschirmzeit", title: "Bildschirmzeit begrenzen", body: "Tageslimits, Wochenpläne und Sofort-Sperre für alle Geräte." },
+  { href: "/webfilter", title: "Internetfilter für Kinder", body: "Browserunabhängiger DNS-Filter, drei Altersgruppen, automatische Updates." },
+  { href: "/apps-freigeben", title: "Apps freigeben", body: "Lern-Apps und Notfall-Apps auch nach Ablauf des Limits nutzbar lassen." },
+  { href: "/standort", title: "Standort verfolgen", body: "Echtzeit-GPS-Ortung im Elternportal, DSGVO-konform, Server in Deutschland." },
+  { href: "/sperrmodus", title: "Internet sofort sperren", body: "Ein Klick sperrt alle Geräte – für Hausaufgaben, Mahlzeiten oder Schlafenszeit." },
+];
+
+function FeaturePagesSection() {
+  return (
+    <section className="bg-surface-muted py-10 md:py-14">
+      <Section>
+        <SectionHeading align="center">Alle Funktionen im Detail</SectionHeading>
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-text-dark md:text-base">
+          Lies mehr über jede einzelne Funktion und wie sie im Familienalltag hilft.
+        </p>
+        <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {featurePages.map((page) => (
+            <li key={page.href}>
+              <Link
+                href={page.href}
+                className="group flex h-full flex-col rounded-[16px] border border-neutral-200 bg-white p-5 transition hover:border-brand-yellow hover:shadow-sm"
+              >
+                <h3 className="text-sm font-extrabold text-text-dark group-hover:text-brand-yellow">
+                  {page.title}
+                </h3>
+                <p className="mt-1 flex-1 text-xs leading-relaxed text-text-dark/70">
+                  {page.body}
+                </p>
+                <span className="mt-3 text-xs font-bold text-brand-yellow">
+                  Mehr erfahren →
+                </span>
+              </Link>
             </li>
           ))}
         </ul>
