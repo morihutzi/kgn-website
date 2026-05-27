@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 type NewsletterPayload = {
   email?: unknown;
-  vorname?: unknown;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,8 +18,6 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  const vorname =
-    typeof body.vorname === "string" ? body.vorname.trim() : undefined;
 
   if (!email || !EMAIL_RE.test(email) || email.length > 254) {
     return NextResponse.json(
@@ -57,7 +54,7 @@ export async function POST(req: Request): Promise<Response> {
       },
       body: JSON.stringify({
         email,
-        attributes: vorname ? { VORNAME: vorname } : undefined,
+        attributes: undefined,
         listIds: [listId],
         updateEnabled: true,
       }),

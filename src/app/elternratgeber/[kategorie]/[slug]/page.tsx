@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArticleBody } from "@/components/elternratgeber/ArticleBody";
 import { ArticleHero } from "@/components/elternratgeber/ArticleHero";
 import { NewsletterCta } from "@/components/elternratgeber/NewsletterCta";
+import { NewsletterFloat } from "@/components/newsletter/NewsletterFloat";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import { ScrollTracker } from "@/components/elternratgeber/ScrollTracker";
 import { ShareBar } from "@/components/elternratgeber/ShareBar";
@@ -146,7 +147,11 @@ export default async function ArtikelPage({
       <ArticleHero article={article} />
       <ArticleBody body={article.body} />
       <ShareBar url={url} title={article.title} />
-      <NewsletterCta />
+      {/* Inline-CTA nur auf Mobile, floating Widget übernimmt Desktop */}
+      <div className="md:hidden">
+        <NewsletterCta />
+      </div>
+      <NewsletterFloat />
       <RelatedArticles articles={related} />
       <ScrollTracker slug={article.slug} kategorie={article.kategorie} />
     </>
