@@ -1,7 +1,22 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source:
+          "/installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach",
+        destination: "/hilfe/installation-android",
+        permanent: true,
+      },
+      {
+        source:
+          "/installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/",
+        destination: "/hilfe/installation-android",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
