@@ -23,7 +23,6 @@ export const pricingPage = {
   includedFeatures: {
     headline: "Alle Tarife enthalten",
     items: [
-      "5 Lizenzen (1 Gerät = 1 Lizenz)",
       "Bildschirmzeitregulierung",
       "Altersgerechter Webfilter",
       "Geräteortung",

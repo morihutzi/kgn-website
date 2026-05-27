@@ -124,7 +124,7 @@ export const faq: { headline: string; items: FaqItem[] } = {
     {
       question: "Wie viele Kinder kann ich über das Elternportal steuern?",
       answer:
-        "Ein Abo beinhaltet 5 Lizenzen (1 Gerät = 1 Lizenz). Du kannst unendlich viele Kinder ins Elternportal einpflegen. Wenn die Kinder mehr als 5 Geräte benutzen, können weitere Lizenzen angeboten werden.",
+        "Du kannst unendlich viele Kinder ins Elternportal einpflegen und alle ihre Geräte zentral verwalten.",
     },
     {
       question: "Macht die App das Smartphone langsamer?",
@@ -135,11 +135,6 @@ export const faq: { headline: string; items: FaqItem[] } = {
       question: "Welche Abomodelle gibt es?",
       answer:
         "Wir bieten ein 1-Jahres-Abo sowie ein flexibel kündbares Monats-Abo.",
-    },
-    {
-      question: "Wie bestimme ich die Anzahl der Lizenzen, die ich benötige?",
-      answer:
-        "Die Anzahl der Lizenzen hängt von der Anzahl der internetfähigen Geräte ab, die Du absichern möchtest.",
     },
     {
       question:
@@ -176,7 +171,7 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
       price: "€4,99",
       unit: "pro Monat",
       note: "flexibel monatlich kündbar",
-      features: ["5 Lizenzen"],
+      features: [],
       ctaLabel: "14 Tage kostenlos testen",
       guarantee: "30 Tage Geld zurück Garantie",
     },
@@ -186,7 +181,7 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
       unit: "pro Monat",
       highlight: "Empfohlen",
       note: "Ersparnis: 24€ pro Jahr im Vgl. zum Monatsabo",
-      features: ["5 Lizenzen"],
+      features: [],
       ctaLabel: "14 Tage kostenlos testen",
       guarantee: "30 Tage Geld zurück Garantie",
       recommended: true,

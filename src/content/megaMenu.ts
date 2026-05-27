@@ -78,14 +78,14 @@ export const wasKannDieAppMega: {
         title: "Jahresabo",
         badge: "Empfohlen",
         description:
-          "Unser Spar-Abo: Unbegrenzter Zugang und alle Funktionen zum besten Preis. 5 Lizenzen inkludiert.",
+          "Unser Spar-Abo: Unbegrenzter Zugang und alle Funktionen zum besten Preis.",
         icon: "medal",
         href: "/preise#jahresabo",
       },
       {
         title: "Monatsabo",
         description:
-          "Monatsabo: Unbegrenzter Zugang und alle Funktionen zum guten Preis. 5 Lizenzen inkludiert.",
+          "Monatsabo: Unbegrenzter Zugang und alle Funktionen zum guten Preis.",
         icon: "check",
         href: "/preise#monatsabo",
       },

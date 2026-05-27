@@ -568,10 +568,12 @@ const featurePages = [
   { href: "/webfilter", title: "Internetfilter für Kinder", body: "Browserunabhängiger DNS-Filter, drei Altersgruppen, automatische Updates." },
   { href: "/apps-freigeben", title: "Apps freigeben", body: "Lern-Apps und Notfall-Apps auch nach Ablauf des Limits nutzbar lassen." },
   { href: "/standort", title: "Standort verfolgen", body: "Echtzeit-GPS-Ortung im Elternportal, DSGVO-konform, Server in Deutschland." },
-  { href: "/sperrmodus", title: "Internet sofort sperren", body: "Ein Klick sperrt alle Geräte – für Hausaufgaben, Mahlzeiten oder Schlafenszeit." },
+  { href: "/sperrmodus", title: "Alle Geräte sofort sperren", body: "Ein Klick sperrt alle Geräte – für Hausaufgaben, Mahlzeiten oder Schlafenszeit." },
 ];
 
 function FeaturePagesSection() {
+  const topRow = featurePages.slice(0, 3);
+  const bottomRow = featurePages.slice(3);
   return (
     <section className="bg-surface-muted py-10 md:py-14">
       <Section>
@@ -580,7 +582,27 @@ function FeaturePagesSection() {
           Lies mehr über jede einzelne Funktion und wie sie im Familienalltag hilft.
         </p>
         <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {featurePages.map((page) => (
+          {topRow.map((page) => (
+            <li key={page.href}>
+              <Link
+                href={page.href}
+                className="group flex h-full flex-col rounded-[16px] border border-neutral-200 bg-white p-5 transition hover:border-brand-yellow hover:shadow-sm"
+              >
+                <h3 className="text-sm font-extrabold text-text-dark group-hover:text-brand-yellow">
+                  {page.title}
+                </h3>
+                <p className="mt-1 flex-1 text-xs leading-relaxed text-text-dark/70">
+                  {page.body}
+                </p>
+                <span className="mt-3 text-xs font-bold text-brand-yellow">
+                  Mehr erfahren →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+          {bottomRow.map((page) => (
             <li key={page.href}>
               <Link
                 href={page.href}

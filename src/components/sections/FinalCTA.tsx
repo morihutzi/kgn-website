@@ -32,7 +32,7 @@ export function FinalCTA() {
                 >
                   <path d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm leading-snug text-white/90">{text}</span>
+                <span className="text-sm leading-snug text-white">{text}</span>
               </li>
             ))}
           </ul>
@@ -50,7 +50,7 @@ export function FinalCTA() {
           </div>
 
           {/* Friction reducer */}
-          <p className="mt-3 text-xs font-medium text-white/75">
+          <p className="mt-3 text-xs font-semibold text-white">
             Keine Kreditkarte · Keine Vertragsbindung · Jederzeit kündbar
           </p>
 

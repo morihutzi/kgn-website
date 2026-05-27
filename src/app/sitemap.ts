@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/was-kann-die-app`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/preise`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/hilfe`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/hilfe/installation-ios`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/hilfe/installation-android`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/elternratgeber`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE}/bildschirmzeit`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/webfilter`, lastModified: now, changeFrequency: "monthly", priority: 0.85 },

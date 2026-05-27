@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Mit dem Kidgonet Sperrmodus Internet und Apps auf dem Kinderhandy sofort sperren. Ein Klick im Elternportal – alle Geräte offline. Für iOS und Android.",
   alternates: { canonical: "/sperrmodus" },
   openGraph: {
-    title: "Internet sofort sperren – Kidgonet Sperrmodus",
+    title: "Alle Geräte sofort sperren – Kidgonet Sperrmodus",
     description:
       "Ein Klick im Elternportal sperrt sofort alle Geräte deines Kindes. Internet aus, Hausaufgaben an.",
     url: "https://www.kidgonet.de/sperrmodus",
@@ -65,7 +65,7 @@ export default function SperrmodusPage() {
                 Sperrmodus
               </p>
               <h1 className="mt-3 text-balance text-3xl font-extrabold leading-tight text-text-dark md:text-5xl">
-                Internet sofort sperren – ein Klick, alle Geräte offline
+                Alle Geräte sofort sperren – mit einem Klick
               </h1>
               <p className="mt-4 text-lg text-text-dark/70">
                 Hausaufgaben, Familienessen oder einfach eine Auszeit vom Bildschirm: Mit dem Sperrmodus schaltest du alle Geräte deines Kindes in Sekunden offline.

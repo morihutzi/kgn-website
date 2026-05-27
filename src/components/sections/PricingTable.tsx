@@ -21,7 +21,7 @@ export function PricingTable() {
             }`}
           >
             {plan.highlight && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-yellow px-4 py-1 text-xs font-bold uppercase tracking-wide text-black">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full border border-brand-yellow bg-white px-4 py-1 text-xs font-bold uppercase tracking-wide text-text-dark">
                 {plan.highlight}
               </span>
             )}
