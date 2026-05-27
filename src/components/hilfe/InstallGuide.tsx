@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
+import { siteConfig } from "@/content/site";
 
 export type Shot = { src: string; caption: string };
 
@@ -470,7 +471,7 @@ export function ClosingCTA({
   title,
   description,
   ctaLabel = "Zum Eltern-Portal",
-  ctaHref = "https://portal.kidgonet.de",
+  ctaHref = siteConfig.portalWelcomeUrl,
   finalShot,
 }: {
   title: string;
