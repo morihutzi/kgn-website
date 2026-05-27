@@ -36,6 +36,7 @@ function readArticleFile(absPath: string): Article {
     verwandt: Array.isArray(data.verwandt)
       ? data.verwandt.map(String)
       : undefined,
+    author: (data.author as Article["author"]) ?? undefined,
     seo: (data.seo as Article["seo"]) ?? undefined,
     body: parsed.content,
   };

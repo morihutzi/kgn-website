@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 import {
   footerLinks,
+  landingPages,
   primaryNav,
   siteConfig,
   type NavLink,
@@ -33,13 +35,13 @@ export function Footer() {
 
   return (
     <footer className="bg-text-dark text-white">
-      <Container className="grid gap-10 py-12 md:grid-cols-5">
+      <Container className="grid gap-10 py-12 md:grid-cols-6">
         <div className="space-y-4 md:col-span-2">
           <Image
             src="/brand/logo-weiss.png"
             alt={siteConfig.name}
-            width={200}
-            height={27}
+            width={600}
+            height={82}
             className="h-8 w-auto"
           />
           <p className="text-lg font-semibold">{siteConfig.tagline}</p>
@@ -59,11 +61,32 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Nav-Spalten — auf Mobile als 3-Spalten-Grid statt gestapelt */}
-        <div className="grid grid-cols-3 gap-6 md:col-span-3 md:gap-10">
+        {/* Nav-Spalten — auf Mobile 2 Spalten (4 Bloecke), Desktop volle Breite */}
+        <div className="grid grid-cols-2 gap-6 md:col-span-4 md:grid-cols-4 md:gap-10">
           <FooterColumn label="Produkt" items={produktLinks} />
+          <FooterColumn label="Kindersicherung" items={landingPages} />
           <FooterColumn label="Unternehmen" items={unternehmenLinks} />
-          <FooterColumn label="Rechtliches" items={footerLinks.legal} />
+          {/* Rechtliches mit Cookie-Einstellungen-Button */}
+          <nav aria-label="Rechtliches" className="space-y-3 text-sm">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-white/60">
+              Rechtliches
+            </h2>
+            <ul className="space-y-2">
+              {footerLinks.legal.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-white/80 hover:text-white hover:underline"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <CookieSettingsButton className="text-left text-white/80 hover:text-white hover:underline" />
+              </li>
+            </ul>
+          </nav>
         </div>
       </Container>
 

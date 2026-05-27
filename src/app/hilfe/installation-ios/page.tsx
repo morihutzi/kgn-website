@@ -11,11 +11,47 @@ import {
   ClosingCTA,
   GuideBody,
 } from "@/components/hilfe/InstallGuide";
+import { JsonLd, howToSchema } from "@/components/seo/JsonLd";
+
+const HOW_TO_STEPS = [
+  {
+    name: "Kidgonet aus dem App Store laden",
+    text: `App Store öffnen, „Kidgonet" laden, App öffnen und „Jetzt starten" antippen.`,
+  },
+  {
+    name: `Rolle „Kind" wählen`,
+    text: `Bei der Frage „Wer nutzt dieses Gerät?" auf „Kind" tippen.`,
+  },
+  {
+    name: "Mitteilungen erlauben",
+    text: `In Kidgonet auf „Erlauben" tippen, dann im iOS-Dialog erneut „Erlauben".`,
+  },
+  {
+    name: "Systemschutz (Bildschirmzeit) aktivieren",
+    text: `„Verstanden" in der App, iOS-Dialog mit „Fortfahren". Eltern-Apple-ID und Passwort eingeben.`,
+  },
+  {
+    name: "Webfilter einrichten",
+    text: `„Verstanden" in der App. Im VPN-Dialog auf „Erlauben". iPhone-Code des Kind-Geräts eingeben.`,
+  },
+  {
+    name: "Standort freigeben",
+    text: `„Erlauben" in der App. Ersten Dialog mit „Beim Verwenden der App", zweiten mit „In Immer erlauben ändern".`,
+  },
+  {
+    name: "Schutzregeln laden",
+    text: `Status prüfen und auf „Weiter zum Pairing" tippen.`,
+  },
+  {
+    name: "Mit Eltern-Konto verbinden",
+    text: "QR-Code aus dem Eltern-Portal scannen, mit Eltern-Login verbinden oder Pairing-Code manuell eingeben.",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Kidgonet auf iOS einrichten – Schritt-für-Schritt-Anleitung",
   description:
-    "Installation von Kidgonet auf einem iPhone in 8 Schritten. App laden, Berechtigungen erteilen, Webfilter aktivieren, Standort freigeben, mit dem Eltern-Konto verbinden.",
+    "In 8 Schritten Kidgonet auf einem iPhone einrichten: App laden, Berechtigungen erteilen, Webfilter & Standort freigeben, mit Eltern-Konto verbinden.",
   alternates: { canonical: "/hilfe/installation-ios" },
   openGraph: {
     title: "Kidgonet auf iOS einrichten",
@@ -29,6 +65,16 @@ const IMG = "/hilfe/ios";
 export default function InstallationIosPage() {
   return (
     <>
+      <JsonLd
+        data={howToSchema({
+          name: "Kidgonet auf dem iPhone deines Kindes einrichten",
+          description:
+            "Schritt-für-Schritt-Anleitung zur Installation der Kidgonet Kindersicherung auf einem iPhone. In etwa 5 Minuten startklar.",
+          totalTime: "PT5M",
+          image: "https://www.kidgonet.de/hilfe/ios/IMG_0016-2.png",
+          steps: HOW_TO_STEPS,
+        })}
+      />
       <Breadcrumb current="Installation iOS" />
 
       <Hero

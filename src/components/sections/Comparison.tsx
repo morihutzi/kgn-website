@@ -81,8 +81,8 @@ export function Comparison() {
                 <Image
                   src="/brand/logo.png"
                   alt="Kidgonet"
-                  width={140}
-                  height={19}
+                  width={600}
+                  height={82}
                   className="mx-auto h-5 w-auto md:h-6"
                 />
               </th>

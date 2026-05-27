@@ -18,8 +18,8 @@ export function Header() {
           <Image
             src="/brand/logo.png"
             alt={siteConfig.name}
-            width={200}
-            height={27}
+            width={600}
+            height={82}
             priority
             className="h-[18px] w-auto sm:h-5 md:h-6"
           />

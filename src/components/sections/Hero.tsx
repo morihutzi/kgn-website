@@ -3,12 +3,35 @@ import { Container } from "@/components/layout/Container";
 import { hero } from "@/content/home";
 import { siteConfig } from "@/content/site";
 
+type HeroProps = {
+  /** H1-Ueberschreibung; default ist die Homepage-Headline. Wichtig fuer SEO-Landing-Pages. */
+  headline?: React.ReactNode;
+  /** H2-Subheadline-Ueberschreibung; default ist die Homepage-Subline. */
+  subheadline?: React.ReactNode;
+};
+
 /**
  * Hero / Banner — two distinct layouts:
  *   - Mobile (< md): yellow band with photo card, centered text, prominent CTA
  *   - Desktop (>= md): photo card with right-aligned text overlay + bottom-right CTA
+ *
+ * Headline / Subheadline koennen pro Page ueberschrieben werden — entscheidend
+ * fuer SEO-Landing-Pages, damit jede ein eigenes Keyword im H1 hat.
  */
-export function Hero() {
+export function Hero({ headline, subheadline }: HeroProps = {}) {
+  const h1: React.ReactNode =
+    headline ?? (
+      <>
+        Deine Kinder<br /> surfen sicher –<br /> mit Kidgonet
+      </>
+    );
+  const h2: React.ReactNode =
+    subheadline ?? (
+      <>
+        Nur 3 Klicks für mehr<br /> Sicherheit im Netz.
+      </>
+    );
+
   return (
     <>
       {/* MOBILE Hero — photo banner with right-aligned overlay */}
@@ -32,14 +55,14 @@ export function Hero() {
               className="text-right font-extrabold text-[#4a4a49]"
               style={{ fontSize: "35px", lineHeight: "37px" }}
             >
-              Deine Kinder<br /> surfen sicher –<br /> mit Kidgonet
+              {h1}
             </h1>
-            <h2
+            <p
               className="text-right font-medium text-[#202020]"
               style={{ fontSize: "24px", lineHeight: "30px" }}
             >
-              Nur 3 Klicks für mehr<br /> Sicherheit im Netz.
-            </h2>
+              {h2}
+            </p>
           </div>
 
           <div className="flex flex-col items-end gap-[12px]">
@@ -122,17 +145,20 @@ export function Hero() {
                 className="absolute text-right"
                 style={{ left: "24.84%", top: "20.56%", width: "64.95%" }}
               >
-                <h1
+                {/* Visuell wie ein H1, semantisch als <p> — die H1 lebt im
+                    Mobile-Hero (immer im DOM), damit es nur eine echte H1 gibt. */}
+                <p
                   className="font-extrabold text-[#4a4a49]"
                   style={{ fontSize: "min(48px, 5.16cqw)", lineHeight: 1 }}
+                  aria-hidden="true"
                 >
-                  {hero.headline}
-                </h1>
+                  {headline ?? hero.headline}
+                </p>
                 <p
                   className="mt-1 font-semibold text-[#4a4a49]"
                   style={{ fontSize: "min(26px, 2.80cqw)", lineHeight: "1.54" }}
                 >
-                  {hero.subheadline}
+                  {subheadline ?? hero.subheadline}
                 </p>
               </div>
 

@@ -144,7 +144,7 @@ export const faq: { headline: string; items: FaqItem[] } = {
       question:
         "Unterstützt Kidgonet neben Android auch iOS oder andere Betriebssysteme?",
       answer:
-        "Aktuell ist Kidgonet ausschließlich für Android-Geräte verfügbar. Die Entwicklung einer iOS-Version ist jedoch bereits Teil unserer Roadmap.",
+        "Ja. Kidgonet ist für Android im Google Play Store und für iOS im Apple App Store verfügbar.",
     },
   ],
 };

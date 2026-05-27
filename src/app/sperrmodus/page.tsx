@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { TwoModesMockupScaled } from "@/components/mockups/TwoModesMockupScaled";
-import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { JsonLd, faqPageSchema, breadcrumbSchema, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { siteConfig, trialCopy } from "@/content/site";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
@@ -50,6 +50,7 @@ export default function SperrmodusPage() {
   const related = getRelatedArticlesForFeature("sperrmodus");
   return (
     <>
+      <JsonLd data={softwareApplicationSchema} />
       <JsonLd data={faqPageSchema(faqs)} />
       <JsonLd
         data={breadcrumbSchema([

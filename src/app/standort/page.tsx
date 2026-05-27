@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
-import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { JsonLd, faqPageSchema, breadcrumbSchema, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { siteConfig, trialCopy } from "@/content/site";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
-  title: "Standort Kind verfolgen – Echtzeit-Ortung App (iOS & Android)",
+  title: "Standort Kind verfolgen – Echtzeit-Ortung | Kidgonet",
   description:
     "Mit Kidgonet den Standort deines Kindes in Echtzeit im Elternportal sehen. GPS-Ortung für iOS und Android, Datenschutz DSGVO-konform, Server in Deutschland.",
   alternates: { canonical: "/standort" },
@@ -50,6 +50,7 @@ export default function StandortPage() {
   const related = getRelatedArticlesForFeature("standort");
   return (
     <>
+      <JsonLd data={softwareApplicationSchema} />
       <JsonLd data={faqPageSchema(faqs)} />
       <JsonLd
         data={breadcrumbSchema([

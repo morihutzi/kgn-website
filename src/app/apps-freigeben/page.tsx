@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
-import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { JsonLd, faqPageSchema, breadcrumbSchema, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { siteConfig, trialCopy } from "@/content/site";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
-  title: "Apps freigeben – Ausnahmen für Kinder einrichten (iOS & Android)",
+  title: "Apps freigeben – Ausnahmen für Kinder | iOS & Android",
   description:
     "Mit Kidgonet gezielt Apps für dein Kind freigeben: Lern-Apps, Notfall-Apps und Musik auch dann nutzbar, wenn das Bildschirmzeitlimit erreicht ist.",
   alternates: { canonical: "/apps-freigeben" },
@@ -49,6 +49,7 @@ export default function AppsFreigebenPage() {
   const related = getRelatedArticlesForFeature("apps-freigeben");
   return (
     <>
+      <JsonLd data={softwareApplicationSchema} />
       <JsonLd data={faqPageSchema(faqs)} />
       <JsonLd
         data={breadcrumbSchema([

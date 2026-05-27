@@ -1,11 +1,14 @@
 import Image from "next/image";
+import { AuthorByline } from "./AuthorByline";
+import { ArticleCoverFallback } from "./ArticleCoverFallback";
 import { KategorieBadge } from "./KategorieBadge";
 import { formatDate, formatLesezeit } from "@/lib/elternratgeber/format";
-import type { Article } from "@/lib/elternratgeber/types";
+import { DEFAULT_AUTHOR, type Article } from "@/lib/elternratgeber/types";
 
 type Props = { article: Article };
 
 export function ArticleHero({ article }: Props) {
+  const author = article.author ?? DEFAULT_AUTHOR;
   return (
     <header className="mx-auto w-full max-w-[760px] px-5 pt-8 pb-6 sm:px-8 md:pt-12 md:pb-8">
       <div className="flex flex-col items-start gap-4">
@@ -18,9 +21,10 @@ export function ArticleHero({ article }: Props) {
             {article.teaser}
           </p>
         )}
-        <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-text-dark">
+        <AuthorByline author={author} className="mt-1" />
+        <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-text-dark/70">
           <time dateTime={article.veroeffentlicht}>
-            {formatDate(article.veroeffentlicht)}
+            Veröffentlicht {formatDate(article.veroeffentlicht)}
           </time>
           {article.lesezeit ? (
             <>
@@ -32,13 +36,13 @@ export function ArticleHero({ article }: Props) {
             article.aktualisiert !== article.veroeffentlicht && (
               <>
                 <span aria-hidden>·</span>
-                <span>Aktualisiert {formatDate(article.aktualisiert)}</span>
+                <span>Aktualisiert am {formatDate(article.aktualisiert)}</span>
               </>
             )}
         </div>
       </div>
-      {article.cover && (
-        <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-text-dark">
+      <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-text-dark">
+        {article.cover ? (
           <Image
             src={article.cover}
             alt={article.coverAlt ?? article.title}
@@ -47,8 +51,10 @@ export function ArticleHero({ article }: Props) {
             priority
             className="object-cover"
           />
-        </div>
-      )}
+        ) : (
+          <ArticleCoverFallback kategorie={article.kategorie} title={article.title} />
+        )}
+      </div>
     </header>
   );
 }

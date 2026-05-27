@@ -18,6 +18,7 @@ import {
   getArticleBySlug,
   getRelatedArticles,
 } from "@/lib/elternratgeber/articles";
+import { DEFAULT_AUTHOR } from "@/lib/elternratgeber/types";
 
 type Params = { kategorie: string; slug: string };
 
@@ -76,15 +77,44 @@ export default async function ArtikelPage({
   const baseUrl = "https://www.kidgonet.de";
   const url = `${baseUrl}/elternratgeber/${article.kategorie}/${article.slug}`;
 
+  const author = article.author ?? DEFAULT_AUTHOR;
+  const isDefaultAuthor = !article.author;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: article.title,
     datePublished: article.veroeffentlicht,
     dateModified: article.aktualisiert ?? article.veroeffentlicht,
+    inLanguage: "de-DE",
     image: article.cover ? [`${baseUrl}${article.cover}`] : undefined,
     description: article.teaser,
-    mainEntityOfPage: url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    isPartOf: {
+      "@type": "Blog",
+      name: "Kidgonet Elternratgeber",
+      url: `${baseUrl}/elternratgeber`,
+    },
+    author: isDefaultAuthor
+      ? {
+          "@type": "Organization",
+          name: author.name,
+          url: `${baseUrl}/ueber-uns`,
+        }
+      : {
+          "@type": "Person",
+          name: author.name,
+          ...(author.url
+            ? {
+                url: author.url.startsWith("/")
+                  ? `${baseUrl}${author.url}`
+                  : author.url,
+              }
+            : {}),
+          ...(author.role ? { jobTitle: author.role } : {}),
+        },
     publisher: {
       "@type": "Organization",
       name: "Kidgonet",
@@ -145,7 +175,7 @@ export default async function ArtikelPage({
         </Link>
       </nav>
       <ArticleHero article={article} />
-      <ArticleBody body={article.body} />
+      <ArticleBody body={article.body} slug={article.slug} />
       <ShareBar url={url} title={article.title} />
       {/* Inline-CTA nur auf Mobile, floating Widget übernimmt Desktop */}
       <div className="md:hidden">

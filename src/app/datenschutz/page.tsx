@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/layout/Container";
+import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
@@ -182,7 +183,12 @@ export default function DatenschutzPage() {
 
             <h3>Widerruf der Einwilligung:</h3>
             <p>
-              Sie können Ihre Einwilligung jederzeit über unser Cookie-Consent-Tool widerrufen.
+              Sie können Ihre Einwilligung jederzeit über unsere Cookie-Einstellungen widerrufen:
+            </p>
+            <p>
+              <CookieSettingsButton className="inline-flex items-center gap-1 rounded-lg border border-[#4A4A49]/20 px-4 py-2 text-sm font-semibold text-[#4A4A49] transition hover:border-[#4A4A49]/50">
+                Cookie-Einstellungen öffnen
+              </CookieSettingsButton>
             </p>
 
             <h3>Profiling:</h3>
@@ -455,68 +461,6 @@ export default function DatenschutzPage() {
             </p>
             <p>
               Sie können die Verwendung von Cookies auch durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können.
-            </p>
-
-            <h2>Verwendung von Scriptbibliotheken (Google Webfonts)</h2>
-            <p>
-              Um unsere Inhalte browserübergreifend korrekt und grafisch ansprechend darzustellen, verwenden wir auf dieser Website „Google Web Fonts“ der Google LLC (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; nachfolgend „Google“) zur Darstellung von Schriften.
-            </p>
-            <p>
-              Weitere Informationen zu Google Web Fonts finden Sie unter{" "}
-              <a href="https://developers.google.com/fonts/faq" target="_blank" rel="noopener noreferrer">
-                https://developers.google.com/fonts/faq
-              </a>{" "}
-              und in der Datenschutzerklärung von Google:{" "}
-              <a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">
-                https://www.google.com/policies/privacy/
-              </a>.
-            </p>
-
-            <h2>Verwendung von Google Maps</h2>
-            <p>
-              Auf dieser Website nutzen wir das Angebot von Google Maps. Google Maps wird von Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (nachfolgend „Google“) betrieben. Dadurch können wir Ihnen interaktive Karten direkt in der Webseite anzeigen und ermöglichen Ihnen die komfortable Nutzung der Karten-Funktion.
-            </p>
-            <p>
-              Nähere Informationen über die Datenverarbeitung durch Google können Sie den Google-Datenschutzhinweisen entnehmen:{" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                https://policies.google.com/privacy
-              </a>. Dort können Sie im Datenschutzcenter auch Ihre persönlichen Datenschutz-Einstellungen verändern.
-            </p>
-            <p>
-              Ausführliche Anleitungen zur Verwaltung der eigenen Daten im Zusammenhang mit Google-Produkten finden Sie hier:{" "}
-              <a href="https://www.dataliberation.org" target="_blank" rel="noopener noreferrer">
-                https://www.dataliberation.org
-              </a>
-            </p>
-            <p>
-              Durch den Besuch der Website erhält Google Informationen, dass Sie die entsprechende Unterseite unserer Webseite aufgerufen haben. Dies erfolgt unabhängig davon, ob Google ein Nutzerkonto bereitstellt, über das Sie eingeloggt sind, oder ob keine Nutzerkonto besteht. Wenn Sie bei Google eingeloggt sind, werden Ihre Daten direkt Ihrem Konto zugeordnet.
-            </p>
-            <p>
-              Wenn Sie die Zuordnung in Ihrem Profil bei Google nicht wünschen, müssen Sie sich vor Aktivierung des Buttons bei Google ausloggen. Google speichert Ihre Daten als Nutzungsprofile und nutzt sie für Zwecke der Werbung, Marktforschung und/oder bedarfsgerechter Gestaltung seiner Websites. Eine solche Auswertung erfolgt insbesondere (selbst für nicht eingeloggte Nutzer) zur Erbringung bedarfsgerechter Werbung und um andere Nutzer des sozialen Netzwerks über Ihre Aktivitäten auf unserer Website zu informieren. Ihnen steht ein Widerspruchsrecht zu gegen die Bildung dieser Nutzerprofile, wobei Sie sich zur Ausübung dessen an Google richten müssen.
-            </p>
-
-            <h3>Widerruf der Einwilligung:</h3>
-            <p>
-              Vom Anbieter wird derzeit keine Möglichkeit für einen einfachen Opt-out oder ein Blockieren der Datenübertragung angeboten. Wenn Sie eine Nachverfolgung Ihrer Aktivitäten auf unserer Website verhindern wollen, widerrufen Sie bitte im Cookie-Consent-Tool Ihre Einwilligung für die entsprechende Cookie-Kategorie oder alle technisch nicht notwendigen Cookies und Datenübertragungen. In diesem Fall können Sie unsere Website jedoch ggfs. nicht oder nur eingeschränkt nutzen.
-            </p>
-
-            <h2>Eingebettete YouTube-Videos</h2>
-            <p>
-              Auf unserer Website betten wir YouTube-Videos ein. Betreiber der entsprechenden Plugins ist die YouTube, LLC, 901 Cherry Ave., San Bruno, CA 94066, USA (nachfolgend „YouTube“). Die YouTube, LLC ist einer Tochtergesellschaft der Google LLC, 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA (nachfolgend „Google“). Wenn Sie eine Seite mit dem YouTube-Plugin besuchen, wird eine Verbindung zu Servern von YouTube hergestellt. Dabei wird YouTube mitgeteilt, welche Seiten Sie besuchen. Wenn Sie in Ihrem YouTube-Account eingeloggt sind, kann YouTube Ihr Surfverhalten Ihnen persönlich zuzuordnen. Dies verhindern Sie, indem Sie sich vorher aus Ihrem YouTube-Account ausloggen.
-            </p>
-            <p>
-              Wird ein YouTube-Video gestartet, setzt der Anbieter Cookies ein, die Hinweise über das Nutzerverhalten sammeln.
-            </p>
-            <p>
-              Weitere Informationen zu Zweck und Umfang der Datenerhebung und ihrer Verarbeitung durch YouTube erhalten Sie in den Datenschutzerklärungen des Anbieters, Dort erhalten Sie auch weitere Informationen zu Ihren diesbezüglichen Rechten und Einstellungsmöglichkeiten zum Schutze Ihrer Privatsphäre ({" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-                https://policies.google.com/privacy
-              </a>).
-            </p>
-
-            <h3>Widerruf der Einwilligung:</h3>
-            <p>
-              Vom Anbieter wird derzeit keine Möglichkeit für einen einfachen Opt-out oder ein Blockieren der Datenübertragung angeboten. Wenn Sie eine Nachverfolgung Ihrer Aktivitäten auf unserer Website verhindern wollen, widerrufen Sie bitte im Cookie-Consent-Tool Ihre Einwilligung für die entsprechende Cookie-Kategorie oder alle technisch nicht notwendigen Cookies und Datenübertragungen. In diesem Fall können Sie unsere Website jedoch ggfs. nicht oder nur eingeschränkt nutzen.
             </p>
 
             <h2>SSL-Verschlüsselung</h2>

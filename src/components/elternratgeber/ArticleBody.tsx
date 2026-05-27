@@ -1,6 +1,8 @@
 import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
+import { autoLinkKeywords } from "@/lib/elternratgeber/auto-link";
 
 type ImgProps = {
   src?: string;
@@ -85,10 +87,22 @@ const components: MDXRemoteProps["components"] = {
   Image: ((props: ImageProps) => <Image {...props} />) as unknown as React.FC,
 };
 
-export function ArticleBody({ body }: { body: string }) {
+export function ArticleBody({
+  body,
+  slug,
+}: {
+  body: string;
+  /** Slug der aktuellen Page, damit der Auto-Linker nicht auf sich selbst linkt */
+  slug?: string;
+}) {
+  const enriched = autoLinkKeywords(body, slug ?? "");
   return (
     <div className="mx-auto w-full max-w-[760px] px-5 pb-12 sm:px-8 prose-elternratgeber">
-      <MDXRemote source={body} components={components} />
+      <MDXRemote
+        source={enriched}
+        components={components}
+        options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+      />
     </div>
   );
 }

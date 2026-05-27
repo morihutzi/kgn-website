@@ -1,3 +1,5 @@
+import { siteConfig } from "@/content/site";
+
 type JsonLdData = Record<string, unknown>;
 
 export function JsonLd({ data }: { data: JsonLdData }) {
@@ -12,10 +14,22 @@ export function JsonLd({ data }: { data: JsonLdData }) {
 export const organizationSchema: JsonLdData = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://www.kidgonet.de/#organization",
   name: "Kidgonet",
   legalName: "Kidgonet GmbH",
   url: "https://www.kidgonet.de",
-  logo: "https://www.kidgonet.de/brand/logo.png",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://www.kidgonet.de/brand/logo.png",
+    width: 200,
+    height: 60,
+  },
+  foundingDate: "2022",
+  foundingLocation: {
+    "@type": "Place",
+    addressCountry: "DE",
+    addressLocality: "Brunnthal",
+  },
   contactPoint: {
     "@type": "ContactPoint",
     email: "info@kidgonet.de",
@@ -29,17 +43,24 @@ export const organizationSchema: JsonLdData = {
     postalCode: "85649",
     addressCountry: "DE",
   },
+  award: "Bayerischer Digitalpreis 2025",
   sameAs: [
     "https://www.instagram.com/kidgonet",
     "https://www.facebook.com/kidgonet",
+    "https://www.linkedin.com/company/kidgonet-jugenschutzapp",
+    siteConfig.appStoreUrl,
+    siteConfig.playStoreUrl,
   ],
 };
 
 export const websiteSchema: JsonLdData = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://www.kidgonet.de/#website",
   name: "Kidgonet",
   url: "https://www.kidgonet.de",
+  inLanguage: "de-DE",
+  publisher: { "@id": "https://www.kidgonet.de/#organization" },
   potentialAction: {
     "@type": "SearchAction",
     target: {
@@ -57,16 +78,40 @@ export const softwareApplicationSchema: JsonLdData = {
   name: "Kidgonet",
   operatingSystem: "iOS, Android",
   applicationCategory: "UtilitiesApplication",
-  offers: {
-    "@type": "Offer",
-    price: "2.99",
-    priceCurrency: "EUR",
-    priceValidUntil: "2026-12-31",
-    availability: "https://schema.org/InStock",
-  },
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Monatsabo",
+      price: "4.99",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      description: `${siteConfig.trialDays} Tage kostenlos testen, monatlich kündbar, 5 Lizenzen inklusive`,
+    },
+    {
+      "@type": "Offer",
+      name: "Jahresabo",
+      price: "2.99",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      description: `${siteConfig.trialDays} Tage kostenlos testen, jährlich abgerechnet, 5 Lizenzen inklusive`,
+    },
+  ],
   description:
     "Kindersicherungs-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren.",
+  inLanguage: "de-DE",
   url: "https://www.kidgonet.de",
+  downloadUrl: [siteConfig.appStoreUrl, siteConfig.playStoreUrl],
+  featureList: [
+    "Altersgerechter, browserunabhängiger Webfilter",
+    "Bildschirmzeitsteuerung geräteübergreifend",
+    "App-Sperrung und App-Freigabe",
+    "Geräteortung in Echtzeit",
+    "Bildschirmpausen mit Ausnahmen für Lern- und Musik-Apps",
+    "SOS-Funktion für Kinder",
+    "Zentrales Elternportal",
+    "DSGVO-konform, Hosting in Deutschland",
+  ],
+  award: "Bayerischer Digitalpreis 2025",
 };
 
 export function faqPageSchema(
@@ -82,6 +127,37 @@ export function faqPageSchema(
         "@type": "Answer",
         text: item.answer,
       },
+    })),
+  };
+}
+
+export function howToSchema({
+  name,
+  description,
+  totalTime,
+  steps,
+  image,
+}: {
+  name: string;
+  description: string;
+  /** ISO 8601 duration, e.g. "PT5M" für 5 Minuten */
+  totalTime?: string;
+  steps: Array<{ name: string; text: string; image?: string }>;
+  image?: string;
+}): JsonLdData {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    ...(totalTime ? { totalTime } : {}),
+    ...(image ? { image } : {}),
+    step: steps.map((s, idx) => ({
+      "@type": "HowToStep",
+      position: idx + 1,
+      name: s.name,
+      text: s.text,
+      ...(s.image ? { image: s.image } : {}),
     })),
   };
 }

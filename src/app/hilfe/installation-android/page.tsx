@@ -10,11 +10,63 @@ import {
   ClosingCTA,
   GuideBody,
 } from "@/components/hilfe/InstallGuide";
+import { JsonLd, howToSchema } from "@/components/seo/JsonLd";
+
+const HOW_TO_STEPS = [
+  {
+    name: "Kidgonet herunterladen",
+    text: `Google Play Store öffnen, nach „Kidgonet" suchen und „Installieren" tippen.`,
+  },
+  {
+    name: `Rolle „Kind" wählen`,
+    text: `App öffnen, „Jetzt starten" tippen, Intro-Slides durchklicken und bei „Wer nutzt dieses Gerät?" auf „Kind" tippen.`,
+  },
+  {
+    name: "Mitteilungen erlauben",
+    text: `In Kidgonet auf „Erlauben" tippen, im System-Dialog „Zulassen".`,
+  },
+  {
+    name: "Geräteadministrator aktivieren",
+    text: `„Erlauben" tippen, dann „Diese App zur Geräteverwaltung aktivieren".`,
+  },
+  {
+    name: "Bedienungshilfe einschalten",
+    text: `Kidgonet antippen, „Kidgonet Kinderschutz verwenden" einschalten und mit „Zulassen" bestätigen.`,
+  },
+  {
+    name: "Nutzungsstatistik aktivieren",
+    text: `In der System-Liste „Zugriff auf Nutzungsdaten gewähren" für Kidgonet aktivieren.`,
+  },
+  {
+    name: "Akku-Optimierung erlauben",
+    text: `Im System-Dialog auf „Zulassen" tippen.`,
+  },
+  {
+    name: "Über anderen Apps erlauben",
+    text: `„Einblendung über andere Apps zulassen" für Kidgonet aktivieren.`,
+  },
+  {
+    name: "Standard-Startbildschirm setzen",
+    text: `Kidgonet als Start-App auswählen, „Als Standard festlegen" und „Immer" wählen.`,
+  },
+  {
+    name: "Webfilter (VPN-Anfrage) aktivieren",
+    text: `In Kidgonet auf „Verstanden" tippen, dann System-Dialog mit „OK" bestätigen.`,
+  },
+  {
+    name: "Reboot-Schutz Immer aktiv setzen",
+    text: `„Zu den VPN-Einstellungen", Zahnrad neben Kidgonet, „Immer aktiv" einschalten.`,
+  },
+  {
+    name: "Standort freigeben",
+    text: `In Kidgonet auf „Erlauben", System-Dialog „Bei Nutzung der App", in der Berechtigungs-Liste „Immer zulassen".`,
+  },
+];
 
 export const metadata: Metadata = {
-  title: "Kidgonet auf Android einrichten – Schritt-für-Schritt-Anleitung",
+  title: "Kidgonet auf Android einrichten – Anleitung",
   description:
-    "Installation von Kidgonet auf einem Android-Gerät in 12 Schritten. App installieren, Berechtigungen erteilen, Webfilter aktivieren, Standort freigeben, mit dem Eltern-Konto verbinden.",
+    "In 12 Schritten Kidgonet auf einem Android-Gerät einrichten: App installieren, Berechtigungen erteilen, Webfilter & Standort freigeben.",
   alternates: { canonical: "/hilfe/installation-android" },
   openGraph: {
     title: "Kidgonet auf Android einrichten",
@@ -28,6 +80,16 @@ const IMG = "/hilfe/android";
 export default function InstallationAndroidPage() {
   return (
     <>
+      <JsonLd
+        data={howToSchema({
+          name: "Kidgonet auf dem Android-Handy deines Kindes einrichten",
+          description:
+            "Schritt-für-Schritt-Anleitung zur Installation der Kidgonet Kindersicherung auf einem Android-Gerät. In etwa 5 Minuten startklar.",
+          totalTime: "PT5M",
+          image: "https://www.kidgonet.de/hilfe/android/03-notifications.png",
+          steps: HOW_TO_STEPS,
+        })}
+      />
       <Breadcrumb current="Installation Android" />
 
       <Hero

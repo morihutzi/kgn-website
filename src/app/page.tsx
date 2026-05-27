@@ -17,7 +17,7 @@ import { trialCopy } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Kidgonet – Kinderschutz App für iOS & Android",
-  description: `Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. ${trialCopy.metaShort}`,
+  description: `Kinderschutz-App für iOS & Android: Bildschirmzeit, Webfilter, Standort und App-Sperre — DSGVO-konform. ${trialCopy.metaShort}`,
   alternates: { canonical: "/" },
   openGraph: {
     title: "Kidgonet – Kinderschutz App für iOS & Android",

@@ -7,6 +7,8 @@ import {
   organizationSchema,
   websiteSchema,
 } from "@/components/seo/JsonLd";
+import { CookieConsentBanner } from "@/components/consent/CookieConsentBanner";
+import { Analytics } from "@/components/analytics/Analytics";
 import { trialCopy } from "@/content/site";
 import "./globals.css";
 
@@ -22,7 +24,7 @@ export const metadata: Metadata = {
     default: "Kidgonet – Kinderschutz App für iOS & Android",
     template: "%s | Kidgonet",
   },
-  description: `Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. ${trialCopy.metaShort}`,
+  description: `Kinderschutz-App für iOS & Android: Bildschirmzeit, Webfilter, Standort und App-Sperre — DSGVO-konform. ${trialCopy.metaShort}`,
   keywords: [
     "Kinderschutz App",
     "Kindersicherung App",
@@ -37,6 +39,9 @@ export const metadata: Metadata = {
       { url: "/brand/favicon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: "/brand/favicon-180.png",
+  },
+  alternates: {
+    languages: { de: "https://www.kidgonet.de" },
   },
   openGraph: {
     type: "website",
@@ -61,6 +66,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieConsentBanner />
+        <Analytics />
       </body>
     </html>
   );

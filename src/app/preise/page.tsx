@@ -15,6 +15,7 @@ import {
   PhoneIcon,
 } from "@/components/preise/icons";
 import { StoreBadges } from "@/components/ui/StoreBadges";
+import { JsonLd, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { pricing, type PricingPlan } from "@/content/home";
 import { siteConfig, trialCopy } from "@/content/site";
 
@@ -60,6 +61,7 @@ const JOURNEY_STEPS: JourneyStep[] = [
 export default function PreisePage() {
   return (
     <>
+      <JsonLd data={softwareApplicationSchema} />
       <HeroSection />
       <PricingJourney steps={JOURNEY_STEPS} />
       <PlansSection />

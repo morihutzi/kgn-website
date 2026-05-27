@@ -55,6 +55,18 @@ export const primaryNav: NavLink[] = [
   { label: "Über uns", href: "/ueber-uns" },
 ];
 
+/**
+ * SEO-Landing-Pages — werden im Footer eigenstaendig verlinkt, damit
+ * sie nicht als Orphan-Pages enden und internen Linkjuice bekommen.
+ */
+export const landingPages: NavLink[] = [
+  { label: "Kindersicherung Handy", href: "/kindersicherung-handy" },
+  { label: "Kindersicherung iPhone", href: "/kindersicherung-iphone" },
+  { label: "Kindersicherung Android", href: "/kindersicherung-android" },
+  { label: "Bildschirmzeit-App", href: "/bildschirmzeit-app" },
+  { label: "Glossar", href: "/glossar" },
+];
+
 export const footerLinks = {
   general: [
     { label: "Jobs", href: "/jobs" },
@@ -64,7 +76,6 @@ export const footerLinks = {
     { label: "AGB", href: "/agb" },
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutz", href: "/datenschutz" },
-    { label: "Datenschutz App", href: "/datenschutz-app" },
     { label: "Datenschutz Android App", href: "/datenschutz-android-app" },
     { label: "Datenschutz iOS App", href: "/datenschutz-ios-app" },
   ],

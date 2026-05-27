@@ -104,8 +104,8 @@ export function FeatureList() {
                 <Image
                   src="/brand/logo-weiss.png"
                   alt="Kidgonet"
-                  width={203}
-                  height={28}
+                  width={600}
+                  height={82}
                   className="h-auto w-full max-w-[200px] opacity-95"
                 />
               </div>

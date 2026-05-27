@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { KategorieBadge } from "./KategorieBadge";
+import { ArticleCoverFallback } from "./ArticleCoverFallback";
 import { formatDate, formatLesezeit } from "@/lib/elternratgeber/format";
 import type { ArticleSummary } from "@/lib/elternratgeber/types";
 
@@ -19,13 +20,13 @@ export function ArticleCard({ article, variant = "default" }: Props) {
         isFeatured ? "md:flex-row" : ""
       }`}
     >
-      {article.cover && (
-        <Link
-          href={href}
-          className={`relative block overflow-hidden bg-text-dark ${
-            isFeatured ? "md:w-1/2 md:shrink-0 aspect-[4/3]" : "aspect-[16/10]"
-          }`}
-        >
+      <Link
+        href={href}
+        className={`relative block overflow-hidden bg-text-dark ${
+          isFeatured ? "md:w-1/2 md:shrink-0 aspect-[4/3]" : "aspect-[16/10]"
+        }`}
+      >
+        {article.cover ? (
           <Image
             src={article.cover}
             alt={article.coverAlt ?? article.title}
@@ -37,8 +38,10 @@ export function ArticleCard({ article, variant = "default" }: Props) {
             }
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
-        </Link>
-      )}
+        ) : (
+          <ArticleCoverFallback kategorie={article.kategorie} title={article.title} />
+        )}
+      </Link>
       <div className="flex flex-1 flex-col gap-3 p-6">
         <KategorieBadge slug={article.kategorie} />
         <h3
