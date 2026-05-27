@@ -31,120 +31,47 @@ export function Hero({
   pills?: string[];
 }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF8E2] via-[#FFE9A3] to-[#FBC23A]">
-      {/* Layer 1: Large soft sun-like radial in upper right */}
+    <section className="relative overflow-hidden bg-brand-yellow">
+      {/* Weißes Punktraster */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 size-[640px] rounded-full opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.85), rgba(255,255,255,0) 65%)",
-        }}
-      />
-
-      {/* Layer 2: Bottom-left secondary radial */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 -bottom-32 size-[480px] rounded-full opacity-40"
-        style={{
-          background:
-            "radial-gradient(circle at 60% 50%, rgba(251,194,58,0.55), rgba(251,194,58,0) 65%)",
-        }}
-      />
-
-      {/* Layer 3: Tilted decorative orbit ring (right side) */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 600 600"
-        className="pointer-events-none absolute -right-32 top-1/2 hidden -translate-y-1/2 opacity-20 md:block"
-        style={{ width: 560, height: 560 }}
-      >
-        <defs>
-          <linearGradient id="kg-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#2a1f00" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#2a1f00" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        <ellipse
-          cx="300"
-          cy="300"
-          rx="260"
-          ry="200"
-          fill="none"
-          stroke="url(#kg-ring)"
-          strokeWidth="1.5"
-          transform="rotate(-22 300 300)"
-        />
-        <ellipse
-          cx="300"
-          cy="300"
-          rx="200"
-          ry="150"
-          fill="none"
-          stroke="url(#kg-ring)"
-          strokeWidth="1"
-          transform="rotate(-22 300 300)"
-        />
-        <circle cx="540" cy="220" r="6" fill="#2a1f00" opacity="0.4" />
-        <circle cx="80" cy="380" r="4" fill="#2a1f00" opacity="0.3" />
-      </svg>
-
-      {/* Layer 4: Fine dot grid */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-multiply"
+        className="absolute inset-0 opacity-[0.08]"
         style={{
           backgroundImage:
-            "radial-gradient(circle, #2a1f00 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
-
-      {/* Layer 5: Diagonal accent stripe (bottom) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 -bottom-px h-3"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(135deg, transparent 0 14px, rgba(42,31,0,0.06) 14px 16px)",
+            "radial-gradient(circle, #fff 1.5px, transparent 1.5px)",
+          backgroundSize: "32px 32px",
         }}
       />
 
       <Container className="relative">
-        <div className="mx-auto max-w-4xl py-20 md:py-28">
-          {/* Eyebrow with small accent mark */}
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-[#7a5800]/40" />
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#7a5800]">
-              {eyebrow}
-            </p>
-          </div>
+        <div className="py-16 md:py-24">
+          {/* Eyebrow */}
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-white/80">
+            {eyebrow}
+          </p>
 
-          <h1 className="mt-6 text-balance text-4xl font-extrabold leading-[1.02] tracking-tight text-[#2a1f00] md:text-6xl">
+          <h1 className="mt-3 max-w-3xl text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-white md:text-6xl">
             {title}
             {italic && (
               <>
                 {" "}
-                <span className="font-normal italic text-[#5a4400]">
+                <span className="font-normal italic">
                   {italic}
                 </span>
               </>
             )}
             {titleRest && <> {titleRest}</>}
           </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#3a2a00] md:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/95 md:text-lg">
             {description}
           </p>
           {pills && pills.length > 0 && (
             <div className="mt-8 flex flex-wrap gap-2.5">
-              {pills.map((p, idx) => (
+              {pills.map((p) => (
                 <span
                   key={p}
-                  className="group inline-flex items-center gap-2 rounded-full border border-[#2a1f0022] bg-white/75 px-4 py-1.5 text-xs font-semibold text-[#2a1f00] shadow-sm backdrop-blur-sm transition hover:bg-white md:text-sm"
+                  className="inline-flex items-center rounded-full bg-white/20 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-sm md:text-sm"
                 >
-                  <span className="font-mono text-[10px] font-bold text-brand-yellow">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
                   {p}
                 </span>
               ))}
@@ -152,6 +79,18 @@ export function Hero({
           )}
         </div>
       </Container>
+
+      {/* Diagonaler Schnitt unten */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -bottom-px h-5 bg-white/30"
+        style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%, 0 100%)" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 -bottom-px h-3 bg-white/50"
+        style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%, 0 100%)" }}
+      />
     </section>
   );
 }

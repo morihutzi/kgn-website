@@ -34,10 +34,6 @@ export const problemSolution: {
     { src: "/images/trust/merkur.png", alt: "Merkur.de" },
     { src: "/images/trust/mittelbayerische.jpg", alt: "Mittelbayerische Zeitung" },
     { src: "/images/trust/augsburger-allgemeine.png", alt: "Augsburger Allgemeine" },
-    {
-      src: "/images/award/digitalpreis-bayern-2025-schwarz.png",
-      alt: "Bayerischer Digitalpreis 2025",
-    },
   ],
 };
 

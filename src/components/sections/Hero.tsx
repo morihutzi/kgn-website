@@ -20,7 +20,7 @@ export function Hero() {
           src="/images/hero/banner.jpeg"
           alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
           fill
-          sizes="100vw"
+          sizes="(max-width: 767px) 100vw, 50vw"
           priority
           className="object-cover"
           style={{ objectPosition: "30% center" }}
@@ -70,7 +70,7 @@ export function Hero() {
                 alt="Bei Google Play laden"
                 width={160}
                 height={42}
-                className="h-full w-full object-contain"
+                style={{ width: "auto", height: "42px" }}
               />
             </a>
             <a
@@ -81,6 +81,22 @@ export function Hero() {
             >
               Jetzt gratis testen
             </a>
+
+            {/* Digitalpreis — direkt unter Store-Badges */}
+            <div className="mt-2 self-end rounded-2xl border border-[#F9B000]/30 bg-white/15 px-4 py-3 backdrop-blur-sm">
+              <p className="mb-2 text-right text-[10px] font-medium text-[#4a4a49]/65">
+                Gewinner des{" "}
+                <strong className="font-semibold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
+              </p>
+              <Image
+                src="/images/award/digitalpreis-bayern-2025-schwarz.png"
+                alt="Bayerischer Digitalpreis 2025"
+                width={120}
+                height={36}
+                style={{ width: "auto", height: "34px" }}
+                className="ml-auto block object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -182,9 +198,32 @@ export function Hero() {
                     />
                   </a>
                 </div>
+
+                {/* Digitalpreis — direkt unter Store-Badges */}
+                <div
+                  className="self-end rounded-2xl border border-[#F9B000]/30 bg-white/8 backdrop-blur-[2px]"
+                  style={{ padding: "min(12px, 1.29cqw) min(16px, 1.72cqw)", marginTop: "min(8px, 0.86cqw)" }}
+                >
+                  <p
+                    className="mb-2 text-right font-medium text-[#4a4a49]/65"
+                    style={{ fontSize: "min(9px, 0.97cqw)" }}
+                  >
+                    Gewinner des{" "}
+                    <strong className="font-semibold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
+                  </p>
+                  <Image
+                    src="/images/award/digitalpreis-bayern-2025-schwarz.png"
+                    alt="Bayerischer Digitalpreis 2025"
+                    width={140}
+                    height={42}
+                    style={{ height: "min(38px, 4.09cqw)", width: "auto" }}
+                    className="ml-auto block object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
+
         </Container>
       </section>
     </>
