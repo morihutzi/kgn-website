@@ -73,14 +73,60 @@ export default function DatenschutzAndroidAppPage() {
               </li>
             </ul>
 
+            <h2>Rechtsgrundlagen der Verarbeitung</h2>
+            <p>Die Verarbeitung erfolgt auf folgenden Rechtsgrundlagen:</p>
+            <ul>
+              <li>
+                <strong>Art. 6 Abs. 1 lit. b DSGVO</strong> (Vertragserfüllung): Elternkonto, Kinderprofile, Geräte- und Konfigurationsdaten, Abo-Daten.
+              </li>
+              <li>
+                <strong>Art. 6 Abs. 1 lit. c DSGVO</strong> (gesetzliche Pflicht): Abrechnungs- und steuerrelevante Unterlagen.
+              </li>
+              <li>
+                <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> (berechtigtes Interesse): IT-Sicherheit, Schutz vor Missbrauch, Standortabruf zur Sicherheit des Kindes.
+              </li>
+              <li>
+                <strong>Art. 6 Abs. 1 lit. a DSGVO</strong> (Einwilligung): Standortverfolgung, optionale Dienste.
+              </li>
+            </ul>
+
             <h2>Speicherdauer</h2>
             <p>
               Personenbezogene Daten werden gelöscht, sobald der Speicherzweck entfällt. Bei einem Abonnement, das nicht verlängert wird, werden alle gespeicherten Daten 7 Tage nach Ablauf des Abonnementzeitraums unwiderruflich gelöscht. Der Nutzer kann sein Konto jederzeit selbst löschen.
             </p>
 
-            <h2>Zahlungsabwicklung</h2>
+            <h2>Empfänger und Auftragsverarbeiter</h2>
             <p>
-              Die Zahlungsabwicklung erfolgt über einen deutschen Zahlungsdienstleister unter Datenschutzverpflichtung. Alle Daten werden ausschließlich auf Servern in Deutschland verarbeitet.
+              Personenbezogene Daten werden nicht an Werbenetzwerke oder Analyse-Dienste weitergegeben. Zur Vertragserfüllung erhalten folgende Auftragsverarbeiter Zugriff auf bestimmte Daten:
+            </p>
+            <ul>
+              <li>
+                <strong>Stripe:</strong> Zahlungsabwicklung
+              </li>
+              <li>
+                <strong>Firebase Cloud Messaging (Google):</strong> Push-Benachrichtigungen
+              </li>
+              <li>
+                <strong>Mailgun:</strong> Transaktions-E-Mails (Willkommens-Mails, Passwort-Reset)
+              </li>
+            </ul>
+            <p>
+              Alle Server, auf denen Kidgonet-eigene Daten verarbeitet werden, stehen in Deutschland.
+            </p>
+
+            <h2>Datensicherheit</h2>
+            <p>
+              Die Datenübertragung zwischen der App und unseren Servern erfolgt verschlüsselt nach dem aktuellen Stand der Technik (TLS/HTTPS). Zugriffe auf personenbezogene Daten sind intern auf das notwendige Personal beschränkt.
+            </p>
+
+            <h2>Kinder und Datenschutz</h2>
+            <p>
+              Die Kidgonet Android App verarbeitet Daten von minderjährigen Gerätenutzern ausschließlich im Auftrag und auf Weisung der sorgeberechtigten Eltern. Wir verkaufen keine Kinderdaten, schalten keine Werbung und geben keine Daten zu Marketing- oder Werbezwecken weiter.
+            </p>
+
+            <h2>Automatisierte Entscheidungen im Einzelfall</h2>
+            <p>
+              Es findet keine automatisierte Entscheidungsfindung im Sinne von Art. 22 DSGVO statt. Schutzregeln werden ausschließlich durch die Eltern definiert.
             </p>
 
             <h2>Ihre Rechte</h2>
@@ -89,12 +135,27 @@ export default function DatenschutzAndroidAppPage() {
               <li>Auskunft über gespeicherte Daten (Art. 15 DSGVO)</li>
               <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
               <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
+              <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
               <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
               <li>Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+              <li>Widerruf einer erteilten Einwilligung mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
             </ul>
+            <p>
+              Sofern Daten an Dritte übermittelt wurden, teilen wir diesen eine Berichtigung, Löschung oder Einschränkung mit, sofern dies möglich und mit verhältnismäßigem Aufwand verbunden ist.
+            </p>
             <p>
               Anfragen richten Sie bitte an{" "}
               <a href="mailto:info@kidgonet.de">info@kidgonet.de</a>.
+            </p>
+
+            <h2>Beschwerderecht</h2>
+            <p>
+              Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO), insbesondere in dem Mitgliedstaat Ihres Aufenthaltsorts, Ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für Kidgonet zuständig ist das Bayerische Landesamt für Datenschutzaufsicht (BayLDA), Promenade 18, 91522 Ansbach.
+            </p>
+
+            <h2>Änderungen dieser Datenschutzerklärung</h2>
+            <p>
+              Kidgonet behält sich vor, diese Datenschutzerklärung anzupassen, um sie aktuellen rechtlichen Anforderungen oder Änderungen der Dienste anzupassen. Für die weitere Nutzung gilt dann die jeweils aktualisierte Datenschutzerklärung.
             </p>
 
             <h2>Kontakt</h2>

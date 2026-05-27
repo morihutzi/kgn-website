@@ -1,3 +1,5 @@
+import { trialCopy } from "@/content/site";
+
 export const hero = {
   headline: "Deine Kinder surfen sicher – mit Kidgonet",
   subheadline: "Nur 3 Klicks für mehr Sicherheit im Netz.",
@@ -168,7 +170,7 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
       unit: "pro Monat",
       note: "flexibel monatlich kündbar",
       features: [],
-      ctaLabel: "14 Tage kostenlos testen",
+      ctaLabel: trialCopy.cta,
       guarantee: "30 Tage Geld zurück Garantie",
     },
     {
@@ -178,7 +180,7 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
       highlight: "Empfohlen",
       note: "Ersparnis: 24€ pro Jahr im Vgl. zum Monatsabo",
       features: [],
-      ctaLabel: "14 Tage kostenlos testen",
+      ctaLabel: trialCopy.cta,
       guarantee: "30 Tage Geld zurück Garantie",
       recommended: true,
     },
@@ -187,6 +189,6 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
 
 export const finalCta = {
   headline: "Damit Deine Kinder sicher surfen –",
-  subheadline: "jetzt App 7 Tage kostenlos testen!",
+  subheadline: `jetzt App ${trialCopy.cta}!`,
   ctaLabel: "Jetzt downloaden!",
 } as const;

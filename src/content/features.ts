@@ -1,3 +1,5 @@
+import { trialCopy } from "@/content/site";
+
 export type FeatureGridIcon = "timer" | "devices" | "apps" | "filter";
 
 export type FeatureCard = {
@@ -52,7 +54,7 @@ export const featuresPage = {
         rest: " deiner Kinder bleibt geschützt",
       },
     ],
-    ctaLabel: "Jetzt 7 Tage gratis testen",
+    ctaLabel: trialCopy.ctaGratis,
     ctaSecondaryLabel: "Funktionen ansehen",
     image: {
       src: "/images/hero/portal.webp",
@@ -66,7 +68,7 @@ export const featuresPage = {
     headline: "Das kann die Kidgonet Kinderschutz App",
     sub: "Vier Kernfunktionen, die im Familienalltag den Unterschied machen.",
     ctaLabel: "Damit deine Kinder sicher surfen.",
-    ctaSub: "Jetzt App 7 Tage kostenlos testen.",
+    ctaSub: trialCopy.ctaAppLong,
     ctaButton: "Jetzt downloaden",
     cards: [
       {
@@ -203,7 +205,7 @@ export const featuresPage = {
       },
     ],
     ctaLabel: "Damit deine Kinder sicher surfen.",
-    ctaSub: "Jetzt App 7 Tage kostenlos testen.",
+    ctaSub: trialCopy.ctaAppLong,
     ctaButton: "Jetzt downloaden",
   },
 

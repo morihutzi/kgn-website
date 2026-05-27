@@ -7,6 +7,7 @@ import {
   organizationSchema,
   websiteSchema,
 } from "@/components/seo/JsonLd";
+import { trialCopy } from "@/content/site";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -21,8 +22,7 @@ export const metadata: Metadata = {
     default: "Kidgonet – Kinderschutz App für iOS & Android",
     template: "%s | Kidgonet",
   },
-  description:
-    "Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. 7 Tage kostenlos testen.",
+  description: `Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. ${trialCopy.metaShort}`,
   keywords: [
     "Kinderschutz App",
     "Kindersicherung App",
@@ -42,19 +42,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     siteName: "Kidgonet",
-    images: [
-      {
-        url: "/brand/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Kidgonet – Kinderschutz App für iOS & Android",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@kidgonet",
-    images: ["/brand/og-image.png"],
   },
 };
 

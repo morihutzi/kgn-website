@@ -6,7 +6,9 @@ import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/content/site";
+import { siteConfig, trialCopy } from "@/content/site";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
   title: "Standort Kind verfolgen – Echtzeit-Ortung App (iOS & Android)",
@@ -45,6 +47,7 @@ const faqs = [
 ];
 
 export default function StandortPage() {
+  const related = getRelatedArticlesForFeature("standort");
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
@@ -86,7 +89,7 @@ export default function StandortPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href={siteConfig.portalWelcomeUrl} external variant="primary" size="md">
-                  7 Tage kostenlos testen
+                  {trialCopy.cta}
                 </Button>
                 <Link
                   href="/was-kann-die-app"
@@ -161,6 +164,11 @@ export default function StandortPage() {
         </Container>
       </section>
 
+      <RelatedArticles
+        articles={related}
+        heading="Sicherheit & Standort: Mehr aus unserem Elternratgeber"
+      />
+
       {/* CTA */}
       <section className="border-t border-border bg-white py-14 md:py-20">
         <Container className="text-center">
@@ -168,7 +176,7 @@ export default function StandortPage() {
             Jetzt Standort deines Kindes im Blick behalten
           </h2>
           <p className="mx-auto mt-3 max-w-md text-text-dark/70">
-            7 Tage kostenlos testen, keine Kreditkarte nötig.
+            {trialCopy.ctaSub}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Button href={siteConfig.portalWelcomeUrl} external size="md">

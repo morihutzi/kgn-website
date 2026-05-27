@@ -64,13 +64,6 @@ export const softwareApplicationSchema: JsonLdData = {
     priceValidUntil: "2026-12-31",
     availability: "https://schema.org/InStock",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "120",
-    bestRating: "5",
-    worstRating: "1",
-  },
   description:
     "Kindersicherungs-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren.",
   url: "https://www.kidgonet.de",

@@ -27,7 +27,16 @@ export default function AgbPage() {
               Diese Allgemeinen Geschäftsbedingungen regeln das Vertragsverhältnis zwischen der <strong>Kidgonet GmbH</strong>, Eugen-Sänger-Ring 13, 85649 Brunnthal (nachfolgend „Kidgonet“) und dem Kunden bezüglich der Kidgonet Kinder- und Jugendsicherung (nachfolgend „App“).
             </p>
             <p>
-              Diese AGB stellen eine Vereinbarung ausschließlich zwischen dem Kunden und Kidgonet dar — nicht zwischen dem Kunden und Apple Inc. Es gilt deutsches Recht. Gerichtsstand für Kaufleute und juristische Personen ist München. Kontakt: <a href="mailto:support@kidgonet.de">support@kidgonet.de</a>
+              Abweichende Bedingungen des Kunden gelten nicht, sofern Kidgonet diese nicht ausdrücklich schriftlich bestätigt hat.
+            </p>
+            <p>
+              Diese AGB stellen eine Vereinbarung ausschließlich zwischen dem Kunden und Kidgonet dar — nicht zwischen dem Kunden und Apple Inc. Kidgonet trägt allein die Verantwortung für die Kidgonet-Sicherung. Im Falle eines Konfliktes zwischen diesen AGB und den Apple Media Services Nutzungsbedingungen gehen letztere vor, soweit es um den Vertrieb über den App Store oder die Zahlungsabwicklung über Apple geht.
+            </p>
+            <p>
+              Es gilt deutsches Recht. Gerichtsstand für Kaufleute und juristische Personen ist München. Kontakt: <a href="mailto:support@kidgonet.de">support@kidgonet.de</a>
+            </p>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Verbraucher unter <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">ec.europa.eu/consumers/odr</a> erreichen können.
             </p>
 
             <h2>2. Vertragslaufzeit und Kündigung</h2>
@@ -39,12 +48,15 @@ export default function AgbPage() {
             <p><strong>Kündigungsregeln:</strong></p>
             <ul>
               <li>
-                <strong>Apple App Store:</strong> Kündigung nur über die iOS-Einstellungen möglich, mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit.
+                <strong>Apple App Store:</strong> Die Kündigung erfolgt ausschließlich über die Abo-Verwaltung in den iOS-Einstellungen (Einstellungen &gt; Apple-ID &gt; Abonnements) oder über den Apple App Store, mindestens 24 Stunden vor Ablauf der aktuellen Laufzeit.
               </li>
               <li>
-                <strong>Google Play Store / Website:</strong> Kündigung mit einer Frist von 7 Tagen zum Ende der aktuellen Laufzeit.
+                <strong>Google Play Store / Website:</strong> Der Vertrag kann jederzeit über den Kundenbereich, per E-Mail oder per Fax mit einer Frist von 7 Tagen zum Ende der aktuellen Laufzeit gekündigt werden.
               </li>
             </ul>
+            <p>
+              Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.
+            </p>
             <p>
               Nach Kündigung wird der Schutz deaktiviert. Bereits gespeicherte Einstellungen bleiben erhalten.
             </p>
@@ -53,24 +65,30 @@ export default function AgbPage() {
             <p>
               Neukunden erhalten derzeit 7 Tage kostenfrei mit vollem Funktionsumfang. Die Testphase ist einmalig pro Kunde nutzbar. Kidgonet behält sich vor, die Dauer der Testphase jederzeit zu ändern oder die Testphase einzustellen.
             </p>
+            <p>
+              Bei Kauf über den Apple App Store wird das Konto des Kunden erst nach Ablauf der Testphase belastet, sofern nicht rechtzeitig gekündigt wird. Die Kündigung während der Testphase erfolgt über die Abo-Verwaltung in den iOS-Einstellungen des Kunden.
+            </p>
 
             <h2>4. Vertragsgegenstand</h2>
             <p>
-              Die App ermöglicht Eltern und Sorgeberechtigten, den Zugriff auf unangemessene Inhalte zu begrenzen, die Internetnutzung zeitlich zu beschränken sowie altersgerechte Filter einzusetzen.
+              Die Kidgonet-Sicherung ermöglicht es dem Kunden (Eltern bzw. Sorgeberechtigten), auf von ihm bestimmten Endgeräten (nachfolgend „Endgeräte“) den Zugriff bestimmter Nutzer solcher Endgeräte (nachfolgend „Gerätenutzer“) auf unangemessene Inhalte zu begrenzen, die Internetnutzung zeitlich zu beschränken sowie altersgerechte Filter einzusetzen.
             </p>
             <p>
-              <strong>Installation und Aktivierung:</strong> Kunden installieren die App und aktivieren den Schutz über den Elternbereich. Mit der Aktivierung ist der altersgerechte Kinder- und Jugendschutz sofort aktiv.
+              <strong>Installation und Aktivierung:</strong> Kunden installieren die App auf den Endgeräten und aktivieren den Schutz über den Elternbereich. Mit der Aktivierung ist der altersgerechte Kinder- und Jugendschutz sofort aktiv und über den Elternbereich administrierbar. Kidgonet nimmt anhand des Kindesalters Voreinstellungen für die Filter vor. Zeitliche Begrenzungen wirken geräteübergreifend.
             </p>
             <p>
-              <strong>Vertragsschluss:</strong> Im Apple App Store und Google Play Store bei Kaufbestätigung; über die Website bei Annahme durch Kidgonet.
+              <strong>Vertragsschluss:</strong> Im Apple App Store und Google Play Store kommt der Vertrag mit der Bestätigung des Kaufs durch den jeweiligen Store-Betreiber zustande; über die Website mit der Annahme der Bestellung durch Kidgonet. Preisauszeichnungen im Online-Shop stellen kein Angebot im Rechtssinne dar.
+            </p>
+            <p>
+              Die Kidgonet-Sicherung darf nur von dem oder den gesetzlichen Vertreter(n) des Gerätenutzers für diesen eingerichtet werden.
             </p>
             <p><strong>Erforderliche Geräteberechtigungen:</strong></p>
             <ul>
               <li>
-                <em>Android:</em> Standort, externer Speicher, VPN, Geräte-Administrator, Eingabehilfe
+                <em>Android:</em> Standort, externer Speicher, VPN-Verbindung, Geräte-Administrationsrechte, Eingabehilfe
               </li>
               <li>
-                <em>iOS:</em> VPN, Standort, Bildschirmzeit / Family Controls
+                <em>iOS:</em> VPN-Verbindung (Inhaltsfilterung), Standort (Standortübermittlung, sofern aktiviert), Bildschirmzeit / Family Controls
               </li>
             </ul>
 
@@ -95,6 +113,9 @@ export default function AgbPage() {
             <p>
               Die Aktivierung erfolgt per Double-Opt-In über einen E-Mail-Link. Eine Registrierung, die ein Nutzer nicht innerhalb von einer Woche durch das Anklicken des Aktivierungslinks bestätigt, kann von Kidgonet gelöscht werden.
             </p>
+            <p>
+              Der Kunde ist verpflichtet, seine Angaben korrekt zu machen und seine Zugangsdaten geheim zu halten und vor dem Zugriff Dritter zu schützen.
+            </p>
 
             <h2>7. Preise, Umsatzsteuer und Zahlung</h2>
             <p>
@@ -109,10 +130,16 @@ export default function AgbPage() {
 
             <h2>8. Bereitstellung der Kidgonet-Sicherung</h2>
             <p>
-              Die Bereitstellung erfolgt nach Zahlungseingang oder unmittelbar nach Kaufbestätigung im App Store. Eine Internetverbindung ist erforderlich. Das Abonnement verlängert sich automatisch, sofern es nicht fristgerecht gekündigt wird.
+              Die Bereitstellung erfolgt nach Zahlungseingang oder unmittelbar nach Kaufbestätigung im App Store. Eine Internetverbindung ist erforderlich.
             </p>
             <p>
-              Kidgonet kann den Zugang zu den eigenen Leistungen beschränken, sofern die Sicherheit des Netzbetriebes, die Aufrechterhaltung der Netzintegrität oder die Interoperabilität der Dienste dies erfordert. Änderungen werden mit einer Vorankündigungsfrist von zwei Wochen mitgeteilt.
+              Mit dem Abschluss eines Kidgonet-Abonnements erwirbt der Kunde das Recht, die Kidgonet-Sicherung für die Dauer seiner Vertragslaufzeit zur Absicherung der entsprechenden Anzahl an Endgeräten einzusetzen. Das Abonnement verlängert sich automatisch, sofern es nicht fristgerecht gekündigt wird.
+            </p>
+            <p>
+              Kidgonet kann den Zugang zu den eigenen Leistungen beschränken, sofern die Sicherheit des Netzbetriebes, die Aufrechterhaltung der Netzintegrität oder die Interoperabilität der Dienste dies erfordert. Bei Ausfällen außerhalb des Verantwortungsbereichs von Kidgonet sowie bei notwendigen Wartungsarbeiten ist eine Minderung ausgeschlossen.
+            </p>
+            <p>
+              Kidgonet setzt die Kinder- und Jugendschutzlösung im Rahmen der technischen Möglichkeiten in der jeweils aktuellen Version ein. Änderungen der Version erfolgen ausschließlich unter Berücksichtigung der Interessen des Kunden, soweit diese zumutbar sind. Auf eine Änderung des Dienstes wird der Kunde spätestens zwei Wochen vor dem Änderungszeitpunkt hingewiesen. Ein Anspruch auf eine spezifische Version besteht nicht.
             </p>
 
             <h2>9. Wartung und Support</h2>
@@ -135,19 +162,31 @@ export default function AgbPage() {
             <p>
               Bei leichter Fahrlässigkeit haftet Kidgonet nur bei Verletzung wesentlicher Vertragspflichten und nur auf den typischen und vorhersehbaren Schaden beschränkt. Ansprüche aus dem Produkthaftungsgesetz sowie nach dem Verbraucherschutzrecht bleiben unberührt.
             </p>
+            <p>
+              Die vorstehenden Haftungsausschlüsse und -beschränkungen gelten in gleichem Umfang zugunsten der Mitarbeiter und Erfüllungsgehilfen von Kidgonet.
+            </p>
+            <p>
+              Kidgonet, nicht Apple, ist verantwortlich für die Behandlung etwaiger Ansprüche des Kunden oder Dritter im Zusammenhang mit der Kidgonet-Sicherung, insbesondere (a) Produkthaftungsansprüche, (b) Ansprüche wegen Nichteinhaltung gesetzlicher oder regulatorischer Anforderungen sowie (c) Ansprüche aus dem Verbraucherschutzrecht.
+            </p>
 
             <h2>12. Urheberrechte und Nutzungsbestimmungen</h2>
             <p>
-              Kidgonet behält alle Rechte an digitalen Inhalten, Logos und Abbildungen. Die eingeräumten Nutzungsrechte sind einfach, auf die Vertragslaufzeit beschränkt, persönlich und nicht übertragbar.
+              Kidgonet behält sich an allen digitalen Inhalten, Logos, Abbildungen und sonstigen Unterlagen die gewerblichen Schutz- und Urheberrechte vor. Urheberrechtsvermerke, digitale Signaturen und Markenzeichen dürfen nicht entfernt oder verändert werden.
+            </p>
+            <p>
+              Der Kunde erhält ein einfaches, zeitlich auf die Vertragslaufzeit beschränktes, persönliches und nicht übertragbares Recht zur Nutzung der Kidgonet-Sicherung auf Apple-Geräten, die der Kunde besitzt oder kontrolliert, bzw. auf Android-Geräten gemäß den jeweils geltenden Nutzungsregeln des Apple App Store bzw. des Google Play Store. Die Nutzung im Rahmen der Apple Familienfreigabe sowie der Apple Volumenlizenzprogramme ist gestattet.
             </p>
             <p><strong>Verboten sind insbesondere:</strong></p>
             <ul>
-              <li>Öffentliche Wiedergabe oder Veröffentlichung im Internet</li>
-              <li>Verleihen, Weiterverkauf oder kommerzielle Nutzung</li>
+              <li>Öffentliche Wiedergabe oder Veröffentlichung im Internet oder in einem Firmennetzwerk</li>
+              <li>Verleihen, Weiterverkauf oder jede sonstige Art der kommerziellen Nutzung</li>
               <li>Weitergabe von Zugangsdaten an Dritte</li>
             </ul>
             <p>
-              Kidgonet hat das Recht, den Zugang des Kunden bei Missbrauch zeitweilig oder endgültig zu sperren.
+              Kidgonet hat das Recht, den Zugang des Kunden bei Missbrauch zeitweilig oder endgültig zu sperren. Strafrechtliche Schritte bleiben vorbehalten.
+            </p>
+            <p>
+              Kidgonet ist allein verantwortlich für die Untersuchung, Verteidigung, Beilegung und Erledigung von Ansprüchen Dritter wegen Verletzung geistigen Eigentums im Zusammenhang mit der Kidgonet-Sicherung.
             </p>
 
             <h2>13. Datenschutz und Kinderdaten</h2>

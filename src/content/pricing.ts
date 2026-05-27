@@ -1,11 +1,13 @@
+import { trialCopy } from "@/content/site";
+
 export const pricingPage = {
   hero: {
     headline: "Schütze Dein Kind jetzt und teste Kidgonet ohne Risiko",
-    subheadline: "Jetzt 7 Tage kostenlos testen",
+    subheadline: trialCopy.ctaJetzt,
   },
   highlights: [
     {
-      title: "7 Tage kostenlos",
+      title: trialCopy.highlightTitle,
       description:
         "Voller Zugriff auf alle Funktionen während der Testphase. Bis zu fünf Geräte können angemeldet werden.",
     },

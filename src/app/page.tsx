@@ -13,11 +13,11 @@ import {
   faqPageSchema,
 } from "@/components/seo/JsonLd";
 import { faq } from "@/content/home";
+import { trialCopy } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Kidgonet – Kinderschutz App für iOS & Android",
-  description:
-    "Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. 7 Tage kostenlos testen.",
+  description: `Kidgonet ist die Kinderschutz-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren. ${trialCopy.metaShort}`,
   alternates: { canonical: "/" },
   openGraph: {
     title: "Kidgonet – Kinderschutz App für iOS & Android",

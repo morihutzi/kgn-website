@@ -5,7 +5,9 @@ import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { AppsFreigebenMockupScaled } from "@/components/mockups/AppsFreigebenMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/content/site";
+import { siteConfig, trialCopy } from "@/content/site";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
   title: "Apps freigeben – Ausnahmen für Kinder einrichten (iOS & Android)",
@@ -44,6 +46,7 @@ const faqs = [
 ];
 
 export default function AppsFreigebenPage() {
+  const related = getRelatedArticlesForFeature("apps-freigeben");
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
@@ -85,7 +88,7 @@ export default function AppsFreigebenPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href={siteConfig.portalWelcomeUrl} external variant="primary" size="md">
-                  7 Tage kostenlos testen
+                  {trialCopy.cta}
                 </Button>
               </div>
             </div>
@@ -147,6 +150,11 @@ export default function AppsFreigebenPage() {
         </Container>
       </section>
 
+      <RelatedArticles
+        articles={related}
+        heading="Apps & Altersfreigaben: Mehr aus unserem Elternratgeber"
+      />
+
       {/* CTA */}
       <section className="border-t border-border bg-white py-14 md:py-20">
         <Container className="text-center">
@@ -154,7 +162,7 @@ export default function AppsFreigebenPage() {
             Jetzt App-Freigaben einrichten
           </h2>
           <p className="mx-auto mt-3 max-w-md text-text-dark/70">
-            7 Tage kostenlos testen, keine Kreditkarte nötig.
+            {trialCopy.ctaSub}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Button href={siteConfig.portalWelcomeUrl} external size="md">

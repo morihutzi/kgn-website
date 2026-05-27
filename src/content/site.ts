@@ -8,6 +8,36 @@ export const siteConfig = {
   appStoreUrl: "https://apps.apple.com/us/app/kidgonet/id6759919131",
   playStoreUrl:
     "https://play.google.com/store/apps/details?id=de.kidgonet.kidprotection.v2",
+  /** Dauer der kostenlosen Testphase in Tagen */
+  trialDays: 7,
+};
+
+/**
+ * Zentral gehaltene Copy-Bausteine rund um die Testphase.
+ * Alle Stellen auf der Website ziehen ihre Strings hier raus,
+ * damit eine Verlaengerung/Verkuerzung nur an einer Stelle geaendert werden muss.
+ */
+export const trialCopy = {
+  /** "7 Tage kostenlos testen" — Standard-CTA */
+  cta: `${siteConfig.trialDays} Tage kostenlos testen`,
+  /** "Jetzt 7 Tage kostenlos testen" — Section-Headline-Variante */
+  ctaJetzt: `Jetzt ${siteConfig.trialDays} Tage kostenlos testen`,
+  /** "Jetzt 7 Tage gratis testen" — alternative Phrasierung */
+  ctaGratis: `Jetzt ${siteConfig.trialDays} Tage gratis testen`,
+  /** Friction-Reducer-Subline unter CTAs */
+  ctaSub: `${siteConfig.trialDays} Tage kostenlos testen, jederzeit kündbar.`,
+  /** "7 Tage kostenlos" — Highlight-Title (Pricing-Page) */
+  highlightTitle: `${siteConfig.trialDays} Tage kostenlos`,
+  /** "Du hast jetzt 7 Tage kostenlos Zugang zu allen Funktionen." */
+  trialStartCopy: `Du hast jetzt ${siteConfig.trialDays} Tage kostenlos Zugang zu allen Funktionen.`,
+  /** Marker-Label fuer das Journey-Ende */
+  afterMarker: `Nach ${siteConfig.trialDays} Tagen`,
+  /** Headline der Preise-Seite */
+  pageHeadline: `${siteConfig.trialDays} Tage kostenlos testen`,
+  /** Lange Meta-Description-Variante */
+  metaShort: `${siteConfig.trialDays} Tage kostenlos testen.`,
+  /** "Jetzt App 7 Tage kostenlos testen." */
+  ctaAppLong: `Jetzt App ${siteConfig.trialDays} Tage kostenlos testen.`,
 };
 
 export type NavLink = {

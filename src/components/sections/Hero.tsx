@@ -26,7 +26,7 @@ export function Hero() {
           style={{ objectPosition: "30% center" }}
         />
 
-        <div className="relative z-10 flex flex-col items-end gap-[35px] py-[26px] pr-[35px]">
+        <div className="relative z-10 flex flex-col items-end gap-[25px] py-[20px] pr-[35px]">
           <div className="flex w-full flex-col gap-5">
             <h1
               className="text-right font-extrabold text-[#4a4a49]"
@@ -42,20 +42,20 @@ export function Hero() {
             </h2>
           </div>
 
-          <div className="flex w-[160px] flex-col items-stretch gap-[15px]">
+          <div className="flex flex-col items-end gap-[12px]">
             <a
               href={siteConfig.appStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Im App Store laden"
-              className="block h-[42px] w-full"
             >
               <Image
                 src="/badges/app-store-de.svg"
                 alt="Im App Store laden"
                 width={160}
                 height={42}
-                className="h-full w-full object-contain"
+                style={{ height: "42px", width: "auto" }}
+                className="block object-contain"
               />
             </a>
             <a
@@ -63,38 +63,40 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Bei Google Play laden"
-              className="block h-[42px] w-full"
             >
               <Image
                 src="/badges/google-play-de.png"
                 alt="Bei Google Play laden"
                 width={160}
                 height={42}
-                style={{ width: "auto", height: "42px" }}
+                style={{ height: "42px", width: "auto" }}
+                className="block object-contain"
               />
             </a>
-            <a
-              href={siteConfig.portalWelcomeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-[42px] w-full items-center justify-center rounded-[5px] bg-brand-yellow text-[15px] font-extrabold leading-[20px] text-white"
-            >
-              Jetzt gratis testen
-            </a>
 
-            {/* Digitalpreis — direkt unter Store-Badges */}
-            <div className="mt-2 self-end rounded-2xl border border-[#F9B000]/30 bg-white/15 px-4 py-3 backdrop-blur-sm">
-              <p className="mb-2 text-right text-[10px] font-medium text-[#4a4a49]/65">
+            {/* Digitalpreis-Badge — als Overlay auf dem Foto, wie Desktop */}
+            <div className="relative mt-3 self-end overflow-hidden rounded-xl border border-[#F9B000]/15 bg-white/8 px-3 py-[6px] backdrop-blur-[2px]">
+              {/* Smiley-Klacks */}
+              <Image
+                src="/images/icons/smiley-orange.png"
+                alt=""
+                aria-hidden="true"
+                width={60}
+                height={60}
+                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-60"
+                style={{ filter: "blur(4px)" }}
+              />
+              <p className="relative text-right text-[10px] font-semibold text-[#4a4a49]/85">
                 Gewinner des{" "}
-                <strong className="font-semibold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
+                <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
               </p>
               <Image
                 src="/images/award/digitalpreis-bayern-2025-schwarz.png"
                 alt="Bayerischer Digitalpreis 2025"
-                width={120}
-                height={36}
-                style={{ width: "auto", height: "34px" }}
-                className="ml-auto block object-contain"
+                width={100}
+                height={30}
+                style={{ height: "26px", width: "auto" }}
+                className="relative ml-auto mt-1 block object-contain"
               />
             </div>
           </div>
@@ -201,15 +203,25 @@ export function Hero() {
 
                 {/* Digitalpreis — direkt unter Store-Badges */}
                 <div
-                  className="self-end rounded-2xl border border-[#F9B000]/30 bg-white/8 backdrop-blur-[2px]"
+                  className="relative self-end overflow-hidden rounded-2xl border border-[#F9B000]/30 bg-white/8 backdrop-blur-[2px]"
                   style={{ padding: "min(12px, 1.29cqw) min(16px, 1.72cqw)", marginTop: "min(8px, 0.86cqw)" }}
                 >
+                  {/* Smiley-Klacks im Hintergrund */}
+                  <Image
+                    src="/images/icons/smiley-orange.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={110}
+                    height={110}
+                    className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-60"
+                    style={{ filter: "blur(4px)", height: "min(110px, 11.83cqw)", width: "auto" }}
+                  />
                   <p
-                    className="mb-2 text-right font-medium text-[#4a4a49]/65"
-                    style={{ fontSize: "min(9px, 0.97cqw)" }}
+                    className="relative mb-2 text-right font-semibold text-[#4a4a49]/85"
+                    style={{ fontSize: "min(10px, 1.08cqw)" }}
                   >
                     Gewinner des{" "}
-                    <strong className="font-semibold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
+                    <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
                   </p>
                   <Image
                     src="/images/award/digitalpreis-bayern-2025-schwarz.png"
@@ -217,7 +229,7 @@ export function Hero() {
                     width={140}
                     height={42}
                     style={{ height: "min(38px, 4.09cqw)", width: "auto" }}
-                    className="ml-auto block object-contain"
+                    className="relative ml-auto block object-contain"
                   />
                 </div>
               </div>

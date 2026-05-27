@@ -6,7 +6,9 @@ import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/content/site";
+import { siteConfig, trialCopy } from "@/content/site";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
   title: "Bildschirmzeit begrenzen – App für iOS & Android",
@@ -45,6 +47,7 @@ const faqs = [
 ];
 
 export default function BildschirmzeitPage() {
+  const related = getRelatedArticlesForFeature("bildschirmzeit");
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
@@ -86,7 +89,7 @@ export default function BildschirmzeitPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href={siteConfig.portalWelcomeUrl} external variant="primary" size="md">
-                  7 Tage kostenlos testen
+                  {trialCopy.cta}
                 </Button>
                 <Link
                   href="/was-kann-die-app"
@@ -163,6 +166,11 @@ export default function BildschirmzeitPage() {
         </Container>
       </section>
 
+      <RelatedArticles
+        articles={related}
+        heading="Mehr zur Bildschirmzeit aus unserem Elternratgeber"
+      />
+
       {/* CTA */}
       <section className="border-t border-border bg-white py-14 md:py-20">
         <Container className="text-center">
@@ -170,7 +178,7 @@ export default function BildschirmzeitPage() {
             Jetzt Bildschirmzeit sinnvoll begrenzen
           </h2>
           <p className="mx-auto mt-3 max-w-md text-text-dark/70">
-            7 Tage kostenlos testen, keine Kreditkarte nötig.
+            {trialCopy.ctaSub}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Button href={siteConfig.portalWelcomeUrl} external size="md">

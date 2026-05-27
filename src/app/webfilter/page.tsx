@@ -6,7 +6,9 @@ import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
 import { InternetfilterMockupScaled } from "@/components/mockups/InternetfilterMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema } from "@/components/seo/JsonLd";
-import { siteConfig } from "@/content/site";
+import { siteConfig, trialCopy } from "@/content/site";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { getRelatedArticlesForFeature } from "@/lib/elternratgeber/feature-mapping";
 
 export const metadata: Metadata = {
   title: "Internetfilter für Kinder – Webfilter App iOS & Android",
@@ -61,6 +63,7 @@ const ageGroups = [
 ];
 
 export default function WebfilterPage() {
+  const related = getRelatedArticlesForFeature("webfilter");
   return (
     <>
       <JsonLd data={faqPageSchema(faqs)} />
@@ -101,7 +104,7 @@ export default function WebfilterPage() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href={siteConfig.portalWelcomeUrl} external variant="primary" size="md">
-                  7 Tage kostenlos testen
+                  {trialCopy.cta}
                 </Button>
                 <Link
                   href="/was-kann-die-app"
@@ -170,6 +173,11 @@ export default function WebfilterPage() {
         </Container>
       </section>
 
+      <RelatedArticles
+        articles={related}
+        heading="Sicher surfen: Mehr aus unserem Elternratgeber"
+      />
+
       {/* CTA */}
       <section className="border-t border-border bg-white py-14 md:py-20">
         <Container className="text-center">
@@ -177,7 +185,7 @@ export default function WebfilterPage() {
             Jetzt Internetfilter einrichten
           </h2>
           <p className="mx-auto mt-3 max-w-md text-text-dark/70">
-            7 Tage kostenlos testen, keine Kreditkarte nötig.
+            {trialCopy.ctaSub}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Button href={siteConfig.portalWelcomeUrl} external size="md">
