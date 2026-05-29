@@ -4,9 +4,8 @@ import { comparison } from "@/content/home";
 
 const BRAND_GREEN = "#C6C500";
 const BADGE_GRAY = "#C9C9C9";
-const BORDER_COLOR = "#E5E5E5";
+const CARD_BORDER = "#F9B000";
 const ROW_BORDER = "#F0F0F0";
-const HEADER_SEPARATOR = "#F9B000";
 
 function CheckBadge() {
   return (
@@ -65,19 +64,14 @@ export function Comparison() {
       <div
         className="mt-10 overflow-hidden rounded-[20px] bg-white"
         style={{
-          boxShadow: `0 0 0 1px ${BORDER_COLOR}, 0 2px 8px rgba(0,0,0,0.04)`,
+          boxShadow: `0 0 0 2px ${CARD_BORDER}, 0 2px 8px rgba(0,0,0,0.04)`,
         }}
       >
         <table className="w-full text-sm md:text-base">
           <thead>
-            <tr style={{ borderBottom: `3px solid ${HEADER_SEPARATOR}` }}>
-              <th
-                scope="col"
-                className="px-5 py-5 text-left font-semibold text-text-dark md:px-7"
-              >
-                Funktion
-              </th>
-              <th scope="col" className="px-3 py-5 text-center md:px-4">
+            <tr>
+              <th scope="col" className="px-5 py-6 md:px-7" />
+              <th scope="col" className="px-3 py-6 text-center md:px-4">
                 <Image
                   src="/brand/logo.png"
                   alt="Kidgonet"
@@ -88,7 +82,7 @@ export function Comparison() {
               </th>
               <th
                 scope="col"
-                className="px-3 py-5 text-center font-semibold text-text-dark/55 md:px-4"
+                className="px-3 py-6 text-center font-semibold text-text-dark/55 md:px-4"
               >
                 {comparison.columns.others}
               </th>
@@ -97,20 +91,20 @@ export function Comparison() {
           <tbody>
             {comparison.features.map((feature) => (
               <tr
-                key={feature}
+                key={feature.label}
                 style={{ borderTop: `1px solid ${ROW_BORDER}` }}
               >
                 <th
                   scope="row"
-                  className="px-5 py-5 text-left font-normal text-text-dark md:px-7"
+                  className="px-5 py-5 text-left font-bold text-text-dark md:px-7"
                 >
-                  {feature}
+                  {feature.label}
                 </th>
                 <td className="px-3 py-5 md:px-4">
                   <CheckBadge />
                 </td>
                 <td className="px-3 py-5 md:px-4">
-                  <CrossBadge />
+                  {feature.others ? <CheckBadge /> : <CrossBadge />}
                 </td>
               </tr>
             ))}

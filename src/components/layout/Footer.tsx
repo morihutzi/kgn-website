@@ -1,101 +1,98 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
-import {
-  footerLinks,
-  landingPages,
-  primaryNav,
-  siteConfig,
-  type NavLink,
-} from "@/content/site";
-
-const findNav = (href: string): NavLink =>
-  primaryNav.find((n) => n.href === href) ?? { label: href, href };
-
-const produktLinks: NavLink[] = [
-  findNav("/was-kann-die-app"),
-  findNav("/preise"),
-  findNav("/hilfe"),
-  findNav("/elternratgeber"),
-];
-
-const unternehmenLinks: NavLink[] = [
-  findNav("/ueber-uns"),
-  ...footerLinks.general,
-  {
-    label: "Login",
-    href: siteConfig.portalLoginUrl,
-    external: true,
-  },
-];
+import { footerLinks, siteConfig } from "@/content/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const sloganLines = siteConfig.tagline.split(". ");
 
   return (
-    <footer className="bg-text-dark text-white">
-      <Container className="grid gap-10 py-12 md:grid-cols-6">
-        <div className="space-y-4 md:col-span-2">
-          <Image
-            src="/brand/logo-weiss.png"
-            alt={siteConfig.name}
-            width={600}
-            height={82}
-            className="h-8 w-auto"
-          />
-          <p className="text-lg font-semibold">{siteConfig.tagline}</p>
-          <div className="flex gap-3 pt-2">
-            {footerLinks.social.map((s) => (
+    <footer className="border-t border-black/10 bg-surface-muted text-text-dark">
+      <Container className="grid gap-10 py-14 md:grid-cols-[1.7fr_1fr_0.8fr_1.1fr] md:gap-8">
+        {/* Slogan */}
+        <p className="text-3xl font-extrabold leading-[1.1] text-brand-yellow md:text-[40px]">
+          {sloganLines.map((line, i) => (
+            <span key={line} className="block">
+              {line}
+              {i < sloganLines.length - 1 ? "." : ""}
+            </span>
+          ))}
+        </p>
+
+        {/* Social Media */}
+        <FooterColumn label="Social Media">
+          {footerLinks.social.map((s) => (
+            <li key={s.label}>
               <a
-                key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-white/80 transition hover:bg-white/20 hover:text-white"
+                className="flex items-center gap-2 text-brand-yellow transition hover:underline"
               >
-                <SocialIcon label={s.label} />
+                <span className="text-brand-yellow">
+                  <SocialIcon label={s.label} />
+                </span>
+                {s.label}
               </a>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </FooterColumn>
 
-        {/* Nav-Spalten — auf Mobile 2 Spalten (4 Bloecke), Desktop volle Breite */}
-        <div className="grid grid-cols-2 gap-6 md:col-span-4 md:grid-cols-4 md:gap-10">
-          <FooterColumn label="Produkt" items={produktLinks} />
-          <FooterColumn label="Kindersicherung" items={landingPages} />
-          <FooterColumn label="Unternehmen" items={unternehmenLinks} />
-          {/* Rechtliches mit Cookie-Einstellungen-Button */}
-          <nav aria-label="Rechtliches" className="space-y-3 text-sm">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-white/60">
-              Rechtliches
-            </h2>
-            <ul className="space-y-2">
-              {footerLinks.legal.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-white/80 hover:text-white hover:underline"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <CookieSettingsButton className="text-left text-white/80 hover:text-white hover:underline" />
-              </li>
-            </ul>
-          </nav>
-        </div>
+        {/* General */}
+        <FooterColumn label="General">
+          {footerLinks.general.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="text-brand-yellow transition hover:underline"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </FooterColumn>
+
+        {/* Legal */}
+        <FooterColumn label="Legal">
+          {footerLinks.legal.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="text-brand-yellow transition hover:underline"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </FooterColumn>
       </Container>
 
-      <div className="border-t border-white/10">
-        <Container className="py-4 text-center text-xs text-white/60">
-          Copyright © {year} {siteConfig.legalName} – All Rights Reserved
+      {/* Bottom-Zeile: Copyright + Cookie-Einstellungen */}
+      <div className="border-t border-black/10">
+        <Container className="flex flex-col items-center justify-between gap-2 py-4 text-xs text-text-dark/55 sm:flex-row">
+          <span>
+            © {year} {siteConfig.legalName} – All Rights Reserved
+          </span>
+          <CookieSettingsButton className="text-text-dark/55 transition hover:text-text-dark hover:underline" />
         </Container>
       </div>
     </footer>
+  );
+}
+
+function FooterColumn({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <nav aria-label={label}>
+      <h2 className="mb-4 text-base font-medium text-text-dark/55">{label}</h2>
+      <ul className="space-y-2 text-base">{children}</ul>
+    </nav>
   );
 }
 
@@ -144,34 +141,4 @@ function SocialIcon({ label }: { label: string }) {
     default:
       return null;
   }
-}
-
-function FooterColumn({
-  label,
-  items,
-}: {
-  label: string;
-  items: readonly NavLink[];
-}) {
-  return (
-    <nav aria-label={label} className="space-y-3 text-sm">
-      <h2 className="text-xs font-bold uppercase tracking-wider text-white/60">
-        {label}
-      </h2>
-      <ul className="space-y-2">
-        {items.map((item) => (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              target={item.external ? "_blank" : undefined}
-              rel={item.external ? "noopener noreferrer" : undefined}
-              className="text-white/80 hover:text-white hover:underline"
-            >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
 }

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { faq, pricing, type PricingPlan } from "@/content/home";
@@ -11,18 +10,11 @@ export function FAQ() {
   return (
     <div className="bg-[#F4ECDF]">
       <Section maxWidth={900} className="py-10 md:py-14">
-        <div className="flex items-center justify-center gap-2.5">
+        <div className="flex items-start justify-center gap-2">
           <h2 className="text-xl font-extrabold text-brand-yellow md:text-[28px]">
             {faq.headline}
           </h2>
-          <Image
-            src="/brand/smiley-square.png"
-            alt=""
-            width={40}
-            height={40}
-            className="size-7 md:size-8"
-            aria-hidden
-          />
+          <WinkSmiley className="-mt-1 size-7 shrink-0 text-brand-yellow md:size-9" />
         </div>
 
         <ul className="mt-8">
@@ -35,6 +27,29 @@ export function FAQ() {
         </ul>
       </Section>
     </div>
+  );
+}
+
+function WinkSmiley({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 40"
+      fill="none"
+      className={className}
+      aria-hidden="true"
+    >
+      <g
+        stroke="currentColor"
+        strokeWidth={4.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Augenzwinkern oben rechts */}
+        <path d="M29 12 C 32 8.5, 37.5 8.5, 41 12" />
+        {/* Grinsen */}
+        <path d="M9 16 C 15 31, 33 33, 42 17" />
+      </g>
+    </svg>
   );
 }
 

@@ -98,13 +98,14 @@ export const testimonials = {
 export const comparison = {
   headline: "Mit Kidgonet sind Deine Kinder & Du auf der sicheren Seite",
   columns: { ours: "Kidgonet", others: "Andere Apps" },
+  // ours ist überall true; others gibt an, ob andere Apps die Funktion bieten.
   features: [
-    "Altersgerechter Webfilter",
-    "Geräteübergreifende Bildschirmzeiten",
-    "Bildschirmpausen",
-    "Geräteübergreifende Limits",
-    "Apps sperren",
-    "Privatsphäre Deiner Kinder",
+    { label: "Altersgerechter Webfilter", others: false },
+    { label: "Geräteübergreifende Bildschirmzeiten", others: true },
+    { label: "Bildschirmpausen", others: false },
+    { label: "Geräteübergreifende Limits", others: false },
+    { label: "Apps sperren", others: false },
+    { label: "Privatsphäre Deiner Kinder", others: false },
   ],
 } as const;
 

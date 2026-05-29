@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { FeatureList } from "@/components/sections/FeatureList";
 import { Steps } from "@/components/sections/Steps";
@@ -39,6 +40,19 @@ export default function HomePage() {
       <Testimonials />
       <Comparison />
       <FAQ />
+      {/* Banner: Kind nutzt sicher ihr Smartphone (Full-Width, nach FAQ) */}
+      <section className="relative w-full">
+        <div className="relative h-[200px] w-full sm:h-[260px] md:h-[340px] lg:h-[400px]">
+          <Image
+            src="/images/banners/maedchen-smartphone-kidgonet.jpeg"
+            alt="Mädchen nutzt sicher ihr Smartphone mit Kidgonet"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: "30% 32%" }}
+          />
+        </div>
+      </section>
       <FinalCTA />
     </>
   );

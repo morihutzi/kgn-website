@@ -55,7 +55,7 @@ export default function JobsPage() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-extrabold text-text-dark">{pos.title}</h3>
-                    <span className="shrink-0 rounded-full bg-brand-yellow/15 px-3 py-1 text-xs font-bold text-brand-yellow">
+                    <span className="shrink-0 rounded-full bg-brand-yellow px-3 py-1 text-xs font-bold text-white">
                       {pos.type}
                     </span>
                   </div>
