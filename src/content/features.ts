@@ -115,7 +115,7 @@ export const featuresPage = {
   },
 
   privacy: {
-    sectionId: "datenschutz",
+    sectionId: "privatsphaere",
     eyebrow: "Datenschutz",
     headline: "Kidgonet spioniert dein Kind nicht aus.",
     intro:
@@ -176,8 +176,9 @@ export const featuresPage = {
     sectionId: "bildschirmzeit",
     eyebrow: "Bildschirmzeit",
     headline: "Bildschirmzeit Regulierung",
-    body: "Steuere die Bildschirmzeit deines Kindes aus der Ferne. Du bestimmst, wie lange dein Kind online sein darf, planst Pausen oder sperrst den Internet Zugang komplett.",
+    body: "Steuere die Bildschirmzeit deines Kindes aus der Ferne. Du bestimmst, wie lange dein Kind online sein darf, planst Pausen oder sperrst den Internet Zugang komplett. Die Bildschirmzeit wird dabei geräteübergreifend gezählt – etwas, das viele andere Apps nicht bieten.",
     bullets: [
+      { id: "st-geraeteuebergreifend", text: "Bildschirmzeit wird geräteübergreifend gezählt – über alle Geräte deines Kindes hinweg" },
       { id: "st-sekunden", text: "Sekundengenaue Zeiterfassung" },
       { id: "st-online-offline", text: "Online und Offline Aktivitäten werden erfasst" },
       { id: "st-portal", text: "Eltern Portal für Android und iOS" },

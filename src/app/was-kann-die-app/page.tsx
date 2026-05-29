@@ -300,10 +300,10 @@ function PrivacySection() {
             >
               <CheckBadge />
               <div>
-                <p className="text-sm font-extrabold text-text-dark">
+                <p className="text-base font-extrabold text-text-dark">
                   {item.title}
                 </p>
-                <p className="mt-1 text-xs leading-relaxed text-text-dark">
+                <p className="mt-1 text-sm leading-relaxed text-text-dark">
                   {item.body}
                 </p>
               </div>
@@ -419,10 +419,10 @@ function ScreenTimeSection() {
               key={feature.id}
               className="rounded-[16px] border border-neutral-200 bg-white p-4"
             >
-              <h3 className="text-sm font-extrabold text-brand-yellow">
+              <h3 className="text-base font-extrabold text-brand-yellow">
                 {feature.title}
               </h3>
-              <p className="mt-1 text-xs leading-relaxed text-text-dark">
+              <p className="mt-1 text-sm leading-relaxed text-text-dark">
                 {feature.body}
               </p>
             </li>
@@ -546,10 +546,10 @@ function MoreInfoSection() {
           {moreInfo.cards.map((card) => (
             <li key={card.id}>
               <article className="h-full rounded-[16px] border border-neutral-200 bg-white p-4">
-                <h3 className="text-sm font-extrabold text-brand-yellow">
+                <h3 className="text-base font-extrabold text-brand-yellow">
                   {card.title}
                 </h3>
-                <p className="mt-1 text-xs leading-relaxed text-text-dark">
+                <p className="mt-1 text-sm leading-relaxed text-text-dark">
                   {card.body}
                 </p>
               </article>

@@ -1,14 +1,14 @@
-import Image from "next/image";
 import { ChildviewMockup } from "./ChildviewMockup";
 import { ConnectDevicesMockup } from "./ConnectDevicesMockup";
 
 const NATIVE_WIDTH = 220;
 const PHONE_FULL_HEIGHT = Math.round(220 * (20 / 9.5)); // 463
-const CAPTION_HEIGHT = 32;
-const GAP_BETWEEN = 33;
-const PHONE_VISIBLE_HEIGHT = 183;
-const NATIVE_HEIGHT =
-  CAPTION_HEIGHT * 2 + GAP_BETWEEN + PHONE_VISIBLE_HEIGHT * 2; // 463
+const PHONE_VISIBLE_HEIGHT = 175;
+// Gesamthöhe bleibt fix auf PHONE_FULL_HEIGHT, damit der Two-Modes-Stack
+// oben/unten bündig mit den einzelnen Phones (Schritt 2 & 3) abschließt.
+// Die durch das kürzere PHONE_VISIBLE_HEIGHT frei werdende Höhe geht in den
+// Abstand zwischen den beiden Hälften → klarerer Split.
+const NATIVE_HEIGHT = PHONE_FULL_HEIGHT; // 463
 
 /**
  * Two-Modes-Mockup: Zwei Phones vertikal übereinander gestapelt, jeweils
@@ -27,54 +27,59 @@ const NATIVE_HEIGHT =
  * ChildviewMockup in Schritt 3 oder ein ConnectDevicesMockup in Schritt 2.
  */
 export function TwoModesMockup() {
-  const dividerCenter =
-    CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN / 2;
+  // Oberes Phone bündig oben (top=0), unteres Phone bündig unten — so schließt
+  // der Stack oben/unten exakt mit den Einzel-Phones (Schritt 2 & 3) ab.
+  const bottomPhoneTop = NATIVE_HEIGHT - PHONE_VISIBLE_HEIGHT;
+  // Beschriftungen + Divider sitzen mittig im Spalt zwischen den Hälften.
+  const middleTop = PHONE_VISIBLE_HEIGHT;
+  const middleHeight = NATIVE_HEIGHT - 2 * PHONE_VISIBLE_HEIGHT;
+
   return (
     <div
       className="relative"
       style={{ width: NATIVE_WIDTH, height: NATIVE_HEIGHT }}
     >
-      <DeviceBlock label="Elterngerät" top={0} half="top">
+      <PhoneWindow top={0} half="top">
         <ConnectDevicesMockup />
-      </DeviceBlock>
+      </PhoneWindow>
 
       <div
-        className="absolute inset-x-0 flex items-center gap-2 px-2"
-        style={{ top: dividerCenter - 10, height: 20 }}
-        aria-hidden
+        className="absolute inset-x-0"
+        style={{ top: middleTop, height: middleHeight }}
       >
-        <div className="h-[2px] flex-1 rounded-full bg-foreground/25" />
-        <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.12)]">
-          <Image
-            src="/brand/smiley-square.png"
-            alt=""
-            width={24}
-            height={24}
-            className="size-4"
-          />
+        {/* Elterngerät — an der Unterkante des oberen Phones (links);
+            Pfeil daneben zeigt hoch aufs Handy. */}
+        <div className="absolute left-2 top-4 flex items-center gap-5">
+          <span className="text-[12px] font-extrabold uppercase leading-none tracking-[0.08em] text-foreground/80">
+            Elterngerät
+          </span>
+          <CurvedArrow direction="up" />
         </div>
-        <div className="h-[2px] flex-1 rounded-full bg-foreground/25" />
+
+        {/* Kindgerät — an der Oberkante des unteren Phones (rechts);
+            Pfeil daneben zeigt runter aufs Handy. */}
+        <div className="absolute right-2 bottom-4 flex items-center gap-5">
+          <CurvedArrow direction="down" />
+          <span className="text-[12px] font-extrabold uppercase leading-none tracking-[0.08em] text-foreground/80">
+            Kindgerät
+          </span>
+        </div>
       </div>
 
-      <DeviceBlock
-        label="Kindgerät"
-        top={CAPTION_HEIGHT + PHONE_VISIBLE_HEIGHT + GAP_BETWEEN}
-        half="bottom"
-      >
+      <PhoneWindow top={bottomPhoneTop} half="bottom">
         <ChildviewMockup />
-      </DeviceBlock>
+      </PhoneWindow>
     </div>
   );
 }
 
-type DeviceBlockProps = {
-  label: string;
+type PhoneWindowProps = {
   top: number;
   half: "top" | "bottom";
   children: React.ReactNode;
 };
 
-function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
+function PhoneWindow({ top, half, children }: PhoneWindowProps) {
   const innerOffsetY =
     half === "bottom" ? -(PHONE_FULL_HEIGHT - PHONE_VISIBLE_HEIGHT) : 0;
 
@@ -83,9 +88,6 @@ function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
       className="absolute left-0 right-0 flex flex-col items-center"
       style={{ top }}
     >
-      <span className="mb-2 text-[15px] font-extrabold uppercase leading-none tracking-[0.12em] text-foreground/80">
-        {label}
-      </span>
       <div
         className="relative"
         style={{
@@ -117,6 +119,39 @@ function DeviceBlock({ label, top, half, children }: DeviceBlockProps) {
         />
       </div>
     </div>
+  );
+}
+
+/**
+ * Geschwungener, handgezeichnet wirkender Annotations-Pfeil.
+ * - "up": zeigt nach oben (Elterngerät → oberes Phone)
+ * - "down": zeigt nach unten (Kindgerät → unteres Phone)
+ */
+function CurvedArrow({ direction }: { direction: "up" | "down" }) {
+  return (
+    <svg
+      width={44}
+      height={31}
+      viewBox="0 0 56 40"
+      fill="none"
+      aria-hidden
+      className="text-brand-yellow"
+      style={direction === "down" ? { transform: "rotate(180deg)" } : undefined}
+    >
+      <g
+        stroke="currentColor"
+        strokeWidth={5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      >
+        {/* durchgehender, sanft geschwungener Bogen, der senkrecht (90°)
+            aufs Handy ausläuft */}
+        <path d="M6 28 C 18 33, 43 30, 43 10" />
+        {/* angesetzte, symmetrische Spitze – Scheitel = Bogenende */}
+        <path d="M36 17 L 43 10 L 50 17" />
+      </g>
+    </svg>
   );
 }
 

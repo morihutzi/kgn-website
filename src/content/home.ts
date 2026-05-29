@@ -68,7 +68,7 @@ export const manuelNeuer = {
   alt: "Manuel Neuer",
   quote: "Kidgonet vereint pädagogische Verantwortung und Sicherheit.",
   author: "Manuel Neuer",
-  role: "Weltmeister und Vater",
+  role: "Weltmeister und Partner von Kidgonet",
 } as const;
 
 export const testimonials = {

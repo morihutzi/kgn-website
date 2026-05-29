@@ -98,7 +98,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
             </a>
 
             {/* Digitalpreis-Badge — als Overlay auf dem Foto, wie Desktop */}
-            <div className="relative mt-3 self-end overflow-hidden rounded-xl border border-[#F9B000]/15 bg-white/8 px-3 py-[6px] backdrop-blur-[2px]">
+            <div className="liquid-glass-in relative mt-3 self-end overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-[6px] shadow-sm ring-1 ring-black/5 backdrop-blur-md">
               {/* Smiley-Klacks */}
               <Image
                 src="/images/icons/smiley-orange.png"
@@ -106,10 +106,10 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                 aria-hidden="true"
                 width={60}
                 height={60}
-                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-60"
-                style={{ filter: "blur(4px)" }}
+                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
+                style={{ filter: "blur(9px)" }}
               />
-              <p className="relative text-right text-[10px] font-semibold text-[#4a4a49]/85">
+              <p className="relative text-right text-[12px] font-semibold text-[#4a4a49]/85">
                 Gewinner des{" "}
                 <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
               </p>
@@ -229,7 +229,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
 
                 {/* Digitalpreis — direkt unter Store-Badges */}
                 <div
-                  className="relative self-end overflow-hidden rounded-2xl border border-[#F9B000]/30 bg-white/8 backdrop-blur-[2px]"
+                  className="liquid-glass-in relative self-end overflow-hidden rounded-2xl border border-white/60 bg-white/35 shadow-sm ring-1 ring-black/5 backdrop-blur-md"
                   style={{ padding: "min(12px, 1.29cqw) min(16px, 1.72cqw)", marginTop: "min(8px, 0.86cqw)" }}
                 >
                   {/* Smiley-Klacks im Hintergrund */}
@@ -239,12 +239,12 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     aria-hidden="true"
                     width={110}
                     height={110}
-                    className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-60"
-                    style={{ filter: "blur(4px)", height: "min(110px, 11.83cqw)", width: "auto" }}
+                    className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
+                    style={{ filter: "blur(16px)", height: "min(110px, 11.83cqw)", width: "auto" }}
                   />
                   <p
                     className="relative mb-2 text-right font-semibold text-[#4a4a49]/85"
-                    style={{ fontSize: "min(10px, 1.08cqw)" }}
+                    style={{ fontSize: "min(12px, 1.29cqw)" }}
                   >
                     Gewinner des{" "}
                     <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>

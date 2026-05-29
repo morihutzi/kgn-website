@@ -4,7 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
-import { TwoModesMockupScaled } from "@/components/mockups/TwoModesMockupScaled";
+import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { siteConfig, trialCopy } from "@/content/site";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
@@ -101,7 +101,7 @@ export default function SperrmodusPage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <TwoModesMockupScaled width={260} />
+              <ConnectDevicesMockupScaled width={260} />
             </div>
           </div>
         </Container>

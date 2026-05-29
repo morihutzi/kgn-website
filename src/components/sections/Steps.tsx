@@ -24,13 +24,13 @@ export function Steps() {
             key={item.title}
             className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
           >
-            <div className="flex h-[260px] items-center justify-center">
+            <div className="flex h-[360px] items-center justify-center">
               {idx === 0 ? (
-                <TwoModesMockupScaled width={110} />
+                <TwoModesMockupScaled width={160} />
               ) : idx === 1 ? (
-                <ConnectDevicesMockupScaled width={110} />
+                <ConnectDevicesMockupScaled width={160} />
               ) : (
-                <ChildviewMockupScaled width={110} />
+                <ChildviewMockupScaled width={160} />
               )}
             </div>
             <p className="mt-3 text-xs font-semibold text-brand-yellow">
@@ -58,13 +58,13 @@ export function Steps() {
             key={item.title}
             className="flex flex-col items-center text-center"
           >
-            <div className="flex h-[290px] items-center justify-center">
+            <div className="flex h-[410px] items-center justify-center">
               {idx === 0 ? (
-                <TwoModesMockupScaled width={125} />
+                <TwoModesMockupScaled width={185} />
               ) : idx === 1 ? (
-                <ConnectDevicesMockupScaled width={125} />
+                <ConnectDevicesMockupScaled width={185} />
               ) : (
-                <ChildviewMockupScaled width={125} />
+                <ChildviewMockupScaled width={185} />
               )}
             </div>
             <p className="mt-2 text-xs font-semibold text-brand-yellow">

@@ -4,7 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { FAQItem } from "@/components/sections/FAQItem";
-import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
+import { StandortMockupScaled } from "@/components/mockups/StandortMockupScaled";
 import { JsonLd, faqPageSchema, breadcrumbSchema, softwareApplicationSchema } from "@/components/seo/JsonLd";
 import { siteConfig, trialCopy } from "@/content/site";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
@@ -101,7 +101,7 @@ export default function StandortPage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <ConnectDevicesMockupScaled width={220} />
+              <StandortMockupScaled width={220} />
             </div>
           </div>
         </Container>

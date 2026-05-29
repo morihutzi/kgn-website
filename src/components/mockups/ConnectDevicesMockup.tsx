@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { ChevronRight, Plus } from "lucide-react";
+import { ChevronRight, Plus, Sun, Lock } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
+import { MockupDate } from "./MockupDate";
 
 const NATIVE_WIDTH = 220;
 const NATIVE_HEIGHT = 463;
@@ -43,9 +44,7 @@ export function ConnectDevicesMockup() {
             <span className="text-[11px] font-extrabold leading-none text-foreground">
               Guten Tag
             </span>
-            <span className="mt-0.5 text-[6.5px] text-foreground/50">
-              Donnerstag, 22. Mai
-            </span>
+            <MockupDate className="mt-0.5 text-[6.5px] text-foreground/50" />
           </div>
         </div>
 
@@ -60,13 +59,14 @@ export function ConnectDevicesMockup() {
           </span>
         </div>
 
-        <div className="mt-2.5 flex flex-col gap-2">
+        <div className="mt-2 flex flex-col gap-1.5">
           <ChildCard
             name="Anna"
             devices={["Annas iPhone", "Annas iPad"]}
             timeText="1h 23m übrig"
             timeVariant="default"
             progressFraction={0.45}
+            mode="schedule"
           />
           <ChildCard
             name="Franz"
@@ -74,16 +74,18 @@ export function ConnectDevicesMockup() {
             timeText="42m übrig"
             timeVariant="warning"
             progressFraction={0.72}
+            mode="locked"
           />
           <ChildCard
             name="Lena"
             devices={["Lenas iPhone", "Lenas Laptop"]}
             timeText="Unbegrenzt"
             timeVariant="unlimited"
+            mode="freetime"
           />
         </div>
 
-        <div className="mt-3 flex items-center gap-1 text-brand-yellow">
+        <div className="mt-2 flex items-center gap-1 text-brand-yellow">
           <Plus className="size-3" strokeWidth={2.5} aria-hidden />
           <span className="text-[8px] font-semibold">Kind hinzufügen</span>
         </div>
@@ -93,6 +95,7 @@ export function ConnectDevicesMockup() {
 }
 
 type TimeVariant = "default" | "warning" | "unlimited";
+type ChildModeState = "freetime" | "locked" | "schedule";
 
 type ChildCardProps = {
   name: string;
@@ -100,6 +103,7 @@ type ChildCardProps = {
   timeText: string;
   timeVariant: TimeVariant;
   progressFraction?: number;
+  mode: ChildModeState;
 };
 
 function ChildCard({
@@ -108,9 +112,14 @@ function ChildCard({
   timeText,
   timeVariant,
   progressFraction = 0,
+  mode,
 }: ChildCardProps) {
-  const timeColor =
-    timeVariant === "unlimited"
+  const isLocked = mode === "locked";
+  const displayTime = isLocked ? "Gesperrt" : timeText;
+
+  const timeColor = isLocked
+    ? "text-brand-orange"
+    : timeVariant === "unlimited"
       ? "text-brand-green"
       : timeVariant === "warning"
         ? "text-brand-orange"
@@ -119,8 +128,11 @@ function ChildCard({
   const barColor =
     timeVariant === "warning" ? "bg-brand-orange" : "bg-brand-yellow";
 
+  // Bei Sperren ist die Restzeit irrelevant → kein Fortschrittsbalken.
+  const showProgress = !isLocked && timeVariant !== "unlimited";
+
   return (
-    <div className="rounded-[12px] border-[1.5px] border-brand-yellow/85 bg-white px-2.5 py-2 shadow-[0_1.5px_3px_rgba(0,0,0,0.05)]">
+    <div className="rounded-[12px] border-[1.5px] border-brand-yellow/85 bg-white px-2.5 py-1.5 shadow-[0_1.5px_3px_rgba(0,0,0,0.05)]">
       <div className="flex items-center gap-2">
         <PersonFillIcon className="size-3 shrink-0 text-brand-yellow" />
 
@@ -145,7 +157,7 @@ function ChildCard({
         <span
           className={`shrink-0 text-[8px] font-semibold leading-none tabular-nums ${timeColor}`}
         >
-          {timeText}
+          {displayTime}
         </span>
 
         <ChevronRight
@@ -155,14 +167,64 @@ function ChildCard({
         />
       </div>
 
-      {timeVariant !== "unlimited" && (
-        <div className="mt-2 h-[3px] w-full overflow-hidden rounded-full bg-foreground/8">
+      {showProgress && (
+        <div className="mt-1.5 h-[3px] w-full overflow-hidden rounded-full bg-foreground/8">
           <div
             className={`h-full rounded-full ${barColor}`}
             style={{ width: `${Math.max(progressFraction * 100, 6)}%` }}
           />
         </div>
       )}
+
+      {/* Modus-Umschalter (Freizeit / Sperren) — 1:1 aus dem iOS-Elterndashboard */}
+      <div className="mt-1.5 border-t border-foreground/8 pt-1.5">
+        <ModeToggle mode={mode} />
+      </div>
+    </div>
+  );
+}
+
+function ModeToggle({ mode }: { mode: ChildModeState }) {
+  return (
+    <div className="flex items-center gap-[2px] rounded-[7px] bg-foreground/[0.06] p-[1.5px]">
+      <ModeSegment
+        active={mode === "freetime"}
+        tone="freetime"
+        label="Freizeit"
+        icon={<Sun className="size-2" strokeWidth={2.5} aria-hidden />}
+      />
+      <ModeSegment
+        active={mode === "locked"}
+        tone="locked"
+        label="Sperren"
+        icon={<Lock className="size-2" strokeWidth={2.5} aria-hidden />}
+      />
+    </div>
+  );
+}
+
+function ModeSegment({
+  active,
+  tone,
+  label,
+  icon,
+}: {
+  active: boolean;
+  tone: "freetime" | "locked";
+  label: string;
+  icon: React.ReactNode;
+}) {
+  const activeBg = tone === "freetime" ? "bg-brand-green" : "bg-brand-orange";
+  return (
+    <div
+      className={`flex flex-1 items-center justify-center gap-0.5 rounded-[5.5px] px-1 py-[3px] leading-none ${
+        active
+          ? `${activeBg} text-white shadow-[0_1px_2px_rgba(0,0,0,0.12)]`
+          : "text-foreground/45"
+      }`}
+    >
+      {icon}
+      <span className="text-[6.5px] font-semibold">{label}</span>
     </div>
   );
 }

@@ -46,7 +46,7 @@ export const wasKannDieAppMega: {
         title: "Geräteortung",
         description: "Der Standort Ihres Kindes kann jederzeit eingesehen werden.",
         icon: "pin",
-        href: "/was-kann-die-app#geraeteortung",
+        href: "/standort",
       },
       {
         title: "Nummer gegen Kummer",
