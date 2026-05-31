@@ -9,9 +9,9 @@ export function Footer() {
 
   return (
     <footer className="border-t border-black/10 bg-surface-muted text-text-dark">
-      <Container className="grid gap-10 py-14 md:grid-cols-[1.7fr_1fr_0.8fr_1.1fr] md:gap-8">
+      <Container className="grid grid-cols-1 justify-items-center gap-y-7 py-9 text-center md:grid-cols-[1.7fr_1fr_0.8fr_1.1fr] md:justify-items-stretch md:gap-8 md:py-14 md:text-left">
         {/* Slogan */}
-        <p className="text-3xl font-extrabold leading-[1.1] text-brand-yellow md:text-[40px]">
+        <p className="text-center text-3xl font-extrabold leading-[1.1] text-brand-yellow md:col-span-1 md:text-left md:text-[40px]">
           {sloganLines.map((line, i) => (
             <span key={line} className="block">
               {line}
@@ -20,27 +20,43 @@ export function Footer() {
           ))}
         </p>
 
-        {/* Social Media */}
-        <FooterColumn label="Social Media">
-          {footerLinks.social.map((s) => (
-            <li key={s.label}>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-brand-yellow transition hover:underline"
-              >
-                <span className="text-brand-yellow">
-                  <SocialIcon label={s.label} />
-                </span>
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </FooterColumn>
+        {/* Social Media — Mobile: titellose, zentrierte Icon-Reihe ganz unten;
+            ab md: vertikale Liste mit Titel + Labels an Originalposition */}
+        <nav
+          aria-label="Social Media"
+          className="order-last md:order-none md:col-span-1"
+        >
+          <h2 className="mb-4 hidden text-base font-medium text-text-dark/55 md:block">
+            Social Media
+          </h2>
+          <ul className="flex flex-row justify-center gap-4 text-base md:flex-col md:justify-start md:gap-0 md:space-y-2">
+            {footerLinks.social.map((s) => (
+              <li key={s.label}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex items-center gap-2 text-brand-yellow transition hover:underline"
+                >
+                  <span className="flex items-center justify-center rounded-lg border border-white bg-brand-yellow p-2 text-white md:rounded-none md:border-0 md:bg-transparent md:p-0 md:text-brand-yellow">
+                    <SocialIcon
+                      label={s.label}
+                      className="h-5 w-5 md:h-4 md:w-4"
+                    />
+                  </span>
+                  <span className="hidden md:inline">{s.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        {/* General */}
-        <FooterColumn label="General">
+        {/* General + Legal — auf Mobile gestapelt in einer zentrierten Spalte
+            (eine gemeinsame Mittelachse), ab md wieder eigene Grid-Spalten */}
+        <div className="flex flex-col items-center gap-7 md:contents">
+          {/* General */}
+          <FooterColumn label="General">
           {footerLinks.general.map((item) => (
             <li key={item.href}>
               <Link
@@ -66,6 +82,7 @@ export function Footer() {
             </li>
           ))}
         </FooterColumn>
+        </div>
       </Container>
 
       {/* Bottom-Zeile: Copyright + Cookie-Einstellungen */}
@@ -89,15 +106,24 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <nav aria-label={label}>
-      <h2 className="mb-4 text-base font-medium text-text-dark/55">{label}</h2>
-      <ul className="space-y-2 text-base">{children}</ul>
+    <nav aria-label={label} className="text-center md:text-left">
+      <h2 className="mb-2 text-base font-medium text-text-dark/55 md:mb-4">
+        {label}
+      </h2>
+      <ul className="flex flex-wrap justify-center gap-x-6 gap-y-1.5 text-base md:block md:space-y-2">
+        {children}
+      </ul>
     </nav>
   );
 }
 
-function SocialIcon({ label }: { label: string }) {
-  const className = "h-4 w-4";
+function SocialIcon({
+  label,
+  className = "h-4 w-4",
+}: {
+  label: string;
+  className?: string;
+}) {
   switch (label) {
     case "Facebook":
       return (

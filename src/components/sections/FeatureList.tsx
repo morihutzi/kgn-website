@@ -1,14 +1,14 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
-import { PhoneSlideshow } from "@/components/ui/PhoneSlideshow";
-import { hero, problemSolution } from "@/content/home";
+import { MockupSlideshow } from "@/components/ui/MockupSlideshow";
+import { problemSolution } from "@/content/home";
 
 function CheckIcon() {
   // Green-filled checkbox with white border and white check inside
   return (
     <span
       aria-hidden="true"
-      className="mt-0.5 inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-brand-green"
+      className="inline-flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center rounded-[4px] border-2 border-white bg-brand-green"
     >
       <svg
         viewBox="0 0 24 24"
@@ -32,17 +32,16 @@ export function FeatureList() {
     <>
       {/* MOBILE Yellow Block — phone overhangs upward into hero, titles right, bullets below */}
       <section className="relative bg-brand-yellow md:hidden">
-        <div className="relative grid grid-cols-[40vw_1fr] items-end gap-3 px-3 pt-3 pb-2">
-          {/* Phone — extends upward into the hero above */}
-          <div className="-mt-[28vw] flex justify-center">
-            <PhoneSlideshow
-              slides={hero.icons}
-              className="w-[28vw] max-w-[180px]"
-            />
+        <div className="relative grid grid-cols-[40vw_1fr] items-end gap-3 px-3 pt-1 pb-2">
+          {/* Phone — extends upward into the hero above; in der linken
+              Spalte zentriert. */}
+          <div className="-mt-[30vw] flex justify-center">
+            <MockupSlideshow className="relative w-[34vw] max-w-[200px]" />
           </div>
 
-          {/* Titles next to phone */}
-          <div className="pb-2">
+          {/* Titles next to phone — mb hebt den (bottom-aligned) Titelblock
+              höher neben das Phone. */}
+          <div className="mb-[44px] pb-2">
             <p className="text-[22px] font-medium leading-[28px] text-white">
               {problemSolution.eyebrow}
             </p>
@@ -52,9 +51,12 @@ export function FeatureList() {
           </div>
         </div>
 
-        <ul className="grid gap-3 px-5 pb-7 pt-3">
+        <ul className="grid px-5 pb-7 pt-3">
           {problemSolution.bullets.map((bullet) => (
-            <li key={bullet.strong} className="flex items-start gap-3">
+            <li
+              key={bullet.strong}
+              className="flex min-h-[46px] items-center gap-3"
+            >
               <CheckIcon />
               <span className="text-[15px] leading-snug text-white">
                 <span className="font-extrabold">{bullet.strong}</span>
@@ -68,14 +70,11 @@ export function FeatureList() {
       {/* DESKTOP Yellow Block — phone overhangs upward, bullets right */}
       <section className="hidden pt-2 pb-0 md:block md:pt-3 md:pb-0">
         <Container>
-          <div className="mx-auto w-full max-w-[720px]">
+          <div className="mx-auto w-full max-w-[1080px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
-              <PhoneSlideshow
-                slides={hero.icons}
-                className="pointer-events-none absolute left-4 top-[-130px] z-10 w-[150px] lg:left-10 lg:top-[-160px] lg:w-[180px]"
-              />
+              <MockupSlideshow className="pointer-events-none absolute left-[70px] top-[-180px] z-10 w-[200px] lg:left-[90px] lg:top-[-215px] lg:w-[240px]" />
 
-              <div className="grid items-start gap-6 md:grid-cols-[190px_1fr] lg:grid-cols-[220px_1fr]">
+              <div className="grid items-start gap-6 md:grid-cols-[260px_1fr] lg:grid-cols-[340px_1fr]">
                 <div aria-hidden="true" />
 
                 <div>
@@ -85,11 +84,14 @@ export function FeatureList() {
                   <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">
                     {problemSolution.headline}
                   </h2>
-                  <ul className="mt-4 grid gap-1.5">
+                  <ul className="mt-5 grid">
                     {problemSolution.bullets.map((bullet) => (
-                      <li key={bullet.strong} className="flex items-start gap-2.5">
+                      <li
+                        key={bullet.strong}
+                        className="flex min-h-[44px] items-center gap-2.5"
+                      >
                         <CheckIcon />
-                        <span className="text-xs text-white md:text-[13px] md:leading-snug">
+                        <span className="text-sm text-white md:text-[16px] md:leading-snug">
                           <span className="font-extrabold">{bullet.strong}</span>
                           {bullet.rest}
                         </span>
@@ -99,14 +101,15 @@ export function FeatureList() {
                 </div>
               </div>
 
-              {/* Logo positioned under phone on desktop */}
-              <div className="absolute left-4 top-[220px] w-[150px] flex justify-center lg:left-10 lg:top-[255px] lg:w-[180px]">
+              {/* Logo unter dem Phone — vertikal auf Höhe des untersten
+                  Bullets (Center ~58px über dem Kartenboden). */}
+              <div className="absolute left-[70px] bottom-[42px] w-[200px] flex justify-center lg:left-[90px] lg:w-[240px]">
                 <Image
                   src="/brand/logo-weiss.png"
                   alt="Kidgonet"
                   width={600}
                   height={82}
-                  className="h-auto w-full max-w-[200px] opacity-95"
+                  className="h-auto w-full max-w-[260px] opacity-95"
                 />
               </div>
             </div>
@@ -116,7 +119,7 @@ export function FeatureList() {
 
       {/* Trust logos strip — endless horizontal marquee on a soft band */}
       <section className="bg-surface-muted py-6 md:py-8">
-        <div className="mx-auto w-full max-w-[720px] px-4">
+        <div className="mx-auto w-full max-w-[1080px] px-4">
           <p className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-text-muted md:mb-4">
             Bekannt aus
           </p>

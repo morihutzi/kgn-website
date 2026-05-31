@@ -6,6 +6,7 @@ import { Steps } from "@/components/sections/Steps";
 import { ManuelNeuer } from "@/components/sections/ManuelNeuer";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Comparison } from "@/components/sections/Comparison";
+import { Medienfuehrerschein } from "@/components/sections/Medienfuehrerschein";
 import { FAQ } from "@/components/sections/FAQ";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import {
@@ -39,6 +40,7 @@ export default function HomePage() {
       <ManuelNeuer />
       <Testimonials />
       <Comparison />
+      <Medienfuehrerschein />
       <FAQ />
       {/* Banner: Kind nutzt sicher ihr Smartphone (Full-Width, nach FAQ) */}
       <section className="relative w-full">

@@ -1,15 +1,9 @@
 import { trialCopy } from "@/content/site";
 
 export const hero = {
-  headline: "Deine Kinder surfen sicher – mit Kidgonet",
-  subheadline: "Nur 3 Klicks für mehr Sicherheit im Netz.",
+  headline: "Digitale Sicherheit beginnt mit Kidgonet",
+  subheadline: "Klare Regeln für Handy, Apps und Onlinezeit.",
   primaryCtaLabel: "Jetzt gratis testen!",
-  icons: [
-    { src: "/images/hero/block.webp", alt: "Webseite blockiert" },
-    { src: "/images/hero/sanduhr.webp", alt: "Bildschirmzeit" },
-    { src: "/images/hero/portal.webp", alt: "Elternportal" },
-    { src: "/images/hero/internetsperre.webp", alt: "Internetsperre" },
-  ],
 } as const;
 
 export type Bullet = { strong: string; rest: string };
@@ -20,7 +14,9 @@ export const problemSolution: {
   bullets: Bullet[];
   trustLogos: { src: string; alt: string }[];
 } = {
-  eyebrow: "Ständig Streit ums Handy?",
+  // Geschütztes Leerzeichen zwischen "ums" und "Handy", damit der Umbruch
+  // nur nach "Streit" passiert: "Ständig Streit" / "ums Handy?".
+  eyebrow: "Ständig Streit ums Handy?",
   headline: "Hier ist die Lösung:",
   bullets: [
     { strong: "Bildschirmzeiten", rest: " ganz einfach festlegen, für alle Geräte" },
@@ -101,12 +97,59 @@ export const comparison = {
   // ours ist überall true; others gibt an, ob andere Apps die Funktion bieten.
   features: [
     { label: "Altersgerechter Webfilter", others: false },
-    { label: "Geräteübergreifende Bildschirmzeiten", others: true },
-    { label: "Bildschirmpausen", others: false },
+    { label: "Geräteübergreifende Bildschirmzeiten", others: false },
+    { label: "Bildschirmpausen", others: true },
     { label: "Geräteübergreifende Limits", others: false },
-    { label: "Apps sperren", others: false },
+    { label: "Apps freigeben", others: false },
     { label: "Privatsphäre Deiner Kinder", others: false },
   ],
+} as const;
+
+/**
+ * Medienführerschein — separates, einmalig kostenpflichtiges Programm.
+ * Positioniert als Stufe VOR dem ersten Handy (gemeinsam, Urkunde), damit es
+ * die App nicht konkurriert, sondern zu ihr hinführt.
+ */
+export const medienfuehrerschein = {
+  eyebrow: "Der Medienführerschein von Kidgonet",
+  headline: "Mehr Sicherheit für dein Kind im digitalen Alltag.",
+  subline:
+    "Ein interaktives Lernprogramm, das ihr gemeinsam mit eurem Kind macht – für mehr Sicherheit und Selbstvertrauen im Umgang mit Handy, Apps und dem Netz.",
+  chaptersIntro:
+    "Fünf Kapitel, die ihr als Eltern und Kind gemeinsam durchgeht – spielerisch und im eigenen Tempo:",
+  chapters: [
+    {
+      title: "Bildschirmzeit & Medienbalance",
+      text: "Eine gesunde Balance finden – wie viel Bildschirm tut wirklich gut?",
+      premium: false,
+      subchapters: ["Bildschirmzeit", "Gute Zeit, smarte Zeit", "Lebenszeit"],
+    },
+    {
+      title: "Gefahren & Miteinander im Netz",
+      text: "Risiken erkennen, respektvoll chatten und im Ernstfall richtig reagieren.",
+      premium: false,
+      subchapters: ["Chat", "Detektiv", "In-Game"],
+    },
+    {
+      title: "Privatsphäre & Sicherheit",
+      text: "Persönliche Daten und Accounts schützen – sichere Passwörter inklusive.",
+      premium: true,
+      subchapters: ["Privatsphäre", "Passwörter", "Profile"],
+    },
+    {
+      title: "KI verstehen & klug nutzen",
+      text: "Entdecken, was KI kann – und sie sinnvoll zum Lernen einsetzen.",
+      premium: true,
+      subchapters: ["Was ist KI?", "KI-Talente", "Mit KI lernen"],
+    },
+    {
+      title: "KI mit Köpfchen",
+      text: "KI-Risiken erkennen: Fake-Bilder, Halluzinationen und Datenschutz.",
+      premium: true,
+      subchapters: ["Halluzinationen", "Fake-Bilder", "KI & Daten"],
+    },
+  ],
+  ctaLabel: "Kidgonet Medienführerschein starten",
 } as const;
 
 export type FaqItem = { question: string; answer: string };

@@ -8,6 +8,12 @@ export const siteConfig = {
   appStoreUrl: "https://apps.apple.com/us/app/kidgonet/id6759919131",
   playStoreUrl:
     "https://play.google.com/store/apps/details?id=de.kidgonet.kidprotection.v2",
+  /**
+   * Medienführerschein — separates, einmalig kostenpflichtiges Programm.
+   * Eigene Seite folgt; bis dahin zeigt der Link auf die Live-URL.
+   * Später einfach auf den internen Pfad "/medienfuehrerschein" umstellbar.
+   */
+  medienfuehrerscheinUrl: "https://www.kidgonet.de/medienfuehrerschein/",
   /** Dauer der kostenlosen Testphase in Tagen */
   trialDays: 7,
 };

@@ -9,7 +9,7 @@ const MOBILE_LIST_ID = "steps-mobile-list";
 
 export function Steps() {
   return (
-    <Section>
+    <Section maxWidth={1080}>
       <SectionHeading size="small" align="center">
         {steps.headline}
       </SectionHeading>
@@ -22,7 +22,7 @@ export function Steps() {
         {steps.items.map((item, idx) => (
           <li
             key={item.title}
-            className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
+            className="flex min-w-full snap-center flex-col items-center text-center"
           >
             <div className="flex h-[360px] items-center justify-center">
               {idx === 0 ? (

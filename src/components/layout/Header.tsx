@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { MegaMenu } from "@/components/layout/MegaMenu";
+import { MobileMenu } from "@/components/layout/MobileMenu";
 import { primaryNav, siteConfig } from "@/content/site";
 import { wasKannDieAppMega } from "@/content/megaMenu";
 
@@ -68,31 +69,12 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href={siteConfig.portalRegisterUrl} external size="md">
+          <Button href={siteConfig.portalWelcomeUrl} external size="md">
             Hol dir Kidgonet
           </Button>
         </div>
 
-        <button
-          type="button"
-          aria-label="Menü öffnen"
-          className="flex h-10 w-10 items-center justify-center rounded-[6px] border-2 border-brand-yellow text-brand-yellow md:hidden"
-        >
-          <svg
-            width="22"
-            height="16"
-            viewBox="0 0 22 16"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M1 1h20M1 8h20M1 15h20"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
+        <MobileMenu />
       </Container>
     </header>
   );

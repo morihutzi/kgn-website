@@ -9,7 +9,7 @@ const PRICING_QUESTION = "Welche Abomodelle gibt es?";
 export function FAQ() {
   return (
     <div className="bg-[#F4ECDF]">
-      <Section maxWidth={900} className="py-10 md:py-14">
+      <Section maxWidth={880} className="py-10 md:py-14">
         <div className="flex items-start justify-center gap-2">
           <h2 className="text-xl font-extrabold text-brand-yellow md:text-[28px]">
             {faq.headline}

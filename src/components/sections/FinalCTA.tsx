@@ -6,7 +6,7 @@ import { siteConfig, trialCopy } from "@/content/site";
 export function FinalCTA() {
   return (
     <section className="overflow-hidden bg-brand-yellow py-16 md:py-20">
-      <div className="mx-auto grid w-full max-w-5xl items-center gap-10 px-6 sm:px-8 md:grid-cols-[1fr_auto] md:px-4">
+      <div className="mx-auto grid w-full max-w-[1080px] items-center gap-10 px-6 sm:px-8 md:grid-cols-[1fr_auto] md:px-4">
 
         {/* Left: copy + CTA */}
         <div>

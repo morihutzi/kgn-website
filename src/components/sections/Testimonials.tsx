@@ -78,7 +78,7 @@ export function Testimonials() {
   };
 
   return (
-    <Section maxWidth={1100}>
+    <Section maxWidth={1080} className="py-12 md:py-16">
       <SectionHeading align="center">{testimonials.headline}</SectionHeading>
 
       {/* Desktop: normales Grid */}

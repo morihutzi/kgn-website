@@ -17,7 +17,7 @@ export function ManuelNeuer() {
         className="object-cover object-right"
       />
 
-      <Section maxWidth={1100} className="relative">
+      <Section maxWidth={1080} className="relative">
         <div className="grid items-center gap-6 md:grid-cols-[240px_1fr] md:gap-12">
           <div className="relative mx-auto aspect-[4/5] w-full max-w-[240px] overflow-hidden rounded-3xl">
             <Image

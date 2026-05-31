@@ -22,13 +22,13 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
   const h1: React.ReactNode =
     headline ?? (
       <>
-        Deine Kinder<br /> surfen sicher –<br /> mit Kidgonet
+        Digitale Sicherheit<br /> beginnt mit<br /> Kidgonet
       </>
     );
   const h2: React.ReactNode =
     subheadline ?? (
       <>
-        Nur 3 Klicks für mehr<br /> Sicherheit im Netz.
+        Klare Regeln für Handy,<br /> Apps und Onlinezeit.
       </>
     );
 
@@ -66,62 +66,70 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
           </div>
 
           <div className="flex flex-col items-end gap-[12px]">
-            <a
-              href={siteConfig.appStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Im App Store laden"
-            >
-              <Image
-                src="/badges/app-store-de.svg"
-                alt="Im App Store laden"
-                width={160}
-                height={42}
-                style={{ height: "42px", width: "auto" }}
-                className="block object-contain"
-              />
-            </a>
-            <a
-              href={siteConfig.playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Bei Google Play laden"
-            >
-              <Image
-                src="/badges/google-play-de.png"
-                alt="Bei Google Play laden"
-                width={160}
-                height={42}
-                style={{ height: "42px", width: "auto" }}
-                className="block object-contain"
-              />
-            </a>
-
-            {/* Digitalpreis-Badge — als Overlay auf dem Foto, wie Desktop */}
-            <div className="liquid-glass-in relative mt-3 self-end overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-[6px] shadow-sm ring-1 ring-black/5 backdrop-blur-md">
-              {/* Smiley-Klacks */}
-              <Image
-                src="/images/icons/smiley-orange.png"
-                alt=""
-                aria-hidden="true"
-                width={60}
-                height={60}
-                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
-                style={{ filter: "blur(9px)" }}
-              />
-              <p className="relative text-right text-[12px] font-semibold text-[#4a4a49]/85">
-                Gewinner des{" "}
-                <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
-              </p>
-              <Image
-                src="/images/award/digitalpreis-bayern-2025-schwarz.png"
-                alt="Bayerischer Digitalpreis 2025"
-                width={100}
-                height={30}
-                style={{ height: "26px", width: "auto" }}
-                className="relative ml-auto mt-1 block object-contain"
-              />
+            {/* Store-Badges nebeneinander */}
+            <div className="flex items-center gap-[10px]">
+              <a
+                href={siteConfig.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Im App Store laden"
+              >
+                <Image
+                  src="/badges/app-store-de.svg"
+                  alt="Im App Store laden"
+                  width={160}
+                  height={42}
+                  style={{ height: "40px", width: "auto" }}
+                  className="block object-contain"
+                />
+              </a>
+              <a
+                href={siteConfig.playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Bei Google Play laden"
+              >
+                <Image
+                  src="/badges/google-play-de.png"
+                  alt="Bei Google Play laden"
+                  width={160}
+                  height={42}
+                  style={{ height: "40px", width: "auto" }}
+                  className="block object-contain"
+                />
+              </a>
             </div>
+          </div>
+        </div>
+
+        {/* Digitalpreis-Badge — am unteren Hero-Rand, rechtsbündig. Bleibt
+            schmal genug, damit das von links unten überstehende Phone-Mockup
+            (FeatureList) nicht kollidiert. */}
+        <div className="liquid-glass-in absolute right-[35px] bottom-[12px] z-10 max-w-[190px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
+          {/* Smiley-Klacks */}
+          <Image
+            src="/images/icons/smiley-orange.png"
+            alt=""
+            aria-hidden="true"
+            width={60}
+            height={60}
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
+            style={{ filter: "blur(9px)" }}
+          />
+          {/* Text links, Logo rechts — nebeneinander. */}
+          <div className="relative flex items-center gap-2.5">
+            <p className="flex-1 text-left text-[11px] font-semibold leading-[1.3] text-[#4a4a49]/85">
+              Gewinner des{" "}
+              <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
+            </p>
+            <Image
+              src="/images/award/digitalpreis-bayern-2025-schwarz.png"
+              alt="Bayerischer Digitalpreis 2025"
+              width={120}
+              height={36}
+              style={{ height: "34px", width: "auto" }}
+              className="block shrink-0 object-contain"
+            />
           </div>
         </div>
       </section>
@@ -129,7 +137,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
       {/* DESKTOP Hero — photo card with overlay */}
       <section className="hidden bg-white pt-5 pb-2 md:block md:pt-8 md:pb-3">
         <Container>
-          <div className="@container/banner mx-auto w-full max-w-[720px]">
+          <div className="@container/banner mx-auto w-full max-w-[1080px]">
             <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">
               <Image
                 src="/images/hero/vater-sohn.jpeg"
@@ -247,7 +255,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     style={{ fontSize: "min(12px, 1.29cqw)" }}
                   >
                     Gewinner des{" "}
-                    <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis 2025</strong>
+                    <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
                   </p>
                   <Image
                     src="/images/award/digitalpreis-bayern-2025-schwarz.png"

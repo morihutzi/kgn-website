@@ -56,10 +56,11 @@ function CrossBadge() {
 
 export function Comparison() {
   return (
-    <Section maxWidth={900}>
-      <h2 className="text-balance text-center text-xl font-extrabold leading-tight text-brand-yellow md:text-[32px] md:leading-[1.2]">
-        {comparison.headline}
-      </h2>
+    <div className="w-full bg-[#FBF6EC]">
+      <Section maxWidth={880}>
+        <h2 className="mx-auto max-w-[600px] text-balance text-center text-xl font-extrabold leading-tight text-brand-yellow md:text-[32px] md:leading-[1.2]">
+          {comparison.headline}
+        </h2>
 
       <div
         className="mt-10 overflow-hidden rounded-[20px] bg-white"
@@ -72,12 +73,13 @@ export function Comparison() {
             <tr>
               <th scope="col" className="px-5 py-6 md:px-7" />
               <th scope="col" className="px-3 py-6 text-center md:px-4">
+                {/* Offizielles Kidgonet App-Icon (aus dem App Store). */}
                 <Image
-                  src="/brand/logo.png"
-                  alt="Kidgonet"
-                  width={600}
-                  height={82}
-                  className="mx-auto h-5 w-auto md:h-6"
+                  src="/brand/app-icon.png"
+                  alt="Kidgonet App"
+                  width={1024}
+                  height={1024}
+                  className="mx-auto h-9 w-9 max-w-none rounded-[9px] md:h-10 md:w-10 md:rounded-[11px]"
                 />
               </th>
               <th
@@ -111,6 +113,7 @@ export function Comparison() {
           </tbody>
         </table>
       </div>
-    </Section>
+      </Section>
+    </div>
   );
 }
