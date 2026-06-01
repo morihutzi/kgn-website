@@ -78,7 +78,7 @@ export function FeatureList() {
                 <div aria-hidden="true" />
 
                 <div>
-                  <p className="text-base font-semibold text-white md:text-lg">
+                  <p className="text-xl font-bold text-white md:text-[28px] md:leading-[1.15]">
                     {problemSolution.eyebrow}
                   </p>
                   <h2 className="mt-1 text-xl font-extrabold text-white md:text-[28px] md:leading-[1.15]">

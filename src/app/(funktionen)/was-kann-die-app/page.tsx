@@ -76,7 +76,7 @@ function HeroSection() {
     <section
       id={hero.sectionId}
       aria-label="Einleitung"
-      className="bg-surface-warm py-10 md:py-14"
+      className="bg-white py-10 md:py-14"
     >
       <Section>
         <div className="grid items-center gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">

@@ -61,15 +61,15 @@ function HeroSection() {
         }}
       />
       <Container className="relative">
-        <div className="py-16 md:py-24">
+        <div className="py-10 md:py-14">
           <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-white/80">
             Über uns
           </p>
-          <h1 className="mt-3 max-w-3xl text-balance text-3xl font-extrabold leading-[1.1] tracking-tight text-white md:text-5xl">
+          <h1 className="mt-2 max-w-3xl text-balance text-2xl font-extrabold leading-tight tracking-tight text-white md:text-4xl">
             Kinder sollten nicht nur im Alltag geschützt werden, sondern auch
             online.
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/95 md:text-lg">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/95 md:text-base">
             Sie müssen im Internet genauso sicher unterwegs sein wie auf dem
             Weg zur Schule.
           </p>

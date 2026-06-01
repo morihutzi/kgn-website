@@ -148,7 +148,7 @@ function PlansSection() {
 
 function FreemiumCard() {
   return (
-    <article className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl bg-text-dark p-6 md:p-10">
+    <article className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-2xl border border-neutral-200 bg-surface-muted p-6 md:p-10">
       <div className="grid items-center gap-6 md:grid-cols-[auto_1fr_auto] md:gap-10">
         {/* Icon */}
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-yellow text-white">
@@ -172,10 +172,10 @@ function FreemiumCard() {
           <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-brand-yellow">
             Kostenlos für immer
           </p>
-          <h3 className="mt-2 text-xl font-extrabold leading-snug text-white md:text-2xl">
+          <h3 className="mt-2 text-xl font-extrabold leading-snug text-text-dark md:text-2xl">
             Webfilter gratis nutzen
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-white/75 md:text-base">
+          <p className="mt-2 text-sm leading-relaxed text-text-dark/65 md:text-base">
             Der altersgerechte Internetfilter ist bei Kidgonet dauerhaft
             kostenlos. Kein Trial, kein Account-Zwang — installieren und
             loslegen.

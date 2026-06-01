@@ -5,14 +5,14 @@ import { siteConfig, trialCopy } from "@/content/site";
 
 export function FinalCTA() {
   return (
-    <section className="overflow-hidden bg-brand-yellow py-16 md:py-20">
+    <section className="overflow-hidden border-t-4 border-brand-yellow bg-white py-16 md:py-20">
       <div className="mx-auto grid w-full max-w-[1080px] items-center gap-10 px-6 sm:px-8 md:grid-cols-[1fr_auto] md:px-4">
 
         {/* Left: copy + CTA */}
         <div>
           {/* Headline */}
-          <h2 className="text-balance text-3xl font-extrabold leading-tight text-white md:text-4xl">
-            Kinder sicher ins Internet –<br className="hidden md:block" /> starte noch heute.
+          <h2 className="text-balance text-3xl font-extrabold leading-tight text-text-dark md:text-4xl">
+            Schütz dein Kind jetzt.
           </h2>
 
           {/* Benefits */}
@@ -26,13 +26,13 @@ export function FinalCTA() {
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
-                  className="mt-0.5 h-4 w-4 shrink-0 fill-none stroke-white stroke-[3]"
+                  className="mt-0.5 h-4 w-4 shrink-0 fill-none stroke-brand-yellow stroke-[3]"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
                   <path d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm font-bold leading-relaxed text-white md:leading-snug">{text}</span>
+                <span className="text-sm font-bold leading-relaxed text-text-dark md:leading-snug">{text}</span>
               </li>
             ))}
           </ul>
@@ -42,7 +42,7 @@ export function FinalCTA() {
             <Button
               href={siteConfig.portalWelcomeUrl}
               external
-              variant="white"
+              variant="primary"
               size="lg"
             >
               {trialCopy.cta}
@@ -50,7 +50,7 @@ export function FinalCTA() {
           </div>
 
           {/* Friction reducer — nur Desktop */}
-          <p className="mt-3 hidden text-xs font-bold text-white md:block">
+          <p className="mt-3 hidden text-xs font-bold text-text-dark/55 md:block">
             Keine Vertragsbindung · Jederzeit kündbar
           </p>
 
