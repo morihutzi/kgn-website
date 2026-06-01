@@ -1,7 +1,7 @@
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
-import { TwoModesMockupScaled } from "@/components/mockups/TwoModesMockupScaled";
+import { RoleSelectionMockupScaled } from "@/components/mockups/RoleSelectionMockupScaled";
 import { StepsMobileNav } from "@/components/sections/StepsMobileNav";
 import { steps } from "@/content/home";
 
@@ -10,7 +10,7 @@ const MOBILE_LIST_ID = "steps-mobile-list";
 export function Steps() {
   return (
     <Section maxWidth={1080}>
-      <SectionHeading size="small" align="center">
+      <SectionHeading align="center">
         {steps.headline}
       </SectionHeading>
 
@@ -26,7 +26,7 @@ export function Steps() {
           >
             <div className="flex h-[360px] items-center justify-center">
               {idx === 0 ? (
-                <TwoModesMockupScaled width={160} />
+                <RoleSelectionMockupScaled width={160} />
               ) : idx === 1 ? (
                 <ConnectDevicesMockupScaled width={160} />
               ) : (
@@ -60,7 +60,7 @@ export function Steps() {
           >
             <div className="flex h-[410px] items-center justify-center">
               {idx === 0 ? (
-                <TwoModesMockupScaled width={185} />
+                <RoleSelectionMockupScaled width={185} />
               ) : idx === 1 ? (
                 <ConnectDevicesMockupScaled width={185} />
               ) : (

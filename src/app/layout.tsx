@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import {
   JsonLd,
   organizationSchema,
@@ -63,9 +64,9 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <SiteChrome header={<Header />} footer={<Footer />}>
+          {children}
+        </SiteChrome>
         <CookieConsentBanner />
         <Analytics />
       </body>

@@ -1,0 +1,118 @@
+import {
+  ArrowUpRight,
+  AppWindow,
+  Brain,
+  Compass,
+  Hourglass,
+  Lock,
+  MapPin,
+  Search,
+  ShieldCheck,
+} from 'lucide-react'
+import { Container } from '@/components/partner/hans-dorfner/ui/container'
+import { SectionHeading } from '@/components/partner/hans-dorfner/ui/section-heading'
+import { ChildviewMockup } from '@/components/partner/hans-dorfner/mockups/childview-mockup'
+import type { ForParentsBlock, ForParentsIcon, TenantConfig } from '@/components/partner/hans-dorfner/types'
+
+const iconMap: Record<ForParentsIcon, typeof Hourglass> = {
+  hourglass: Hourglass,
+  'shield-check': ShieldCheck,
+  'app-window': AppWindow,
+  'map-pin': MapPin,
+  brain: Brain,
+  compass: Compass,
+  lock: Lock,
+  search: Search,
+}
+
+type ForParentsProps = {
+  tenant: TenantConfig
+}
+
+export function ForParents({ tenant }: ForParentsProps) {
+  const { forParents } = tenant
+
+  return (
+    <section id="fuer-eltern" className="bg-white py-16 sm:py-28">
+      <Container width="wide">
+        <SectionHeading
+          eyebrow="Für Eltern"
+          title={forParents.headline}
+          subtitle={forParents.subheadline}
+          align="center"
+          className="mx-auto"
+        />
+
+        {/* Nur noch die App als fokussierte Einzel-Karte — der
+         * Medienführerschein folgt als eigenständige, ergänzende Sektion
+         * (Homepage-Sektion), damit beide Produkte nicht gleichrangig
+         * nebeneinander konkurrieren. */}
+        <div className="mx-auto mt-10 max-w-4xl sm:mt-14">
+          <ForParentsCard block={forParents.app} mockup={<ChildviewMockup />} />
+        </div>
+      </Container>
+    </section>
+  )
+}
+
+function ForParentsCard({
+  block,
+  mockup,
+}: {
+  block: ForParentsBlock
+  mockup: React.ReactNode
+}) {
+  return (
+    <a
+      href={block.link.href}
+      target={block.link.external ? '_blank' : undefined}
+      rel={block.link.external ? 'noopener noreferrer' : undefined}
+      className="group flex h-full flex-col overflow-hidden rounded-3xl bg-surface ring-2 ring-transparent transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(74,74,73,0.12)] hover:ring-primary focus-visible:outline-none focus-visible:ring-primary lg:flex-row"
+    >
+      {/* Mockup-Bühne mit warmem Hintergrund-Akzent. Auf Desktop links neben
+       * den Features (horizontal), darunter gestapelt auf kleineren Screens. */}
+      <div className="flex items-center justify-center bg-[#f1ece4] px-4 py-10 sm:px-6 sm:py-14 lg:w-2/5 lg:shrink-0">
+        {mockup}
+      </div>
+
+      <div className="flex flex-1 flex-col p-6 sm:p-10 lg:justify-center">
+        <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+          {block.eyebrow}
+        </p>
+        <h3 className="mt-2 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+          {block.title}
+        </h3>
+        <p className="mt-4 text-base leading-relaxed text-foreground/75">{block.lead}</p>
+
+        <ul className="mt-6 space-y-4">
+          {block.items.map((item) => {
+            const Icon = iconMap[item.icon]
+            return (
+              <li
+                key={item.title}
+                className="border-t border-border pt-4 first:border-t-0 first:pt-0"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white text-primary">
+                    <Icon className="size-5" strokeWidth={2.2} aria-hidden />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-base font-semibold text-foreground">{item.title}</h4>
+                    <p className="mt-1 text-sm leading-relaxed text-foreground/70">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+
+        <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-foreground underline-offset-4 group-hover:underline">
+          {block.link.label}
+          <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
+        </div>
+      </div>
+    </a>
+  )
+}

@@ -58,7 +58,7 @@ export function Comparison() {
   return (
     <div className="w-full bg-[#FBF6EC]">
       <Section maxWidth={880}>
-        <h2 className="mx-auto max-w-[600px] text-balance text-center text-xl font-extrabold leading-tight text-brand-yellow md:text-[32px] md:leading-[1.2]">
+        <h2 className="mx-auto max-w-[600px] text-balance text-center text-xl font-extrabold leading-tight text-brand-yellow md:text-[28px] md:leading-[1.15]">
           {comparison.headline}
         </h2>
 
