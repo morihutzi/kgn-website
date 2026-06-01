@@ -175,11 +175,12 @@ function MegaMenuAbos({ column }: { column: MegaMenuColumn }) {
 }
 
 function MegaMenuLink({ item }: { item: MegaMenuItem }) {
-  return (
-    <Link
-      href={item.href}
-      className="group flex gap-3 rounded-[12px] p-2 -mx-2 -my-2 transition-colors hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
-    >
+  const isExternal = /^https?:\/\//.test(item.href);
+  const className =
+    "group flex gap-3 rounded-[12px] p-2 -mx-2 -my-2 transition-colors hover:bg-surface-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow";
+
+  const content = (
+    <>
       <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center text-brand-yellow">
         <MegaMenuIconSvg name={item.icon} />
       </span>
@@ -196,6 +197,25 @@ function MegaMenuLink({ item }: { item: MegaMenuItem }) {
           {item.description}
         </span>
       </span>
+    </>
+  );
+
+  if (isExternal) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={item.href} className={className}>
+      {content}
     </Link>
   );
 }

@@ -80,14 +80,14 @@ export const wasKannDieAppMega: {
         description:
           "Unser Spar-Abo: Unbegrenzter Zugang und alle Funktionen zum besten Preis.",
         icon: "medal",
-        href: "/preise#jahresabo",
+        href: "https://portal.kidgonet.de/register",
       },
       {
         title: "Monatsabo",
         description:
           "Monatsabo: Unbegrenzter Zugang und alle Funktionen zum guten Preis.",
         icon: "check",
-        href: "/preise#monatsabo",
+        href: "https://portal.kidgonet.de/register",
       },
     ],
   },
