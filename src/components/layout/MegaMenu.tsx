@@ -148,7 +148,7 @@ function MegaMenuFeatures({ column }: { column: MegaMenuColumn }) {
       </h3>
       <ul className="mt-5 grid gap-x-8 gap-y-5 md:grid-cols-2">
         {column.items.map((item) => (
-          <li key={item.href}>
+          <li key={item.title}>
             <MegaMenuLink item={item} />
           </li>
         ))}
@@ -165,7 +165,7 @@ function MegaMenuAbos({ column }: { column: MegaMenuColumn }) {
       </h3>
       <ul className="mt-5 grid gap-5">
         {column.items.map((item) => (
-          <li key={item.href}>
+          <li key={item.title}>
             <MegaMenuLink item={item} />
           </li>
         ))}
