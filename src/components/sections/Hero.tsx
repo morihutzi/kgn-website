@@ -146,7 +146,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                 quality={90}
                 sizes="(min-width: 1120px) 1080px, 100vw"
                 priority
-                className="object-cover"
+                className="scale-105 object-cover blur-[2px]"
               />
 
               {/* Headline block — Figma position (231,102) / size (604x205) */}
