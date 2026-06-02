@@ -36,7 +36,10 @@ export function FeatureList() {
           {/* Phone — extends upward into the hero above; in der linken
               Spalte zentriert. */}
           <div className="-mt-[30vw] flex justify-center">
-            <MockupSlideshow className="relative w-[34vw] max-w-[200px]" />
+            <MockupSlideshow
+              initialWidth={120}
+              className="relative w-[34vw] max-w-[200px]"
+            />
           </div>
 
           {/* Titles next to phone — vertikal mittig zum Phone, Block horizontal
@@ -72,7 +75,10 @@ export function FeatureList() {
         <Container>
           <div className="mx-auto w-full max-w-[1080px]">
             <div className="relative rounded-[20px] bg-brand-yellow px-5 py-7 md:px-10 md:py-9">
-              <MockupSlideshow className="pointer-events-none absolute left-[70px] top-[-180px] z-10 w-[200px] lg:left-[90px] lg:top-[-215px] lg:w-[240px]" />
+              <MockupSlideshow
+                initialWidth={200}
+                className="pointer-events-none absolute left-[70px] top-[-180px] z-10 w-[200px] lg:left-[90px] lg:top-[-215px] lg:w-[240px]"
+              />
 
               <div className="grid items-start gap-6 md:grid-cols-[260px_1fr] lg:grid-cols-[340px_1fr]">
                 <div aria-hidden="true" />

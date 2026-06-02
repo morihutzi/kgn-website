@@ -24,6 +24,13 @@ const MOCKUPS: ReadonlyArray<(width: number) => React.ReactNode> = [
 type Props = {
   className?: string;
   intervalMs?: number;
+  /**
+   * Start-Breite in px für das Server-Rendering, damit das Phone schon im
+   * initialen HTML steht (kein leerer Slot, kein "Erscheinen"). Der
+   * ResizeObserver korrigiert direkt danach auf die exakte Slot-Breite.
+   * Sollte ≤ der kleinstmöglichen Slot-Breite sein, damit nichts überläuft.
+   */
+  initialWidth?: number;
 };
 
 // SSR-sicherer Layout-Effect (kein Warnen auf dem Server).
@@ -41,9 +48,13 @@ const useIsoLayoutEffect =
  * Positionierung kommt vom `className` des Callers (mobile: `relative …`,
  * desktop: `absolute …`); die Fade-Layer liegen `absolute inset-0` darin.
  */
-export function MockupSlideshow({ className = "", intervalMs = 3500 }: Props) {
+export function MockupSlideshow({
+  className = "",
+  intervalMs = 3500,
+  initialWidth = 200,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(initialWidth);
   const [index, setIndex] = useState(0);
 
   useIsoLayoutEffect(() => {
