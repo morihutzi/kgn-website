@@ -71,6 +71,24 @@ body {
   .liquid-glass-in { animation: none; }
 }
 
+/* Hero-Phone-Mockup wächst beim exakten Vermessen sanft auf die Slot-Breite,
+   statt zu springen. Outer = Box (width/height), inneres div = Skalierung. */
+.mockup-grow {
+  transition:
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mockup-grow > div {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mockup-grow,
+  .mockup-grow > div {
+    transition: none;
+  }
+}
+
 .marquee-mask {
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);

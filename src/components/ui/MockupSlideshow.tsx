@@ -16,9 +16,9 @@ const PHONE_ASPECT = "9.5 / 20";
  * einer Server-Component an eine Client-Component übergeben werden dürfen.
  */
 const MOCKUPS: ReadonlyArray<(width: number) => React.ReactNode> = [
-  (w) => <ChildviewMockupScaled width={w} />,
-  (w) => <InternetfilterMockupScaled width={w} />,
-  (w) => <ConnectDevicesMockupScaled width={w} />,
+  (w) => <ChildviewMockupScaled width={w} className="mockup-grow" />,
+  (w) => <InternetfilterMockupScaled width={w} className="mockup-grow" />,
+  (w) => <ConnectDevicesMockupScaled width={w} className="mockup-grow" />,
 ];
 
 type Props = {
