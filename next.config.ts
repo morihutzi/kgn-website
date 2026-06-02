@@ -6,6 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 365,
+    // 90 zusaetzlich erlauben fuer Hero-Bilder (Default ist nur 75).
+    qualities: [75, 90],
   },
 
   async headers() {

@@ -43,6 +43,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
           src="/images/hero/banner.jpeg"
           alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
           fill
+          quality={90}
           sizes="(max-width: 767px) 100vw, 50vw"
           priority
           className="object-cover"
@@ -142,6 +143,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                 src="/images/hero/vater-sohn.jpeg"
                 alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
                 fill
+                quality={90}
                 sizes="(min-width: 1120px) 1080px, 100vw"
                 priority
                 className="object-cover"
