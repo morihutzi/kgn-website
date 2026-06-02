@@ -67,7 +67,7 @@ export function MockupSlideshow({ className = "", intervalMs = 3500 }: Props) {
   return (
     <div ref={ref} className={className} style={{ aspectRatio: PHONE_ASPECT }}>
       {width > 0 && (
-        <div className="mockup-focus-in absolute inset-0">
+        <div className="absolute inset-0">
           {MOCKUPS.map((render, i) => (
             <div
               key={i}
