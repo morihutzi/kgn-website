@@ -46,14 +46,14 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
           sizes="(max-width: 767px) 100vw, 50vw"
           priority
           className="object-cover"
-          style={{ objectPosition: "30% center" }}
+          style={{ objectPosition: "40% 22%" }}
         />
 
-        <div className="relative z-10 flex flex-col items-end gap-[25px] py-[20px] pr-[35px]">
+        <div className="absolute inset-0 z-10 flex flex-col items-end pb-0 pl-[20px] pr-[35px] pt-[40px]">
           <div className="flex w-full flex-col gap-5">
             <h1
               className="text-right font-extrabold text-[#4a4a49]"
-              style={{ fontSize: "35px", lineHeight: "37px" }}
+              style={{ fontSize: "31px", lineHeight: "34px" }}
             >
               {h1}
             </h1>
@@ -65,71 +65,70 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
             </p>
           </div>
 
-          <div className="flex flex-col items-end gap-[12px]">
-            {/* Store-Badges nebeneinander */}
-            <div className="flex items-center gap-[10px]">
-              <a
-                href={siteConfig.appStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Im App Store laden"
-              >
-                <Image
-                  src="/badges/app-store-de.svg"
-                  alt="Im App Store laden"
-                  width={160}
-                  height={42}
-                  style={{ height: "40px", width: "auto" }}
-                  className="block object-contain"
-                />
-              </a>
-              <a
-                href={siteConfig.playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Bei Google Play laden"
-              >
-                <Image
-                  src="/badges/google-play-de.png"
-                  alt="Bei Google Play laden"
-                  width={160}
-                  height={42}
-                  style={{ height: "40px", width: "auto" }}
-                  className="block object-contain"
-                />
-              </a>
-            </div>
+          <div className="mt-[25px] flex flex-col items-end gap-[12px]">
+            {/* Store-Badges untereinander, rechtsbündig */}
+            <a
+              href={siteConfig.appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Im App Store laden"
+            >
+              <Image
+                src="/badges/app-store-de.svg"
+                alt="Im App Store laden"
+                width={160}
+                height={42}
+                style={{ width: "130px", height: "auto" }}
+                className="block object-contain"
+              />
+            </a>
+            <a
+              href={siteConfig.playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Bei Google Play laden"
+            >
+              <Image
+                src="/badges/google-play-de.png"
+                alt="Bei Google Play laden"
+                width={160}
+                height={42}
+                style={{ width: "130px", height: "auto" }}
+                className="block object-contain"
+              />
+            </a>
           </div>
-        </div>
 
-        {/* Digitalpreis-Badge — am unteren Hero-Rand, rechtsbündig. Bleibt
-            schmal genug, damit das von links unten überstehende Phone-Mockup
-            (FeatureList) nicht kollidiert. */}
-        <div className="liquid-glass-in absolute right-[35px] bottom-[32px] z-10 max-w-[215px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
-          {/* Smiley-Klacks */}
-          <Image
-            src="/images/icons/smiley-orange.png"
-            alt=""
-            aria-hidden="true"
-            width={70}
-            height={64}
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
-            style={{ filter: "blur(9px)" }}
-          />
-          {/* Text links, Logo rechts — nebeneinander, vertikal mittig. */}
-          <div className="relative flex items-center gap-2.5">
-            <p className="flex-1 text-left text-[11px] font-semibold leading-[1.3] text-[#4a4a49]/85">
-              Gewinner&nbsp;des{" "}
-              <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
-            </p>
-            <Image
-              src="/images/award/digitalpreis-bayern-2025-schwarz.png"
-              alt="Bayerischer Digitalpreis 2025"
-              width={120}
-              height={36}
-              style={{ height: "34px", width: "auto" }}
-              className="block shrink-0 object-contain"
-            />
+          {/* Digitalpreis-Badge — vertikal mittig zwischen Google-Play-Badge
+              und unterem (orangem) Rand. */}
+          <div className="flex w-full flex-1 flex-col items-end justify-center">
+            <div className="liquid-glass-in relative w-[46vw] max-w-[190px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-2.5 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
+              {/* Smiley-Klacks */}
+              <Image
+                src="/images/icons/smiley-orange.png"
+                alt=""
+                aria-hidden="true"
+                width={70}
+                height={64}
+                className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
+                style={{ filter: "blur(9px)" }}
+              />
+              {/* Text links, Logo rechts — nebeneinander, vertikal mittig. */}
+              <div className="relative flex items-center gap-2">
+                <p className="flex-1 text-left text-[10px] font-semibold leading-[1.25] text-[#4a4a49]/85">
+                  Gewinner&nbsp;des{" "}
+                  <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
+                </p>
+                <Image
+                  src="/images/award/digitalpreis-bayern-2025-schwarz.png"
+                  alt="Bayerischer Digitalpreis 2025"
+                  width={120}
+                  height={36}
+                  style={{ height: "28px", width: "auto" }}
+                  className="block shrink-0 object-contain"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
