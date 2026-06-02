@@ -2,6 +2,7 @@
 
 import { useState, useEffect, type FormEvent } from "react";
 import { NewsletterOverlay } from "@/components/newsletter/NewsletterOverlay";
+import { subscribeToNewsletter } from "@/lib/newsletter";
 
 declare global {
   interface Window {
@@ -26,17 +27,7 @@ export function NewsletterFloat() {
     setStatus("loading");
     setErrorMsg("");
     try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; message?: string };
-      if (!res.ok || !data.ok) {
-        setStatus("error");
-        setErrorMsg(data.message ?? "Anmeldung hat nicht geklappt. Bitte erneut versuchen.");
-        return;
-      }
+      await subscribeToNewsletter(email);
       setStatus("success");
       setEmail("");
       if (typeof window !== "undefined" && Array.isArray(window._paq)) {

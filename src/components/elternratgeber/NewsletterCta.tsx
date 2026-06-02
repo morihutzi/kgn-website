@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { NewsletterOverlay } from "@/components/newsletter/NewsletterOverlay";
+import { subscribeToNewsletter } from "@/lib/newsletter";
 
 type Props = {
   headline?: string;
@@ -29,23 +30,7 @@ export function NewsletterCta({
     setStatus("loading");
     setMessage("");
     try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        message?: string;
-      };
-      if (!res.ok || !data.ok) {
-        setStatus("error");
-        setMessage(
-          data.message ??
-            "Anmeldung hat leider nicht geklappt. Bitte versuche es später erneut.",
-        );
-        return;
-      }
+      await subscribeToNewsletter(email);
       setStatus("success");
       setMessage(
         "Fast geschafft. Bitte bestätige die Anmeldung in der E-Mail, die wir dir gerade geschickt haben.",
