@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { StoreBadges } from "@/components/ui/StoreBadges";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { FeatureCarousel } from "@/components/sections/FeatureCarousel";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
 import { LaptopElternportalMockup } from "@/components/mockups/LaptopElternportalMockup";
@@ -58,6 +59,7 @@ export default function WasKannDieAppPage() {
       <HeroSection />
       <FeatureGridSection />
       <PrivacySection />
+      <SurfenCtaSection />
       <WebfilterSection />
       <ScreenTimeSection />
       <PortalSection />
@@ -76,21 +78,35 @@ function HeroSection() {
     <section
       id={hero.sectionId}
       aria-label="Einleitung"
-      className="bg-white py-10 md:py-14"
+      className="bg-white pt-10 pb-8 md:py-14"
     >
       <Section>
         <div className="grid items-center gap-8 md:grid-cols-[1.1fr_1fr] md:gap-10">
           <div>
-            <span className="inline-flex items-center rounded-full border border-brand-yellow bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
-              {hero.eyebrow}
-            </span>
-            <h1 className="mt-4 text-3xl font-extrabold leading-[1.05] text-text-dark md:text-[40px]">
-              {hero.headlineLead}{" "}
-              <span className="text-brand-yellow">{hero.headlineEmphasis}</span>
-            </h1>
-            <p className="mt-3 text-base text-text-dark md:text-lg">
-              {hero.subheadline}
-            </p>
+            {/* Headline + kompaktes Phone — mobil zweispaltig, ab md einspaltig */}
+            <div className="flex items-center gap-4 md:block">
+              <div className="min-w-0 flex-1">
+                <span className="inline-flex items-center rounded-full border border-brand-yellow bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-brand-yellow">
+                  {hero.eyebrow}
+                </span>
+                <h1 className="mt-4 text-[26px] font-extrabold leading-[1.05] text-text-dark md:text-[40px]">
+                  {hero.headlineLead}{" "}
+                  <span className="block whitespace-nowrap text-brand-yellow md:inline">
+                    {hero.headlineEmphasis}
+                  </span>
+                </h1>
+                <p className="mt-3 text-base text-text-dark md:text-lg">
+                  Bildschirmzeit, Webfilter,
+                  <br className="md:hidden" /> Standort und mehr.
+                  <br className="md:hidden" /> Du steuerst alles aus dem
+                  Elternportal.
+                </p>
+              </div>
+              {/* Phone nur mobil — neben der Headline geerdet statt frei schwebend */}
+              <div className="mr-3 shrink-0 md:hidden">
+                <ChildviewMockupScaled width={110} />
+              </div>
+            </div>
             <ul className="mt-5 grid gap-2">
               {hero.bullets.map((bullet) => (
                 <li key={bullet.id} className="flex items-start gap-3">
@@ -129,7 +145,7 @@ function HeroSection() {
 
 function HeroMockupCluster() {
   return (
-    <div className="relative mx-auto flex w-full items-center justify-center py-6">
+    <div className="relative mx-auto hidden w-full items-center justify-center md:flex md:py-6">
       {/* Background smiley — square container, object-contain to avoid distortion */}
       <div
         aria-hidden="true"
@@ -209,22 +225,23 @@ function FeatureGridSection() {
     <section
       id={featureGrid.sectionId}
       aria-labelledby={headlineId}
-      className="bg-white py-10 md:py-14"
+      className="bg-[#F4F0EB] pt-8 pb-10 md:py-14"
     >
       <Section maxWidth={1080}>
-        <SectionHeading id={headlineId} size="small" align="center">
-          {featureGrid.headline}
+        <SectionHeading id={headlineId} size="small" align="right">
+          Das kann die Kidgonet
+          <br className="md:hidden" /> Kinderschutz App
         </SectionHeading>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm text-text-dark md:text-base">
           {featureGrid.sub}
         </p>
 
-        {/* Mobile: horizontal scroll-snap */}
-        <ol className="mt-7 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:hidden">
+        {/* Mobile: Carousel mit Pfeilen + Punkt-Indikatoren */}
+        <FeatureCarousel ariaLabel="Kernfunktionen der App">
           {featureGrid.cards.map((card, idx) => (
-            <li
+            <div
               key={card.id}
-              className="flex min-w-[calc(100%-2rem)] snap-center flex-col items-center text-center"
+              className="flex flex-col items-center text-center"
             >
               <div className="flex h-[260px] items-center justify-center">
                 <FeatureMockup type={card.icon} />
@@ -238,9 +255,9 @@ function FeatureGridSection() {
               <p className="mt-1 max-w-[260px] text-xs text-text-dark">
                 {card.body}
               </p>
-            </li>
+            </div>
           ))}
-        </ol>
+        </FeatureCarousel>
 
         {/* Desktop: 4-column grid */}
         <ol className="mt-7 hidden gap-4 md:grid md:grid-cols-4">
@@ -264,13 +281,25 @@ function FeatureGridSection() {
             </li>
           ))}
         </ol>
+      </Section>
+    </section>
+  );
+}
 
+// ── 2b. DOWNLOAD-CTA (nach Privatsphäre) ─────────────────────────────────
+
+function SurfenCtaSection() {
+  return (
+    <section aria-label="App herunterladen" className="bg-white px-6 md:px-4">
+      {/* Negativer Margin zieht die Karte in die Polster der Nachbar-Sections,
+          damit der Abstand oben/unten nicht doppelt aufschlägt. */}
+      <div className="mx-auto -my-8 max-w-[1080px] md:-my-10">
         <CallToActionBlock
           label={featureGrid.ctaLabel}
           sub={featureGrid.ctaSub}
           button={featureGrid.ctaButton}
         />
-      </Section>
+      </div>
     </section>
   );
 }
@@ -286,8 +315,9 @@ function PrivacySection() {
       className="bg-surface-muted py-10 md:py-14"
     >
       <Section>
-        <SectionHeading id={headlineId} align="center">
-          {privacy.headline}
+        <SectionHeading id={headlineId} align="right">
+          Kidgonet spioniert dein
+          <br className="md:hidden" /> Kind nicht aus.
         </SectionHeading>
         <p className="mx-auto mt-3 max-w-2xl text-center text-text-dark">
           {privacy.intro}
@@ -326,8 +356,9 @@ function WebfilterSection() {
       className="bg-white py-10 md:py-14"
     >
       <Section>
-        <SectionHeading id={headlineId} align="center">
-          {webfilter.headline}
+        <SectionHeading id={headlineId} align="right">
+          Ein Internetfilter, der mit
+          <br className="md:hidden" /> dem Alter mitwächst.
         </SectionHeading>
         <p className="mx-auto mt-3 max-w-2xl text-center text-text-dark">
           {webfilter.intro}
@@ -391,7 +422,9 @@ function ScreenTimeSection() {
       <Section maxWidth={900}>
         <div className="grid gap-8 md:grid-cols-[1fr_1.05fr] md:gap-10">
           <div>
-            <SectionHeading id={headlineId}>{screenTime.headline}</SectionHeading>
+            <SectionHeading id={headlineId} align="right">
+              {screenTime.headline}
+            </SectionHeading>
             <p className="mt-3 text-text-dark">{screenTime.body}</p>
             <ul className="mt-5 grid gap-2">
               {screenTime.bullets.map((bullet) => (
@@ -444,7 +477,7 @@ function PortalSection() {
       className="bg-white py-10 md:py-14"
     >
       <Section>
-        <SectionHeading id={headlineId} align="center">
+        <SectionHeading id={headlineId} align="right">
           {portal.headline}
         </SectionHeading>
         <p className="mx-auto mt-3 max-w-xl text-center text-text-dark">
@@ -491,7 +524,7 @@ function NgkSection() {
       <Section>
         <div className="grid gap-8 md:grid-cols-[1fr_1.4fr] md:gap-10">
           <div>
-            <SectionHeading id={headlineId}>
+            <SectionHeading id={headlineId} align="right">
               {nummerGegenKummer.headline}
             </SectionHeading>
             <p className="mt-3 text-sm text-text-dark">
@@ -538,7 +571,7 @@ function MoreInfoSection() {
       className="bg-white py-10 md:py-14"
     >
       <Section>
-        <SectionHeading id={headlineId} align="center">
+        <SectionHeading id={headlineId} align="right">
           {moreInfo.headline}
         </SectionHeading>
 
@@ -577,7 +610,7 @@ function FeaturePagesSection() {
   return (
     <section className="bg-surface-muted py-10 md:py-14">
       <Section>
-        <SectionHeading align="center">Alle Funktionen im Detail</SectionHeading>
+        <SectionHeading align="right">Alle Funktionen im Detail</SectionHeading>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm text-text-dark md:text-base">
           Lies mehr über jede einzelne Funktion und wie sie im Familienalltag hilft.
         </p>
@@ -638,7 +671,7 @@ function CallToActionBlock({
   button: string;
 }) {
   return (
-    <div className="relative mt-10 overflow-hidden rounded-[20px] bg-[#F8F2E7]">
+    <div className="relative overflow-hidden rounded-[20px] bg-[#F8F2E7]">
       {/* Faded background photo of teens with smartphone */}
       <Image
         src="/images/banners/cta-teens.jpeg"

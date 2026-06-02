@@ -143,7 +143,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                 src="/images/hero/vater-sohn.jpeg"
                 alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
                 fill
-                sizes="(min-width: 1024px) 720px, 100vw"
+                sizes="(min-width: 1120px) 1080px, 100vw"
                 priority
                 className="object-cover"
               />

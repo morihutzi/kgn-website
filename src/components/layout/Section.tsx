@@ -21,7 +21,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`mx-auto w-full px-4 py-5 md:py-7 ${className}`}
+      className={`mx-auto w-full px-6 py-5 md:px-4 md:py-7 ${className}`}
       style={{ maxWidth: `${maxWidth}px` }}
       {...rest}
     >
