@@ -32,20 +32,20 @@ export function FeatureList() {
     <>
       {/* MOBILE Yellow Block — phone overhangs upward into hero, titles right, bullets below */}
       <section className="relative bg-brand-yellow md:hidden">
-        <div className="relative grid grid-cols-[40vw_1fr] items-end gap-3 px-3 pt-1 pb-2">
+        <div className="relative grid grid-cols-[40vw_1fr] items-center gap-5 px-3 pt-1 pb-2">
           {/* Phone — extends upward into the hero above; in der linken
               Spalte zentriert. */}
           <div className="-mt-[30vw] flex justify-center">
             <MockupSlideshow className="relative w-[34vw] max-w-[200px]" />
           </div>
 
-          {/* Titles next to phone — mb hebt den (bottom-aligned) Titelblock
-              höher neben das Phone. */}
-          <div className="mb-[44px] pb-2">
-            <p className="text-[22px] font-medium leading-[28px] text-white">
+          {/* Titles next to phone — vertikal mittig zum Phone, Block horizontal
+              zentriert im Raum zwischen Phone und rechtem Rand, Text linksbündig. */}
+          <div className="mx-auto w-fit text-left">
+            <p className="text-[24px] font-medium leading-[30px] text-white">
               {problemSolution.eyebrow}
             </p>
-            <h2 className="text-[22px] font-extrabold leading-[28px] text-white">
+            <h2 className="text-[24px] font-extrabold leading-[30px] text-white">
               {problemSolution.headline}
             </h2>
           </div>
@@ -58,7 +58,7 @@ export function FeatureList() {
               className="flex min-h-[46px] items-center gap-3"
             >
               <CheckIcon />
-              <span className="text-[15px] leading-snug text-white">
+              <span className="text-[16px] leading-snug text-white">
                 <span className="font-extrabold">{bullet.strong}</span>
                 {bullet.rest}
               </span>

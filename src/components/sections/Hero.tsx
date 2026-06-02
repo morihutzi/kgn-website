@@ -105,7 +105,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
         {/* Digitalpreis-Badge — am unteren Hero-Rand, rechtsbündig. Bleibt
             schmal genug, damit das von links unten überstehende Phone-Mockup
             (FeatureList) nicht kollidiert. */}
-        <div className="liquid-glass-in absolute right-[35px] bottom-[12px] z-10 max-w-[190px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
+        <div className="liquid-glass-in absolute right-[35px] bottom-[32px] z-10 max-w-[215px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-3 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
           {/* Smiley-Klacks */}
           <Image
             src="/images/icons/smiley-orange.png"
@@ -116,10 +116,10 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
             className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
             style={{ filter: "blur(9px)" }}
           />
-          {/* Text links, Logo rechts — nebeneinander. */}
+          {/* Text links, Logo rechts — nebeneinander, vertikal mittig. */}
           <div className="relative flex items-center gap-2.5">
             <p className="flex-1 text-left text-[11px] font-semibold leading-[1.3] text-[#4a4a49]/85">
-              Gewinner des{" "}
+              Gewinner&nbsp;des{" "}
               <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
             </p>
             <Image
@@ -254,7 +254,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     className="relative mb-2 text-right font-semibold text-[#4a4a49]/85"
                     style={{ fontSize: "min(12px, 1.29cqw)" }}
                   >
-                    Gewinner des{" "}
+                    Gewinner&nbsp;des{" "}
                     <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
                   </p>
                   <Image

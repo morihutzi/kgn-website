@@ -19,7 +19,7 @@ export function Medienfuehrerschein() {
         {/* Produkt-Badge: positioniert den Medienführerschein als eigenständiges
             Programm, nicht als Feature der App. */}
         <div className="mb-6 flex justify-center md:justify-start">
-          <span className="inline-flex items-center rounded-full bg-brand-yellow px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
+          <span className="inline-flex items-center rounded-full bg-brand-yellow px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase leading-tight tracking-[0.1em] text-white md:text-[11px] md:tracking-[0.12em]">
             Jetzt neu: Kidgonet Medienführerschein
           </span>
         </div>
