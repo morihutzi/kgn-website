@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { KategorieBadge } from "./KategorieBadge";
 import { ArticleCoverFallback } from "./ArticleCoverFallback";
@@ -27,7 +27,7 @@ export function ArticleCard({ article, variant = "default" }: Props) {
         }`}
       >
         {article.cover ? (
-          <Image
+          <ExportedImage
             src={article.cover}
             alt={article.coverAlt ?? article.title}
             fill

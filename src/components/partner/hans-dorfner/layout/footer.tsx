@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import Link from 'next/link'
 import { Container } from '@/components/partner/hans-dorfner/ui/container'
 import { StoreBadges } from '@/components/partner/hans-dorfner/ui/store-badges'
@@ -15,7 +15,7 @@ export function Footer({ tenant }: FooterProps) {
         <div className="grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
           <div>
             <div className="mb-5 flex items-center gap-3 sm:gap-4">
-              <Image
+              <ExportedImage
                 src="/partner/hans-dorfner/logos/kidgonet.svg"
                 alt="Kidgonet"
                 width={120}
@@ -25,7 +25,7 @@ export function Footer({ tenant }: FooterProps) {
               <span aria-hidden className="text-foreground/30">
                 ×
               </span>
-              <Image
+              <ExportedImage
                 src={tenant.partnerLogo.src}
                 alt={tenant.partnerLogo.alt}
                 width={140}

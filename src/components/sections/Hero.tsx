@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from "@/components/layout/Container";
 import { hero } from "@/content/home";
 import { siteConfig } from "@/content/site";
@@ -39,11 +39,10 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
         className="relative w-full overflow-hidden md:hidden"
         style={{ aspectRatio: "390 / 427", minHeight: "430px" }}
       >
-        <Image
+        <ExportedImage
           src="/images/hero/banner.jpeg"
           alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
           fill
-          quality={90}
           sizes="(max-width: 767px) 100vw, 50vw"
           priority
           className="object-cover"
@@ -74,7 +73,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
               rel="noopener noreferrer"
               aria-label="Im App Store laden"
             >
-              <Image
+              <ExportedImage
                 src="/badges/app-store-de.svg"
                 alt="Im App Store laden"
                 width={160}
@@ -89,7 +88,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
               rel="noopener noreferrer"
               aria-label="Bei Google Play laden"
             >
-              <Image
+              <ExportedImage
                 src="/badges/google-play-de.png"
                 alt="Bei Google Play laden"
                 width={160}
@@ -105,7 +104,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
           <div className="flex w-full flex-1 flex-col items-end justify-center">
             <div className="liquid-glass-in relative w-[46vw] max-w-[190px] overflow-hidden rounded-xl border border-white/60 bg-white/35 px-2.5 py-2 shadow-sm ring-1 ring-black/5 backdrop-blur-md">
               {/* Smiley-Klacks */}
-              <Image
+              <ExportedImage
                 src="/images/icons/smiley-orange.png"
                 alt=""
                 aria-hidden="true"
@@ -120,7 +119,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                   Gewinner&nbsp;des{" "}
                   <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
                 </p>
-                <Image
+                <ExportedImage
                   src="/images/award/digitalpreis-bayern-2025-schwarz.png"
                   alt="Bayerischer Digitalpreis 2025"
                   width={120}
@@ -139,11 +138,10 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
         <Container>
           <div className="@container/banner mx-auto w-full max-w-[1080px]">
             <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">
-              <Image
+              <ExportedImage
                 src="/images/hero/vater-sohn-sichere-mediennutzung-kidgonet-smartphone.jpeg"
                 alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
                 fill
-                quality={90}
                 sizes="(min-width: 1120px) 1080px, 100vw"
                 priority
                 className="scale-105 object-cover blur-[2px]"
@@ -205,7 +203,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     aria-label="Im App Store laden"
                     className="block"
                   >
-                    <Image
+                    <ExportedImage
                       src="/badges/app-store-de.svg"
                       alt="Im App Store laden"
                       width={120}
@@ -223,7 +221,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     aria-label="Bei Google Play laden"
                     className="block"
                   >
-                    <Image
+                    <ExportedImage
                       src="/badges/google-play-de.png"
                       alt="Bei Google Play laden"
                       width={270}
@@ -242,7 +240,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                   style={{ padding: "min(12px, 1.29cqw) min(16px, 1.72cqw)", marginTop: "min(8px, 0.86cqw)" }}
                 >
                   {/* Smiley-Klacks im Hintergrund */}
-                  <Image
+                  <ExportedImage
                     src="/images/icons/smiley-orange.png"
                     alt=""
                     aria-hidden="true"
@@ -258,7 +256,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     Gewinner&nbsp;des{" "}
                     <strong className="font-extrabold text-[#F9B000]">Bayerischen Digitalpreis</strong>
                   </p>
-                  <Image
+                  <ExportedImage
                     src="/images/award/digitalpreis-bayern-2025-schwarz.png"
                     alt="Bayerischer Digitalpreis 2025"
                     width={140}

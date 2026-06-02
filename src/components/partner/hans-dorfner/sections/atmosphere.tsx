@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import type { TenantConfig } from '@/components/partner/hans-dorfner/types'
 
 type AtmosphereProps = {
@@ -18,7 +18,7 @@ export function Atmosphere({ tenant }: AtmosphereProps) {
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <figure className="overflow-hidden rounded-2xl sm:rounded-3xl">
           <div className="relative aspect-[4/3] w-full sm:aspect-[21/9]">
-            <Image
+            <ExportedImage
               src={atmosphere.image.src}
               alt={atmosphere.image.alt}
               fill

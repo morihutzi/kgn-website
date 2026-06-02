@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from '@/components/partner/hans-dorfner/ui/container'
 import { Button } from '@/components/partner/hans-dorfner/ui/button'
 import type { TenantConfig } from '@/components/partner/hans-dorfner/types'
@@ -19,7 +19,7 @@ export function Hero({ tenant }: HeroProps) {
         className="pointer-events-none absolute inset-0 overflow-hidden sm:hidden"
         aria-hidden
       >
-        <Image
+        <ExportedImage
           src={hero.image.src}
           alt=""
           fill
@@ -79,7 +79,7 @@ export function Hero({ tenant }: HeroProps) {
            * Hintergrundbild diesen Anker. */}
           <div className="relative hidden sm:block">
             <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(74,74,73,0.18)] lg:aspect-[5/4]">
-              <Image
+              <ExportedImage
                 src={hero.image.src}
                 alt={hero.image.alt}
                 width={800}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { PhoneFrame } from "./PhoneFrame";
 import { HourglassIcon, MockupStatusBar } from "./_shared";
 
@@ -26,7 +26,7 @@ export function BildschirmzeitMockup() {
             <span className="text-[12px] font-extrabold leading-none tracking-tighter">
               GO
             </span>
-            <Image
+            <ExportedImage
               src="/brand/smiley-weiss.png"
               alt="Kidgonet"
               width={1048}

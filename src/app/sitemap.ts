@@ -5,6 +5,9 @@ import type { MetadataRoute } from "next";
 import { elternratgeberKategorien } from "@/content/elternratgeber/kategorien";
 import { getAllArticles } from "@/lib/elternratgeber/articles";
 
+// Für `output: "export"`: statisch zur Build-Zeit erzeugen.
+export const dynamic = "force-static";
+
 const BASE = "https://www.kidgonet.de";
 
 const fallback = new Date();

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Section } from "@/components/layout/Section";
 import { comparison } from "@/content/home";
 
@@ -74,7 +74,7 @@ export function Comparison() {
               <th scope="col" className="px-5 py-6 md:px-7" />
               <th scope="col" className="px-3 py-6 text-center md:px-4">
                 {/* Offizielles Kidgonet App-Icon (aus dem App Store). */}
-                <Image
+                <ExportedImage
                   src="/brand/app-icon.png"
                   alt="Kidgonet App"
                   width={1024}

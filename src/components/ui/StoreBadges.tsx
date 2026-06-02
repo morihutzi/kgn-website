@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { siteConfig } from "@/content/site";
 
 type StoreBadgesProps = {
@@ -17,7 +17,7 @@ export function StoreBadges({ className = "", size = "md" }: StoreBadgesProps) {
         aria-label="Im App Store laden"
         className="inline-block"
       >
-        <Image
+        <ExportedImage
           src="/badges/app-store-de.svg"
           alt="Im App Store laden"
           width={height * 3}
@@ -32,7 +32,7 @@ export function StoreBadges({ className = "", size = "md" }: StoreBadgesProps) {
         aria-label="Bei Google Play"
         className="inline-block"
       >
-        <Image
+        <ExportedImage
           src="/badges/google-play-de.png"
           alt="Bei Google Play"
           width={height * 3}

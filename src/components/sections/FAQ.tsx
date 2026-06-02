@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
 import { faq, pricing, type PricingPlan } from "@/content/home";
@@ -15,7 +15,7 @@ export function FAQ() {
           <h2 className="text-xl font-extrabold text-brand-yellow md:text-[28px]">
             {faq.headline}
           </h2>
-          <Image
+          <ExportedImage
             src="/brand/smiley.png"
             alt=""
             width={48}

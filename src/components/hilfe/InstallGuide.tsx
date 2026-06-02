@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from "@/components/layout/Container";
 import { siteConfig } from "@/content/site";
 
@@ -274,7 +274,7 @@ export function PhoneStrip({ shots }: { shots: Shot[] }) {
           <figure className="flex max-w-[200px] flex-col items-center gap-3 md:max-w-[160px]">
             <div className="rounded-[26px] bg-[#0E0E10] p-[5px] shadow-[0_14px_28px_-12px_rgba(0,0,0,0.4),0_0_0_1px_rgba(255,255,255,0.04)_inset]">
               <div className="overflow-hidden rounded-[22px]">
-                <Image
+                <ExportedImage
                   src={shot.src}
                   alt={shot.caption}
                   width={300}
@@ -464,7 +464,7 @@ export function ClosingCTA({
           {finalShot && (
             <div className="mx-auto rounded-[26px] bg-[#0E0E10] p-[5px] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.45)] md:mx-0">
               <div className="overflow-hidden rounded-[22px]">
-                <Image
+                <ExportedImage
                   src={finalShot.src}
                   alt={finalShot.alt}
                   width={400}

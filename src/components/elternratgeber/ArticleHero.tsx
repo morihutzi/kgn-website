@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { AuthorByline } from "./AuthorByline";
 import { ArticleCoverFallback } from "./ArticleCoverFallback";
 import { KategorieBadge } from "./KategorieBadge";
@@ -43,7 +43,7 @@ export function ArticleHero({ article }: Props) {
       </div>
       <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-text-dark">
         {article.cover ? (
-          <Image
+          <ExportedImage
             src={article.cover}
             alt={article.coverAlt ?? article.title}
             fill

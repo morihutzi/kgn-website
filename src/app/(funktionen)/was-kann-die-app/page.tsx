@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { Button } from "@/components/ui/Button";
@@ -151,7 +151,7 @@ function HeroMockupCluster() {
         aria-hidden="true"
         className="pointer-events-none absolute right-1/2 top-1/2 z-0 hidden h-[320px] w-[320px] -translate-y-1/2 translate-x-[58%] md:block"
       >
-        <Image
+        <ExportedImage
           src="/brand/smiley.png"
           alt=""
           fill
@@ -673,7 +673,7 @@ function CallToActionBlock({
   return (
     <div className="relative overflow-hidden rounded-[20px] bg-[#F8F2E7]">
       {/* Faded background photo of teens with smartphone */}
-      <Image
+      <ExportedImage
         src="/images/banners/cta-teens.jpeg"
         alt=""
         aria-hidden="true"

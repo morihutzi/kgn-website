@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from '@/components/partner/hans-dorfner/ui/container'
 import { Button } from '@/components/partner/hans-dorfner/ui/button'
 import type { TenantConfig } from '@/components/partner/hans-dorfner/types'
@@ -14,7 +14,7 @@ export function Header({ tenant }: HeaderProps) {
         <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
           {/* Co-Brand-Lockup: beide Logos gleichberechtigt */}
           <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-4">
-            <Image
+            <ExportedImage
               src="/partner/hans-dorfner/logos/kidgonet.svg"
               alt="Kidgonet"
               width={120}
@@ -25,7 +25,7 @@ export function Header({ tenant }: HeaderProps) {
             <span aria-hidden className="text-foreground/30">
               ×
             </span>
-            <Image
+            <ExportedImage
               src={tenant.partnerLogo.src}
               alt={tenant.partnerLogo.alt}
               width={140}

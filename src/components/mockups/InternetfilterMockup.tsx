@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Home, MoreVertical, Plus } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
 import { MockupStatusBar } from "./_shared";
@@ -35,7 +35,7 @@ export function InternetfilterMockup() {
 
         {/* Large brand smiley */}
         <div className="mt-5 flex justify-center">
-          <Image
+          <ExportedImage
             src="/brand/smiley.png"
             alt="Kidgonet Smiley"
             width={1059}

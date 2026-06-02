@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import { cn } from '@/lib/cn'
 
 type StoreBadgesProps = {
@@ -33,7 +33,7 @@ export function StoreBadges({ ios, android, className, size = 'md' }: StoreBadge
           aria-label="Im App Store laden"
           className="inline-block transition-opacity hover:opacity-80"
         >
-          <Image
+          <ExportedImage
             src="/partner/hans-dorfner/badges/app-store-de.svg"
             alt="Im App Store laden"
             width={140}
@@ -50,7 +50,7 @@ export function StoreBadges({ ios, android, className, size = 'md' }: StoreBadge
           aria-label="Bei Google Play herunterladen"
           className="inline-block transition-opacity hover:opacity-80"
         >
-          <Image
+          <ExportedImage
             src="/partner/hans-dorfner/badges/google-play-de.png"
             alt="Bei Google Play herunterladen"
             width={158}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from "@/components/layout/Container";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
 import { PressCoverageCarousel } from "@/components/sections/PressCoverageCarousel";
@@ -225,7 +225,7 @@ function PressetextCard() {
     <section aria-label="Pressemitteilung" className="bg-white py-4">
       <Container>
         <div className="relative overflow-hidden rounded-2xl">
-          <Image
+          <ExportedImage
             src={pressetext.bgImage}
             alt=""
             fill
@@ -282,7 +282,7 @@ function DownloadCard({ card }: { card: DownloadCardData }) {
   return (
     <li className="relative overflow-hidden rounded-2xl">
       <div className="absolute inset-0">
-        <Image
+        <ExportedImage
           src={card.bgImage}
           alt=""
           fill
@@ -294,7 +294,7 @@ function DownloadCard({ card }: { card: DownloadCardData }) {
 
       <div className="relative flex min-h-[260px] flex-col items-center px-5 pb-8 pt-7 text-center">
         {/* Smiley-Icon */}
-        <Image
+        <ExportedImage
           src="/brand/smiley-weiss.png"
           alt=""
           width={48}

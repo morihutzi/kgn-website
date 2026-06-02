@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Section, SectionHeading } from "@/components/layout/Section";
 import { testimonials } from "@/content/home";
@@ -31,7 +31,7 @@ function TestimonialCard({
   return (
     <div className="flex h-full flex-col items-center rounded-[20px] border border-neutral-200 bg-white p-8 text-center shadow-sm">
       <div className="relative h-16 w-16 overflow-hidden rounded-full">
-        <Image
+        <ExportedImage
           src={t.avatar}
           alt={t.name}
           fill

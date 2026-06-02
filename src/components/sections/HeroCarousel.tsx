@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { useEffect, useState } from "react";
 
 type Slide = { src: string; alt: string };
@@ -25,7 +25,7 @@ export function HeroCarousel({ slides }: { slides: readonly Slide[] }) {
             style={{ opacity: i === index ? 1 : 0 }}
             aria-hidden={i !== index}
           >
-            <Image
+            <ExportedImage
               src={slide.src}
               alt={slide.alt}
               fill

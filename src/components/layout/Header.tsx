@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
@@ -16,7 +16,7 @@ export function Header() {
           aria-label={`${siteConfig.name} – Startseite`}
           className="flex items-center"
         >
-          <Image
+          <ExportedImage
             src="/brand/logo.png"
             alt={siteConfig.name}
             width={600}

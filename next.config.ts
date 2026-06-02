@@ -1,77 +1,41 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Bild-Optimierung: AVIF bevorzugt (kleinere Files), WebP als Fallback.
-  // 1 Jahr Cache-Lebensdauer fuer optimierte Bilder.
+  // 100% statische Seite (kein Node-Server). Erzeugt den `out/`-Ordner.
+  output: "export",
+
+  // Bild-Optimierung via next-image-export-optimizer: erzeugt zur Build-Zeit
+  // responsive Größen + WebP für jedes <ExportedImage>. Der Custom-Loader
+  // ersetzt den (auf statischem Host nicht verfügbaren) Next-Optimizer.
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 365,
-    // 90 zusaetzlich erlauben fuer Hero-Bilder (Default ist nur 75).
-    qualities: [75, 90],
+    loader: "custom",
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
+  transpilePackages: ["next-image-export-optimizer"],
+  env: {
+    // "public" statt "public/images", damit ALLE Bild-Ordner (images, hilfe,
+    // brand, badges, …) optimiert werden.
+    nextImageExportOptimizer_imageFolderPath: "public",
+    nextImageExportOptimizer_exportFolderPath: "out",
+    nextImageExportOptimizer_quality: "80",
+    nextImageExportOptimizer_storePicturesInWEBP: "true",
+    nextImageExportOptimizer_exportFolderName: "nextImageExportOptimizer",
+    nextImageExportOptimizer_generateAndUseBlurImages: "true",
+    nextImageExportOptimizer_remoteImageCacheTTL: "0",
   },
 
-  async headers() {
-    return [
-      // Security-Headers für alle Routen
-      {
-        source: "/(.*)",
-        headers: [
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
-          },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
-        ],
-      },
-      // Statische Brand-Assets sind unveränderlich -> aggressives Caching
-      {
-        source: "/brand/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/badges/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-    ];
-  },
-
-  async redirects() {
-    return [
-      {
-        source:
-          "/installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach",
-        destination: "/hilfe/installation-android",
-        permanent: true,
-      },
-      {
-        source:
-          "/installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/",
-        destination: "/hilfe/installation-android",
-        permanent: true,
-      },
-    ];
-  },
+  // HINWEIS: headers() (CSP/Security-Header) und redirects() funktionieren bei
+  // `output: "export"` NICHT mehr — Next ignoriert sie. Sie müssen auf den
+  // Webserver wandern (Apache `.htaccess`). Das ist der nächste Schritt.
+  // Zur Übernahme in die .htaccess:
+  //   Security-Header: X-Content-Type-Options nosniff, X-Frame-Options SAMEORIGIN,
+  //     Referrer-Policy strict-origin-when-cross-origin,
+  //     Permissions-Policy camera=(), microphone=(), geolocation=()
+  //   Cache: /brand/* und /badges/* -> max-age=31536000, immutable
+  //   Redirects (301):
+  //     /installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach[/]
+  //       -> /hilfe/installation-android
 };
 
 export default nextConfig;

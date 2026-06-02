@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from "@/components/layout/Container";
 import { MockupSlideshow } from "@/components/ui/MockupSlideshow";
 import { problemSolution } from "@/content/home";
@@ -110,7 +110,7 @@ export function FeatureList() {
               {/* Logo unter dem Phone — vertikal auf Höhe des untersten
                   Bullets (Center ~58px über dem Kartenboden). */}
               <div className="absolute left-[70px] bottom-[42px] w-[200px] flex justify-center lg:left-[90px] lg:w-[240px]">
-                <Image
+                <ExportedImage
                   src="/brand/logo-weiss.png"
                   alt="Kidgonet"
                   width={600}
@@ -144,7 +144,7 @@ export function FeatureList() {
                   className="shrink-0"
                   aria-hidden={idx >= problemSolution.trustLogos.length}
                 >
-                  <Image
+                  <ExportedImage
                     src={logo.src}
                     alt={
                       idx >= problemSolution.trustLogos.length ? "" : logo.alt

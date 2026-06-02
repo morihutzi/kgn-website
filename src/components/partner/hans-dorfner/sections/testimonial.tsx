@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from '@/components/partner/hans-dorfner/ui/container'
 import { Button } from '@/components/partner/hans-dorfner/ui/button'
 import { StoreBadges } from '@/components/partner/hans-dorfner/ui/store-badges'
@@ -28,7 +28,7 @@ export function Testimonial({ tenant }: TestimonialProps) {
         className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-50 [mask-image:linear-gradient(to_right,transparent,black_60%)] lg:block"
         aria-hidden
       >
-        <Image
+        <ExportedImage
           src="/partner/hans-dorfner/images/testimonial-bg.jpeg"
           alt=""
           fill
@@ -41,7 +41,7 @@ export function Testimonial({ tenant }: TestimonialProps) {
         <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[auto_1fr] lg:gap-14">
           <div className="mx-auto w-full max-w-[260px] sm:max-w-[300px] lg:mx-0">
             <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-white shadow-[0_24px_60px_rgba(74,74,73,0.18)]">
-              <Image
+              <ExportedImage
                 src={testimonial.image.src}
                 alt={testimonial.image.alt}
                 width={770}

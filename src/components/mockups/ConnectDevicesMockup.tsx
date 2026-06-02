@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { ChevronRight, Plus, Sun, Lock } from "lucide-react";
 import { PhoneFrame } from "./PhoneFrame";
 import { MockupDate } from "./MockupDate";
@@ -32,7 +32,7 @@ export function ConnectDevicesMockup() {
         </div>
 
         <div className="mt-2.5 flex items-center gap-2">
-          <Image
+          <ExportedImage
             src="/brand/smiley-square.png"
             alt=""
             width={48}

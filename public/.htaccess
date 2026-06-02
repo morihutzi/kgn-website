@@ -1,0 +1,53 @@
+# ============================================================================
+# kidgonet.de – statischer Export (Next.js `output: "export"`)
+# Übernimmt die Header/Redirects, die Next bei `output: export` ignoriert.
+# Liegt in public/ und wird beim Build nach out/ kopiert (siehe build-Skript).
+# ============================================================================
+
+# --- Saubere URLs ----------------------------------------------------------
+# Next erzeugt z. B. `preise.html` und einen Ordner `preise/` (nur RSC-Payloads,
+# kein index.html). DirectorySlash würde /preise -> /preise/ umleiten und ins
+# Leere laufen – daher abschalten und gezielt auf die .html-Datei rewriten.
+DirectorySlash Off
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # /preise -> /preise.html (auch wenn ein RSC-Ordner /preise/ existiert)
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+
+  # 301-Redirect (alte URL aus der Live-Seite)
+  RewriteRule ^installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/?$ /hilfe/installation-android [R=301,L]
+</IfModule>
+
+ErrorDocument 404 /404.html
+
+# --- Security-Header -------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# --- Caching ---------------------------------------------------------------
+# Unveränderliche Assets (Brand/Badges + Next-Build-Output) lange cachen.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:js|css|woff2?|svg|png|jpe?g|webp|avif|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# HTML nie hart cachen (Inhalte können sich pro Deploy ändern).
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# --- Kompression -----------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml
+</IfModule>

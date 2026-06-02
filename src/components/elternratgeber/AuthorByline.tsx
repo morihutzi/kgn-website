@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import type { Author } from "@/lib/elternratgeber/types";
 
@@ -29,7 +29,7 @@ export function AuthorByline({ author, className = "" }: Props) {
         ].join(" ")}
       >
         {author.avatar ? (
-          <Image
+          <ExportedImage
             src={author.avatar}
             alt={author.name}
             fill

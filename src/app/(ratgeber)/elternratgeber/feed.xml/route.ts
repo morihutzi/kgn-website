@@ -1,6 +1,9 @@
 import { getAllArticles } from "@/lib/elternratgeber/articles";
 import { getKategorieBySlug } from "@/content/elternratgeber/kategorien";
 
+// Für `output: "export"`: statisch zur Build-Zeit erzeugen.
+export const dynamic = "force-static";
+
 const BASE = "https://www.kidgonet.de";
 
 function escapeXml(s: string): string {

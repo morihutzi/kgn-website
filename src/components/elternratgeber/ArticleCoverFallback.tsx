@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import {
   getKategorieBySlug,
   type ElternratgeberKategorieSlug,
@@ -99,7 +99,7 @@ export function ArticleCoverFallback({
       />
 
       {/* ── Schicht 5: Großer Smiley ────────────────────────────────── */}
-      <Image
+      <ExportedImage
         src="/brand/smiley-weiss.png"
         alt=""
         aria-hidden
@@ -112,7 +112,7 @@ export function ArticleCoverFallback({
 
       {/* Logo oben links */}
       <div className="relative z-10 p-4 pb-0">
-        <Image
+        <ExportedImage
           src="/brand/logo-weiss.png"
           alt="Kidgonet"
           width={82}

@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# next-image-export-optimizer: generierte Bild-Varianten + Cache (Build-Artefakte)
+**/nextImageExportOptimizer/
+/public/next-image-export-optimizer-hashes.json
+
 # production
 /build
 

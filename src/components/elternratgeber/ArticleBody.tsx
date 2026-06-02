@@ -1,4 +1,4 @@
-import Image, { type ImageProps } from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { MDXRemote, type MDXRemoteProps } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
@@ -17,7 +17,7 @@ function MdxImage({ src, alt, width, height }: ImgProps) {
   if (isLocal) {
     return (
       <span className="my-6 block">
-        <Image
+        <ExportedImage
           src={src}
           alt={alt ?? ""}
           width={typeof width === "number" ? width : 1200}
@@ -84,7 +84,9 @@ function MdxAnchor({ href, children }: AnchorProps) {
 const components: MDXRemoteProps["components"] = {
   img: (props: ImgProps) => <MdxImage {...props} />,
   a: MdxAnchor as unknown as React.FC<AnchorProps>,
-  Image: ((props: ImageProps) => <Image {...props} />) as unknown as React.FC,
+  Image: ((props: React.ComponentProps<typeof ExportedImage>) => (
+    <ExportedImage {...props} />
+  )) as unknown as React.FC,
 };
 
 export function ArticleBody({

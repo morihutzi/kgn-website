@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { ChevronLeft, ChevronRight, Menu, Plus, RotateCw } from "lucide-react";
 
 type Kid = {
@@ -67,7 +67,7 @@ export function LaptopElternportalMockup() {
           {/* Yellow Eltern-Portal header */}
           <div className="flex items-center justify-between bg-[#F9B000] px-3 py-1.5 text-white">
             <div className="flex items-center gap-1.5">
-              <Image
+              <ExportedImage
                 src="/brand/smiley-weiss.png"
                 alt=""
                 aria-hidden="true"

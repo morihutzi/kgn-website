@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Container } from "@/components/layout/Container";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
@@ -98,7 +98,7 @@ function MissionSection() {
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
           {/* Foto der Gründer */}
           <div className="relative mx-auto aspect-[5/4] w-full max-w-md overflow-hidden rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.1)] md:max-w-none">
-            <Image
+            <ExportedImage
               src="/images/team/moritz-jannis-hutzler.png"
               alt="Moritz Hutzler und Jannis Hutzler — Co-Founder von Kidgonet"
               fill
@@ -147,7 +147,7 @@ function ManuelNeuerSection() {
     <section className="bg-white pb-16 md:pb-24">
       {/* Voll-bleed Teenager-Banner als oberer Abschluss */}
       <div className="relative h-[220px] w-full overflow-hidden md:h-[320px] lg:h-[380px]">
-        <Image
+        <ExportedImage
           src="/images/banners/cta-teens.jpeg"
           alt="Kidgonet – Schutz und Begleitung im digitalen Alltag von Teenagern"
           fill
@@ -186,7 +186,7 @@ function ManuelNeuerSection() {
 
           {/* Foto Manuel Neuer + Gründer */}
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-xl md:order-1 md:max-w-none">
-            <Image
+            <ExportedImage
               src="/images/team/manuel-neuer-mit-foundern.png"
               alt="Manuel Neuer mit Moritz und Jannis Hutzler, den Co-Foundern von Kidgonet"
               fill
