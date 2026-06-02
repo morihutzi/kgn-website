@@ -34,7 +34,11 @@ export function Medienfuehrerschein() {
               {mf.headline}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-text-dark/80 md:text-base">
-              {mf.subline}
+              Ein <strong className="font-semibold text-text-dark">interaktives Lernprogramm</strong> für Kinder zur Förderung von{" "}
+              <strong className="font-semibold text-text-dark">Medienkompetenz</strong>. Kinder lernen, Informationen{" "}
+              <strong className="font-semibold text-text-dark">kritisch zu prüfen</strong>. Spielerisch trainieren sie,{" "}
+              <strong className="font-semibold text-text-dark">Fake News und Gefahren im Netz</strong> zu erkennen. Ein hilfreiches Werkzeug für Eltern, um mit ihren Kindern über Chancen und Risiken digitaler Medien{" "}
+              <strong className="font-semibold text-text-dark">ins Gespräch zu kommen</strong>.
             </p>
           </div>
 

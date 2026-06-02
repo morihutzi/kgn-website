@@ -113,8 +113,6 @@ export const comparison = {
 export const medienfuehrerschein = {
   eyebrow: "Der Medienführerschein von Kidgonet",
   headline: "Mehr Sicherheit für dein Kind im digitalen Alltag.",
-  subline:
-    "Ein interaktives Lernprogramm für Kinder zur Förderung von Medienkompetenz. Kinder lernen, Informationen kritisch zu prüfen. Spielerisch trainieren sie, Fake News und Gefahren im Netz zu erkennen. Ein hilfreiches Werkzeug für Eltern, um mit ihren Kindern über Chancen und Risiken digitaler Medien ins Gespräch zu kommen.",
   chaptersIntro:
     "Fünf Kapitel, die ihr als Eltern und Kind gemeinsam durchgeht – spielerisch und im eigenen Tempo:",
   chapters: [
