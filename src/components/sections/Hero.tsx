@@ -140,7 +140,7 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
           <div className="@container/banner mx-auto w-full max-w-[1080px]">
             <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">
               <Image
-                src="/images/hero/vater-sohn.jpeg"
+                src="/images/hero/vater-sohn-sichere-mediennutzung-kidgonet-smartphone.jpeg"
                 alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
                 fill
                 quality={90}
