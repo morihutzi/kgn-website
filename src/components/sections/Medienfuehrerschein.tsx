@@ -14,7 +14,7 @@ const CHAPTERS_LIST_ID = "medienfuehrerschein-chapters";
  */
 export function Medienfuehrerschein() {
   return (
-    <section className="w-full bg-[#F4F0EB] px-4 py-12 md:py-16">
+    <section className="w-full bg-white px-4 py-12 md:py-16">
       <div className="mx-auto max-w-[1080px] overflow-hidden rounded-[28px] border-2 border-brand-yellow bg-white px-5 py-8 shadow-[0_24px_60px_-24px_rgba(74,74,73,0.22)] md:px-12 md:py-12">
         {/* Produkt-Badge: positioniert den Medienführerschein als eigenständiges
             Programm, nicht als Feature der App. */}
