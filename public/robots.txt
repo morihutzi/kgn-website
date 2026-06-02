@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /newsletter/
+
+Sitemap: https://www.kidgonet.de/sitemap.xml
