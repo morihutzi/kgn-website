@@ -65,22 +65,21 @@ export function MockupSlideshow({ className = "", intervalMs = 3500 }: Props) {
   }, [intervalMs]);
 
   return (
-    <div
-      ref={ref}
-      className={`${className} transition-opacity duration-700 ease-out`}
-      style={{ aspectRatio: PHONE_ASPECT, opacity: width > 0 ? 1 : 0 }}
-    >
-      {width > 0 &&
-        MOCKUPS.map((render, i) => (
-          <div
-            key={i}
-            className="absolute inset-0 transition-opacity duration-700"
-            style={{ opacity: i === index ? 1 : 0 }}
-            aria-hidden={i !== index}
-          >
-            {render(width)}
-          </div>
-        ))}
+    <div ref={ref} className={className} style={{ aspectRatio: PHONE_ASPECT }}>
+      {width > 0 && (
+        <div className="mockup-focus-in absolute inset-0">
+          {MOCKUPS.map((render, i) => (
+            <div
+              key={i}
+              className="absolute inset-0 transition-opacity duration-700"
+              style={{ opacity: i === index ? 1 : 0 }}
+              aria-hidden={i !== index}
+            >
+              {render(width)}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
