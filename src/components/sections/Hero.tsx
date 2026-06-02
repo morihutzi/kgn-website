@@ -111,8 +111,8 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
             src="/images/icons/smiley-orange.png"
             alt=""
             aria-hidden="true"
-            width={60}
-            height={60}
+            width={70}
+            height={64}
             className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
             style={{ filter: "blur(9px)" }}
           />
@@ -245,8 +245,8 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
                     src="/images/icons/smiley-orange.png"
                     alt=""
                     aria-hidden="true"
-                    width={110}
-                    height={110}
+                    width={70}
+                    height={64}
                     className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none object-contain opacity-25"
                     style={{ filter: "blur(16px)", height: "min(110px, 11.83cqw)", width: "auto" }}
                   />

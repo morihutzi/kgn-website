@@ -14,8 +14,16 @@ const CHAPTERS_LIST_ID = "medienfuehrerschein-chapters";
  */
 export function Medienfuehrerschein() {
   return (
-    <section className="w-full">
-      <div className="mx-auto max-w-[1080px] px-4 py-12 md:py-14">
+    <section className="w-full bg-[#F4F0EB] px-4 py-12 md:py-16">
+      <div className="mx-auto max-w-[1080px] overflow-hidden rounded-[28px] border-2 border-brand-yellow bg-white px-5 py-8 shadow-[0_24px_60px_-24px_rgba(74,74,73,0.22)] md:px-12 md:py-12">
+        {/* Produkt-Badge: positioniert den Medienführerschein als eigenständiges
+            Programm, nicht als Feature der App. */}
+        <div className="mb-6 flex justify-center md:justify-start">
+          <span className="inline-flex items-center rounded-full bg-brand-yellow px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-white">
+            Jetzt neu: Kidgonet Medienführerschein
+          </span>
+        </div>
+
         {/* Intro + Laptop-Dashboard */}
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           <div>

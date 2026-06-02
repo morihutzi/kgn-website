@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { JsonLd, breadcrumbSchema } from "@/components/seo/JsonLd";
+import { PressCoverageCarousel } from "@/components/sections/PressCoverageCarousel";
 
 export const metadata: Metadata = {
   title: "Presse – Pressematerial & Downloads | Kidgonet",
@@ -85,6 +86,91 @@ const downloadCards: DownloadCardData[] = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
+// ─── In den Medien (verifizierte Berichterstattung) ───────────────────────────
+
+type PressItem = {
+  outlet: string;
+  title: string;
+  href: string;
+  date?: string;
+};
+
+const pressCoverage: PressItem[] = [
+  {
+    outlet: "Bayer. Staatsministerium für Digitales",
+    title:
+      "Digitalpreis B.DiGiTAL 2025: Minister Mehring ehrt Kidgonet-Gründer und Manuel Neuer",
+    href: "https://www.stmd.bayern.de/bayerischer-digitalpreis-b-digital-2025-minister-mehring-ehrt-kidgonet-gruender-und-manuel-neuer-fuer-engagement-im-kinderschutz-und-digitaler-verantwortung",
+    date: "2025",
+  },
+  {
+    outlet: "Merkur",
+    title:
+      "Junge Holzkirchner kreieren Kinderschutz-App fürs Handy – sogar Manuel Neuer ist begeistert",
+    href: "https://www.merkur.de/lokales/region-holzkirchen/holzkirchen-ort28831/junge-holzkirchner-kreieren-kinderschutz-app-fuers-handy-sogar-manuel-neuer-ist-begeistert-93874649.html",
+  },
+  {
+    outlet: "Augsburger Allgemeine",
+    title:
+      "Neue Auszeichnung für Weltmeister-Torwart Manuel Neuer vom FC Bayern",
+    href: "https://www.augsburger-allgemeine.de/bayern/neue-auszeichnung-fuer-weltmeister-torwart-manuel-neuer-vom-fc-bayern-112828238",
+  },
+  {
+    outlet: "Mittelbayerische",
+    title:
+      "Wie junge Gründer Fußballweltmeister Manuel Neuer von ihrer App-Idee überzeugt haben",
+    href: "https://www.mittelbayerische.de/nachrichten/regionale-wirtschaft/wie-junge-gruender-fussballweltmeister-manuel-neuer-von-ihrer-app-idee-ueberzeugt-haben-20357062",
+  },
+  {
+    outlet: "Eltern.de",
+    title: "Jetzt ist aber mal Schluss!",
+    href: "https://www.eltern.de/schulkind/jetzt-ist-aber-mal-schluss-_12341902-12345616.html",
+  },
+  {
+    outlet: "oberpfalz.de",
+    title: "Manuel Neuer unterstützt Start-up aus Regensburg",
+    href: "https://www.oberpfalz.de/manuel-neuer-start-up-regensburg/",
+  },
+  {
+    outlet: "charivari",
+    title:
+      "Fußball-Profi Manuel Neuer ist Botschafter von Kinderschutz-App aus Regensburg",
+    href: "https://www.charivari.com/fussball-profi-manuel-neuer-ist-botschafter-von-kinderschutz-app-aus-regensburg-1066994/",
+    date: "18.12.2025",
+  },
+  {
+    outlet: "gong fm",
+    title:
+      "Fußball-Profi Manuel Neuer ist Botschafter von Kinderschutz-App aus Regensburg",
+    href: "https://www.gongfm.de/fussball-profi-manuel-neuer-ist-botschafter-von-kinderschutz-app-aus-regensburg-3705834/",
+    date: "18.12.2025",
+  },
+  {
+    outlet: "Elternguide.online",
+    title: "Kidgonet: Was kann die Kinderschutz-App?",
+    href: "https://www.elternguide.online/kidgonet/",
+    date: "29.11.2024",
+  },
+];
+
+function PressCoverageSection() {
+  return (
+    <section aria-label="In den Medien" className="bg-white py-4 pb-14">
+      <Container>
+        <div className="mx-auto max-w-5xl">
+          <p className={`${eyebrow} text-center text-brand-yellow`}>
+            In den Medien
+          </p>
+          <h2 className="mt-3 text-center text-2xl font-extrabold leading-tight text-text-dark md:text-3xl">
+            Über Kidgonet wird berichtet
+          </h2>
+          <PressCoverageCarousel items={pressCoverage} />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 export default function PressePage() {
   return (
     <>
@@ -97,6 +183,7 @@ export default function PressePage() {
       <HeroSection />
       <PressetextCard />
       <DownloadCardsSection />
+      <PressCoverageSection />
     </>
   );
 }
@@ -179,7 +266,7 @@ function PressetextCard() {
 
 function DownloadCardsSection() {
   return (
-    <section aria-label="Pressematerial zum Download" className="bg-white py-4 pb-14">
+    <section aria-label="Pressematerial zum Download" className="bg-white py-4">
       <Container>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {downloadCards.map((card) => (
