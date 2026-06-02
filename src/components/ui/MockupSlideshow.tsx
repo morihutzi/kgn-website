@@ -55,6 +55,7 @@ export function MockupSlideshow({
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(initialWidth);
+  const [measured, setMeasured] = useState(false);
   const [index, setIndex] = useState(0);
 
   useIsoLayoutEffect(() => {
@@ -62,6 +63,7 @@ export function MockupSlideshow({
     if (!el) return;
     const update = () => setWidth(el.clientWidth);
     update();
+    setMeasured(true);
     const ro = new ResizeObserver(update);
     ro.observe(el);
     return () => ro.disconnect();
@@ -78,7 +80,9 @@ export function MockupSlideshow({
   return (
     <div ref={ref} className={className} style={{ aspectRatio: PHONE_ASPECT }}>
       {width > 0 && (
-        <div className="absolute inset-0">
+        <div
+          className={`absolute inset-0 mockup-focus${measured ? "" : " is-loading"}`}
+        >
           {MOCKUPS.map((render, i) => (
             <div
               key={i}

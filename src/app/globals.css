@@ -89,6 +89,23 @@ body {
   }
 }
 
+/* Hero-Phone blendet beim Laden/Wachsen von leicht unscharf zu scharf. */
+.mockup-focus {
+  transition: filter 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mockup-focus.is-loading {
+  filter: blur(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mockup-focus {
+    transition: none;
+  }
+  .mockup-focus.is-loading {
+    filter: none;
+  }
+}
+
 .marquee-mask {
   -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
