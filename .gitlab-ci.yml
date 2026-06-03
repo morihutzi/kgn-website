@@ -40,7 +40,7 @@ sftp:test:
       set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
       set net:max-retries 1;
       set net:timeout 15;
-      open -u '$FTP_USER' sftp://$FTP_HOST;
+      open -u '$FTP_USER','$FTP_PASS' sftp://$FTP_HOST;
       cls -l '$FTP_TARGET_DIR';
       "
   rules:
@@ -81,7 +81,7 @@ deploy:website:
       set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
       set net:max-retries 2;
       set net:timeout 20;
-      open -u '$FTP_USER' sftp://$FTP_HOST;
+      open -u '$FTP_USER','$FTP_PASS' sftp://$FTP_HOST;
       mirror --reverse --delete --verbose=1 --no-perms \
         --exclude-glob medienfuehrerschein/ \
         out/ '$FTP_TARGET_DIR';
