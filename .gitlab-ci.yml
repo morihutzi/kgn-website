@@ -34,6 +34,7 @@ sftp:test:
     - apt-get update && apt-get install -y --no-install-recommends lftp sshpass openssh-client
   script:
     - export SSHPASS="$FTP_PASS"
+    - 'echo "DIAG pwlen: ${#SSHPASS} (erwartet 24)"'
     - |
       lftp -d -c "
       set sftp:auto-confirm yes;
