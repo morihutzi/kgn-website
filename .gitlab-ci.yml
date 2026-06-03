@@ -11,33 +11,19 @@
 # CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
 #   FTP_HOST        dedi3215.your-server.de   (nur Host, ohne Schema/Port)
 #   FTP_USER        kdg2023_1
-#   FTP_PASS        SFTP-Passwort             (exakt 24 Zeichen, ohne Quotes!)
+#   FTP_PASS        SFTP-Passwort             (exakt, ohne Quotes/Whitespace!)
 #   FTP_TARGET_DIR  Zielordner, z.B. /www-kidgonet
 # Optionale Build-Variablen:
 #   NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GADS_ID, BREVO_API_KEY, BREVO_LIST_ID
+#
+# Manuelle Diagnose bei Verbindungsproblemen (lokal, kein CI-Job nötig):
+#   CHECK_ONLY=1 DEBUG_SFTP=1 FTP_HOST=... FTP_USER=... FTP_PASS=... \
+#     FTP_TARGET_DIR=/www-kidgonet node scripts/sftp-deploy.cjs
 # ============================================================================
 
 stages:
-  - test
   - deploy
 
-# ─── Manueller SFTP-Schnelltest (ohne Build) ───────────────────────────────
-# Per Hand starten (Pipeline -> sftp:test -> Run). Verbindet nur und listet
-# FTP_TARGET_DIR. Schnell (~20 s), zum Prüfen von Login + Zielpfad.
-sftp:test:
-  stage: test
-  image: node:20-bookworm-slim
-  when: manual
-  variables:
-    CHECK_ONLY: "1"
-    # Für detailliertes SSH-Handshake-Log bei Bedarf DEBUG_SFTP: "1" setzen.
-  script:
-    - npm install --no-save --no-fund --no-audit --prefix /tmp/sftp ssh2-sftp-client
-    - NODE_PATH=/tmp/sftp/node_modules node scripts/sftp-deploy.cjs
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
-
-# ─── Build + Deploy ────────────────────────────────────────────────────────
 deploy:website:
   stage: deploy
   image: node:20-bookworm-slim
