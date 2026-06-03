@@ -1,21 +1,19 @@
 # ============================================================================
 # Website-Deploy: baut den statischen Next.js-Export im node:20-Container und
-# spiegelt ihn per SFTP (Port 22) nach www-kidgonet (live).
+# lädt ihn per SFTP (nativ via Node, wie FileZilla) nach www-kidgonet (live).
 #
-# Build UND Deploy laufen in EINEM Job, damit das große out/-Verzeichnis nicht
-# als Artifact über den GitLab-Server transferiert werden muss (sonst 413).
-# lftp + sshpass + openssh-client werden per apt im node-Image nachgezogen.
+# Build UND Deploy in EINEM Job, damit das große out/-Verzeichnis nicht als
+# Artifact über den GitLab-Server muss (sonst 413). Deploy via Node-Script
+# scripts/sftp-deploy.cjs + ssh2-sftp-client (Passwort-Auth, kein ssh/sshpass).
 #
-# Deploy via SFTP statt FTP: Host spricht SSH File Transfer Protocol auf Port
-# 22 (FileZilla "SFTP"). lftp nutzt das sftp-Subsystem über ssh; sshpass
-# liefert das Passwort nicht-interaktiv.
+# Läuft auf dem Docker-Instance-Runner (#3). Kein Server-Eingriff nötig.
 #
 # CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
 #   FTP_HOST        dedi3215.your-server.de   (nur Host, ohne Schema/Port)
 #   FTP_USER        kdg2023_1
-#   FTP_PASS        SFTP-Passwort             (als "Masked" anlegen)
+#   FTP_PASS        SFTP-Passwort             (exakt 24 Zeichen, ohne Quotes!)
 #   FTP_TARGET_DIR  Zielordner, z.B. /www-kidgonet
-# Optionale Build-Variablen (falls genutzt):
+# Optionale Build-Variablen:
 #   NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GADS_ID, BREVO_API_KEY, BREVO_LIST_ID
 # ============================================================================
 
@@ -24,26 +22,17 @@ stages:
   - deploy
 
 # ─── Manueller SFTP-Schnelltest (ohne Build) ───────────────────────────────
-# Per Hand in GitLab starten (Pipeline -> sftp:test -> Run). Prüft nur Login +
-# Verzeichnis-Listing mit Debug-Log. Schnell, zum Diagnostizieren.
+# Per Hand starten (Pipeline -> sftp:test -> Run). Verbindet nur und listet
+# FTP_TARGET_DIR. Schnell (~20 s), zum Prüfen von Login + Zielpfad.
 sftp:test:
   stage: test
   image: node:20-bookworm-slim
   when: manual
-  before_script:
-    - apt-get update && apt-get install -y --no-install-recommends lftp sshpass openssh-client
+  variables:
+    CHECK_ONLY: "1"
   script:
-    - export SSHPASS="$FTP_PASS"
-    - 'echo "DIAG pwlen: ${#SSHPASS} (erwartet 24)"'
-    - |
-      lftp -d -c "
-      set sftp:auto-confirm yes;
-      set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
-      set net:max-retries 1;
-      set net:timeout 15;
-      open -u '$FTP_USER','$FTP_PASS' sftp://$FTP_HOST;
-      cls -l '$FTP_TARGET_DIR';
-      "
+    - npm install --no-save --no-fund --no-audit --prefix /tmp/sftp ssh2-sftp-client
+    - NODE_PATH=/tmp/sftp/node_modules node scripts/sftp-deploy.cjs
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
 
@@ -53,8 +42,6 @@ deploy:website:
   image: node:20-bookworm-slim
   variables:
     NEXT_TELEMETRY_DISABLED: "1"
-  # Caches überleben Jobs und sparen Zeit. when: always → auch bei Fehlschlag
-  # gespeichert, damit ein erneuter Versuch nicht wieder ~4 min optimiert.
   cache:
     - key: website-pnpm
       when: always
@@ -66,7 +53,6 @@ deploy:website:
         - public/**/nextImageExportOptimizer/
         - public/next-image-export-optimizer-hashes.json
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends lftp sshpass openssh-client
     - corepack enable
     - corepack prepare pnpm@10 --activate
     - pnpm config set store-dir "$CI_PROJECT_DIR/.pnpm-store"
@@ -75,18 +61,9 @@ deploy:website:
     - pnpm build
     # Sicherstellen, dass die .htaccess wirklich mit im Export liegt
     - test -f out/.htaccess
-    - export SSHPASS="$FTP_PASS"
-    - |
-      lftp -c "
-      set sftp:auto-confirm yes;
-      set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
-      set net:max-retries 2;
-      set net:timeout 20;
-      open -u '$FTP_USER','$FTP_PASS' sftp://$FTP_HOST;
-      mirror --reverse --delete --verbose=1 --no-perms \
-        --exclude-glob medienfuehrerschein/ \
-        out/ '$FTP_TARGET_DIR';
-      "
+    # SFTP-Deploy (nativ via Node, Passwort-Auth)
+    - npm install --no-save --no-fund --no-audit --prefix /tmp/sftp ssh2-sftp-client
+    - NODE_PATH=/tmp/sftp/node_modules node scripts/sftp-deploy.cjs
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
   environment:
