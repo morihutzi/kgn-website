@@ -30,6 +30,7 @@ sftp:test:
   when: manual
   variables:
     CHECK_ONLY: "1"
+    DEBUG_SFTP: "1"
   script:
     - npm install --no-save --no-fund --no-audit --prefix /tmp/sftp ssh2-sftp-client
     - NODE_PATH=/tmp/sftp/node_modules node scripts/sftp-deploy.cjs

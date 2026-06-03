@@ -76,13 +76,17 @@ async function pruneRemote(sftp, remoteDir, localSet, base = "") {
 (async () => {
   const sftp = new Client();
   try {
-    await sftp.connect({
+    const connectConf = {
       host: HOST,
       port: PORT,
       username: USER,
       password: PASS,
-      readyTimeout: 30000,
-    });
+      readyTimeout: 60000,
+    };
+    if (process.env.DEBUG_SFTP === "1") {
+      connectConf.debug = (m) => console.log("[ssh2]", m);
+    }
+    await sftp.connect(connectConf);
     console.log(`Verbunden mit ${HOST}:${PORT} als ${USER}`);
 
     if (CHECK_ONLY) {
