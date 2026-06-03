@@ -3,14 +3,14 @@
 # spiegelt ihn per FTP nach www-kidgonet (live).
 #
 # Build UND Deploy laufen in EINEM Job, damit das große out/-Verzeichnis nicht
-# als Artifact über den GitLab-Server transferiert werden muss (sonst 413
-# "Request Entity Too Large"). lftp wird per apt im node-Image nachgezogen.
+# als Artifact über den GitLab-Server transferiert werden muss (sonst 413).
+# lftp wird per apt im node-Image nachgezogen.
 #
 # Läuft auf dem Docker-Instance-Runner (#3). Auf keinem Server wird etwas
 # installiert. Auf den FTP-Webserver braucht man keinen Zugang, nur die Daten.
 #
 # Benötigte CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
-#   FTP_HOST        z.B. ftp.kidgonet.de  (nur Host, ohne ftp://)
+#   FTP_HOST        z.B. ftp.kidgonet.de  (nur Host, ohne ftp:// und ohne Pfad)
 #   FTP_USER        FTP-Benutzer
 #   FTP_PASS        FTP-Passwort           (als "Masked" anlegen)
 #   FTP_TARGET_DIR  Zielordner auf dem Server, z.B. /www-kidgonet
@@ -19,26 +19,53 @@
 # ============================================================================
 
 stages:
+  - test
   - deploy
 
+# ─── Manueller FTP-Schnelltest (ohne Build) ────────────────────────────────
+# Per Hand in GitLab starten (Pipeline -> ftp:test -> Run). Prüft nur Login +
+# Verzeichnis-Listing mit vollem Debug-Log. Schnell, zum Diagnostizieren.
+ftp:test:
+  stage: test
+  image: node:20-bookworm-slim
+  when: manual
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends lftp ca-certificates
+  script:
+    - |
+      lftp -d -c "
+      set ftp:ssl-allow true;
+      set ftp:ssl-protect-data true;
+      set ssl:verify-certificate no;
+      set ftp:passive-mode true;
+      set net:max-retries 1;
+      set net:timeout 15;
+      open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
+      cls -l '$FTP_TARGET_DIR';
+      "
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# ─── Build + Deploy ────────────────────────────────────────────────────────
 deploy:website:
   stage: deploy
   image: node:20-bookworm-slim
   variables:
     NEXT_TELEMETRY_DISABLED: "1"
-  # Caches überleben Jobs und sparen Zeit:
-  #  - pnpm-Store: kein erneuter Download aller Pakete
-  #  - Bild-Optimierer: nur geänderte Bilder werden neu optimiert (statt ~4 min)
+  # Caches überleben Jobs und sparen Zeit. when: always → auch bei Fehlschlag
+  # gespeichert, damit ein erneuter Versuch nicht wieder ~4 min optimiert.
   cache:
     - key: website-pnpm
+      when: always
       paths:
         - .pnpm-store/
     - key: website-images
+      when: always
       paths:
         - public/**/nextImageExportOptimizer/
         - public/next-image-export-optimizer-hashes.json
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends lftp
+    - apt-get update && apt-get install -y --no-install-recommends lftp ca-certificates
     - corepack enable
     - corepack prepare pnpm@10 --activate
     - pnpm config set store-dir "$CI_PROJECT_DIR/.pnpm-store"
@@ -50,12 +77,14 @@ deploy:website:
     - |
       lftp -c "
       set ftp:ssl-allow true;
+      set ftp:ssl-protect-data true;
       set ssl:verify-certificate no;
-      set net:max-retries 3;
+      set ftp:passive-mode true;
+      set net:max-retries 2;
       set net:timeout 20;
-      set net:persist-retries 3;
+      set net:reconnect-interval-base 5;
       open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
-      mirror --reverse --delete --parallel=5 --verbose=1 --no-perms \
+      mirror --reverse --delete --parallel=3 --verbose=1 --no-perms \
         --exclude-glob medienfuehrerschein/ \
         out/ '$FTP_TARGET_DIR';
       "
