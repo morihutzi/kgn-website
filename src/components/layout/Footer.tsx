@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-black/10 bg-surface-muted text-text-dark">
-      <Container className="grid grid-cols-1 justify-items-center gap-y-7 py-9 text-center md:grid-cols-[1.5fr_0.9fr_0.8fr_1fr_1.1fr] md:justify-items-stretch md:gap-8 md:py-14 md:text-left">
+      <Container className="grid grid-cols-1 justify-items-center gap-y-7 py-9 text-center md:grid-cols-[1.7fr_1fr_0.8fr_1.1fr] md:justify-items-stretch md:gap-8 md:py-14 md:text-left">
         {/* Slogan */}
         <p className="text-center text-3xl font-extrabold leading-[1.1] text-brand-yellow md:col-span-1 md:text-left md:text-[40px]">
           {sloganLines.map((line, i) => (
@@ -83,29 +83,39 @@ export function Footer() {
           ))}
         </FooterColumn>
 
-        {/* SEO-Landingpages — interne Verlinkung, damit sie nicht verwaisen */}
-        <FooterColumn label="Mehr">
-          {landingPages.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="text-brand-yellow transition hover:underline"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </FooterColumn>
         </div>
       </Container>
 
-      {/* Bottom-Zeile: Copyright + Cookie-Einstellungen */}
+      {/* Bottom-Zeile: Copyright + Cookie-Einstellungen + dezente Seiten-Links */}
       <div className="border-t border-black/10">
-        <Container className="flex flex-col items-center justify-between gap-2 py-4 text-xs text-text-dark/55 sm:flex-row">
-          <span>
-            © {year} {siteConfig.legalName} – All Rights Reserved
-          </span>
-          <CookieSettingsButton className="text-text-dark/55 transition hover:text-text-dark hover:underline" />
+        <Container className="flex flex-col items-center gap-3 py-4 text-xs text-text-dark/55">
+          <div className="flex w-full flex-col items-center justify-between gap-2 sm:flex-row">
+            <span>
+              © {year} {siteConfig.legalName} – All Rights Reserved
+            </span>
+            <CookieSettingsButton className="text-text-dark/55 transition hover:text-text-dark hover:underline" />
+          </div>
+          {/* SEO-Landingpages dezent verlinkt, damit sie nicht verwaisen */}
+          <nav
+            aria-label="Weitere Seiten"
+            className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-[11px] text-text-dark/40"
+          >
+            {landingPages.map((item, i) => (
+              <span key={item.href} className="flex items-center gap-2">
+                {i > 0 && (
+                  <span aria-hidden="true" className="text-text-dark/25">
+                    ·
+                  </span>
+                )}
+                <Link
+                  href={item.href}
+                  className="transition hover:text-text-dark hover:underline"
+                >
+                  {item.label}
+                </Link>
+              </span>
+            ))}
+          </nav>
         </Container>
       </div>
     </footer>
