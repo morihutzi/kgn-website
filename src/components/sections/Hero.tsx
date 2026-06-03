@@ -138,12 +138,16 @@ export function Hero({ headline, subheadline }: HeroProps = {}) {
         <Container>
           <div className="@container/banner mx-auto w-full max-w-[1080px]">
             <div className="relative aspect-[930/496] w-full overflow-hidden rounded-[20px]">
+              {/* Kein priority: das Desktop-Hero ist auf Mobile display:none.
+                  priority würde es per <link rel=preload> trotzdem auf dem Handy
+                  laden und mit dem echten (mobilen) LCP-Bild um die 4G-Bandbreite
+                  konkurrieren. Im Desktop-Viewport ist es sichtbar und laedt als
+                  in-viewport-Bild sofort. */}
               <ExportedImage
                 src="/images/hero/vater-sohn-sichere-mediennutzung-kidgonet-smartphone.jpeg"
                 alt="Vater und Sohn nutzen gemeinsam ein Smartphone"
                 fill
                 sizes="(min-width: 1120px) 1080px, 100vw"
-                priority
                 className="scale-105 object-cover blur-[2px]"
               />
 

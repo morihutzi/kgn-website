@@ -23,6 +23,14 @@
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.6.0"
   },
+  "browserslist": [
+    "chrome >= 100",
+    "edge >= 100",
+    "firefox >= 100",
+    "safari >= 15",
+    "ios_saf >= 15",
+    "not dead"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
