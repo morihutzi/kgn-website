@@ -15,7 +15,12 @@ import {
   PhoneIcon,
 } from "@/components/preise/icons";
 import { StoreBadges } from "@/components/ui/StoreBadges";
-import { JsonLd, softwareApplicationSchema } from "@/components/seo/JsonLd";
+import { FAQItem } from "@/components/sections/FAQItem";
+import {
+  JsonLd,
+  faqPageSchema,
+  softwareApplicationSchema,
+} from "@/components/seo/JsonLd";
 import { pricing, type PricingPlan } from "@/content/home";
 import { siteConfig, trialCopy } from "@/content/site";
 
@@ -31,6 +36,41 @@ export const metadata: Metadata = {
 };
 
 const ICON_CLASS = "h-full w-full";
+
+// Preis-FAQ: ausschliesslich belegte Fakten (Tarife, Testphase, Lizenzen,
+// Garantie, kostenloser Webfilter). Wird sichtbar gerendert UND als
+// FAQPage-Schema ausgegeben.
+const faqs = [
+  {
+    question: "Was kostet Kidgonet?",
+    answer:
+      "Kidgonet kostet im Jahresabo 2,99 € pro Monat (jährlich abgerechnet) und im flexibel monatlich kündbaren Monatsabo 4,99 € pro Monat. In beiden Tarifen sind 5 Lizenzen für bis zu fünf Geräte enthalten.",
+  },
+  {
+    question: "Gibt es eine kostenlose Testphase?",
+    answer: `Ja. Du kannst Kidgonet ${siteConfig.trialDays} Tage kostenlos und mit vollem Funktionsumfang testen. Vor Ablauf der Testphase erinnern wir Dich per E-Mail.`,
+  },
+  {
+    question: "Kann ich jederzeit kündigen?",
+    answer:
+      "Ja. Das Monatsabo ist flexibel monatlich kündbar, nach der Testphase gibt es keine Mindestlaufzeit. Zusätzlich gilt eine 30-tägige Geld-zurück-Garantie.",
+  },
+  {
+    question: "Wie viele Geräte und Kinder sind enthalten?",
+    answer:
+      "Beide Abos enthalten 5 Lizenzen, du kannst also bis zu fünf Geräte schützen. Im Eltern-Portal kannst du beliebig viele Kinder anlegen und zentral verwalten.",
+  },
+  {
+    question: "Gibt es eine kostenlose Version?",
+    answer:
+      "Ja. Der altersgerechte Webfilter ist bei Kidgonet dauerhaft kostenlos, ohne Testphase und ohne Account-Zwang. Bildschirmzeit, Standort und App-Sperre sind Teil des Abos.",
+  },
+  {
+    question: "Für welche Geräte gilt der Preis?",
+    answer:
+      "Der Preis gilt für iOS und Android. Kidgonet lädst du im Apple App Store oder im Google Play Store, das Eltern-Portal nutzt du zusätzlich im Browser.",
+  },
+];
 
 const JOURNEY_STEPS: JourneyStep[] = [
   {
@@ -62,11 +102,34 @@ export default function PreisePage() {
   return (
     <>
       <JsonLd data={softwareApplicationSchema} />
+      <JsonLd data={faqPageSchema(faqs)} />
       <HeroSection />
       <PricingJourney steps={JOURNEY_STEPS} />
       <PlansSection />
+      <FaqSection />
       <FinalCTA />
     </>
+  );
+}
+
+function FaqSection() {
+  return (
+    <section className="bg-surface-warm py-16 md:py-20">
+      <Container>
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-8 text-center text-2xl font-extrabold text-text-dark md:text-3xl">
+            Häufige Fragen zu Preisen &amp; Abo
+          </h2>
+          <ul>
+            {faqs.map((faq) => (
+              <FAQItem key={faq.question} question={faq.question}>
+                <p>{faq.answer}</p>
+              </FAQItem>
+            ))}
+          </ul>
+        </div>
+      </Container>
+    </section>
   );
 }
 
