@@ -1,19 +1,20 @@
 # ============================================================================
 # Website-Deploy: baut den statischen Next.js-Export im node:20-Container und
-# spiegelt ihn per FTP nach www-kidgonet (live).
+# spiegelt ihn per SFTP (Port 22) nach www-kidgonet (live).
 #
 # Build UND Deploy laufen in EINEM Job, damit das große out/-Verzeichnis nicht
 # als Artifact über den GitLab-Server transferiert werden muss (sonst 413).
-# lftp wird per apt im node-Image nachgezogen.
+# lftp + sshpass + openssh-client werden per apt im node-Image nachgezogen.
 #
-# Läuft auf dem Docker-Instance-Runner (#3). Auf keinem Server wird etwas
-# installiert. Auf den FTP-Webserver braucht man keinen Zugang, nur die Daten.
+# Deploy via SFTP statt FTP: Host spricht SSH File Transfer Protocol auf Port
+# 22 (FileZilla "SFTP"). lftp nutzt das sftp-Subsystem über ssh; sshpass
+# liefert das Passwort nicht-interaktiv.
 #
-# Benötigte CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
-#   FTP_HOST        z.B. ftp.kidgonet.de  (nur Host, ohne ftp:// und ohne Pfad)
-#   FTP_USER        FTP-Benutzer
-#   FTP_PASS        FTP-Passwort           (als "Masked" anlegen)
-#   FTP_TARGET_DIR  Zielordner auf dem Server, z.B. /www-kidgonet
+# CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
+#   FTP_HOST        dedi3215.your-server.de   (nur Host, ohne Schema/Port)
+#   FTP_USER        kdg2023_1
+#   FTP_PASS        SFTP-Passwort             (als "Masked" anlegen)
+#   FTP_TARGET_DIR  Zielordner, z.B. /www-kidgonet
 # Optionale Build-Variablen (falls genutzt):
 #   NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GADS_ID, BREVO_API_KEY, BREVO_LIST_ID
 # ============================================================================
@@ -22,25 +23,24 @@ stages:
   - test
   - deploy
 
-# ─── Manueller FTP-Schnelltest (ohne Build) ────────────────────────────────
-# Per Hand in GitLab starten (Pipeline -> ftp:test -> Run). Prüft nur Login +
-# Verzeichnis-Listing mit vollem Debug-Log. Schnell, zum Diagnostizieren.
-ftp:test:
+# ─── Manueller SFTP-Schnelltest (ohne Build) ───────────────────────────────
+# Per Hand in GitLab starten (Pipeline -> sftp:test -> Run). Prüft nur Login +
+# Verzeichnis-Listing mit Debug-Log. Schnell, zum Diagnostizieren.
+sftp:test:
   stage: test
   image: node:20-bookworm-slim
   when: manual
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends lftp ca-certificates
+    - apt-get update && apt-get install -y --no-install-recommends lftp sshpass openssh-client
   script:
+    - export SSHPASS="$FTP_PASS"
     - |
       lftp -d -c "
-      set ftp:ssl-allow true;
-      set ftp:ssl-protect-data true;
-      set ssl:verify-certificate no;
-      set ftp:passive-mode true;
+      set sftp:auto-confirm yes;
+      set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
       set net:max-retries 1;
       set net:timeout 15;
-      open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
+      open -u '$FTP_USER' sftp://$FTP_HOST;
       cls -l '$FTP_TARGET_DIR';
       "
   rules:
@@ -65,7 +65,7 @@ deploy:website:
         - public/**/nextImageExportOptimizer/
         - public/next-image-export-optimizer-hashes.json
   before_script:
-    - apt-get update && apt-get install -y --no-install-recommends lftp ca-certificates
+    - apt-get update && apt-get install -y --no-install-recommends lftp sshpass openssh-client
     - corepack enable
     - corepack prepare pnpm@10 --activate
     - pnpm config set store-dir "$CI_PROJECT_DIR/.pnpm-store"
@@ -74,17 +74,15 @@ deploy:website:
     - pnpm build
     # Sicherstellen, dass die .htaccess wirklich mit im Export liegt
     - test -f out/.htaccess
+    - export SSHPASS="$FTP_PASS"
     - |
       lftp -c "
-      set ftp:ssl-allow true;
-      set ftp:ssl-protect-data true;
-      set ssl:verify-certificate no;
-      set ftp:passive-mode true;
+      set sftp:auto-confirm yes;
+      set sftp:connect-program 'sshpass -e ssh -a -x -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null';
       set net:max-retries 2;
       set net:timeout 20;
-      set net:reconnect-interval-base 5;
-      open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
-      mirror --reverse --delete --parallel=3 --verbose=1 --no-perms \
+      open -u '$FTP_USER' sftp://$FTP_HOST;
+      mirror --reverse --delete --verbose=1 --no-perms \
         --exclude-glob medienfuehrerschein/ \
         out/ '$FTP_TARGET_DIR';
       "
