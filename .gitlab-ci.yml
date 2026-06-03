@@ -1,0 +1,68 @@
+# ============================================================================
+# Website-Deploy: baut den statischen Next.js-Export im node:20-Container und
+# spiegelt ihn per FTP nach www-kidgonet (live).
+#
+# Läuft komplett in GitLab-CI auf dem Docker-Instance-Runner (#3). Auf API-,
+# Frontend- und Webserver wird NICHTS installiert : node und lftp kommen als
+# Container-Images.
+#
+# Benötigte CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
+#   FTP_HOST        z.B. ftp.kidgonet.de  (nur Host, ohne ftp://)
+#   FTP_USER        FTP-Benutzer
+#   FTP_PASS        FTP-Passwort           (als "Masked" anlegen)
+#   FTP_TARGET_DIR  Zielordner auf dem Server, z.B. /www-kidgonet
+# Optionale Build-Variablen (falls genutzt):
+#   NEXT_PUBLIC_GA_ID, NEXT_PUBLIC_GADS_ID, BREVO_API_KEY, BREVO_LIST_ID
+# ============================================================================
+
+stages:
+  - build
+  - deploy
+
+variables:
+  NEXT_TELEMETRY_DISABLED: "1"
+
+build:website:
+  stage: build
+  image: node:20-bookworm-slim
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@10 --activate
+  script:
+    - pnpm install --frozen-lockfile
+    - pnpm build
+    # Sicherstellen, dass die .htaccess wirklich mit im Export liegt
+    - test -f out/.htaccess
+  artifacts:
+    paths:
+      - out/
+    expire_in: 1 day
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+deploy:ftp:
+  stage: deploy
+  image: alpine:3.20
+  needs:
+    - build:website
+  before_script:
+    - apk add --no-cache lftp
+  script:
+    - test -d out
+    - |
+      lftp -c "
+      set ftp:ssl-allow true;
+      set ssl:verify-certificate no;
+      set net:max-retries 3;
+      set net:timeout 20;
+      set net:persist-retries 3;
+      open -u '$FTP_USER','$FTP_PASS' '$FTP_HOST';
+      mirror --reverse --delete --parallel=5 --verbose=1 --no-perms \
+        --exclude-glob medienfuehrerschein/ \
+        out/ '$FTP_TARGET_DIR';
+      "
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+  environment:
+    name: production
+    url: https://www.kidgonet.de
