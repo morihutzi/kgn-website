@@ -51,6 +51,62 @@ export function getRelatedArticlesForFeature(
   return getArticleSummariesBySlugs(FEATURE_TO_ARTICLE_SLUGS[feature]);
 }
 
+export type FeatureMeta = {
+  slug: FeatureSlug;
+  label: string;
+  href: string;
+  blurb: string;
+};
+
+// Anzeigedaten der Funktionsseiten (Texte aus der Funktionsuebersicht uebernommen).
+const FEATURE_META: Record<FeatureSlug, FeatureMeta> = {
+  bildschirmzeit: {
+    slug: "bildschirmzeit",
+    label: "Bildschirmzeit begrenzen",
+    href: "/bildschirmzeit",
+    blurb: "Tageslimits, Wochenpläne und Sofort-Sperre für alle Geräte.",
+  },
+  webfilter: {
+    slug: "webfilter",
+    label: "Internetfilter für Kinder",
+    href: "/webfilter",
+    blurb:
+      "Browserunabhängiger DNS-Filter, drei Altersgruppen, automatische Updates.",
+  },
+  standort: {
+    slug: "standort",
+    label: "Standort verfolgen",
+    href: "/standort",
+    blurb:
+      "Echtzeit-GPS-Ortung im Elternportal, DSGVO-konform, Server in Deutschland.",
+  },
+  sperrmodus: {
+    slug: "sperrmodus",
+    label: "Geräte sofort sperren",
+    href: "/sperrmodus",
+    blurb:
+      "Ein Klick sperrt alle Geräte, für Hausaufgaben, Mahlzeiten oder Schlafenszeit.",
+  },
+  "apps-freigeben": {
+    slug: "apps-freigeben",
+    label: "Apps freigeben",
+    href: "/apps-freigeben",
+    blurb:
+      "Lern-Apps und Notfall-Apps auch nach Ablauf des Limits nutzbar lassen.",
+  },
+};
+
+/**
+ * Umkehrung des Feature-Mappings: zu welchen Funktionsseiten passt dieser
+ * Artikel? Liefert nur Treffer fuer die explizit gemappten Artikel, sonst [].
+ * Quelle ist FEATURE_TO_ARTICLE_SLUGS, es wird kein Inhalt erfunden.
+ */
+export function getFeaturesForArticleSlug(slug: string): FeatureMeta[] {
+  return (Object.entries(FEATURE_TO_ARTICLE_SLUGS) as [FeatureSlug, string[]][])
+    .filter(([, slugs]) => slugs.includes(slug))
+    .map(([feature]) => FEATURE_META[feature]);
+}
+
 /**
  * Kuratierte Artikel-Auswahl fuer die Funktions-Uebersichtsseite
  * (`/was-kann-die-app`): je ein starker Beitrag aus den Kernthemen

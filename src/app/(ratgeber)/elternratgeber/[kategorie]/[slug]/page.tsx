@@ -6,8 +6,10 @@ import { ArticleHero } from "@/components/elternratgeber/ArticleHero";
 import { NewsletterCta } from "@/components/elternratgeber/NewsletterCta";
 import { NewsletterFloat } from "@/components/newsletter/NewsletterFloat";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { FeatureBacklink } from "@/components/elternratgeber/FeatureBacklink";
 import { ScrollTracker } from "@/components/elternratgeber/ScrollTracker";
 import { ShareBar } from "@/components/elternratgeber/ShareBar";
+import { getFeaturesForArticleSlug } from "@/lib/elternratgeber/feature-mapping";
 import {
   elternratgeberKategorien,
   getKategorieBySlug,
@@ -74,6 +76,7 @@ export default async function ArtikelPage({
   if (!article) notFound();
 
   const related = getRelatedArticles(article);
+  const features = getFeaturesForArticleSlug(article.slug);
   const baseUrl = "https://www.kidgonet.de";
   const url = `${baseUrl}/elternratgeber/${article.kategorie}/${article.slug}`;
 
@@ -176,6 +179,7 @@ export default async function ArtikelPage({
       </nav>
       <ArticleHero article={article} />
       <ArticleBody body={article.body} slug={article.slug} />
+      <FeatureBacklink features={features} />
       <ShareBar url={url} title={article.title} />
       {/* Inline-CTA nur auf Mobile, floating Widget übernimmt Desktop */}
       <div className="md:hidden">
