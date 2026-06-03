@@ -33,7 +33,7 @@ export default function HilfePage() {
           }}
         />
         <Container className="relative">
-          <div className="py-16 md:py-24">
+          <div className="py-8 md:py-10">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-white/80">
               Hilfe-Center
             </p>
@@ -119,7 +119,7 @@ export default function HilfePage() {
       </section>
 
       {/* ── 4. CONTACT CTA ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-text-dark py-16 md:py-20">
+      <section className="relative overflow-hidden bg-[#F4F0EB] py-16 md:py-20">
         {/* Decorative dot grid */}
         <div
           aria-hidden="true"
@@ -136,12 +136,12 @@ export default function HilfePage() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.22em] text-brand-yellow">
               Schritt 3 · Persönlicher Support
             </p>
-            <h2 className="mt-3 text-balance text-3xl font-extrabold leading-tight text-white md:text-4xl">
+            <h2 className="mt-3 text-balance text-3xl font-extrabold leading-tight text-text-dark md:text-4xl">
               Deine Frage war nicht dabei?
               <br />
               <span className="text-brand-yellow">Wir antworten persönlich.</span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-white/80 md:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-text-dark/70 md:text-lg">
               Kostenloser Support per E-Mail. Antwort in der Regel innerhalb
               eines Werktags. Keine Hotline-Warteschleife, kein Chatbot.
             </p>
@@ -167,7 +167,7 @@ export default function HilfePage() {
               </a>
             </div>
 
-            <p className="mt-5 text-xs text-white/50">
+            <p className="mt-5 text-xs text-text-dark/50">
               Oder schreib uns direkt im Eltern-Portal unter portal.kidgonet.de
             </p>
           </div>

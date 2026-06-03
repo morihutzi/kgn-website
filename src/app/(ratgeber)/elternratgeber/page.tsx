@@ -32,7 +32,7 @@ export default function ElternratgeberHome() {
       {/* Hero: solides Brand-Yellow Band wie FeatureList */}
       <section className="bg-brand-yellow">
         <Container>
-          <div className="py-12 md:py-20">
+          <div className="py-8 md:py-10">
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-white/85">
               Wissen für Familien
             </p>
