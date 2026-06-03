@@ -11,8 +11,14 @@ FTP-Webserver selbst braucht man keinen Zugang, nur die FTP-Zugangsdaten.
 ## Ablauf
 
 1. Push auf `main` → GitLab startet die Pipeline.
-2. **build:website** (`node:20`-Container): `pnpm install && pnpm build` → erzeugt `out/`.
-3. **deploy:ftp** (`alpine` + `lftp`): spiegelt `out/` per `mirror` auf den Webserver.
+2. **deploy:website** (`node:20`-Container, ein einziger Job): `pnpm install && pnpm build`
+   → erzeugt `out/`, dann `lftp mirror` direkt aus demselben Job auf den Webserver.
+
+Build und Deploy laufen bewusst in **einem** Job: So muss das große `out/`
+(>100 MB optimierte Bilder) nicht als Artifact über den GitLab-Server
+transferiert werden (das schlug mit `413 Request Entity Too Large` fehl). lftp
+wird per `apt` im node-Image nachinstalliert. pnpm-Store und die optimierten
+Bilder werden gecacht, damit Folge-Deploys nicht erneut ~4 min optimieren.
 
 ## Einmalige Einrichtung (alles in der GitLab-Oberfläche)
 

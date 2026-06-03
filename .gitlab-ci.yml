@@ -2,9 +2,12 @@
 # Website-Deploy: baut den statischen Next.js-Export im node:20-Container und
 # spiegelt ihn per FTP nach www-kidgonet (live).
 #
-# Läuft komplett in GitLab-CI auf dem Docker-Instance-Runner (#3). Auf API-,
-# Frontend- und Webserver wird NICHTS installiert : node und lftp kommen als
-# Container-Images.
+# Build UND Deploy laufen in EINEM Job, damit das große out/-Verzeichnis nicht
+# als Artifact über den GitLab-Server transferiert werden muss (sonst 413
+# "Request Entity Too Large"). lftp wird per apt im node-Image nachgezogen.
+#
+# Läuft auf dem Docker-Instance-Runner (#3). Auf keinem Server wird etwas
+# installiert. Auf den FTP-Webserver braucht man keinen Zugang, nur die Daten.
 #
 # Benötigte CI/CD-Variablen (Settings -> CI/CD -> Variables, "Protected"):
 #   FTP_HOST        z.B. ftp.kidgonet.de  (nur Host, ohne ftp://)
@@ -16,39 +19,34 @@
 # ============================================================================
 
 stages:
-  - build
   - deploy
 
-variables:
-  NEXT_TELEMETRY_DISABLED: "1"
-
-build:website:
-  stage: build
+deploy:website:
+  stage: deploy
   image: node:20-bookworm-slim
+  variables:
+    NEXT_TELEMETRY_DISABLED: "1"
+  # Caches überleben Jobs und sparen Zeit:
+  #  - pnpm-Store: kein erneuter Download aller Pakete
+  #  - Bild-Optimierer: nur geänderte Bilder werden neu optimiert (statt ~4 min)
+  cache:
+    - key: website-pnpm
+      paths:
+        - .pnpm-store/
+    - key: website-images
+      paths:
+        - public/**/nextImageExportOptimizer/
+        - public/next-image-export-optimizer-hashes.json
   before_script:
+    - apt-get update && apt-get install -y --no-install-recommends lftp
     - corepack enable
     - corepack prepare pnpm@10 --activate
+    - pnpm config set store-dir "$CI_PROJECT_DIR/.pnpm-store"
   script:
     - pnpm install --frozen-lockfile
     - pnpm build
     # Sicherstellen, dass die .htaccess wirklich mit im Export liegt
     - test -f out/.htaccess
-  artifacts:
-    paths:
-      - out/
-    expire_in: 1 day
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "main"'
-
-deploy:ftp:
-  stage: deploy
-  image: alpine:3.20
-  needs:
-    - build:website
-  before_script:
-    - apk add --no-cache lftp
-  script:
-    - test -d out
     - |
       lftp -c "
       set ftp:ssl-allow true;
