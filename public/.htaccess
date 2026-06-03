@@ -20,7 +20,7 @@ Options -MultiViews
 
   # 301-Redirects (alte, noch indexierte URLs aus der früheren Live-Seite)
   RewriteRule ^installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/?$ /hilfe/installation-android [R=301,L]
-  RewriteRule ^kindersicherung-handy-2025/?$ /kindersicherung-handy [R=301,L]
+  RewriteRule ^kindersicherung-handy-2025/?$ /elternratgeber/medientipps/kindersicherung-handy-2025 [R=301,L]
 </IfModule>
 
 ErrorDocument 404 /404.html

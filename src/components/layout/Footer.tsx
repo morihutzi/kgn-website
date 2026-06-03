@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
-import { footerLinks, siteConfig } from "@/content/site";
+import { footerLinks, landingPages, siteConfig } from "@/content/site";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-black/10 bg-surface-muted text-text-dark">
-      <Container className="grid grid-cols-1 justify-items-center gap-y-7 py-9 text-center md:grid-cols-[1.7fr_1fr_0.8fr_1.1fr] md:justify-items-stretch md:gap-8 md:py-14 md:text-left">
+      <Container className="grid grid-cols-1 justify-items-center gap-y-7 py-9 text-center md:grid-cols-[1.5fr_0.9fr_0.8fr_1fr_1.1fr] md:justify-items-stretch md:gap-8 md:py-14 md:text-left">
         {/* Slogan */}
         <p className="text-center text-3xl font-extrabold leading-[1.1] text-brand-yellow md:col-span-1 md:text-left md:text-[40px]">
           {sloganLines.map((line, i) => (
@@ -72,6 +72,20 @@ export function Footer() {
         {/* Legal */}
         <FooterColumn label="Legal">
           {footerLinks.legal.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className="text-brand-yellow transition hover:underline"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </FooterColumn>
+
+        {/* SEO-Landingpages — interne Verlinkung, damit sie nicht verwaisen */}
+        <FooterColumn label="Mehr">
+          {landingPages.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}

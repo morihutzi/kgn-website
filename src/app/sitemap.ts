@@ -40,6 +40,7 @@ const staticEntries: StaticEntry[] = [
   { path: "/kindersicherung-iphone", file: "src/app/kindersicherung-iphone/page.tsx", changeFrequency: "monthly", priority: 0.9 },
   { path: "/kindersicherung-android", file: "src/app/kindersicherung-android/page.tsx", changeFrequency: "monthly", priority: 0.9 },
   { path: "/bildschirmzeit-app", file: "src/app/bildschirmzeit-app/page.tsx", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/kinderschutz-app-deutschland", file: "src/app/(landingpages)/kinderschutz-app-deutschland/page.tsx", changeFrequency: "monthly", priority: 0.85 },
   { path: "/was-kann-die-app", file: "src/app/was-kann-die-app/page.tsx", changeFrequency: "monthly", priority: 0.8 },
   { path: "/preise", file: "src/app/preise/page.tsx", changeFrequency: "monthly", priority: 0.8 },
   { path: "/hilfe", file: "src/app/hilfe/page.tsx", changeFrequency: "monthly", priority: 0.7 },

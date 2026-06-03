@@ -70,6 +70,7 @@ export const landingPages: NavLink[] = [
   { label: "Kindersicherung iPhone", href: "/kindersicherung-iphone" },
   { label: "Kindersicherung Android", href: "/kindersicherung-android" },
   { label: "Bildschirmzeit-App", href: "/bildschirmzeit-app" },
+  { label: "Kinderschutz-App aus Deutschland", href: "/kinderschutz-app-deutschland" },
   { label: "Glossar", href: "/glossar" },
 ];
 
