@@ -47,7 +47,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-[15px] font-light text-text-dark transition-colors hover:text-brand-yellow"
+                className="relative text-[16px] font-light text-text-dark transition-colors hover:text-brand-yellow"
               >
                 {item.label}
                 {item.badge && (
@@ -62,7 +62,7 @@ export function Header() {
             href={siteConfig.portalLoginUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[15px] font-light text-text-dark transition-colors hover:text-brand-yellow"
+            className="text-[16px] font-light text-text-dark transition-colors hover:text-brand-yellow"
           >
             Login
           </Link>

@@ -89,7 +89,7 @@ export function MegaMenu({
         aria-haspopup="true"
         aria-expanded={open}
         aria-controls={panelId}
-        className={`inline-flex items-center gap-1 text-[15px] font-light transition-colors ${
+        className={`inline-flex items-center gap-1 text-[16px] font-light transition-colors ${
           open ? "text-brand-yellow" : "text-text-dark hover:text-brand-yellow"
         }`}
       >
