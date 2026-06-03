@@ -97,8 +97,14 @@ export const softwareApplicationSchema: JsonLdData = {
     },
   ],
   description:
-    "Kindersicherungs-App für iOS und Android. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren.",
+    "DSGVO-konforme Kindersicherungs-App für iOS und Android, in Deutschland entwickelt mit Servern und Datenspeicherung ausschließlich in Deutschland. Bildschirmzeit begrenzen, Webfilter einrichten, Standort verfolgen und Apps sperren.",
   inLanguage: "de-DE",
+  countryOfOrigin: {
+    "@type": "Country",
+    name: "Deutschland",
+  },
+  author: { "@id": "https://www.kidgonet.de/#organization" },
+  publisher: { "@id": "https://www.kidgonet.de/#organization" },
   url: "https://www.kidgonet.de",
   downloadUrl: [siteConfig.appStoreUrl, siteConfig.playStoreUrl],
   featureList: [

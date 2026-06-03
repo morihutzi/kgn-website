@@ -14,6 +14,11 @@ import {
   softwareApplicationSchema,
   faqPageSchema,
 } from "@/components/seo/JsonLd";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import {
+  getRelatedArticlesForFeature,
+  type FeatureSlug,
+} from "@/lib/elternratgeber/feature-mapping";
 import { faq } from "@/content/home";
 
 export type LandingContent = {
@@ -37,6 +42,8 @@ export type LandingContent = {
   faqHeadline: string;
   /** Keyword-spezifische FAQ-Eintraege */
   faqs: Array<{ question: string; answer: string }>;
+  /** Optional: passende Ratgeber-Artikel zu einer Funktion einblenden (interne Verzahnung). */
+  relatedFeature?: FeatureSlug;
 };
 
 export function KeywordLandingPage({ content }: { content: LandingContent }) {
@@ -78,6 +85,12 @@ export function KeywordLandingPage({ content }: { content: LandingContent }) {
         headline={content.faqHeadline}
         faqs={content.faqs}
       />
+      {content.relatedFeature && (
+        <RelatedArticles
+          articles={getRelatedArticlesForFeature(content.relatedFeature)}
+          heading="Passende Tipps aus dem Elternratgeber"
+        />
+      )}
       <FAQ />
       <FinalCTA />
     </>

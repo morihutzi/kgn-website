@@ -162,6 +162,16 @@ export const faq: { headline: string; items: FaqItem[] } = {
         "Nein, Kidgonet gibt keine Daten Deines Kindes an Dritte weiter. Der Schutz der Privatsphäre hat für uns höchste Priorität. Alle persönlichen Daten werden vertraulich behandelt und ausschließlich für den vorgesehenen Zweck verwendet.",
     },
     {
+      question: "Ist Kidgonet DSGVO-konform und wo werden die Daten gespeichert?",
+      answer:
+        "Ja, Kidgonet ist vollständig DSGVO-konform. Alle Daten werden ausschließlich auf Servern in Deutschland gespeichert und verarbeitet, nicht weitergegeben und nicht an Werbenetzwerke verkauft. Der Webfilter arbeitet DNS-basiert direkt auf dem Kindergerät, ohne den Datenverkehr über externe Server zu leiten.",
+    },
+    {
+      question: "Wurde Kidgonet in Deutschland entwickelt?",
+      answer:
+        "Ja. Kidgonet wird von der Kidgonet GmbH in Brunnthal bei München entwickelt und betrieben. Für das Engagement im Kinderschutz wurde Kidgonet 2025 mit dem Bayerischen Digitalpreis ausgezeichnet.",
+    },
+    {
       question: "Wie viele Kinder kann ich über das Elternportal steuern?",
       answer:
         "Du kannst unendlich viele Kinder ins Elternportal einpflegen und alle ihre Geräte zentral verwalten.",

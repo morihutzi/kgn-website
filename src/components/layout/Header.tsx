@@ -22,6 +22,7 @@ export function Header() {
             width={600}
             height={82}
             priority
+            placeholder="empty"
             className="h-[18px] w-auto sm:h-5 md:h-6"
           />
         </Link>

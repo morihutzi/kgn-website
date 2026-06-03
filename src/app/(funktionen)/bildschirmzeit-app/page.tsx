@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 const content: LandingContent = {
   slug: "bildschirmzeit-app",
   breadcrumbName: "Bildschirmzeit-App",
+  relatedFeature: "bildschirmzeit",
   heroHeadline: (
     <>
       Bildschirmzeit-App<br /> für Kinder.

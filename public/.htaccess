@@ -18,8 +18,9 @@ Options -MultiViews
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
 
-  # 301-Redirect (alte URL aus der Live-Seite)
+  # 301-Redirects (alte, noch indexierte URLs aus der früheren Live-Seite)
   RewriteRule ^installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/?$ /hilfe/installation-android [R=301,L]
+  RewriteRule ^kindersicherung-handy-2025/?$ /kindersicherung-handy [R=301,L]
 </IfModule>
 
 ErrorDocument 404 /404.html
@@ -30,6 +31,9 @@ ErrorDocument 404 /404.html
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # HSTS: erzwingt HTTPS fuer ein Jahr inkl. Subdomains. Nur sinnvoll, solange
+  # die Seite dauerhaft per HTTPS ausgeliefert wird (hier der Fall).
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
 # --- Caching ---------------------------------------------------------------

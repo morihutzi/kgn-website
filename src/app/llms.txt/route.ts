@@ -5,11 +5,22 @@ export const dynamic = "force-static";
 export function GET() {
   const content = `# Kidgonet
 
-> Kinderschutz-App für iOS und Android. Eltern schützen ihre Kinder mit Bildschirmzeitlimits, altersgerechtem Webfilter, App-Blocker und Standortverfolgung.
+> DSGVO-konforme Kinderschutz-App für iOS und Android, in Deutschland entwickelt und mit Servern ausschließlich in Deutschland. Eltern schützen ihre Kinder mit Bildschirmzeitlimits, altersgerechtem Webfilter, App-Blocker und Standortverfolgung.
 
 Kidgonet ist eine Kindersicherungs-App für Smartphones und Tablets. Eltern richten über das Elternportal (Web, iOS, Android) Regeln für die Geräte ihrer Kinder ein. Die Kinderschutz-App läuft als DNS-basierter Webfilter direkt auf dem Kinderhandy, ohne den Traffic durch externe Server zu leiten. Server und Datenspeicherung ausschließlich in Deutschland.
 
+Kidgonet wird von der Kidgonet GmbH in Brunnthal bei München entwickelt und betrieben und wurde 2025 mit dem Bayerischen Digitalpreis ausgezeichnet.
+
 Botschafter: Manuel Neuer (Torhüter FC Bayern München und DFB-Nationalmannschaft).
+
+## Datenschutz & Made in Germany
+
+- DSGVO-konform: vollständig konform mit der EU-Datenschutz-Grundverordnung
+- Server in Deutschland: alle Daten werden ausschließlich in Deutschland gespeichert und verarbeitet
+- In Deutschland entwickelt: Entwicklung und Betrieb durch die Kidgonet GmbH, Brunnthal bei München
+- Keine Datenweitergabe: keine Weitergabe oder Verkauf von Kinderdaten an Werbenetzwerke oder Dritte
+- DNS-basierter Webfilter direkt auf dem Gerät, ohne Umleitung des Datenverkehrs über externe Server
+- Ausgezeichnet mit dem Bayerischen Digitalpreis 2025 für Engagement im Kinderschutz
 
 ## Funktionen
 

@@ -36,13 +36,30 @@ const FEATURE_TO_ARTICLE_SLUGS: Record<FeatureSlug, string[]> = {
   ],
 };
 
-export function getRelatedArticlesForFeature(
-  feature: FeatureSlug,
-): ArticleSummary[] {
-  const slugs = FEATURE_TO_ARTICLE_SLUGS[feature];
+/** Artikel-Zusammenfassungen zu einer expliziten Slug-Liste (Reihenfolge bleibt erhalten). */
+export function getArticleSummariesBySlugs(slugs: string[]): ArticleSummary[] {
   const all = getAllArticles();
   return slugs
     .map((slug) => all.find((a) => a.slug === slug))
     .filter((a): a is NonNullable<typeof a> => Boolean(a))
     .map(toSummary);
+}
+
+export function getRelatedArticlesForFeature(
+  feature: FeatureSlug,
+): ArticleSummary[] {
+  return getArticleSummariesBySlugs(FEATURE_TO_ARTICLE_SLUGS[feature]);
+}
+
+/**
+ * Kuratierte Artikel-Auswahl fuer die Funktions-Uebersichtsseite
+ * (`/was-kann-die-app`): je ein starker Beitrag aus den Kernthemen
+ * Bildschirmzeit, sicheres Surfen und App-Auswahl.
+ */
+export function getOverviewRelatedArticles(): ArticleSummary[] {
+  return getArticleSummariesBySlugs([
+    "bildschirmzeit-fuer-kinder-was-eltern-wissen-muessen",
+    "sicher-surfen-so-schuetzt-du-dein-kind-im-netz",
+    "welche-apps-sind-2025-die-besten-fuer-kinder-unsere-top-auswahl",
+  ]);
 }

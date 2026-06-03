@@ -1,4 +1,22 @@
+# Alle regulären Suchmaschinen-Crawler
 User-agent: *
+Allow: /
+Disallow: /newsletter/
+
+# KI-Antwortmaschinen ausdrücklich erlauben (GEO): Inhalte dürfen für
+# generative Antworten und KI-Suche genutzt und zitiert werden.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: CCBot
+User-agent: Amazonbot
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /newsletter/
 

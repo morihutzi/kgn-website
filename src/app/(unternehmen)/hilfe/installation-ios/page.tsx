@@ -11,6 +11,8 @@ import {
   ClosingCTA,
   GuideBody,
 } from "@/components/hilfe/InstallGuide";
+import Link from "next/link";
+import { Container } from "@/components/layout/Container";
 import { JsonLd, howToSchema } from "@/components/seo/JsonLd";
 
 const HOW_TO_STEPS = [
@@ -316,6 +318,19 @@ export default function InstallationIosPage() {
           alt: "Kidgonet Kind-Startbildschirm",
         }}
       />
+
+      <Container>
+        <p className="pb-12 text-center text-sm text-text-dark/60">
+          Welche Daten Kidgonet auf dem iPhone verarbeitet, steht in der{" "}
+          <Link
+            href="/datenschutz-ios-app"
+            className="font-semibold text-text-dark underline decoration-brand-yellow decoration-2 underline-offset-2"
+          >
+            Datenschutzerklärung für die iOS-App
+          </Link>
+          .
+        </p>
+      </Container>
     </>
   );
 }

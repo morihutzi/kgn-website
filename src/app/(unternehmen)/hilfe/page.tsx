@@ -3,6 +3,11 @@ import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { HilfeFaqTabs } from "@/components/sections/HilfeFaqTabs";
 import { hilfeCategories } from "@/content/hilfe";
+import { JsonLd, faqPageSchema } from "@/components/seo/JsonLd";
+
+// Alle sichtbaren Hilfe-FAQs als FAQPage-Schema (1:1 aus hilfeCategories,
+// damit strukturierte Daten und sichtbarer Inhalt exakt uebereinstimmen).
+const hilfeFaqItems = hilfeCategories.flatMap((c) => c.items);
 
 export const metadata: Metadata = {
   title: "Hilfe – Installation & FAQs",
@@ -20,6 +25,8 @@ export const metadata: Metadata = {
 export default function HilfePage() {
   return (
     <>
+      <JsonLd data={faqPageSchema(hilfeFaqItems)} />
+
       {/* ── 1. HERO ───────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-brand-yellow">
         {/* Decorative dots */}

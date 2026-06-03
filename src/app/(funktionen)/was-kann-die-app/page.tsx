@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { CheckBadge } from "@/components/ui/CheckBadge";
 import { StoreBadges } from "@/components/ui/StoreBadges";
 import { FinalCTA } from "@/components/sections/FinalCTA";
+import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
+import { getOverviewRelatedArticles } from "@/lib/elternratgeber/feature-mapping";
 import { FeatureCarousel } from "@/components/sections/FeatureCarousel";
 import { ChildviewMockupScaled } from "@/components/mockups/ChildviewMockupScaled";
 import { ConnectDevicesMockupScaled } from "@/components/mockups/ConnectDevicesMockupScaled";
@@ -66,6 +68,10 @@ export default function WasKannDieAppPage() {
       <NgkSection />
       <MoreInfoSection />
       <FeaturePagesSection />
+      <RelatedArticles
+        articles={getOverviewRelatedArticles()}
+        heading="Mehr Wissen aus dem Elternratgeber"
+      />
       <FinalCTA />
     </>
   );
