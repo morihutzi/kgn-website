@@ -14,6 +14,13 @@ Options -MultiViews
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Trailing-Slash -> kanonische URL ohne Slash (301). Ohne das laeuft /preise/
+  # in den RSC-Ordner /preise/ (kein index.html) und Apache liefert 403 Forbidden.
+  # $1 stammt aus dem RewriteRule-Pattern (ohne Slash); die Bedingung greift nur,
+  # wenn dazu eine .html existiert, damit echte Asset-Ordner unberuehrt bleiben.
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/$ /$1 [R=301,L]
+
   # /preise -> /preise.html (auch wenn ein RSC-Ordner /preise/ existiert)
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
