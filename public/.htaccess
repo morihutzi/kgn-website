@@ -25,6 +25,10 @@ Options -MultiViews
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
 
+  # Falsch geschriebene URL (grosses D) aus aelteren iOS-App-Builds abfangen.
+  # Der Server ist case-sensitiv, daher liefert /Datenschutz-ios-app/ sonst 404.
+  RewriteRule ^Datenschutz-ios-app/?$ /datenschutz-ios-app [R=301,L]
+
   # 301-Redirects (alte, noch indexierte URLs aus der früheren Live-Seite)
   RewriteRule ^installation-der-kidgonet-app-auf-android-geraeten-schnell-einfach/?$ /hilfe/installation-android [R=301,L]
   RewriteRule ^kindersicherung-handy-2025/?$ /elternratgeber/medientipps/kindersicherung-handy-2025 [R=301,L]
