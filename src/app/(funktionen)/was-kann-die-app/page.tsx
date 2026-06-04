@@ -234,7 +234,7 @@ function FeatureGridSection() {
       className="bg-[#F4F0EB] pt-8 pb-10 md:py-14"
     >
       <Section maxWidth={1080}>
-        <SectionHeading id={headlineId} size="small" align="right">
+        <SectionHeading id={headlineId} size="small" align="center">
           Das kann die Kidgonet
           <br className="md:hidden" /> Kinderschutz App
         </SectionHeading>
