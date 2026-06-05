@@ -68,6 +68,7 @@ export const primaryNav: NavLink[] = [
 export const landingPages: NavLink[] = [
   { label: "Kindersicherung Handy", href: "/kindersicherung-handy" },
   { label: "Kindersicherung iPhone", href: "/kindersicherung-iphone" },
+  { label: "Kinderschutz App fürs iPhone", href: "/kinderschutz-app-iphone" },
   { label: "Kindersicherung Android", href: "/kindersicherung-android" },
   { label: "Bildschirmzeit-App", href: "/bildschirmzeit-app" },
   { label: "Kinderschutz-App aus Deutschland", href: "/kinderschutz-app-deutschland" },
