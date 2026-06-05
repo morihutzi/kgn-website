@@ -105,6 +105,7 @@ const FEATURE_META: Record<FeatureSlug, FeatureMeta> = {
 const ARTICLE_EXTRA_FEATURES: Record<string, FeatureSlug[]> = {
   "kindersicherung-am-handy": ["bildschirmzeit", "webfilter", "apps-freigeben"],
   "kindersicherung-handy-2025": ["webfilter", "apps-freigeben", "standort"],
+  "bildschirmzeit-iphone-begrenzen": ["bildschirmzeit", "apps-freigeben"],
 };
 
 /**
