@@ -32,7 +32,7 @@ const surfaceScope = {
   "--radius-3xl": "1.75rem",
 } as React.CSSProperties;
 
-export default function StarkAmBallLayout({
+export default function DigitaleBalanceLayout({
   children,
 }: {
   children: React.ReactNode;

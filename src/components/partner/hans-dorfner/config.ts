@@ -13,14 +13,14 @@ export const dorfnerConfig: TenantConfig = {
   meta: {
     title: 'Initiative Digitale Balance · Hans Dorfner × Kidgonet',
     description:
-      'Eine Co-Initiative der Hans Dorfner Fußballschule und Kidgonet für mehr Bewegung und gesunde Mediennutzung im Familienalltag.',
+      'Unter dem Motto „Mehr Bewegung. Weniger Screentime." unterstützt die Initiative Digitale Balance Familien dabei, digitale Medien bewusster zu nutzen und Kindern mehr Raum für Sport, Spiel und gesunde Routinen zu geben.',
   },
 
   hero: {
-    eyebrow: 'Initiative Digitale Balance · Hans Dorfner Fußballschule × Kidgonet',
-    headline: 'Klare Regeln. Auf dem Platz und am Smartphone.',
+    eyebrow: 'Initiative Digitale Balance',
+    headline: 'Mehr Bewegung. Weniger Screentime.',
     subheadline:
-      'Kinder bewegen sich heute weniger als jede Generation vor ihnen, und der Bildschirm ist einer der Gründe. Hans Dorfner und Kidgonet starten gemeinsam eine Initiative für digitale Balance im Nachwuchssport. Mit dem Medienführerschein und drei Monaten Kidgonet App, kostenlos für Familien der Fußballschule.',
+      'Eine gemeinsame Initiative der Hans Dorfner Fußballschule und Kidgonet für Bewegung, Medienkompetenz und gesunde Routinen im Familienalltag.',
     primaryCta: {
       label: 'Mehr für Eltern',
       href: '#fuer-eltern',
@@ -130,7 +130,7 @@ export const dorfnerConfig: TenantConfig = {
     attribution: 'Manuel Neuer, Weltmeister und Vater',
     cta: {
       label: 'Jetzt kostenlos starten',
-      href: 'https://portal.kidgonet.de/welcome',
+      href: 'https://portal.kidgonet.de/register?campaign=digitale-balance',
       external: true,
     },
   },

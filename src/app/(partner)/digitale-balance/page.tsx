@@ -8,11 +8,11 @@ import { Medienfuehrerschein } from "@/components/sections/Medienfuehrerschein";
 import { dorfnerConfig } from "@/components/partner/hans-dorfner/config";
 
 /**
- * Partner-Landingpage "Stark am Ball" — Co-Initiative der Hans Dorfner
- * Fußballschule und Kidgonet. 1:1 übernommen aus HansDorfnerInitative/web
- * (Tenant "dorfner"), hier als feste Route /stark-am-ball.
+ * Partner-Landingpage "Initiative Digitale Balance" — Co-Initiative der Hans
+ * Dorfner Fußballschule und Kidgonet. 1:1 übernommen aus HansDorfnerInitative/web
+ * (Tenant "dorfner"), hier als feste Route /digitale-balance.
  */
-export default function StarkAmBallPage() {
+export default function DigitaleBalancePage() {
   const tenant = dorfnerConfig;
 
   return (
