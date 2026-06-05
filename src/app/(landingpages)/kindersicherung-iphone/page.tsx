@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   KeywordLandingPage,
   type LandingContent,
@@ -48,6 +49,14 @@ const content: LandingContent = {
       Familienfreigabe. Die Einrichtung dauert ca. 5 Minuten, eine{" "}
       <strong>Schritt-für-Schritt-Anleitung</strong> findest du unter „Hilfe →
       Installation iOS".
+    </>,
+    <>
+      Hat dein Kind ein Android-Gerät oder habt ihr verschiedene Smartphones im
+      Einsatz? Einen plattformübergreifenden Überblick gibt die Seite zur{" "}
+      <Link href="/kindersicherung-handy" className="font-semibold text-brand-yellow underline">
+        Kindersicherung fürs Handy
+      </Link>
+      .
     </>,
   ],
   faqEyebrow: "Häufige Fragen Kindersicherung iPhone",

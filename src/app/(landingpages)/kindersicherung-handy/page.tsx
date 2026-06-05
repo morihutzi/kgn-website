@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   KeywordLandingPage,
   type LandingContent,
@@ -45,6 +46,87 @@ const content: LandingContent = {
       entwickelt: in Zusammenarbeit mit Experten, Pädagogen und dem LKA
       München, mit Servern in Deutschland und voller DSGVO-Konformität.
     </>,
+  ],
+  sections: [
+    {
+      heading: "Kindersicherung für iPhone und Android — eine App für beide",
+      body: [
+        <>
+          Die meisten Familien haben gemischte Geräte: ein iPhone hier, ein
+          Android-Handy dort. Kidgonet verwaltet beide Welten aus einem einzigen
+          Eltern-Konto. Auf iOS ist der Schutz über die Apple-Familienfreigabe
+          abgesichert, auf Android über die Geräteverwaltung — die Funktionen
+          (Bildschirmzeit, Webfilter, App-Steuerung, Standort) sind auf beiden
+          Plattformen dieselben.
+        </>,
+        <>
+          Je nach Gerät deines Kindes findest du eine ausführliche Anleitung auf
+          unseren spezialisierten Seiten zur{" "}
+          <Link href="/kindersicherung-iphone" className="font-semibold text-brand-yellow underline">
+            Kindersicherung fürs iPhone
+          </Link>{" "}
+          und zur{" "}
+          <Link href="/kindersicherung-android" className="font-semibold text-brand-yellow underline">
+            Kindersicherung für Android
+          </Link>
+          .
+        </>,
+      ],
+    },
+    {
+      heading: "Welche Funktionen eine Handy-Kindersicherung abdecken sollte",
+      body: [
+        <>
+          Eine vollständige Kindersicherung fürs Handy deckt vier Bereiche ab:
+          <strong> Bildschirmzeit</strong> mit Tageslimits und Zeitplänen,
+          einen <strong>Webfilter</strong> gegen ungeeignete Webseiten, die{" "}
+          <strong>App-Steuerung</strong> für Freigaben und Sperren einzelner
+          Apps sowie die <strong>Standortabfrage</strong> für mehr Sicherheit
+          unterwegs. Kidgonet vereint alle vier in einer App — du musst keine
+          getrennten Tools kombinieren.
+        </>,
+        <>
+          Wichtig ist die Balance: Der Webfilter wächst mit dem Alter des Kindes
+          mit, Lern- und Notfall-Apps lassen sich auch während einer Sperre
+          freigeben, und der Standort wird nur auf aktive Anfrage übertragen —
+          nicht dauerhaft im Hintergrund.
+        </>,
+      ],
+    },
+    {
+      heading: "Kindersicherung auf dem Handy einrichten",
+      body: [
+        <>
+          Die Einrichtung dauert rund fünf Minuten: Kidgonet auf dem Handy des
+          Kindes installieren, das Gerät per QR-Code oder Pairing-Code mit dem
+          Eltern-Konto verbinden und anschließend die Regeln festlegen.
+          Änderungen an Bildschirmzeit oder Webfilter wirken in Echtzeit, ohne
+          dass du das Kind-Gerät erneut in die Hand nehmen musst.
+        </>,
+        <>
+          Alle Einstellungen verwaltest du im Eltern-Portal — am eigenen
+          Smartphone oder im Browser. So behältst du auch mehrere Kinder mit
+          unterschiedlichen Geräten zentral im Blick.
+        </>,
+      ],
+    },
+    {
+      heading: "Datenschutz: warum Herkunft und Serverstandort zählen",
+      body: [
+        <>
+          Eine Kindersicherung verarbeitet sensible Daten über dein Kind.
+          Kidgonet speichert diese ausschließlich auf Servern in Deutschland,
+          ist vollständig DSGVO-konform und gibt keine Daten an Dritte weiter.
+          Das ist ein klarer Unterschied zu vielen internationalen Anbietern,
+          bei denen Serverstandort und Datenverwendung unklar bleiben.
+        </>,
+      ],
+    },
+  ],
+  relatedArticleSlugs: [
+    "kindersicherung-am-handy",
+    "kindersicherung-handy-2025",
+    "sicher-surfen-so-schuetzt-du-dein-kind-im-netz",
   ],
   faqEyebrow: "Häufige Fragen zur Kindersicherung",
   faqHeadline: "Kindersicherung Handy — was Eltern wissen sollten.",

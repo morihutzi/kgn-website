@@ -17,6 +17,7 @@ import {
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import {
   getRelatedArticlesForFeature,
+  getArticleSummariesBySlugs,
   type FeatureSlug,
 } from "@/lib/elternratgeber/feature-mapping";
 import { faq } from "@/content/home";
@@ -36,6 +37,8 @@ export type LandingContent = {
   headline: string;
   /** 1–3 Absaetze fuer den SEO-Content-Block */
   paragraphs: React.ReactNode[];
+  /** Optionale H2-Abschnitte unter den Intro-Absaetzen (mehr Texttiefe + Struktur). */
+  sections?: Array<{ heading: string; body: React.ReactNode[] }>;
   /** Eyebrow ueber dem FAQ-Block */
   faqEyebrow: string;
   /** Ueberschrift ueber dem FAQ-Block */
@@ -44,6 +47,12 @@ export type LandingContent = {
   faqs: Array<{ question: string; answer: string }>;
   /** Optional: passende Ratgeber-Artikel zu einer Funktion einblenden (interne Verzahnung). */
   relatedFeature?: FeatureSlug;
+  /**
+   * Optional: explizite Artikel-Slugs fuer den "Passende Tipps"-Block.
+   * Hat Vorrang vor `relatedFeature`. Fuer Keyword-Seiten ohne eigene Funktionsseite,
+   * die gezielt auf thematisch passende Artikel verlinken sollen.
+   */
+  relatedArticleSlugs?: string[];
 };
 
 export function KeywordLandingPage({ content }: { content: LandingContent }) {
@@ -75,6 +84,7 @@ export function KeywordLandingPage({ content }: { content: LandingContent }) {
         eyebrow={content.eyebrow}
         headline={content.headline}
         paragraphs={content.paragraphs}
+        sections={content.sections}
       />
       <Steps />
       <ManuelNeuer />
@@ -85,12 +95,17 @@ export function KeywordLandingPage({ content }: { content: LandingContent }) {
         headline={content.faqHeadline}
         faqs={content.faqs}
       />
-      {content.relatedFeature && (
+      {content.relatedArticleSlugs ? (
+        <RelatedArticles
+          articles={getArticleSummariesBySlugs(content.relatedArticleSlugs)}
+          heading="Passende Tipps aus dem Elternratgeber"
+        />
+      ) : content.relatedFeature ? (
         <RelatedArticles
           articles={getRelatedArticlesForFeature(content.relatedFeature)}
           heading="Passende Tipps aus dem Elternratgeber"
         />
-      )}
+      ) : null}
       <FAQ />
       <FinalCTA />
     </>
@@ -103,10 +118,12 @@ function SeoBlock({
   eyebrow,
   headline,
   paragraphs,
+  sections,
 }: {
   eyebrow: string;
   headline: string;
   paragraphs: React.ReactNode[];
+  sections?: Array<{ heading: string; body: React.ReactNode[] }>;
 }) {
   return (
     <section className="bg-white py-12 md:py-16">
@@ -123,6 +140,19 @@ function SeoBlock({
               <p key={idx}>{p}</p>
             ))}
           </div>
+
+          {sections?.map((s, sIdx) => (
+            <div key={sIdx} className="mt-10">
+              <h3 className="text-xl font-extrabold leading-tight text-text-dark md:text-2xl">
+                {s.heading}
+              </h3>
+              <div className="mt-3 space-y-4 text-base leading-relaxed text-text-dark/80 md:text-lg">
+                {s.body.map((p, idx) => (
+                  <p key={idx}>{p}</p>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
     </section>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   KeywordLandingPage,
   type LandingContent,
@@ -47,6 +48,14 @@ const content: LandingContent = {
       Unterstützt werden alle aktuellen Android-Versionen. Die Einrichtung
       dauert ca. 5 Minuten und führt dich Schritt für Schritt durch jede
       Berechtigung — siehe „Hilfe → Installation Android".
+    </>,
+    <>
+      Nutzt dein Kind ein iPhone oder habt ihr gemischte Geräte? Einen
+      plattformübergreifenden Überblick gibt die Seite zur{" "}
+      <Link href="/kindersicherung-handy" className="font-semibold text-brand-yellow underline">
+        Kindersicherung fürs Handy
+      </Link>
+      .
     </>,
   ],
   faqEyebrow: "Häufige Fragen Kindersicherung Android",
