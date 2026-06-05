@@ -156,7 +156,37 @@ const content: LandingContent = {
       answer:
         "Kidgonet unterstützt alle aktuellen iPhones (iOS 16+) und Android-Geräte. Du kannst Geräte mit unterschiedlichen Betriebssystemen aus einem Eltern-Konto verwalten — z.B. dein iPhone als Eltern-Gerät und das Android-Handy deines Kindes.",
     },
+    {
+      question: "Gibt es eine kostenlose Kindersicherung fürs Handy?",
+      answer:
+        "Apple (Bildschirmzeit) und Google (Family Link) bringen kostenlose Bordmittel mit, die aber je System getrennt sind und keinen plattformübergreifenden Webfilter bieten. Kidgonet vereint iOS und Android in einer App und lässt sich kostenlos testen, bevor du dich für ein Abo entscheidest.",
+    },
+    {
+      question: "Ab welchem Alter ist eine Kindersicherung fürs Handy sinnvoll?",
+      answer:
+        "Sinnvoll ist sie ab dem ersten eigenen Gerät — bei vielen Kindern also schon im Grundschulalter. Wichtiger als das genaue Alter sind altersgerechte Einstellungen: Der Webfilter und die Bildschirmzeit-Regeln von Kidgonet lassen sich Schritt für Schritt lockern, wenn dein Kind älter und erfahrener wird.",
+    },
   ],
+  howTo: {
+    name: "Kindersicherung auf dem Handy einrichten",
+    description:
+      "In drei Schritten richtest du auf dem iPhone oder Android-Handy deines Kindes eine Kindersicherung mit Bildschirmzeit, Webfilter und App-Steuerung ein.",
+    totalTime: "PT5M",
+    steps: [
+      {
+        name: "App installieren",
+        text: "Installiere Kidgonet auf dem Handy deines Kindes — verfügbar für iOS und Android.",
+      },
+      {
+        name: "Mit dem Eltern-Konto verbinden",
+        text: "Verbinde das Gerät per QR-Code, Pairing-Code oder Login mit deinem Eltern-Konto.",
+      },
+      {
+        name: "Regeln festlegen",
+        text: "Lege Bildschirmzeit, Webfilter und App-Freigaben fest. Die komplette Einrichtung dauert ca. 5 Minuten.",
+      },
+    ],
+  },
 };
 
 export default function KindersicherungHandyPage() {

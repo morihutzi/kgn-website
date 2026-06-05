@@ -13,6 +13,7 @@ import {
   breadcrumbSchema,
   softwareApplicationSchema,
   faqPageSchema,
+  howToSchema,
 } from "@/components/seo/JsonLd";
 import { RelatedArticles } from "@/components/elternratgeber/RelatedArticles";
 import {
@@ -45,6 +46,17 @@ export type LandingContent = {
   faqHeadline: string;
   /** Keyword-spezifische FAQ-Eintraege */
   faqs: Array<{ question: string; answer: string }>;
+  /**
+   * Optional: HowTo-Schema (z.B. "Kindersicherung einrichten") fuer ein
+   * Schritt-fuer-Schritt-Rich-Result. Nur ausgeben, wenn die Schritte auch
+   * inhaltlich auf der Seite vorkommen (Richtlinienkonformitaet).
+   */
+  howTo?: {
+    name: string;
+    description: string;
+    totalTime?: string;
+    steps: Array<{ name: string; text: string }>;
+  };
   /** Optional: passende Ratgeber-Artikel zu einer Funktion einblenden (interne Verzahnung). */
   relatedFeature?: FeatureSlug;
   /**
@@ -74,6 +86,7 @@ export function KeywordLandingPage({ content }: { content: LandingContent }) {
           ...faq.items.map((i) => ({ question: i.question, answer: i.answer })),
         ])}
       />
+      {content.howTo && <JsonLd data={howToSchema(content.howTo)} />}
 
       <Hero
         headline={content.heroHeadline}

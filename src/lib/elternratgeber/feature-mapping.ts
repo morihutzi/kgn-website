@@ -97,14 +97,31 @@ const FEATURE_META: Record<FeatureSlug, FeatureMeta> = {
 };
 
 /**
+ * Zusaetzliche Artikel->Funktionsseiten-Verlinkung fuer Beitraege, die NICHT
+ * in den kuratierten Related-Buckets (FEATURE_TO_ARTICLE_SLUGS) stehen, etwa
+ * Keyword-Artikel. Wirkt nur in der Artikel->Funktion-Richtung und beeinflusst
+ * die Related-Listen der Funktionsseiten NICHT.
+ */
+const ARTICLE_EXTRA_FEATURES: Record<string, FeatureSlug[]> = {
+  "kindersicherung-am-handy": ["bildschirmzeit", "webfilter", "apps-freigeben"],
+  "kindersicherung-handy-2025": ["webfilter", "apps-freigeben", "standort"],
+};
+
+/**
  * Umkehrung des Feature-Mappings: zu welchen Funktionsseiten passt dieser
- * Artikel? Liefert nur Treffer fuer die explizit gemappten Artikel, sonst [].
- * Quelle ist FEATURE_TO_ARTICLE_SLUGS, es wird kein Inhalt erfunden.
+ * Artikel? Quelle sind FEATURE_TO_ARTICLE_SLUGS (kuratierte Buckets) und
+ * ARTICLE_EXTRA_FEATURES (zusaetzliche Verlinkung). Es wird kein Inhalt
+ * erfunden, nur explizit gemappte Funktionsseiten geliefert, sonst [].
  */
 export function getFeaturesForArticleSlug(slug: string): FeatureMeta[] {
-  return (Object.entries(FEATURE_TO_ARTICLE_SLUGS) as [FeatureSlug, string[]][])
+  const fromBuckets = (
+    Object.entries(FEATURE_TO_ARTICLE_SLUGS) as [FeatureSlug, string[]][]
+  )
     .filter(([, slugs]) => slugs.includes(slug))
-    .map(([feature]) => FEATURE_META[feature]);
+    .map(([feature]) => feature);
+  const merged = [...fromBuckets, ...(ARTICLE_EXTRA_FEATURES[slug] ?? [])];
+  // Duplikate entfernen, Reihenfolge stabil halten.
+  return [...new Set(merged)].map((feature) => FEATURE_META[feature]);
 }
 
 /**
