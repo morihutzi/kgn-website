@@ -20,7 +20,7 @@ export function Testimonial({ tenant }: TestimonialProps) {
   if (!testimonial) return null
 
   return (
-    <section className="relative overflow-hidden bg-surface py-12 sm:py-20">
+    <section className="relative overflow-hidden bg-white py-12 sm:py-20">
       {/* Dezentes Hintergrundbild (1:1 von kidgonet.de — Banner_2-1) rechts,
        * mit Mask-Gradient nach links verlaufend, damit die Schrift links auf
        * sauberem Surface liegt. */}

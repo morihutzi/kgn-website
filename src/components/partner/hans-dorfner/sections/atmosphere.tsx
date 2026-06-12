@@ -14,7 +14,7 @@ export function Atmosphere({ tenant }: AtmosphereProps) {
   const { atmosphere } = tenant
 
   return (
-    <section className="bg-white py-12 sm:py-20">
+    <section className="bg-surface py-12 sm:py-20">
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <figure className="overflow-hidden rounded-2xl sm:rounded-3xl">
           <div className="relative aspect-[4/3] w-full sm:aspect-[21/9]">

@@ -22,8 +22,11 @@ export const dorfnerConfig: TenantConfig = {
     subheadline:
       'Eine gemeinsame Initiative der Hans Dorfner Fußballschule und Kidgonet für Bewegung, Medienkompetenz und gesunde Routinen im Familienalltag.',
     primaryCta: {
-      label: 'Mehr für Eltern',
-      href: '#fuer-eltern',
+      label: 'Jetzt 30 Tage kostenlos testen',
+      href: 'https://portal.kidgonet.de/register?campaign=digitale-balance',
+      external: true,
+      microcopy:
+        'Mit dem Code aus dem Camp: 30 Tage gratis, danach 30 % Rabatt aufs Jahresabo.',
     },
     image: {
       src: '/partner/hans-dorfner/images/camp-3tage.jpg',
@@ -33,7 +36,7 @@ export const dorfnerConfig: TenantConfig = {
 
   coInitiative: {
     headline: 'Eine Antwort von zwei Seiten.',
-    body: 'Hans Dorfner sieht es im Camp, Kidgonet sieht es im Familienalltag: Bildschirmzeit verdrängt Bewegung, und Eltern fehlt ein klarer Weg. Unsere gemeinsame Antwort: Aufklärung für die Kinder und Werkzeuge für die Eltern. Kostenlos für jede Familie der Fußballschule.',
+    body: 'Hans Dorfner sieht es im Camp, Kidgonet sieht es im Familienalltag: Bildschirmzeit verdrängt Bewegung, und Eltern fehlt ein klarer Weg. Unsere gemeinsame Antwort: Aufklärung für die Kinder und Werkzeuge für die Eltern. Mit dem Code aus dem Camp: 30 Tage kostenlos testen, danach 30 % Rabatt aufs Jahresabo.',
     closing: 'Damit zu Hause weniger diskutiert wird. Und auf dem Platz mehr gespielt.',
   },
 
@@ -49,7 +52,7 @@ export const dorfnerConfig: TenantConfig = {
   forParents: {
     headline: 'Das bekommen Sie als Familie.',
     subheadline:
-      'Das Lernprogramm für die Kinder, die App für die Eltern. Beides kostenlos für Familien der Hans Dorfner Fußballschule.',
+      'Damit Ihr Kind mit einem verantwortungsvollen Medienkonsum aufwächst und sich mehr bewegt. Mit dem Code aus dem Camp 30 Tage kostenlos testen.',
     mediaLicense: {
       eyebrow: 'Der Medienführerschein',
       title: 'Spielerisch lernen, was im Netz zählt.',
@@ -109,8 +112,8 @@ export const dorfnerConfig: TenantConfig = {
         },
       ],
       link: {
-        label: 'Zur Kidgonet App',
-        href: 'https://www.kidgonet.de',
+        label: 'Jetzt kostenlos testen',
+        href: 'https://portal.kidgonet.de/register?campaign=digitale-balance',
         external: true,
       },
     },
@@ -129,7 +132,7 @@ export const dorfnerConfig: TenantConfig = {
     quote: 'Kidgonet vereint pädagogische Verantwortung und Sicherheit.',
     attribution: 'Manuel Neuer, Weltmeister und Vater',
     cta: {
-      label: 'Jetzt kostenlos starten',
+      label: 'Jetzt 30 Tage kostenlos testen',
       href: 'https://portal.kidgonet.de/register?campaign=digitale-balance',
       external: true,
     },
@@ -157,6 +160,36 @@ export const dorfnerConfig: TenantConfig = {
         title: 'Empfohlen von Hans Dorfner',
         body: 'Eine Co-Initiative der Hans Dorfner Fußballschule und Kidgonet.',
         icon: 'heart',
+      },
+    ],
+  },
+
+  faq: {
+    headline: 'Häufige Fragen zur Aktion',
+    items: [
+      {
+        question: 'Was kostet Kidgonet nach den 30 Tagen?',
+        answer:
+          'Nach der Testphase läuft Ihr Abo regulär weiter. Mit dem Aktionscode erhalten Sie 30 % Rabatt auf das Jahresabo, auch auf jede Verlängerung.',
+      },
+      {
+        question: 'Wie löse ich den Aktionscode ein?',
+        answer:
+          'Bei der Registrierung geben Sie den Code einfach im Bestellschritt ein. Testphase und Rabatt werden automatisch übernommen.',
+      },
+      {
+        question: 'Ich habe keinen Code, was nun?',
+        answer:
+          'Aktionscodes gibt es in den Camps der Hans Dorfner Fußballschule. Ohne Code können Sie Kidgonet trotzdem auf kidgonet.de kostenlos testen.',
+      },
+      {
+        question: 'Kann ich jederzeit kündigen?',
+        answer: 'Ja, auch schon während der Testphase. Dann entstehen keine Kosten.',
+      },
+      {
+        question: 'Auf welchen Geräten funktioniert Kidgonet?',
+        answer:
+          'Die Kidgonet App gibt es für iPhone und Android. Sie als Eltern behalten den Überblick in der App oder im Elternportal im Browser.',
       },
     ],
   },

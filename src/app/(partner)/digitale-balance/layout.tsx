@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/partner/hans-dorfner/layout/header";
 import { Footer } from "@/components/partner/hans-dorfner/layout/footer";
+import { StickyCta } from "@/components/partner/hans-dorfner/layout/sticky-cta";
 import { dorfnerConfig } from "@/components/partner/hans-dorfner/config";
 
 const tenant = dorfnerConfig;
@@ -42,6 +43,7 @@ export default function DigitaleBalanceLayout({
       <Header tenant={tenant} />
       <main>{children}</main>
       <Footer tenant={tenant} />
+      <StickyCta tenant={tenant} />
     </div>
   );
 }

@@ -148,6 +148,15 @@ export type TenantConfig = {
     items: TrustItem[]
   }
 
+  /**
+   * Optionale FAQ-Sektion (z.B. Kampagnen-Fragen). Sektion rendert nichts,
+   * wenn der Block fehlt — bestehende Tenants bleiben kompatibel.
+   */
+  faq?: {
+    headline: string
+    items: { question: string; answer: string }[]
+  }
+
   footer: {
     blurb: string
     links: FooterLink[]

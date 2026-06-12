@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import { Container } from '@/components/partner/hans-dorfner/ui/container'
 import { SectionHeading } from '@/components/partner/hans-dorfner/ui/section-heading'
-import { ChildviewMockup } from '@/components/partner/hans-dorfner/mockups/childview-mockup'
+import { InternetfilterMockupScaled } from '@/components/mockups/InternetfilterMockupScaled'
 import type { ForParentsBlock, ForParentsIcon, TenantConfig } from '@/components/partner/hans-dorfner/types'
 
 const iconMap: Record<ForParentsIcon, typeof Hourglass> = {
@@ -33,7 +33,7 @@ export function ForParents({ tenant }: ForParentsProps) {
   const { forParents } = tenant
 
   return (
-    <section id="fuer-eltern" className="bg-white py-16 sm:py-28">
+    <section id="fuer-eltern" className="bg-white py-16 sm:py-24">
       <Container width="wide">
         <SectionHeading
           eyebrow="Für Eltern"
@@ -48,7 +48,7 @@ export function ForParents({ tenant }: ForParentsProps) {
          * (Homepage-Sektion), damit beide Produkte nicht gleichrangig
          * nebeneinander konkurrieren. */}
         <div className="mx-auto mt-10 max-w-4xl sm:mt-14">
-          <ForParentsCard block={forParents.app} mockup={<ChildviewMockup />} />
+          <ForParentsCard block={forParents.app} mockup={<InternetfilterMockupScaled width={200} />} />
         </div>
       </Container>
     </section>

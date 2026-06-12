@@ -11,7 +11,7 @@ type FooterProps = {
 export function Footer({ tenant }: FooterProps) {
   return (
     <footer className="border-t border-border bg-white">
-      <Container width="wide" className="py-12 sm:py-16">
+      <Container width="wide" className="pt-12 pb-32 sm:py-16">
         <div className="grid gap-8 sm:grid-cols-[1fr_auto] sm:items-end">
           <div>
             <div className="mb-5 flex items-center gap-3 sm:gap-4">

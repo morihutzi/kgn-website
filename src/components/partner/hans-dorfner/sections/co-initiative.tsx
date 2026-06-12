@@ -36,7 +36,7 @@ const PILLARS = [
 
 export function CoInitiative({ tenant }: CoInitiativeProps) {
   return (
-    <section id="gemeinsam" className="bg-surface py-16 sm:py-28">
+    <section id="gemeinsam" className="bg-white py-16 sm:py-28">
       <Container width="wide">
         <SectionHeading
           eyebrow="Sport und Smartphone"
@@ -56,7 +56,7 @@ export function CoInitiative({ tenant }: CoInitiativeProps) {
             return (
               <article
                 key={pillar.title}
-                className="flex flex-col rounded-3xl bg-white p-6 sm:p-8"
+                className="flex flex-col rounded-3xl bg-surface p-6 sm:p-8"
               >
                 <div className="flex size-12 items-center justify-center rounded-lg bg-primary text-white">
                   <Icon className="size-6" strokeWidth={2.2} aria-hidden />
