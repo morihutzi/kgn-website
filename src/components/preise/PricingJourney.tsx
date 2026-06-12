@@ -31,21 +31,17 @@ export function PricingJourney({ steps }: { steps: JourneyStep[] }) {
     steps.map(() => "upcoming"),
   );
 
+  // Scroll-Fortschritt nur fuer die vertikale Mobile-Timeline;
+  // Desktop zeigt alle drei Schritte nebeneinander und ist statisch.
   useEffect(() => {
     const update = () => {
       const c = containerRef.current;
       if (!c) return;
       const rect = c.getBoundingClientRect();
       const targetY = window.innerHeight * 0.55;
-      const isMobile = window.innerWidth < 768;
 
-      // Auf Mobile: Marker-Refs fuer exakte Linienposition nutzen
-      const firstEl = isMobile
-        ? markerMobileRefs.current[0]
-        : stepRefs.current[0];
-      const lastEl = isMobile
-        ? markerMobileRefs.current[steps.length - 1]
-        : stepRefs.current[steps.length - 1];
+      const firstEl = markerMobileRefs.current[0];
+      const lastEl = markerMobileRefs.current[steps.length - 1];
       if (!firstEl || !lastEl) return;
 
       const fr = firstEl.getBoundingClientRect();
@@ -91,29 +87,23 @@ export function PricingJourney({ steps }: { steps: JourneyStep[] }) {
   }, [steps.length]);
 
   return (
-    <section className="bg-white py-10 md:py-14">
+    <section className="bg-white py-10 md:py-12">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div
           ref={containerRef}
-          className="relative overflow-hidden rounded-[28px] border-2 border-brand-yellow bg-white px-4 py-7 md:rounded-[36px] md:px-12 md:py-24"
+          className="relative overflow-hidden rounded-[28px] border-2 border-brand-yellow bg-white px-4 py-7 md:rounded-[36px] md:px-10 md:py-12"
         >
-          {/* Fortschritts-Linie
-              Mobile: left-9 = 36px = container-px-5(20px) + marker-half(16px)
-              Desktop: zentriert */}
+          {/* Fortschritts-Linie (nur Mobile)
+              left-8 = 32px = container-px-4(16px) + marker-half(16px) */}
           <ProgressLine
             progressPx={progressPx}
             className="absolute left-8 md:hidden"
             style={{ top: `${lineTop}px`, height: `${lineHeight}px` }}
           />
-          <ProgressLine
-            progressPx={progressPx}
-            className="absolute left-1/2 hidden -translate-x-1/2 md:block"
-            style={{ top: `${lineTop}px`, height: `${lineHeight}px` }}
-          />
 
           <div className="relative mx-auto w-full max-w-4xl">
             {/* Intro */}
-            <div className="mb-5 text-center md:mb-16">
+            <div className="mb-5 text-center md:mb-10">
               <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-brand-yellow">
                 So läuft deine Testphase
               </p>
@@ -122,10 +112,10 @@ export function PricingJourney({ steps }: { steps: JourneyStep[] }) {
               </h2>
             </div>
 
-            <ol className="relative space-y-6 md:space-y-24">
+            {/* ── MOBILE: vertikale Timeline mit Scroll-Fortschritt ── */}
+            <ol className="relative space-y-6 md:hidden">
               {steps.map((step, idx) => {
                 const state = states[idx] ?? "upcoming";
-                const cardOnRight = idx % 2 === 1;
 
                 return (
                   <li
@@ -133,85 +123,81 @@ export function PricingJourney({ steps }: { steps: JourneyStep[] }) {
                     ref={(el) => {
                       stepRefs.current[idx] = el;
                     }}
-                    className="relative md:grid md:grid-cols-2 md:gap-0"
+                    className="flex gap-3"
                   >
-                    {/* ── MOBILE: Flexbox-Layout mit fixer Marker-Spalte ──
-                        Kein absolute positioning — Marker sitzt im normalen Fluss.
-                        Marker-Mitte: container-px(20) + col-width/2(16) = 36px = left-9 ✓ */}
-                    <div className="flex gap-3 md:hidden">
-                      {/* Linke Spalte: Marker im Dokumentenfluss */}
-                      <div
-                        ref={(el) => {
-                          markerMobileRefs.current[idx] = el;
-                        }}
-                        className="flex w-8 shrink-0 justify-center pt-1"
-                      >
-                        <Marker state={state} icon={step.markerIcon} />
-                      </div>
-
-                      {/* Rechte Spalte: Label + Card */}
-                      <div className="min-w-0 flex-1 pb-1">
-                        <span
-                          className={[
-                            "mb-2 block text-[10px] font-extrabold uppercase tracking-[0.2em]",
-                            state !== "upcoming"
-                              ? "text-brand-yellow"
-                              : "text-text-dark/40",
-                          ].join(" ")}
-                        >
-                          {step.markerLabel}
-                        </span>
-                        <Card
-                          icon={step.cardIcon}
-                          title={step.title}
-                          description={step.description}
-                        />
-                      </div>
+                    {/* Linke Spalte: Marker im Dokumentenfluss */}
+                    <div
+                      ref={(el) => {
+                        markerMobileRefs.current[idx] = el;
+                      }}
+                      className="flex w-8 shrink-0 justify-center pt-1"
+                    >
+                      <Marker state={state} icon={step.markerIcon} />
                     </div>
 
-                    {/* ── DESKTOP: Card (abwechselnde Seiten) ── */}
-                    <div
-                      className={[
-                        "relative hidden md:block",
-                        cardOnRight
-                          ? "md:col-start-2 md:pl-10"
-                          : "md:col-start-1 md:pr-10",
-                      ].join(" ")}
-                    >
+                    {/* Rechte Spalte: Label + Card */}
+                    <div className="min-w-0 flex-1 pb-1">
+                      <span
+                        className={[
+                          "mb-2 block text-[10px] font-extrabold uppercase tracking-[0.2em]",
+                          state !== "upcoming"
+                            ? "text-brand-yellow"
+                            : "text-text-dark/40",
+                        ].join(" ")}
+                      >
+                        {step.markerLabel}
+                      </span>
                       <Card
                         icon={step.cardIcon}
                         title={step.title}
                         description={step.description}
                       />
                     </div>
-
-                    {/* Desktop: Marker auf der Mittellinie */}
-                    <Marker
-                      state={state}
-                      icon={step.markerIcon}
-                      className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 md:flex"
-                    />
-
-                    {/* Desktop: Label-Chip */}
-                    <span
-                      className={[
-                        "pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center transition-colors duration-300 md:flex",
-                        cardOnRight
-                          ? "right-1/2 mr-8 flex-row-reverse"
-                          : "left-1/2 ml-8",
-                        state !== "upcoming"
-                          ? "text-brand-yellow"
-                          : "text-text-dark/35",
-                      ].join(" ")}
-                    >
-                      <Triangle direction={cardOnRight ? "right" : "left"} />
-                      <span className="whitespace-nowrap px-2 text-sm font-semibold tracking-wide">
-                        {step.markerLabel}
-                      </span>
-                    </span>
                   </li>
                 );
               })}
+            </ol>
+
+            {/* ── DESKTOP: kompakte horizontale Reihe ──
+                Marker sitzen auf einer durchgehenden Linie, Cards darunter. */}
+            <ol
+              className="hidden md:grid"
+              style={{
+                gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))`,
+              }}
+            >
+              {steps.map((step, idx) => (
+                <li
+                  key={idx}
+                  className="relative flex flex-col items-center px-4 text-center"
+                >
+                  {/* Liniensegmente links/rechts vom Marker — auf Marker-Hoehe (h-11/2) */}
+                  {idx > 0 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 right-1/2 top-[22px] h-[3px] -translate-y-1/2 bg-brand-yellow"
+                    />
+                  )}
+                  {idx < steps.length - 1 && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-1/2 right-0 top-[22px] h-[3px] -translate-y-1/2 bg-brand-yellow"
+                    />
+                  )}
+
+                  <Marker state="completed" icon={step.markerIcon} />
+                  <span className="mt-2 text-[11px] font-extrabold uppercase tracking-[0.2em] text-brand-yellow">
+                    {step.markerLabel}
+                  </span>
+                  <div className="mt-3 w-full flex-1">
+                    <Card
+                      icon={step.cardIcon}
+                      title={step.title}
+                      description={step.description}
+                    />
+                  </div>
+                </li>
+              ))}
             </ol>
           </div>
         </div>
@@ -265,14 +251,14 @@ function Card({
   description: string;
 }) {
   return (
-    <article className="rounded-2xl bg-white px-5 py-6 text-center shadow-[0_8px_28px_rgba(0,0,0,0.07)] ring-1 ring-black/5 md:px-10 md:py-9">
-      <div className="mx-auto flex h-10 w-10 items-center justify-center text-brand-yellow md:h-14 md:w-14">
+    <article className="h-full rounded-2xl bg-white px-5 py-6 text-center shadow-[0_8px_28px_rgba(0,0,0,0.07)] ring-1 ring-black/5 md:px-6 md:py-7">
+      <div className="mx-auto flex h-10 w-10 items-center justify-center text-brand-yellow md:h-11 md:w-11">
         {icon}
       </div>
-      <h3 className="mt-3 text-base font-extrabold leading-snug text-text-dark md:mt-5 md:text-2xl">
+      <h3 className="mt-3 text-base font-extrabold leading-snug text-text-dark md:mt-4 md:text-lg">
         {title}
       </h3>
-      <p className="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-text-dark/65 md:mt-3 md:text-[15px]">
+      <p className="mx-auto mt-2 max-w-sm text-xs leading-relaxed text-text-dark/65 md:text-sm">
         {description}
       </p>
     </article>
@@ -301,20 +287,5 @@ function Marker({
     >
       <span className="h-4 w-4 md:h-5 md:w-5">{icon}</span>
     </span>
-  );
-}
-
-function Triangle({ direction }: { direction: "left" | "right" }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="inline-block h-2 w-2 bg-current"
-      style={{
-        clipPath:
-          direction === "left"
-            ? "polygon(100% 0, 0 50%, 100% 100%)"
-            : "polygon(0 0, 100% 50%, 0 100%)",
-      }}
-    />
   );
 }
