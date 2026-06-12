@@ -43,7 +43,7 @@ export function GET() {
 - **App:** Kidgonet
 - **Plattformen:** iOS (${siteConfig.appStoreUrl}), Android (${siteConfig.playStoreUrl})
 - **Testphase:** ${siteConfig.trialDays} Tage kostenlos, 30 Tage Geld-zurück-Garantie
-- **Preise:** Monatsabo €6,99/Monat · Jahresabo €49,99/Jahr (5 Lizenzen je)
+- **Preise:** Monatsabo €6,99/Monat · Jahresabo €49,99/Jahr (jeweils für die ganze Familie, ohne Geräte-Limit)
 - **Datenschutz:** DSGVO-konform, Server in Deutschland, keine Datenweitergabe an Dritte
 
 ## Kernfunktionen

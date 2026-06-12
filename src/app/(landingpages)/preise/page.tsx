@@ -44,7 +44,7 @@ const faqs = [
   {
     question: "Was kostet Kidgonet?",
     answer:
-      "Kidgonet kostet im Jahresabo 49,99 € pro Jahr und im flexibel monatlich kündbaren Monatsabo 6,99 € pro Monat. In beiden Tarifen sind 5 Lizenzen für bis zu fünf Geräte enthalten.",
+      "Kidgonet kostet im Jahresabo 49,99 € pro Jahr und im flexibel monatlich kündbaren Monatsabo 6,99 € pro Monat. Beide Tarife gelten für die ganze Familie: alle Geräte Deiner Kinder sind ohne Aufpreis enthalten.",
   },
   {
     question: "Gibt es eine kostenlose Testphase?",
@@ -58,7 +58,7 @@ const faqs = [
   {
     question: "Wie viele Geräte und Kinder sind enthalten?",
     answer:
-      "Beide Abos enthalten 5 Lizenzen, du kannst also bis zu fünf Geräte schützen. Im Eltern-Portal kannst du beliebig viele Kinder anlegen und zentral verwalten.",
+      "Ein Abo gilt für die ganze Familie: Du kannst beliebig viele Geräte schützen und im Eltern-Portal beliebig viele Kinder anlegen und zentral verwalten.",
   },
   {
     question: "Gibt es eine kostenlose Version?",
@@ -83,7 +83,7 @@ const JOURNEY_STEPS: JourneyStep[] = [
   {
     title: "Voller Zugriff zu allen Funktionen der Kidgonet App",
     description:
-      `In der Testphase kannst Du bis zu fünf Geräte anmelden und die Premium Features von Kidgonet ${siteConfig.trialDays} Tage kostenlos nutzen.`,
+      `In der Testphase kannst Du alle Geräte Deiner Familie anmelden und die Premium Features von Kidgonet ${siteConfig.trialDays} Tage kostenlos nutzen.`,
     cardIcon: <ClockIcon className={ICON_CLASS} />,
     markerLabel: "Testzeitraum",
     markerIcon: <PhoneIcon className={ICON_CLASS} />,
@@ -261,7 +261,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
   return (
     <article className="flex flex-col rounded-2xl border-[1.5px] border-brand-yellow bg-white p-6 text-center md:p-8">
       <h3 className="text-xl font-extrabold text-text-dark">{plan.name}</h3>
-      <p className="mt-1 text-sm text-text-dark/65">5 Lizenzen</p>
+      <p className="mt-1 text-sm text-text-dark/65">Für die ganze Familie</p>
 
       <PriceDisplay euros={euros} cents={cents} />
       <p className="mt-2 text-sm font-medium text-text-dark/70">{plan.unit}</p>

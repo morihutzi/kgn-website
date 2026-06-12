@@ -84,7 +84,7 @@ export const featuresPage = {
       {
         id: "grid-devices",
         title: "Geräteübergreifend",
-        body: "Online Zeiten von Handy und Tablet werden addiert. Bis zu fünf Geräte pro Abo, kein Tageslimit wird durch Gerätewechsel umgangen.",
+        body: "Online Zeiten von Handy und Tablet werden addiert. Alle Geräte der Familie in einem Abo, kein Tageslimit wird durch Gerätewechsel umgangen.",
         icon: "devices",
         image: {
           src: "/images/screens/elternportal.png",
@@ -217,9 +217,9 @@ export const featuresPage = {
     intro:
       "Übersichtliches und einfach zu bedienendes Elternportal, gratis als App für iOS und Android. Damit verwaltest du Zeitlimits, Auszeiten und vieles mehr.",
     licenseExample: {
-      headline: "Lizenz Beispiel",
+      headline: "Ein Abo für die ganze Familie",
       description:
-        "Ein Abo beinhaltet fünf Lizenzen (1 Gerät = 1 Lizenz). Beispiel: Kind 1 hat ein Smartphone (1 Lizenz), Kind 2 hat Smartphone und Tablet (2 Lizenzen). Zusammen brauchst du 3 Lizenzen, denn auf jedem internetfähigen Gerät wird die Kidgonet App installiert.",
+        "Ein Abo gilt für die ganze Familie, ohne Geräte-Limit. Beispiel: Kind 1 hat ein Smartphone, Kind 2 hat Smartphone und Tablet. Auf jedem internetfähigen Gerät wird die Kidgonet App installiert, alle Geräte sind im Abo enthalten.",
     },
     settingsHeadline: "Überblick der Einstellungen",
     settingsBullets: [

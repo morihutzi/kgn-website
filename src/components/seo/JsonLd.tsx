@@ -85,7 +85,7 @@ export const softwareApplicationSchema: JsonLdData = {
       price: "6.99",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
-      description: `${siteConfig.trialDays} Tage kostenlos testen, monatlich kündbar, 5 Lizenzen inklusive`,
+      description: `${siteConfig.trialDays} Tage kostenlos testen, monatlich kündbar, gilt für die ganze Familie`,
     },
     {
       "@type": "Offer",
@@ -93,7 +93,7 @@ export const softwareApplicationSchema: JsonLdData = {
       price: "49.99",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
-      description: `${siteConfig.trialDays} Tage kostenlos testen, jährlich abgerechnet, 5 Lizenzen inklusive`,
+      description: `${siteConfig.trialDays} Tage kostenlos testen, jährlich abgerechnet, gilt für die ganze Familie`,
     },
   ],
   description:

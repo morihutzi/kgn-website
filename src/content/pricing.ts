@@ -9,7 +9,7 @@ export const pricingPage = {
     {
       title: trialCopy.highlightTitle,
       description:
-        "Voller Zugriff auf alle Funktionen während der Testphase. Bis zu fünf Geräte können angemeldet werden.",
+        "Voller Zugriff auf alle Funktionen während der Testphase. Alle Geräte Deiner Familie können angemeldet werden.",
     },
     {
       title: "30 Tage Geld zurück",
