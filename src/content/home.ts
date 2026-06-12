@@ -23,7 +23,6 @@ export const problemSolution: {
     { strong: "Webfilter", rest: " zum Schutz vor unangemessenen Seiten & Inhalten" },
     { strong: "Geräteortung", rest: " – immer wissen, wo deine Kinder sind" },
     { strong: "Bildschirmpausen", rest: " werden endlich eingehalten" },
-    { strong: "Medienkompetenztraining", rest: " – damit deine Kinder Gefahren im Netz erkennen" },
     { strong: "Privatsphäre", rest: " deiner Kinder bleibt geschützt" },
   ],
   trustLogos: [
