@@ -72,7 +72,7 @@ function PricingCard({ plan }: { plan: PricingPlan }) {
       {plan.recommended ? (
         <>
           <p className="text-sm font-extrabold text-brand-green">
-            Ersparnis: 24€ pro Jahr
+            Ersparnis: über 33€ pro Jahr
           </p>
           <p className="text-xs text-text-dark/65">im Vgl. zum Monatsabo</p>
         </>

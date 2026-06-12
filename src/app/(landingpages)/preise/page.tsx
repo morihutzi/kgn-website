@@ -25,12 +25,12 @@ import { pricing, type PricingPlan } from "@/content/home";
 import { siteConfig, trialCopy } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Preise – Kinderschutz-App ab €2,99 / Monat",
-  description: `Kidgonet Preise: Monatsabo €4,99 oder Jahresabo €2,99 pro Monat. ${trialCopy.cta}, 30 Tage Geld-zurück-Garantie.`,
+  title: "Preise – Monatsabo €6,99 oder Jahresabo €49,99",
+  description: `Kidgonet Preise: Monatsabo €6,99 pro Monat oder Jahresabo €49,99 pro Jahr. ${trialCopy.cta}, 30 Tage Geld-zurück-Garantie.`,
   alternates: { canonical: "/preise" },
   openGraph: {
-    title: "Preise – Kidgonet Kinderschutz-App ab €2,99 / Monat",
-    description: `Monatsabo €4,99 oder Jahresabo €2,99/Monat. ${trialCopy.cta}, 30 Tage Geld-zurück-Garantie.`,
+    title: "Preise – Kidgonet Monatsabo €6,99 oder Jahresabo €49,99",
+    description: `Monatsabo €6,99/Monat oder Jahresabo €49,99/Jahr. ${trialCopy.cta}, 30 Tage Geld-zurück-Garantie.`,
     url: "https://www.kidgonet.de/preise",
   },
 };
@@ -44,7 +44,7 @@ const faqs = [
   {
     question: "Was kostet Kidgonet?",
     answer:
-      "Kidgonet kostet im Jahresabo 2,99 € pro Monat (jährlich abgerechnet) und im flexibel monatlich kündbaren Monatsabo 4,99 € pro Monat. In beiden Tarifen sind 5 Lizenzen für bis zu fünf Geräte enthalten.",
+      "Kidgonet kostet im Jahresabo 49,99 € pro Jahr und im flexibel monatlich kündbaren Monatsabo 6,99 € pro Monat. In beiden Tarifen sind 5 Lizenzen für bis zu fünf Geräte enthalten.",
   },
   {
     question: "Gibt es eine kostenlose Testphase?",
@@ -253,7 +253,7 @@ function FreemiumCard() {
 }
 
 function PlanCard({ plan }: { plan: PricingPlan }) {
-  // Preis aus "€4,99" auseinandernehmen
+  // Preis aus "€6,99" auseinandernehmen
   const match = plan.price.match(/€?\s*(\d+)[,.]?(\d*)/);
   const euros = match?.[1] ?? plan.price;
   const cents = match?.[2] || null;
@@ -264,7 +264,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
       <p className="mt-1 text-sm text-text-dark/65">5 Lizenzen</p>
 
       <PriceDisplay euros={euros} cents={cents} />
-      <p className="mt-2 text-sm font-medium text-text-dark/70">pro Monat</p>
+      <p className="mt-2 text-sm font-medium text-text-dark/70">{plan.unit}</p>
 
       <span className="mx-auto mt-5 block h-[2px] w-16 rounded-full bg-brand-yellow" />
 
@@ -272,7 +272,7 @@ function PlanCard({ plan }: { plan: PricingPlan }) {
         {plan.recommended ? (
           <>
             <p className="text-sm font-bold text-brand-green">
-              Ersparnis: 24€ pro Jahr
+              Ersparnis: über 33€ pro Jahr
             </p>
             <p className="text-xs text-text-dark/55">im Vgl. zum Monatsabo</p>
           </>

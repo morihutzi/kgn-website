@@ -218,7 +218,7 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
   plans: [
     {
       name: "Monatsabo",
-      price: "€4,99",
+      price: "€6,99",
       unit: "pro Monat",
       note: "flexibel monatlich kündbar",
       features: [],
@@ -227,10 +227,10 @@ export const pricing: { headline: string; plans: PricingPlan[] } = {
     },
     {
       name: "Jahresabo",
-      price: "€2,99",
-      unit: "pro Monat",
+      price: "€49,99",
+      unit: "pro Jahr",
       highlight: "Empfohlen",
-      note: "Ersparnis: 24€ pro Jahr im Vgl. zum Monatsabo",
+      note: "Ersparnis: über 33€ pro Jahr im Vgl. zum Monatsabo",
       features: [],
       ctaLabel: trialCopy.cta,
       guarantee: "30 Tage Geld zurück Garantie",

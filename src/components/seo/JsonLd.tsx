@@ -82,7 +82,7 @@ export const softwareApplicationSchema: JsonLdData = {
     {
       "@type": "Offer",
       name: "Monatsabo",
-      price: "4.99",
+      price: "6.99",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       description: `${siteConfig.trialDays} Tage kostenlos testen, monatlich kündbar, 5 Lizenzen inklusive`,
@@ -90,7 +90,7 @@ export const softwareApplicationSchema: JsonLdData = {
     {
       "@type": "Offer",
       name: "Jahresabo",
-      price: "2.99",
+      price: "49.99",
       priceCurrency: "EUR",
       availability: "https://schema.org/InStock",
       description: `${siteConfig.trialDays} Tage kostenlos testen, jährlich abgerechnet, 5 Lizenzen inklusive`,

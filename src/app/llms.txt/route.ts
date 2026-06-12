@@ -33,7 +33,7 @@ Botschafter: Manuel Neuer (Torhüter FC Bayern München und DFB-Nationalmannscha
 
 ## Preise
 
-- [Preisübersicht](https://www.kidgonet.de/preise): Monatsabo €4,99/Monat, Jahresabo €2,99/Monat. ${siteConfig.trialDays} Tage kostenlos testen, 30 Tage Geld-zurück-Garantie.
+- [Preisübersicht](https://www.kidgonet.de/preise): Monatsabo €6,99/Monat, Jahresabo €49,99/Jahr. ${siteConfig.trialDays} Tage kostenlos testen, 30 Tage Geld-zurück-Garantie.
 
 ## Download
 
